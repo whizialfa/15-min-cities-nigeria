@@ -118,7 +118,7 @@ calcite-shell-panel[slot="panel-bottom"] {
 }
 
 #menu-toggle {
-  display: none;
+  display: flex;
 }
 
 .blurb {
@@ -542,7 +542,6 @@ html.calcite-mode-dark .popup-head {
     display: inline-flex;
   }
 
-  #menu-toggle,
   .layers-fab {
     display: flex;
   }
@@ -555,6 +554,21 @@ html.calcite-mode-dark .popup-head {
 
   .header-tools {
     padding-right: max(8px, env(safe-area-inset-right));
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+  }
+
+  calcite-navigation-logo {
+    min-width: 0;
+    max-width: calc(100vw - 232px);
+  }
+
+  calcite-navigation-logo::part(heading),
+  calcite-navigation-logo::part(description) {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+    line-height: 1.2;
   }
 
   .score-value {
