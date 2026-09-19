@@ -518,18 +518,18 @@ async function main() {
     const wardText = dark ? "#e6e1db" : "#554e4b";
     const boundary = dark ? "#f0f0f0" : INK;
     const wardLine = dark ? "rgba(230,230,230,0.55)" : WARD_LINE;
-    const setText = (id, color, buffer = 1.4) => {
+    const setText = (id, color, buffer = 1.4, haloColor = halo) => {
       if (!map.getLayer(id)) return;
       map.setPaintProperty(id, "text-color", color);
-      map.setPaintProperty(id, "text-halo-color", halo);
+      map.setPaintProperty(id, "text-halo-color", haloColor);
       map.setPaintProperty(id, "text-halo-width", buffer);
       map.setPaintProperty(id, "text-halo-blur", buffer > 2 ? 0.45 : 0.2);
     };
     setText("labels-places", place, 1.6);
     setText("labels-places-pinned", place, 1.6);
     setText("labels-wards", wardText, 1.5);
-    setText("labels-clinics", CLINIC, 2.8);
-    setText("labels-schools", SCHOOL, 2.8);
+    setText("labels-clinics", CLINIC, 2.8, "#ffffff");
+    setText("labels-schools", SCHOOL, 2.8, "#ffffff");
     if (map.getLayer("boundary")) map.setPaintProperty("boundary", "line-color", boundary);
     if (map.getLayer("wards")) map.setPaintProperty("wards", "line-color", wardLine);
   };
@@ -680,7 +680,7 @@ async function main() {
           "text-padding": 4,
           "text-max-width": 10,
         },
-        paint: { "text-color": CLINIC, "text-halo-color": HALO, "text-halo-width": 2.8, "text-halo-blur": 0.45 },
+        paint: { "text-color": CLINIC, "text-halo-color": "#ffffff", "text-halo-width": 2.8, "text-halo-blur": 0.45 },
       },
       {
         id: "labels-schools",
@@ -696,7 +696,7 @@ async function main() {
           "text-padding": 4,
           "text-max-width": 10,
         },
-        paint: { "text-color": SCHOOL, "text-halo-color": HALO, "text-halo-width": 2.8, "text-halo-blur": 0.45 },
+        paint: { "text-color": SCHOOL, "text-halo-color": "#ffffff", "text-halo-width": 2.8, "text-halo-blur": 0.45 },
       },
     ];
     layers.forEach((layer) => map.addLayer(layer));
