@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>$title$</title>
+  <link rel="stylesheet" href="print.css" />
+</head>
+<body>
+  <header class="mast">
+    <p class="kicker">Lagos · Kano · Ibadan · Abuja · Port Harcourt</p>
+    <h1 class="doc-title">$title$</h1>
+$if(subtitle)$
+    <p class="doc-sub">$subtitle$</p>
+$endif$
+    <div class="byline">
+      <span class="author">$for(author)$$author$$sep$, $endfor$</span>
+      <span class="dot">·</span>
+      <span class="when">$date$</span>
+    </div>
+    <p class="adapt">Walks to GRID3 clinics and schools, scored after <a href="https://doi.org/10.1038/s44284-024-00119-4">Bruno, Melo, Campanelli and Loreto, <em>Nature Cities</em> (2024)</a>.</p>
+  </header>
+
+  <main>
+$body$
+  </main>
+</body>
+</html>

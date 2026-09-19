@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Kigali plate: 4-point star + ring + centre. No letter N. -->
+  <polygon
+    fill="#000000"
+    points="50.00,4.00 55.66,44.34 96.00,50.00 55.66,55.66 50.00,96.00 44.34,55.66 4.00,50.00 44.34,44.34"/>
+  <circle cx="50" cy="50" r="20.5" fill="none" stroke="#000000" stroke-width="3.4"/>
+  <circle cx="50" cy="50" r="3.4" fill="#000000"/>
+</svg>

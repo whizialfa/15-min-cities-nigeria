@@ -3,9 +3,9 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "bruno-2024-15min-nigeria"
+name = "15-min-cities-nigeria"
 version = "0.1.0"
-description = "Nigeria replication and adaptation of Bruno et al. 2024 inclusive 15-minute cities"
+description = "Nigeria adaptation of Bruno et al. 2024 15-minute-city metrics (not a replication)"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -19,7 +19,16 @@ geo = [
   "shapely",
   "pyproj",
   "rasterio",
+  "rasterstats",
   "matplotlib",
+  "matplotlib-scalebar",
+  "mapclassify",
+  "scipy",
+  "requests",
+  "jupyter",
+  "ipykernel",
+  "nbformat",
+  "nbclient",
 ]
 dev = [
   "pytest",
