@@ -1,11 +1,19 @@
 .DS_Store
 .venv/
+.pydeps/
+.mplconfig/
 __pycache__/
 *.pyc
 *.egg-info/
 .pytest_cache/
 .env
 .env.*
+cache/
+notes/.Rhistory
+qgis/.Rhistory
+web/node_modules/
+web/dist/
+web/data/cities/**/nstar.geojson
 
 # bulky geospatial inputs and derivatives
 data/raw/*
@@ -14,9 +22,15 @@ data/raw/*
 data/processed/*
 !data/processed/.gitkeep
 !data/processed/README.md
+!data/processed/*.csv
 maps/*
 !maps/.gitkeep
 !maps/README.md
+charts/*
+!charts/.gitkeep
+!charts/README.md
+!charts/*.png
+!charts/*.pdf
 *.tif
 *.tiff
 *.img
@@ -28,4 +42,7 @@ maps/*
 *.cpg
 *.osm
 *.pbf
+*.graphml
 *.zip
+notes/*.pdf
+qgis/*.qgz

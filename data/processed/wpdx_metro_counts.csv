@@ -1,0 +1,6 @@
+city,slug,n_wpdx,n_functional,n_not_functional,n_urban_flag,citywide_n5_possible
+Lagos,lagos,918,521,397,889,True
+Kano,kano,903,699,204,793,True
+Ibadan,ibadan,409,255,154,409,True
+Abuja,abuja,49,25,24,19,True
+Port Harcourt,port_harcourt,261,196,65,173,True

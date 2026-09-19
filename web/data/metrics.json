@@ -1,0 +1,395 @@
+{
+  "title": "Fifteen minutes on foot",
+  "subtitle": "Walking to clinics and schools in Lagos, Kano, Ibadan, Abuja and Port Harcourt",
+  "author": "Wisdom Akpabio",
+  "year": 2026,
+  "mode": "OSM walk graph, 5 km/h, five nearest clinics and five nearest schools",
+  "inventory": "GRID3 clinics and schools. OpenStreetMap streets, not amenities.",
+  "order": [
+    "lagos",
+    "ibadan",
+    "kano",
+    "port_harcourt",
+    "abuja"
+  ],
+  "cities": {
+    "lagos": {
+      "name": "Lagos",
+      "state": "Lagos",
+      "slug": "lagos",
+      "bbox": [
+        3.05,
+        6.35,
+        3.72,
+        6.72
+      ],
+      "blurb": "This map is the seven inner local government areas, not the sixteen-LGA metro. The long walks sit on the Lekki corridor.",
+      "pop": 2327863,
+      "pt": 12.6,
+      "f15": 70.6,
+      "gini": 0.42,
+      "clinics": 777,
+      "schools": 1595,
+      "n_dual": 5,
+      "speed": "5 km/h",
+      "people_breaks": [
+        {
+          "lo": 5,
+          "hi": 500,
+          "color": "#ffeda0",
+          "label": "5\u2013500"
+        },
+        {
+          "lo": 500,
+          "hi": 1000,
+          "color": "#fed976",
+          "label": "500\u20131,000"
+        },
+        {
+          "lo": 1000,
+          "hi": 1600,
+          "color": "#feb24c",
+          "label": "1,000\u20131,600"
+        },
+        {
+          "lo": 1600,
+          "hi": 2500,
+          "color": "#fd8d3c",
+          "label": "1,600\u20132,500"
+        },
+        {
+          "lo": 2500,
+          "hi": 4500,
+          "color": "#e31a1c",
+          "label": "2,500\u20134,500"
+        },
+        {
+          "lo": 4500,
+          "hi": 9014,
+          "color": "#800026",
+          "label": "4,500+"
+        }
+      ],
+      "nstar": 327,
+      "nstar_per_100k": 3.8,
+      "clinics_cover": 90.0,
+      "nstar_vs_stock": 0.14,
+      "median_snap_m": 67,
+      "people_off_street": 2.8,
+      "cuts": [
+        {
+          "cut": "plate",
+          "units": "7 local government areas",
+          "pop": 2327863,
+          "f15": 70.6,
+          "pt": 12.6
+        },
+        {
+          "cut": "omitted",
+          "units": "9 local government areas",
+          "pop": 6260888,
+          "f15": 91.3,
+          "pt": 9.1
+        },
+        {
+          "cut": "metro",
+          "units": "16 local government areas",
+          "pop": 8690986,
+          "f15": 85.4,
+          "pt": 10.3
+        }
+      ],
+      "metro_f15": 85.4,
+      "metro_pt": 10.3,
+      "metro_pop": 8690986,
+      "metro_gini": 0.346,
+      "frame": "7 local government areas",
+      "frame_note": "Scores on this map are the 7 local government areas. The paper headline is still the metro."
+    },
+    "kano": {
+      "name": "Kano",
+      "state": "Kano",
+      "slug": "kano",
+      "bbox": [
+        8.38,
+        11.84,
+        8.73,
+        12.12
+      ],
+      "blurb": "Denser than Lagos, but the later population lives in Ungogo and Kumbotso while the clinics stayed in the old city.",
+      "pop": 5780865,
+      "pt": 13.5,
+      "f15": 67.2,
+      "gini": 0.291,
+      "clinics": 465,
+      "schools": 1045,
+      "n_dual": 5,
+      "speed": "5 km/h",
+      "people_breaks": [
+        {
+          "lo": 5,
+          "hi": 500,
+          "color": "#ffeda0",
+          "label": "5\u2013500"
+        },
+        {
+          "lo": 500,
+          "hi": 1200,
+          "color": "#fed976",
+          "label": "500\u20131,200"
+        },
+        {
+          "lo": 1200,
+          "hi": 2000,
+          "color": "#feb24c",
+          "label": "1,200\u20132,000"
+        },
+        {
+          "lo": 2000,
+          "hi": 3000,
+          "color": "#fd8d3c",
+          "label": "2,000\u20133,000"
+        },
+        {
+          "lo": 3000,
+          "hi": 4500,
+          "color": "#e31a1c",
+          "label": "3,000\u20134,500"
+        },
+        {
+          "lo": 4500,
+          "hi": 7552,
+          "color": "#800026",
+          "label": "4,500+"
+        }
+      ],
+      "nstar": 119,
+      "nstar_per_100k": 2.1,
+      "clinics_cover": 89.2,
+      "nstar_vs_stock": 0.26,
+      "median_snap_m": 71,
+      "people_off_street": 0.9
+    },
+    "ibadan": {
+      "name": "Ibadan",
+      "state": "Oyo",
+      "slug": "ibadan",
+      "bbox": [
+        3.78,
+        7.28,
+        4.08,
+        7.55
+      ],
+      "blurb": "The most compact city in the set, and the closest street map. Olopomewa is the hole that still moves the city score.",
+      "pop": 1221549,
+      "pt": 10.9,
+      "f15": 82.1,
+      "gini": 0.31,
+      "clinics": 445,
+      "schools": 453,
+      "n_dual": 5,
+      "speed": "5 km/h",
+      "people_breaks": [
+        {
+          "lo": 7,
+          "hi": 400,
+          "color": "#ffeda0",
+          "label": "7\u2013400"
+        },
+        {
+          "lo": 400,
+          "hi": 800,
+          "color": "#fed976",
+          "label": "400\u2013800"
+        },
+        {
+          "lo": 800,
+          "hi": 1200,
+          "color": "#feb24c",
+          "label": "800\u20131,200"
+        },
+        {
+          "lo": 1200,
+          "hi": 1600,
+          "color": "#fd8d3c",
+          "label": "1,200\u20131,600"
+        },
+        {
+          "lo": 1600,
+          "hi": 2000,
+          "color": "#e31a1c",
+          "label": "1,600\u20132,000"
+        },
+        {
+          "lo": 2000,
+          "hi": 2861,
+          "color": "#800026",
+          "label": "2,000+"
+        }
+      ],
+      "nstar": 58,
+      "nstar_per_100k": 4.7,
+      "clinics_cover": 92.4,
+      "nstar_vs_stock": 0.13,
+      "median_snap_m": 47,
+      "people_off_street": 0.1
+    },
+    "abuja": {
+      "name": "Abuja",
+      "state": "Federal Capital Territory",
+      "slug": "abuja",
+      "bbox": [
+        7.3,
+        8.9,
+        7.58,
+        9.2
+      ],
+      "blurb": "This map is seven AMAC wards, not the whole municipal area. Some of the empty cells are missing streets.",
+      "pop": 1604537,
+      "pt": 28.4,
+      "f15": 18.8,
+      "gini": 0.275,
+      "clinics": 190,
+      "schools": 289,
+      "n_dual": 5,
+      "speed": "5 km/h",
+      "people_breaks": [
+        {
+          "lo": 5,
+          "hi": 200,
+          "color": "#ffeda0",
+          "label": "5\u2013200"
+        },
+        {
+          "lo": 200,
+          "hi": 400,
+          "color": "#fed976",
+          "label": "200\u2013400"
+        },
+        {
+          "lo": 400,
+          "hi": 700,
+          "color": "#feb24c",
+          "label": "400\u2013700"
+        },
+        {
+          "lo": 700,
+          "hi": 1200,
+          "color": "#fd8d3c",
+          "label": "700\u20131,200"
+        },
+        {
+          "lo": 1200,
+          "hi": 1800,
+          "color": "#e31a1c",
+          "label": "1,200\u20131,800"
+        },
+        {
+          "lo": 1800,
+          "hi": 3290,
+          "color": "#800026",
+          "label": "1,800+"
+        }
+      ],
+      "nstar": 284,
+      "nstar_per_100k": 13.1,
+      "clinics_cover": 52.5,
+      "nstar_vs_stock": 1.19,
+      "median_snap_m": 263,
+      "people_off_street": 7.0,
+      "cuts": [
+        {
+          "cut": "plate",
+          "units": "7 wards",
+          "pop": 1604537,
+          "f15": 18.8,
+          "pt": 28.4
+        },
+        {
+          "cut": "omitted",
+          "units": "4 wards",
+          "pop": 487754,
+          "f15": 11.7,
+          "pt": 38.7
+        },
+        {
+          "cut": "metro",
+          "units": "AMAC",
+          "pop": 2168831,
+          "f15": 16.5,
+          "pt": 32.2
+        }
+      ],
+      "metro_f15": 16.5,
+      "metro_pt": 32.2,
+      "metro_pop": 2168831,
+      "metro_gini": 0.312,
+      "frame": "7 wards",
+      "frame_note": "Scores on this map are the 7 wards. The paper headline is still the metro."
+    },
+    "port_harcourt": {
+      "name": "Port Harcourt",
+      "state": "Rivers",
+      "slug": "port_harcourt",
+      "bbox": [
+        6.9,
+        4.75,
+        7.15,
+        5.05
+      ],
+      "blurb": "Crowded, and still far. The old township is walkable. Most people now live in Obio/Akpor, and the clinics did not move with them.",
+      "pop": 2330583,
+      "pt": 21.2,
+      "f15": 30.7,
+      "gini": 0.272,
+      "clinics": 175,
+      "schools": 326,
+      "n_dual": 5,
+      "speed": "5 km/h",
+      "people_breaks": [
+        {
+          "lo": 5,
+          "hi": 300,
+          "color": "#ffeda0",
+          "label": "5\u2013300"
+        },
+        {
+          "lo": 300,
+          "hi": 700,
+          "color": "#fed976",
+          "label": "300\u2013700"
+        },
+        {
+          "lo": 700,
+          "hi": 1000,
+          "color": "#feb24c",
+          "label": "700\u20131,000"
+        },
+        {
+          "lo": 1000,
+          "hi": 1400,
+          "color": "#fd8d3c",
+          "label": "1,000\u20131,400"
+        },
+        {
+          "lo": 1400,
+          "hi": 2000,
+          "color": "#e31a1c",
+          "label": "1,400\u20132,000"
+        },
+        {
+          "lo": 2000,
+          "hi": 3639,
+          "color": "#800026",
+          "label": "2,000+"
+        }
+      ],
+      "nstar": 115,
+      "nstar_per_100k": 4.9,
+      "clinics_cover": 66.1,
+      "nstar_vs_stock": 0.66,
+      "median_snap_m": 56,
+      "people_off_street": 0.5
+    }
+  }
+}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="calcite-mode-light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fifteen minutes on foot</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
+    <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css" />
+    <link rel="stylesheet" href="./src/style.css?v=7" />
+    <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
+  </head>
+  <body>
+    <calcite-loader id="boot-loader" label="Loading map"></calcite-loader>
+    <calcite-shell content-behind>
+      <calcite-navigation slot="header">
+        <calcite-navigation-logo
+          slot="logo"
+          heading="Fifteen minutes on foot"
+          description="Walking to clinics and schools"
+        ></calcite-navigation-logo>
+        <div slot="content-end" class="header-tools">
+          <calcite-segmented-control id="basemap-toggle" scale="s">
+            <calcite-segmented-control-item value="gray" checked>Gray</calcite-segmented-control-item>
+            <calcite-segmented-control-item value="color">Buildings 2.5D</calcite-segmented-control-item>
+            <calcite-segmented-control-item value="imagery">Imagery</calcite-segmented-control-item>
+          </calcite-segmented-control>
+          <calcite-action id="theme-toggle" icon="moon" text="Dark" scale="s" title="Switch appearance"></calcite-action>
+        </div>
+      </calcite-navigation>
+
+      <calcite-shell-panel slot="panel-start" display-mode="float" width-scale="s">
+        <calcite-panel id="side-panel" heading="Choose a city" description="Walking at 5 km/h">
+          <div class="panel-body">
+            <calcite-label>
+              City
+              <calcite-select id="city-select" scale="s">
+                <calcite-option value="lagos" selected>Lagos</calcite-option>
+                <calcite-option value="ibadan">Ibadan</calcite-option>
+                <calcite-option value="kano">Kano</calcite-option>
+                <calcite-option value="port_harcourt">Port Harcourt</calcite-option>
+                <calcite-option value="abuja">Abuja</calcite-option>
+              </calcite-select>
+            </calcite-label>
+
+            <p class="blurb" id="city-blurb"></p>
+            <div class="score-grid" id="score-grid"></div>
+            <p class="fine frame-note" id="frame-note" hidden></p>
+
+            <calcite-label class="mobile-basemap">
+              Basemap
+              <calcite-select id="basemap-select" scale="s">
+                <calcite-option value="gray" selected>Gray</calcite-option>
+                <calcite-option value="color">Buildings 2.5D</calcite-option>
+                <calcite-option value="imagery">Imagery</calcite-option>
+              </calcite-select>
+            </calcite-label>
+
+            <calcite-label>
+              Colour
+              <calcite-select id="theme-select" scale="s">
+                <calcite-option value="walk" selected>Minutes on foot</calcite-option>
+                <calcite-option value="clinic">Minutes to a clinic</calcite-option>
+                <calcite-option value="school">Minutes to a school</calcite-option>
+                <calcite-option value="people">People per neighbourhood</calcite-option>
+              </calcite-select>
+            </calcite-label>
+
+            <calcite-label layout="inline">
+              <calcite-switch id="beyond-switch" scale="s"></calcite-switch>
+              Beyond 15 minutes only
+            </calcite-label>
+
+            <h3 class="block-title">Layers</h3>
+            <calcite-label layout="inline">
+              <calcite-checkbox id="lyr-hexes" checked scale="s"></calcite-checkbox>
+              Neighbourhoods
+            </calcite-label>
+            <calcite-label layout="inline">
+              <calcite-checkbox id="lyr-clinics" scale="s"></calcite-checkbox>
+              Clinics
+            </calcite-label>
+            <calcite-label layout="inline">
+              <calcite-checkbox id="lyr-schools" scale="s"></calcite-checkbox>
+              Schools
+            </calcite-label>
+            <calcite-label layout="inline">
+              <calcite-checkbox id="lyr-wards" checked scale="s"></calcite-checkbox>
+              Wards
+            </calcite-label>
+            <calcite-label layout="inline">
+              <calcite-checkbox id="lyr-places" checked scale="s"></calcite-checkbox>
+              Place names
+            </calcite-label>
+            <calcite-label layout="inline">
+              <calcite-checkbox id="lyr-boundary" checked scale="s"></calcite-checkbox>
+              City outline
+            </calcite-label>
+
+            <h3 class="block-title">Legend</h3>
+            <div class="legend" id="legend"></div>
+            <p class="fine" id="legend-note"></p>
+
+            <calcite-accordion scale="s" selection-mode="single">
+              <calcite-accordion-item heading="How to read this" icon-start="question">
+                <div class="docs">
+                  <p>
+                    Click a neighbourhood for the walk from that tile, and the ward it sits in. Click a ward fill or a ward name for the ward’s scores. F15 is the share of people, not the share of tiles.
+                  </p>
+                  <p>
+                    Clinics on the map are GRID3 buildings. N* (how many well-placed new clinics would cover 90% of people) is a siting test, not a second set of dots. It lives in the glossary.
+                  </p>
+                  <p>
+                    Lagos shows seven inner local government areas. Abuja shows seven AMAC wards. The paper headline is still the full metro.
+                  </p>
+                  <p>
+                    <a href="./paper/fifteen_minute_access_nigeria.pdf" download>Download the academic paper (PDF)</a>
+                  </p>
+                </div>
+              </calcite-accordion-item>
+              <calcite-accordion-item heading="Glossary" icon-start="book">
+                <dl class="glossary">
+                  <dt>Walk time (PT<sub>k</sub>)</dt>
+                  <dd>From one neighbourhood: average the walk to five clinics, do the same for five schools, then average the two. Minutes.</dd>
+                  <dt>City walk time (PT<sub>city</sub>)</dt>
+                  <dd>That neighbourhood walk, averaged across the city, counting neighbourhoods with more people more heavily. Ten minutes means a typical person is about a ten-minute walk from that mix of clinics and schools.</dd>
+                  <dt>F15</dt>
+                  <dd>Share of people whose neighbourhood walk is 15 minutes or less. If a city is 85%, about 85 in 100 live in a neighbourhood that meets that bar.</dd>
+                  <dt>Gini</dt>
+                  <dd>How uneven those walks are, from 0 (everyone waits the same) to 1. F15 counts how many people are inside 15 minutes; Gini says whether the rest of the line is flat or has a long far tail.</dd>
+                  <dt>n (choice of nearby places)</dt>
+                  <dd>How many clinics or schools count toward the average. The headline is five, because one nearby place is too easy and twenty is the rule used by Bruno et al. (2024).</dd>
+                  <dt>N*</dt>
+                  <dd>Ignore the clinics that already exist. How many new clinics, placed one by one on the walking network to cover the most remaining people each time, would put 90% of residents within a 15-minute walk of one clinic. A siting test. It is not F15, and it is not drawn as a map layer.</dd>
+                  <dt>Hexagon</dt>
+                  <dd>The neighbourhood unit: a hexagon 200 m on a side, the same cell Bruno et al. used.</dd>
+                  <dt>Off-network</dt>
+                  <dd>A hexagon whose centre is more than 250 m from the nearest mapped walking street. Far on the map can mean a missing street as well as a missing clinic.</dd>
+                  <dt>GRID3</dt>
+                  <dd>Geo-Referenced Infrastructure and Demographic Data for Development inventories of Nigerian health facilities, schools and population.</dd>
+                  <dt>OpenStreetMap (OSM)</dt>
+                  <dd>The public street map, used here for walking paths, not as the list of clinics and schools.</dd>
+                </dl>
+              </calcite-accordion-item>
+            </calcite-accordion>
+          </div>
+        </calcite-panel>
+      </calcite-shell-panel>
+
+      <div id="map" role="application" aria-label="Walking access map"></div>
+    </calcite-shell>
+    <script src="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.js"></script>
+    <script type="module" src="./src/main.js?v=8"></script>
+  </body>
+</html>

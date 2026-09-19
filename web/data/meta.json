@@ -1,0 +1,95 @@
+{
+  "population": "WorldPop 2020 constrained 100 m, zonal sum on metro LGAs",
+  "boundary": "geoBoundaries ADM2 metro LGAs (not GHS Urban Centre)",
+  "overview": {
+    "center": [
+      8.1,
+      9.2
+    ],
+    "zoom": 5.35,
+    "bearing": 0,
+    "pitch": 0
+  },
+  "cities": {
+    "lagos": {
+      "name": "Lagos",
+      "state": "Lagos",
+      "pop": 11808670,
+      "area_km2": 969.5,
+      "people_per_km2": 12180,
+      "n_lga": 16,
+      "atlas_id": 4800,
+      "notes": "Sony CSL atlas idcity=4800. Excludes Epe, Ibeju-Lekki, Badagry, Ikorodu.",
+      "bbox": [
+        3.05,
+        6.35,
+        3.72,
+        6.72
+      ]
+    },
+    "kano": {
+      "name": "Kano",
+      "state": "Kano",
+      "pop": 4735575,
+      "area_km2": 578.0,
+      "people_per_km2": 8194,
+      "n_lga": 8,
+      "atlas_id": null,
+      "notes": "",
+      "bbox": [
+        8.38,
+        11.84,
+        8.73,
+        12.12
+      ]
+    },
+    "ibadan": {
+      "name": "Ibadan",
+      "state": "Oyo",
+      "pop": 1653889,
+      "area_km2": 126.5,
+      "people_per_km2": 13077,
+      "n_lga": 5,
+      "atlas_id": null,
+      "notes": "",
+      "bbox": [
+        3.78,
+        7.28,
+        4.08,
+        7.55
+      ]
+    },
+    "abuja": {
+      "name": "Abuja",
+      "state": "Federal Capital Territory",
+      "pop": 2291903,
+      "area_km2": 1483.1,
+      "people_per_km2": 1545,
+      "n_lga": 1,
+      "atlas_id": null,
+      "notes": "FCT urban core (not the entire territory).",
+      "bbox": [
+        7.3,
+        8.9,
+        7.58,
+        9.2
+      ]
+    },
+    "port_harcourt": {
+      "name": "Port Harcourt",
+      "state": "Rivers",
+      "pop": 1364358,
+      "area_km2": 336.8,
+      "people_per_km2": 4052,
+      "n_lga": 2,
+      "atlas_id": null,
+      "notes": "",
+      "bbox": [
+        6.9,
+        4.75,
+        7.15,
+        5.05
+      ]
+    }
+  }
+}
