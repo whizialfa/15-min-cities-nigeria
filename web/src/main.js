@@ -178,27 +178,12 @@ function addIcons(map) {
     ctx.fillRect(size / 2 - 2.2, 21, 4.4, 8);
     ctx.fillRect(size / 2 - 1, 6, 2, 4);
   });
-  const shield = rasterIcon((ctx, size) => {
-    ctx.fillStyle = "#ffffff";
-    ctx.strokeStyle = "rgba(28,25,22,0.28)";
-    ctx.lineWidth = 1.5;
-    ctx.beginPath();
-    ctx.roundRect(2, 2, size - 4, size - 4, 8);
-    ctx.fill();
-    ctx.stroke();
-  }, 64);
   try {
-    ["clinic-mark", "school-mark", "name-shield"].forEach((id) => {
-      if (map.hasImage(id)) map.removeImage(id);
-    });
+    if (map.hasImage("clinic-mark")) map.removeImage("clinic-mark");
+    if (map.hasImage("school-mark")) map.removeImage("school-mark");
+    if (map.hasImage("name-shield")) map.removeImage("name-shield");
     map.addImage("clinic-mark", clinic);
     map.addImage("school-mark", school);
-    map.addImage("name-shield", shield, {
-      content: [12, 12, 52, 52],
-      stretchX: [[12, 52]],
-      stretchY: [[12, 52]],
-      pixelRatio: 1,
-    });
   } catch (err) {
     console.warn(err);
   }
@@ -544,8 +529,8 @@ async function main() {
     setText("labels-places", place, 1.6);
     setText("labels-places-pinned", place, 1.6);
     setText("labels-wards", wardText, 1.5);
-    setText("labels-clinics", "#1c1916", 0.2, "#ffffff");
-    setText("labels-schools", "#1c1916", 0.2, "#ffffff");
+    setText("labels-clinics", wardText, 1.5);
+    setText("labels-schools", wardText, 1.5);
     if (map.getLayer("boundary")) map.setPaintProperty("boundary", "line-color", boundary);
     if (map.getLayer("wards")) map.setPaintProperty("wards", "line-color", wardLine);
   };
@@ -688,22 +673,15 @@ async function main() {
         source: "clinics",
         minzoom: 14.8,
         layout: {
-          "icon-image": "name-shield",
-          "icon-text-fit": "both",
-          "icon-text-fit-padding": [5, 7, 5, 7],
-          "icon-allow-overlap": false,
-          "icon-ignore-placement": false,
-          "icon-anchor": "top",
-          "text-anchor": "top",
-          "text-offset": [0, 1.2],
           "text-field": ["get", "name"],
-          "text-font": ["Noto Sans Bold"],
-          "text-size": ["interpolate", ["linear"], ["zoom"], 14.8, 11.5, 17, 13.5],
+          "text-font": ["Noto Sans Regular"],
+          "text-size": ["interpolate", ["linear"], ["zoom"], 14.8, 10, 17, 13],
+          "text-offset": [0, 1.15],
           "text-optional": true,
-          "text-padding": 8,
-          "text-max-width": 11,
+          "text-padding": 6,
+          "text-max-width": 9,
         },
-        paint: { "text-color": "#1c1916", "text-halo-color": "#ffffff", "text-halo-width": 0.2 },
+        paint: { "text-color": "#554e4b", "text-halo-color": HALO, "text-halo-width": 1.2 },
       },
       {
         id: "labels-schools",
@@ -711,22 +689,15 @@ async function main() {
         source: "schools",
         minzoom: 14.8,
         layout: {
-          "icon-image": "name-shield",
-          "icon-text-fit": "both",
-          "icon-text-fit-padding": [5, 7, 5, 7],
-          "icon-allow-overlap": false,
-          "icon-ignore-placement": false,
-          "icon-anchor": "top",
-          "text-anchor": "top",
-          "text-offset": [0, 1.2],
           "text-field": ["get", "name"],
-          "text-font": ["Noto Sans Bold"],
-          "text-size": ["interpolate", ["linear"], ["zoom"], 14.8, 11.5, 17, 13.5],
+          "text-font": ["Noto Sans Regular"],
+          "text-size": ["interpolate", ["linear"], ["zoom"], 14.8, 10, 17, 13],
+          "text-offset": [0, 1.15],
           "text-optional": true,
-          "text-padding": 8,
-          "text-max-width": 11,
+          "text-padding": 6,
+          "text-max-width": 9,
         },
-        paint: { "text-color": "#1c1916", "text-halo-color": "#ffffff", "text-halo-width": 0.2 },
+        paint: { "text-color": "#554e4b", "text-halo-color": HALO, "text-halo-width": 1.2 },
       },
     ];
     layers.forEach((layer) => map.addLayer(layer));
@@ -1005,7 +976,7 @@ async function main() {
   };
 
   map.on("styleimagemissing", (e) => {
-    if (e.id === "clinic-mark" || e.id === "school-mark" || e.id === "name-shield") addIcons(map);
+    if (e.id === "clinic-mark" || e.id === "school-mark") addIcons(map);
   });
 
   let started = false;
