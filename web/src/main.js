@@ -1820,8 +1820,12 @@ async function main() {
     const fab = document.getElementById("layers-fab");
     shellPanel.collapsed = !open;
     if (open) panel.closed = false;
-    if (menu) menu.icon = open ? "x" : "hamburger";
-    if (fab) fab.hidden = open;
+    if (menu) {
+      menu.icon = open ? "x" : "hamburger";
+      menu.title = open ? "Hide layers" : "Show layers";
+      menu.text = open ? "Hide layers" : "Show layers";
+    }
+    if (fab) fab.hidden = open || !isMobile();
     requestAnimationFrame(() => map.resize());
   };
 
@@ -2051,10 +2055,10 @@ async function main() {
     shellPanel.slot = "panel-start";
     shellPanel.displayMode = mobile ? "overlay" : "dock";
     shellPanel.resizable = true;
-    panel.closable = mobile;
+    panel.closable = true;
     if (logo) {
-      logo.heading = mobile ? "15 min on foot" : "Fifteen minutes on foot";
-      logo.description = mobile ? "Clinics and schools" : "Walking to clinics and schools";
+      logo.heading = "Fifteen minutes on foot";
+      logo.description = "Walking to clinics and schools";
     }
     if (crossing) setPanelOpen(!mobile);
     map.resize();
