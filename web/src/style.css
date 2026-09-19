@@ -165,6 +165,19 @@ calcite-shell-panel[slot="panel-bottom"] {
   font-weight: 600;
 }
 
+.access-filters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px 8px 9px;
+  border: 1px solid var(--line);
+  background: var(--wash);
+}
+
+.access-filters .block-title {
+  margin: 0;
+}
+
 .layer-count {
   color: var(--muted);
   font-weight: 400;
@@ -269,11 +282,16 @@ calcite-shell-panel[slot="panel-bottom"] {
 }
 
 .popup-head {
-  background: var(--ink);
+  background: #1c1916;
   color: #fff;
   font-size: 13px;
   font-weight: 600;
   padding: 8px 12px;
+}
+
+html.calcite-mode-dark .popup-head {
+  background: #111111;
+  color: #fff;
 }
 
 .popup-head.ward {

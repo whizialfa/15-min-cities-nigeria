@@ -32,6 +32,16 @@ const RASTER = {
     maxzoom: 19,
     attribution: "Tiles © Esri · GRID3 clinics and schools · OSM streets",
   },
+  streets: {
+    light: {
+      tiles: ["a", "b", "c", "d"].map((s) => `https://${s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png`),
+    },
+    dark: {
+      tiles: ["a", "b", "c", "d"].map((s) => `https://${s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png`),
+    },
+    maxzoom: 20,
+    attribution: "© OpenStreetMap © CARTO · GRID3 clinics and schools",
+  },
 };
 
 const fmt = (n) => {
@@ -51,7 +61,15 @@ function rasterSpec(key) {
     const tone = isDark() ? RASTER.gray.dark : RASTER.gray.light;
     return { ...tone, maxzoom: RASTER.gray.maxzoom, attribution: RASTER.gray.attribution };
   }
+  if (key === "streets") {
+    const tone = isDark() ? RASTER.streets.dark : RASTER.streets.light;
+    return { ...tone, maxzoom: RASTER.streets.maxzoom, attribution: RASTER.streets.attribution };
+  }
   return RASTER.imagery;
+}
+
+function isRasterBasemap(key) {
+  return key === "gray" || key === "streets" || key === "imagery";
 }
 
 function minuteColor(field) {
@@ -166,17 +184,37 @@ function row(label, value) {
   return `<dt>${label}</dt><dd>${value}</dd>`;
 }
 
-function wardBlock(props, city, { heading = true } = {}) {
+function giniText(v) {
+  if (v == null || Number.isNaN(Number(v))) return "n/a";
+  return Number(v).toFixed(2);
+}
+
+function nstarLine(city) {
+  if (city?.nstar == null) return "";
+  const stock = city.nstar_vs_stock != null && city.nstar_vs_stock > 1
+    ? ` That is more than the ${fmt(city.clinics)} clinics on this map.`
+    : ` This map already shows ${fmt(city.clinics)} clinics.`;
+  return `N* is ${fmt(city.nstar)} well-placed clinics to cover 90% of people.${stock}`;
+}
+
+function cityContext(city) {
+  if (!city) return "";
+  const parts = [];
+  if (city.gini != null) {
+    parts.push(`City Gini is ${giniText(city.gini)}. Zero would mean everyone walks the same; one would mean a long far tail.`);
+  }
+  const nstar = nstarLine(city);
+  if (nstar) parts.push(nstar);
+  return parts.length ? `<div class="popup-compare">${parts.join(" ")}</div>` : "";
+}
+
+function wardBlock(props, city, { heading = true, cityStats = true } = {}) {
   if (!props) return "";
   const name = props.label || props.name || "Ward";
   const lga = nonempty(props.lga);
   const rank =
     props.rank != null && props.of != null
       ? `${fmt(props.rank)} of ${fmt(props.of)} wards by share within 15 minutes`
-      : "";
-  const vs =
-    city && props.f15 != null
-      ? `City score is ${pct(city.f15)}. Typical city walk is ${minutes(city.pt)}.`
       : "";
   return `${heading ? `<div class="popup-head ward">${name}</div>` : ""}
     <div class="popup-body">
@@ -193,10 +231,12 @@ function wardBlock(props, city, { heading = true } = {}) {
         ${row("GRID3 clinics in this ward", fmt(props.clinics))}
         ${row("GRID3 schools in this ward", fmt(props.schools))}
         ${props.off_pct != null ? row("People off mapped streets", pct(props.off_pct)) : ""}
-        ${props.gini != null ? row("How uneven the walks are (Gini)", Number(props.gini).toFixed(3)) : ""}
+        ${props.gini != null ? row("How uneven walks are here (Gini)", giniText(props.gini)) : ""}
+        ${cityStats && city?.gini != null ? row("How uneven walks are in the city (Gini)", giniText(city.gini)) : ""}
+        ${cityStats && city?.nstar != null ? row("Well-placed clinics for 90% (N*)", `${fmt(city.nstar)} for the city`) : ""}
         ${rank ? row("Standing in this city", rank) : ""}
       </dl>
-      ${vs ? `<div class="popup-compare">${vs}</div>` : ""}
+      ${cityStats ? cityContext(city) : ""}
     </div>`;
 }
 
@@ -216,9 +256,12 @@ function popupHTML(kind, props, city, wardLookup) {
           ${row("People in this neighbourhood", fmt(props.people))}
           ${nonempty(props.lga) ? row("Local government", props.lga) : ""}
           ${props.off_street ? row("Street map", "This tile sits off the mapped walk network") : ""}
+          ${city?.gini != null ? row("How uneven walks are in the city (Gini)", giniText(city.gini)) : ""}
+          ${city?.nstar != null ? row("Well-placed clinics for 90% (N*)", `${fmt(city.nstar)} for the city`) : ""}
         </dl>
+        ${cityContext(city)}
       </div>
-      ${ward ? wardBlock(ward, city) : wardName ? `<div class="popup-head ward">${wardName}</div><div class="popup-body">No ward score attached to this tile.</div>` : ""}`;
+      ${ward ? wardBlock(ward, city, { cityStats: false }) : wardName ? `<div class="popup-head ward">${wardName}</div><div class="popup-body">No ward score attached to this tile.</div>` : ""}`;
   }
   if (kind === "wards" || kind === "wards-fill" || kind === "labels-wards") {
     return wardBlock(props, city);
@@ -234,6 +277,7 @@ function popupHTML(kind, props, city, wardLookup) {
           ${nonempty(props.ward) ? row("Ward", props.ward) : ""}
           ${nonempty(props.lga) ? row("Local government", props.lga) : ""}
         </dl>
+        ${cityContext(city)}
       </div>`;
   }
   if (kind === "schools") {
@@ -247,11 +291,12 @@ function popupHTML(kind, props, city, wardLookup) {
           ${nonempty(props.ward) ? row("Ward", props.ward) : ""}
           ${nonempty(props.lga) ? row("Local government", props.lga) : ""}
         </dl>
+        ${cityContext(city)}
       </div>`;
   }
   if (kind === "labels-places" || kind === "labels-places-pinned") {
     return `<div class="popup-head">${props.label || props.name}</div>
-      <div class="popup-body">${nonempty(props.place) ? props.place : "Named place"}</div>`;
+      <div class="popup-body">${nonempty(props.place) ? props.place : "Named place"}${cityContext(city)}</div>`;
   }
   return "";
 }
@@ -290,6 +335,8 @@ function renderScores(city) {
     [`${city.pt} min`, "Typical walk"],
     [fmt(city.pop), "People on this map"],
     [fmt(city.clinics), `GRID3 clinics (${fmt(city.schools)} schools)`],
+    [city.gini != null ? giniText(city.gini) : "n/a", "How uneven the walks are (Gini)"],
+    [city.nstar != null ? fmt(city.nstar) : "n/a", "Well-placed clinics for 90% (N*)"],
   ];
   document.getElementById("score-grid").innerHTML = cards
     .map(([value, label]) => `<div class="score"><div class="score-value">${value}</div><div class="score-label">${label}</div></div>`)
@@ -350,7 +397,8 @@ function isMobile() {
 async function main() {
   const meta = await loadJSON("./data/metrics.json");
   document.title = meta.title;
-  const cityCache = new Map();
+  const cityData = new Map();
+  const cityWait = new Map();
   let loadGen = 0;
   let paintSeq = 0;
   let current = "lagos";
@@ -409,16 +457,19 @@ async function main() {
     });
   };
 
-  const beyondFilter = () => {
-    const beyond = document.getElementById("beyond-switch").checked;
-    return beyond ? ["!", ["to-boolean", ["get", "within_15"]]] : null;
+  const hexAccessFilter = () => {
+    const within = document.getElementById("within-switch")?.checked;
+    const beyond = document.getElementById("beyond-switch")?.checked;
+    if (within) return ["==", ["get", "within_15"], 1];
+    if (beyond) return ["!=", ["get", "within_15"], 1];
+    return null;
   };
 
   const applyTheme = () => {
     if (!map.getLayer("hexes")) return;
     const paint = hexPaint(theme, meta.cities[current].people_breaks);
     map.setPaintProperty("hexes", "fill-color", paint["fill-color"]);
-    const filter = beyondFilter();
+    const filter = hexAccessFilter();
     map.setFilter("hexes", filter);
     map.setFilter("hexes-line", filter);
     renderLegend(theme);
@@ -444,24 +495,46 @@ async function main() {
     setVisibility(map, "boundary", document.getElementById("lyr-boundary").checked);
   };
 
+  const applyMapChrome = () => {
+    const dark = isDark();
+    const place = dark ? "#f3eee8" : PLACE_INK;
+    const halo = dark ? "#111111" : HALO;
+    const wardText = dark ? "#e6e1db" : "#554e4b";
+    const boundary = dark ? "#f0f0f0" : INK;
+    const wardLine = dark ? "rgba(230,230,230,0.55)" : WARD_LINE;
+    const setText = (id, color) => {
+      if (!map.getLayer(id)) return;
+      map.setPaintProperty(id, "text-color", color);
+      map.setPaintProperty(id, "text-halo-color", halo);
+    };
+    setText("labels-places", place);
+    setText("labels-places-pinned", place);
+    setText("labels-wards", wardText);
+    setText("labels-clinics", CLINIC);
+    setText("labels-schools", SCHOOL);
+    if (map.getLayer("boundary")) map.setPaintProperty("boundary", "line-color", boundary);
+    if (map.getLayer("wards")) map.setPaintProperty("wards", "line-color", wardLine);
+  };
+
   const addCityLayers = (slug, bundle) => {
     lastBundle = bundle;
     removeCityLayers();
     addIcons(map);
     const sparse = slug === "abuja";
-    const add = (id, data) => {
-      map.addSource(id, { type: "geojson", data: data || EMPTY, generateId: true });
+    const add = (id, data, extra = {}) => {
+      map.addSource(id, { type: "geojson", data: data || EMPTY, ...extra });
     };
-    add("hexes", bundle.hexes);
-    add("wards", bundle.wards);
+    add("hexes", bundle.hexes, { generateId: true });
+    add("wards", bundle.wards, { generateId: true });
     add("boundary", bundle.boundary);
     add("places", bundle.places);
     add("clinics", bundle.clinics);
     add("schools", bundle.schools);
 
     const markSize = sparse
-      ? ["interpolate", ["linear"], ["zoom"], 9, 0.85, 12, 1.05, 16, 1.25]
-      : ["interpolate", ["linear"], ["zoom"], 9, 0.7, 12, 0.9, 16, 1.1];
+      ? ["interpolate", ["linear"], ["zoom"], 12, 0.14, 14, 0.28, 16, 0.44]
+      : ["interpolate", ["linear"], ["zoom"], 12.8, 0.14, 14, 0.24, 16, 0.38];
+    const markMinZoom = sparse ? 12 : 12.8;
     const layers = [
       {
         id: "wards-fill",
@@ -497,6 +570,7 @@ async function main() {
         id: "schools",
         type: "symbol",
         source: "schools",
+        minzoom: markMinZoom,
         layout: {
           "icon-image": "school-mark",
           "icon-size": markSize,
@@ -510,6 +584,7 @@ async function main() {
         id: "clinics",
         type: "symbol",
         source: "clinics",
+        minzoom: markMinZoom,
         layout: {
           "icon-image": "clinic-mark",
           "icon-size": markSize,
@@ -609,6 +684,19 @@ async function main() {
     layers.forEach((layer) => map.addLayer(layer));
     applyOverlays();
     applyTheme();
+    applyMapChrome();
+  };
+
+  const updateCityData = (slug, bundle) => {
+    lastBundle = bundle;
+    map.getSource("hexes").setData(bundle.hexes || EMPTY);
+    map.getSource("wards").setData(bundle.wards || EMPTY);
+    map.getSource("boundary").setData(bundle.boundary || EMPTY);
+    map.getSource("places").setData(bundle.places || EMPTY);
+    map.getSource("clinics").setData(bundle.clinics || EMPTY);
+    map.getSource("schools").setData(bundle.schools || EMPTY);
+    applyOverlays();
+    applyTheme();
   };
 
   const basemapPitch = () => {
@@ -635,9 +723,9 @@ async function main() {
     const maxZoom = basemap === "color" ? (isMobile() ? 13.0 : 13.2) : isMobile() ? 12.8 : 12.6;
     const minZoom = isMobile() ? 11.6 : 10.8;
     const pitch = basemapPitch();
-    const camera = { padding, duration: 700, maxZoom, pitch, bearing: 0 };
+    const camera = { padding, duration: 420, maxZoom, pitch, bearing: 0 };
     const clamp = () => {
-      if (map.getZoom() < minZoom) map.easeTo({ zoom: minZoom, duration: 280 });
+      if (map.getZoom() < minZoom) map.easeTo({ zoom: minZoom, duration: 180 });
     };
     if (!feat) {
       const bbox = meta.cities[slug].bbox;
@@ -668,17 +756,43 @@ async function main() {
     map.once("moveend", clamp);
   };
 
-  const fetchCity = async (slug) => {
-    if (cityCache.has(slug)) return cityCache.get(slug);
+  const fetchCity = (slug) => {
+    if (cityData.has(slug)) return Promise.resolve(cityData.get(slug));
+    if (cityWait.has(slug)) return cityWait.get(slug);
     const base = `./data/cities/${slug}`;
-    const files = ["hexes", "boundary", "wards", "clinics", "schools"];
+    const names = ["hexes", "boundary", "wards", "clinics", "schools", "places"];
     const bundle = {};
-    for (const name of files) {
-      bundle[name] = await loadJSON(`${base}/${name}.geojson`);
-    }
-    bundle.places = await loadJSON(`${base}/places.geojson`).catch(() => EMPTY);
-    cityCache.set(slug, bundle);
-    return bundle;
+    let cursor = 0;
+    const worker = async () => {
+      while (cursor < names.length) {
+        const name = names[cursor];
+        cursor += 1;
+        bundle[name] =
+          name === "places"
+            ? await loadJSON(`${base}/${name}.geojson`).catch(() => EMPTY)
+            : await loadJSON(`${base}/${name}.geojson`);
+      }
+    };
+    const pending = Promise.all([worker(), worker(), worker()])
+      .then(() => {
+        cityData.set(slug, bundle);
+        cityWait.delete(slug);
+        return bundle;
+      })
+      .catch((err) => {
+        cityWait.delete(slug);
+        throw err;
+      });
+    cityWait.set(slug, pending);
+    return pending;
+  };
+
+  let warmed = false;
+  const prefetchOthers = () => {
+    if (warmed) return;
+    warmed = true;
+    const rest = (meta.order || Object.keys(meta.cities)).filter((slug) => slug !== current);
+    rest.reduce((chain, slug) => chain.then(() => fetchCity(slug).catch(() => null)), Promise.resolve());
   };
 
   const paintCity = (slug, bundle) => {
@@ -691,37 +805,36 @@ async function main() {
     let painted = false;
     const go = () => {
       if (painted || seq !== paintSeq) return;
-      painted = true;
       try {
-        addCityLayers(slug, bundle);
-        map.resize();
-        requestAnimationFrame(() => {
-          map.resize();
-          flyToCity(slug, bundle.boundary);
-          showLoader(false);
-        });
+        if (!map.getStyle()) return;
+        if (map.getSource("hexes")) updateCityData(slug, bundle);
+        else addCityLayers(slug, bundle);
       } catch (err) {
-        showLoader(false);
-        document.getElementById("city-blurb").textContent = String(err);
+        return;
       }
+      painted = true;
+      map.resize();
+      flyToCity(slug, bundle.boundary);
+      showLoader(false);
+      prefetchOthers();
     };
-    if (map.isStyleLoaded()) go();
-    else {
+    go();
+    if (!painted) {
       map.once("style.load", go);
-      map.once("idle", go);
-      setTimeout(go, 1800);
+      setTimeout(go, 250);
     }
   };
 
   const loadCity = async (slug) => {
     const gen = ++loadGen;
     current = slug;
-    showLoader(true);
-    const failsafe = setTimeout(() => {
-      if (gen === loadGen) showLoader(false);
-    }, 8000);
     renderScores(meta.cities[slug]);
     renderLegend(theme);
+    const firstPaint = !lastBundle;
+    if (firstPaint) showLoader(true);
+    else if (!cityData.has(slug)) {
+      document.getElementById("side-panel").description = "Loading…";
+    }
     try {
       const bundle = await fetchCity(slug);
       if (gen !== loadGen) return;
@@ -731,8 +844,6 @@ async function main() {
       showLoader(false);
       document.getElementById("city-blurb").textContent =
         `Map data missing for this city. From the repo root run python -m proximity.web_map. (${err})`;
-    } finally {
-      setTimeout(() => clearTimeout(failsafe), 8000);
     }
   };
 
@@ -806,7 +917,7 @@ async function main() {
       bearing: map.getBearing(),
     };
     const prev = basemap;
-    const same = value === basemap && !(value === "gray" && isVectorStyle());
+    const same = value === basemap && !(isRasterBasemap(value) && isVectorStyle());
     if (same && value !== "color") {
       applyRasterTiles(value);
       return;
@@ -839,11 +950,18 @@ async function main() {
     if (e.id === "clinic-mark" || e.id === "school-mark") addIcons(map);
   });
 
-  map.on("load", () => {
+  let started = false;
+  const start = () => {
+    if (started) return;
+    started = true;
+    map.resize();
     addIcons(map);
     loadCity("lagos");
-    map.resize();
-  });
+  };
+  map.on("load", start);
+  map.on("style.load", () => map.resize());
+  if (window.ResizeObserver) new ResizeObserver(() => map.resize()).observe(document.getElementById("map"));
+  setTimeout(start, 400);
 
   const hitLayers = [
     "clinics",
@@ -902,7 +1020,17 @@ async function main() {
     theme = e.target.value;
     applyTheme();
   });
-  document.getElementById("beyond-switch").addEventListener("calciteSwitchChange", applyTheme);
+  const bindAccessSwitch = (id, otherId) => {
+    document.getElementById(id)?.addEventListener("calciteSwitchChange", (e) => {
+      if (e.target.checked) {
+        const other = document.getElementById(otherId);
+        if (other) other.checked = false;
+      }
+      applyTheme();
+    });
+  };
+  bindAccessSwitch("within-switch", "beyond-switch");
+  bindAccessSwitch("beyond-switch", "within-switch");
   ["lyr-hexes", "lyr-clinics", "lyr-schools", "lyr-wards", "lyr-places", "lyr-boundary"].forEach((id) => {
     document.getElementById(id).addEventListener("calciteCheckboxChange", applyOverlays);
   });
@@ -932,7 +1060,10 @@ async function main() {
     }
     const darkSwitch = document.getElementById("dark-switch");
     if (darkSwitch) darkSwitch.checked = dark;
-    if (basemap === "gray" && !isVectorStyle()) applyRasterTiles("gray");
+    const themeMeta = document.querySelector("meta[name='theme-color']");
+    if (themeMeta) themeMeta.setAttribute("content", dark ? "#1a1a1a" : "#0079c1");
+    if (isRasterBasemap(basemap) && basemap !== "imagery" && !isVectorStyle()) applyRasterTiles(basemap);
+    applyMapChrome();
   };
 
   const setPanelOpen = (open) => {
@@ -989,6 +1120,7 @@ async function main() {
   else mq.addListener(onBreakpoint);
   window.addEventListener("orientationchange", () => setTimeout(() => map.resize(), 300));
   window.visualViewport?.addEventListener("resize", () => map.resize());
+  setAppearance(true);
 }
 
 main().catch((err) => {
