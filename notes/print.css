@@ -233,7 +233,8 @@ li {
 
 a {
   color: var(--teal);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 em {

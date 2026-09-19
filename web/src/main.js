@@ -2057,8 +2057,8 @@ async function main() {
     shellPanel.resizable = true;
     panel.closable = true;
     if (logo) {
-      logo.heading = "Fifteen minutes on foot";
-      logo.description = "Walking to clinics and schools";
+      logo.heading = mobile ? "15 min on foot" : "Fifteen minutes on foot";
+      logo.description = mobile ? "Clinics and schools" : "Walking to clinics and schools";
     }
     if (crossing) setPanelOpen(!mobile);
     map.resize();

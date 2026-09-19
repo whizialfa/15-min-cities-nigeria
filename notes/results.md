@@ -250,7 +250,7 @@ Health is the weaker of the two services in four cities. The gap is **22 points*
 
 Gini is highest in Lagos (0.346) and lowest in Port Harcourt (0.272). Bruno et al. (2024) found that cities with worse average access were also more unequal. The pattern here runs the other way. Lagos is close for most people and very far for a few: the peninsula hanging off a working city. Port Harcourt is far for almost everyone, so the low Gini is shared distance rather than shared access.
 
-Figures 3 and 4 put Table 1 on a map. Green on the walking plates is 15 minutes or less. Lagos and Ibadan are green through most neighbourhoods that have people in them; Port Harcourt and Abuja stay yellow and red through most of the lived-in wards. Population plates use a yellow-to-red scale fitted to each city. Walking plates use one six-class minute scale in every city, with 15 minutes and 60 minutes as class edges, so the first three classes add up to F15. Sections 5.1.1–5.1.5 read each plate against the ward numbers. City-wide F15 remains the metro score in Table 1. The Lagos and Abuja plates are tighter cuts of those metros, so they can look harsher than the city-wide figure (Table 1b).
+Figures 3 and 4 put Table 1 on a map. Green on the walking plates is 15 minutes or less. Lagos and Ibadan are green through most neighbourhoods that have people in them; Port Harcourt and Abuja stay yellow and red through most of the lived-in wards. Population plates use a yellow-to-red scale fitted to each city. Walking plates use one six-class minute scale in every city, with 15 minutes and 60 minutes as class edges, so the first three classes add up to F15. Sections 5.1.1–5.1.5 read each plate against the ward numbers. City-wide F15 remains the metro score in Table 1. The Lagos and Abuja plates are tighter cuts of those metros, so they can look harsher than the city-wide figure (Table 1b). The same neighbourhoods can be panned at [https://whizialfa.github.io/15-min-cities-nigeria/](https://whizialfa.github.io/15-min-cities-nigeria/). Lagos and Abuja on that map follow Table 1b, not Table 1.
 
 ::: {.table-block}
 <div class="table-cap">Table 1b. Walking access on the Lagos and Abuja print plates. Headline F15 in Table 1 is the metro. Walk graph, five nearby places, 5 km/h.</div>
@@ -455,7 +455,7 @@ Compact settlement still sorts most of Table 1. It does not sort Kano, which is 
 
 # Data availability
 
-City tables: `data/processed/city_metrics.csv`, `plate_metrics.csv`, `nstar.csv`, `completeness.csv`, `robustness.csv`, `ward_f15_summary.csv`. Maps: `maps/{city}_PT_k_plate.png` and `{city}_pop_plate.png`. Charts: `charts/pipeline.png`, `charts/f15_vs_density.png`, `charts/f15_by_n.png`, `charts/nstar_curves.png`. Summary: `notes/brief.md` and `notes/fifteen_minutes_on_foot.pdf`. GRID3, WorldPop, geoBoundaries and OpenStreetMap keep their original licences. Quote F15 only from walking, five nearby places.
+Live map: [https://whizialfa.github.io/15-min-cities-nigeria/](https://whizialfa.github.io/15-min-cities-nigeria/). City tables: `data/processed/city_metrics.csv`, `plate_metrics.csv`, `nstar.csv`, `completeness.csv`, `robustness.csv`, `ward_f15_summary.csv`. Maps: `maps/{city}_PT_k_plate.png` and `{city}_pop_plate.png`. Charts: `charts/pipeline.png`, `charts/f15_vs_density.png`, `charts/f15_by_n.png`, `charts/nstar_curves.png`. Summary: `notes/brief.md` and `notes/fifteen_minutes_on_foot.pdf`. GRID3, WorldPop, geoBoundaries and OpenStreetMap keep their original licences. Quote F15 only from walking, five nearby places.
 
 # References
 

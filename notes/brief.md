@@ -66,6 +66,8 @@ Far on the map can mean a missing clinic or a street that has not been drawn. Th
 
 # On the maps
 
+The same neighbourhoods can be panned at [https://whizialfa.github.io/15-min-cities-nigeria/](https://whizialfa.github.io/15-min-cities-nigeria/). Lagos and Abuja on that map are the tighter cuts in the table below, not the city-wide shares at the top.
+
 Nine of Lagos’s sixteen local government areas, about 6 million people, are left off the Lagos map below. They already live inside fifteen minutes. Alimosho alone holds 2.4 million of them. What the map actually shows is Eti-Osa: Ikoyi, Falomo, Lekki, Ajah, Sangotedo. Victoria Island sits in between. Mushin, Yaba, Surulere and Apapa are green. South of the docks, Ilado and Oko Agbo sit on creek islands that the street map treats as land. The trip is often a boat.
 
 Ibadan’s core from Dugbe through Agodi, Agugu and Molete is close. Olopomewa, a large western ward of 78,000 people, averages twenty-two minutes. Eleyele, next door, is already inside fifteen minutes.
@@ -146,7 +148,7 @@ Only walking is timed. Danfo, shared taxis and private cars are omitted. Whether
 
 The maps show where a fifteen-minute walk already exists, and where the city has grown past its clinics. In Lagos, Ibadan, Kano and Port Harcourt the remaining walk depends on where the buildings sit. In Abuja it also depends on streets the map has not finished drawing.
 
-Methods and references are in the [full paper](fifteen_minute_access_nigeria.pdf).
+Methods and references are in the [full paper](fifteen_minute_access_nigeria.pdf). The live map is at [https://whizialfa.github.io/15-min-cities-nigeria/](https://whizialfa.github.io/15-min-cities-nigeria/).
 
 © Wisdom Akpabio, 2026. Clinic, school and population data from GRID3 and WorldPop. Streets from OpenStreetMap.
 

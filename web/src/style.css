@@ -560,14 +560,14 @@ html.calcite-mode-dark .popup-head {
 
   calcite-navigation-logo {
     min-width: 0;
-    max-width: calc(100vw - 232px);
+    max-width: calc(100vw - 200px);
   }
 
   calcite-navigation-logo::part(heading),
   calcite-navigation-logo::part(description) {
-    white-space: normal;
-    overflow: visible;
-    text-overflow: unset;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     line-height: 1.2;
   }
 
