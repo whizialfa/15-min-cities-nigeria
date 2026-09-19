@@ -1,17 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" class="calcite-mode-light">
+<html lang="en" class="calcite-mode-dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta name="theme-color" content="#0079c1" />
-    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#1a1a1a" />
+    <meta name="color-scheme" content="dark light" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="15 min on foot" />
     <title>Fifteen minutes on foot</title>
     <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css" />
-    <link rel="stylesheet" href="./src/style.css?v=12" />
+    <link rel="stylesheet" href="./src/style.css?v=17" />
     <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
   </head>
   <body>
@@ -34,10 +34,11 @@
         <div slot="content-end" class="header-tools">
           <calcite-segmented-control id="basemap-toggle" class="desktop-basemap" scale="s">
             <calcite-segmented-control-item value="gray" checked>Gray</calcite-segmented-control-item>
+            <calcite-segmented-control-item value="streets">Streets</calcite-segmented-control-item>
             <calcite-segmented-control-item value="color">Buildings 2.5D</calcite-segmented-control-item>
             <calcite-segmented-control-item value="imagery">Imagery</calcite-segmented-control-item>
           </calcite-segmented-control>
-          <calcite-action id="theme-toggle" icon="moon" text="Dark" scale="s" title="Switch appearance"></calcite-action>
+          <calcite-action id="theme-toggle" icon="brightness" text="Light" scale="s" title="Switch appearance"></calcite-action>
         </div>
       </calcite-navigation>
 
@@ -69,6 +70,7 @@
               Basemap
               <calcite-select id="basemap-select" scale="s">
                 <calcite-option value="gray" selected>Gray</calcite-option>
+                <calcite-option value="streets">Streets (Carto)</calcite-option>
                 <calcite-option value="color">Buildings 2.5D</calcite-option>
                 <calcite-option value="imagery">Imagery</calcite-option>
               </calcite-select>
@@ -84,13 +86,20 @@
               </calcite-select>
             </calcite-label>
 
-            <calcite-label layout="inline">
-              <calcite-switch id="beyond-switch" scale="s"></calcite-switch>
-              Beyond 15 minutes only
-            </calcite-label>
+            <div class="access-filters">
+              <h3 class="block-title">15-minute filter</h3>
+              <calcite-label layout="inline">
+                <calcite-switch id="within-switch" scale="s"></calcite-switch>
+                Within 15 minutes only
+              </calcite-label>
+              <calcite-label layout="inline">
+                <calcite-switch id="beyond-switch" scale="s"></calcite-switch>
+                Beyond 15 minutes only
+              </calcite-label>
+            </div>
 
             <calcite-label layout="inline" class="mobile-appearance">
-              <calcite-switch id="dark-switch" scale="s"></calcite-switch>
+              <calcite-switch id="dark-switch" scale="s" checked></calcite-switch>
               Dark appearance
             </calcite-label>
 
@@ -119,6 +128,7 @@
               <calcite-checkbox id="lyr-boundary" checked scale="s"></calcite-checkbox>
               City outline
             </calcite-label>
+            <p class="fine">Clinic and school marks appear as you zoom in, so the city view stays readable.</p>
 
             <h3 class="block-title">Legend</h3>
             <div class="legend" id="legend"></div>
@@ -174,6 +184,6 @@
       <calcite-action id="layers-fab" class="layers-fab" icon="layers" text="Layers" scale="m" title="Open layers"></calcite-action>
     </calcite-shell>
     <script src="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.js"></script>
-    <script type="module" src="./src/main.js?v=12"></script>
+    <script type="module" src="./src/main.js?v=18"></script>
   </body>
 </html>
