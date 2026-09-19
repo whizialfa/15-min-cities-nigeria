@@ -103,6 +103,121 @@ function fieldFor(theme) {
   return "minutes";
 }
 
+const VIEW_KEYS = ["city", "color", "theme", "bm", "within", "beyond", "max", "off", "lat", "lng", "z"];
+
+function foldText(s) {
+  return String(s || "")
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[–—]/g, "-")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function walkCoords(coords, fn) {
+  if (typeof coords[0] === "number") {
+    fn(coords);
+    return;
+  }
+  coords.forEach((c) => walkCoords(c, fn));
+}
+
+function featureBounds(feat) {
+  if (!feat?.geometry) return null;
+  const b = new maplibregl.LngLatBounds();
+  walkCoords(feat.geometry.coordinates, (c) => b.extend(c));
+  return b.isEmpty() ? null : b;
+}
+
+function featureCenter(feat) {
+  if (feat?.geometry?.type === "Point") return feat.geometry.coordinates.slice();
+  const b = featureBounds(feat);
+  if (!b) return null;
+  const c = b.getCenter();
+  return [c.lng, c.lat];
+}
+
+function pointInRing(point, ring) {
+  const [x, y] = point;
+  let inside = false;
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i, i += 1) {
+    const xi = ring[i][0];
+    const yi = ring[i][1];
+    const xj = ring[j][0];
+    const yj = ring[j][1];
+    if (yi > y !== yj > y && x < ((xj - xi) * (y - yi)) / ((yj - yi) || 1e-12) + xi) inside = !inside;
+  }
+  return inside;
+}
+
+function pointInFeature(point, feat) {
+  const g = feat?.geometry;
+  if (!g) return false;
+  if (g.type === "Polygon") return pointInRing(point, g.coordinates[0]);
+  if (g.type === "MultiPolygon") return g.coordinates.some((poly) => pointInRing(point, poly[0]));
+  return false;
+}
+
+function hexCentroid(feat) {
+  const ring = feat?.geometry?.coordinates?.[0];
+  if (!ring?.length) return null;
+  const n = Math.max(1, ring.length - 1);
+  let x = 0;
+  let y = 0;
+  for (let i = 0; i < n; i += 1) {
+    x += ring[i][0];
+    y += ring[i][1];
+  }
+  return [x / n, y / n];
+}
+
+function matchScore(query, name) {
+  const q = foldText(query);
+  const n = foldText(name);
+  if (!q || !n) return null;
+  if (n === q) return 0;
+  if (n.startsWith(q)) return 1;
+  if (n.split(/[\s-/]+/).some((part) => part.startsWith(q))) return 2;
+  if (n.includes(q)) return 3;
+  return null;
+}
+
+function readView() {
+  const q = new URLSearchParams(location.search);
+  const city = q.get("city");
+  const theme = q.get("color") || q.get("theme");
+  const bm = q.get("bm");
+  const lat = parseFloat(q.get("lat"));
+  const lng = parseFloat(q.get("lng"));
+  const z = parseFloat(q.get("z"));
+  const max = parseFloat(q.get("max"));
+  return {
+    city,
+    theme,
+    basemap: bm,
+    within: q.get("within") === "1",
+    beyond: q.get("beyond") === "1",
+    cutoff: Number.isFinite(max) ? max : null,
+    hideCutoff: Number.isFinite(max),
+    off: q.get("off") === "1",
+    camera: Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng, zoom: Number.isFinite(z) ? z : 12.4 } : null,
+  };
+}
+
+function peopleUnderCutoff(hexes, field, cutoff) {
+  let inBar = 0;
+  let all = 0;
+  (hexes?.features || []).forEach((feat) => {
+    const people = Number(feat.properties?.people) || 0;
+    all += people;
+    const minutes = feat.properties?.[field];
+    if (minutes != null && Number(minutes) <= cutoff) inBar += people;
+  });
+  if (!all) return null;
+  return (100 * inBar) / all;
+}
+
 function rasterStyle(key) {
   const spec = rasterSpec(key);
   const paint = rasterPaint(key);
@@ -127,6 +242,32 @@ function hexPaint(theme, breaks) {
     "fill-opacity": ["case", ["boolean", ["feature-state", "hover"], false], 0.92, FILL_OPACITY],
     "fill-outline-color": "rgba(255,255,255,0.16)",
   };
+}
+
+function hatchImage() {
+  const size = 16;
+  const canvas = document.createElement("canvas");
+  canvas.width = canvas.height = size;
+  const ctx = canvas.getContext("2d");
+  ctx.strokeStyle = "rgba(16,16,16,0.78)";
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.moveTo(-2, 8);
+  ctx.lineTo(8, -2);
+  ctx.moveTo(0, 16);
+  ctx.lineTo(16, 0);
+  ctx.moveTo(8, 18);
+  ctx.lineTo(18, 8);
+  ctx.stroke();
+  ctx.strokeStyle = "rgba(255,255,255,0.62)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(-1, 11);
+  ctx.lineTo(11, -1);
+  ctx.moveTo(3, 18);
+  ctx.lineTo(18, 3);
+  ctx.stroke();
+  return ctx.getImageData(0, 0, size, size);
 }
 
 function rasterIcon(draw, size = 40) {
@@ -182,8 +323,10 @@ function addIcons(map) {
     if (map.hasImage("clinic-mark")) map.removeImage("clinic-mark");
     if (map.hasImage("school-mark")) map.removeImage("school-mark");
     if (map.hasImage("name-shield")) map.removeImage("name-shield");
+    if (map.hasImage("off-hatch")) map.removeImage("off-hatch");
     map.addImage("clinic-mark", clinic);
     map.addImage("school-mark", school);
+    map.addImage("off-hatch", hatchImage());
   } catch (err) {
     console.warn(err);
   }
@@ -415,14 +558,26 @@ async function main() {
   let theme = "walk";
   let basemap = "gray";
   let hovered = null;
+  let pickedWard = null;
   let wardLookup = new Map();
   let lastBundle = null;
+  let searchItems = [];
+  let holdCamera = false;
+  let bootColor = false;
+  let locateAfter = null;
+  let urlTimer = 0;
+  const initial = readView();
+  if (initial.city && meta.cities[initial.city]) current = initial.city;
+  if (initial.theme && ["walk", "clinic", "school", "people"].includes(initial.theme)) theme = initial.theme;
+  if (initial.basemap && ["gray", "streets", "color", "imagery"].includes(initial.basemap)) basemap = initial.basemap;
+  holdCamera = Boolean(initial.camera);
+  bootColor = initial.basemap === "color";
 
   const map = new maplibregl.Map({
     container: "map",
-    style: rasterStyle("gray"),
-    center: [8.1, 9.2],
-    zoom: 5.6,
+    style: rasterStyle(basemap === "color" ? "gray" : basemap),
+    center: initial.camera ? [initial.camera.lng, initial.camera.lat] : [8.1, 9.2],
+    zoom: initial.camera ? initial.camera.zoom : 5.6,
     attributionControl: false,
     maxPitch: 60,
     pitch: 0,
@@ -446,9 +601,94 @@ async function main() {
 
   const popup = new maplibregl.Popup({
     closeButton: true,
-    maxWidth: "min(320px, calc(100vw - 20px))",
+    focusAfterOpen: false,
+    maxWidth: "min(320px, calc(100vw - 24px))",
     offset: 12,
+    className: "access-popup",
   });
+
+  const popupInsets = () => {
+    const mapRect = map.getContainer().getBoundingClientRect();
+    const nav = document.querySelector("calcite-navigation");
+    const panel = document.getElementById("layers-panel");
+    const fab = document.getElementById("layers-fab");
+    const top = Math.max(8, (nav?.getBoundingClientRect().bottom || 0) - mapRect.top + 8);
+    let left = 8;
+    if (!isMobile() && panel && !panel.collapsed) {
+      const pr = panel.getBoundingClientRect();
+      if (pr.width > 8) left = Math.max(left, pr.right - mapRect.left + 8);
+    }
+    const bottom = isMobile() && fab && !fab.hidden ? 56 : 12;
+    return { top, right: 12, bottom, left };
+  };
+
+  const popupLayout = (lngLat) => {
+    const point = map.project(lngLat);
+    const w = map.getContainer().clientWidth;
+    const h = map.getContainer().clientHeight;
+    const pad = popupInsets();
+    const above = Math.max(0, point.y - pad.top);
+    const below = Math.max(0, h - point.y - pad.bottom);
+    const fromLeft = Math.max(0, point.x - pad.left);
+    const fromRight = Math.max(0, w - point.x - pad.right);
+    const preferAbove = above >= below;
+    let anchor = preferAbove ? "bottom" : "top";
+    if (fromLeft < 140 && fromRight >= fromLeft) anchor = `${anchor}-left`;
+    else if (fromRight < 140) anchor = `${anchor}-right`;
+    const available = h - pad.top - pad.bottom - 16;
+    const room = (preferAbove ? above : below) - 18;
+    const shiftLeft = Math.max(0, pad.left - point.x);
+    const shiftRight = Math.max(0, point.x - (w - pad.right));
+    const tip = 12;
+    const offsets = {
+      top: [0, tip],
+      bottom: [0, -tip],
+      "top-left": [tip + shiftLeft, tip],
+      "bottom-left": [tip + shiftLeft, -tip],
+      "top-right": [-(tip + shiftRight), tip],
+      "bottom-right": [-(tip + shiftRight), -tip],
+    };
+    return {
+      anchor,
+      maxHeight: Math.max(80, Math.min(room, available)),
+      offset: offsets[anchor] || [0, tip],
+    };
+  };
+
+  let popupFitRaf = 0;
+  let lastFitKey = "";
+  const fitPopup = ({ resetScroll = false } = {}) => {
+    if (!popup.isOpen()) return;
+    const lngLat = popup.getLngLat();
+    if (!lngLat) return;
+    const layout = popupLayout(lngLat);
+    const key = `${layout.anchor}:${Math.floor(layout.maxHeight)}:${layout.offset.join(",")}`;
+    const el = popup.getElement()?.querySelector(".maplibregl-popup-content");
+    if (el) {
+      el.style.maxHeight = `${Math.floor(layout.maxHeight)}px`;
+      el.style.overflowY = "auto";
+      if (resetScroll) el.scrollTop = 0;
+    }
+    if (resetScroll || key !== lastFitKey || popup.options.anchor !== layout.anchor) {
+      lastFitKey = key;
+      popup.options.anchor = layout.anchor;
+      popup.setOffset(layout.offset);
+    }
+  };
+
+  const schedulePopupFit = () => {
+    if (!popup.isOpen()) return;
+    if (popupFitRaf) cancelAnimationFrame(popupFitRaf);
+    popupFitRaf = requestAnimationFrame(() => {
+      popupFitRaf = 0;
+      fitPopup();
+    });
+  };
+
+  map.on("move", schedulePopupFit);
+  map.on("resize", schedulePopupFit);
+  window.visualViewport?.addEventListener("resize", schedulePopupFit);
+  document.getElementById("layers-panel")?.addEventListener("calciteShellPanelToggle", schedulePopupFit);
 
   const cityLayerIds = [
     "labels-clinics",
@@ -460,6 +700,8 @@ async function main() {
     "schools",
     "boundary",
     "wards",
+    "hexes-off-line",
+    "hexes-off",
     "hexes-line",
     "hexes",
     "wards-fill",
@@ -474,12 +716,82 @@ async function main() {
     });
   };
 
+  const cutoffValue = () => Number(document.getElementById("minute-slider")?.value) || 15;
+
   const hexAccessFilter = () => {
     const within = document.getElementById("within-switch")?.checked;
     const beyond = document.getElementById("beyond-switch")?.checked;
-    if (within) return ["==", ["get", "within_15"], 1];
-    if (beyond) return ["!=", ["get", "within_15"], 1];
+    const hide = document.getElementById("cutoff-switch")?.checked;
+    const field = fieldFor(theme);
+    if (within) {
+      return theme === "clinic" || theme === "school" ? ["<=", ["get", field], 15] : ["==", ["get", "within_15"], 1];
+    }
+    if (beyond) {
+      return theme === "clinic" || theme === "school" ? [">", ["get", field], 15] : ["!=", ["get", "within_15"], 1];
+    }
+    if (hide) return ["<=", ["get", field], cutoffValue()];
     return null;
+  };
+
+  const offFilter = () => {
+    const access = hexAccessFilter();
+    const off = [">", ["to-number", ["coalesce", ["get", "off_street"], 0]], 0];
+    return access ? ["all", off, access] : off;
+  };
+
+  const flash = (kind, title, message) => {
+    const alert = document.getElementById("map-alert");
+    const titleEl = document.getElementById("map-alert-title");
+    const msgEl = document.getElementById("map-alert-msg");
+    if (!alert || !titleEl || !msgEl) return;
+    alert.kind = kind || "brand";
+    titleEl.textContent = title || "";
+    msgEl.textContent = message || "";
+    alert.open = true;
+  };
+
+  const writeView = () => {
+    const q = new URLSearchParams(location.search);
+    VIEW_KEYS.forEach((key) => q.delete(key));
+    q.set("city", current);
+    if (theme !== "walk") q.set("color", theme);
+    if (basemap !== "gray") q.set("bm", basemap);
+    const within = document.getElementById("within-switch")?.checked;
+    const beyond = document.getElementById("beyond-switch")?.checked;
+    const hide = document.getElementById("cutoff-switch")?.checked;
+    if (within) q.set("within", "1");
+    else if (beyond) q.set("beyond", "1");
+    else if (hide) q.set("max", String(cutoffValue()));
+    if (document.getElementById("lyr-off")?.checked) q.set("off", "1");
+    try {
+      const center = map.getCenter();
+      q.set("lat", center.lat.toFixed(5));
+      q.set("lng", center.lng.toFixed(5));
+      q.set("z", map.getZoom().toFixed(2));
+    } catch (err) {
+      /* map not ready */
+    }
+    const next = `${location.pathname}?${q.toString()}${location.hash}`;
+    if (`${location.pathname}${location.search}${location.hash}` !== next) history.replaceState(null, "", next);
+  };
+
+  const scheduleWriteView = () => {
+    if (urlTimer) clearTimeout(urlTimer);
+    urlTimer = setTimeout(writeView, 350);
+  };
+
+  const updateLiveShare = () => {
+    const cutoff = cutoffValue();
+    const readout = document.getElementById("minute-readout");
+    const live = document.getElementById("live-share");
+    if (readout) readout.textContent = `${cutoff} min`;
+    if (!live) return;
+    const city = meta.cities[current];
+    const share = peopleUnderCutoff(lastBundle?.hexes, fieldFor(theme), cutoff);
+    const what = theme === "clinic" ? "a clinic" : theme === "school" ? "a school" : "clinics and schools";
+    const shareText = share == null ? "n/a" : `${share.toFixed(1)}%`;
+    const f15 = city?.f15 != null ? `${Number(city.f15).toFixed(1)}%` : "n/a";
+    live.textContent = `${shareText} of people on this map have a walk to ${what} of ${cutoff} min or less. The city F15 stays ${f15} at 15 minutes.`;
   };
 
   const applyTheme = () => {
@@ -489,7 +801,10 @@ async function main() {
     const filter = hexAccessFilter();
     map.setFilter("hexes", filter);
     map.setFilter("hexes-line", filter);
+    if (map.getLayer("hexes-off")) map.setFilter("hexes-off", offFilter());
+    if (map.getLayer("hexes-off-line")) map.setFilter("hexes-off-line", offFilter());
     renderLegend(theme);
+    updateLiveShare();
   };
 
   const applyOverlays = () => {
@@ -510,6 +825,9 @@ async function main() {
     setVisibility(map, "labels-places", placesOn);
     setVisibility(map, "labels-places-pinned", placesOn);
     setVisibility(map, "boundary", document.getElementById("lyr-boundary").checked);
+    const offOn = document.getElementById("lyr-off")?.checked;
+    setVisibility(map, "hexes-off", offOn);
+    setVisibility(map, "hexes-off-line", offOn);
   };
 
   const applyMapChrome = () => {
@@ -533,6 +851,9 @@ async function main() {
     setText("labels-schools", wardText, 1.5);
     if (map.getLayer("boundary")) map.setPaintProperty("boundary", "line-color", boundary);
     if (map.getLayer("wards")) map.setPaintProperty("wards", "line-color", wardLine);
+    if (map.getLayer("hexes-off-line")) {
+      map.setPaintProperty("hexes-off-line", "line-color", dark ? "#f4f4f4" : "#121212");
+    }
   };
 
   const addCityLayers = (slug, bundle) => {
@@ -559,7 +880,10 @@ async function main() {
         id: "wards-fill",
         type: "fill",
         source: "wards",
-        paint: { "fill-color": "#37322e", "fill-opacity": 0 },
+        paint: {
+          "fill-color": "#0079c1",
+          "fill-opacity": ["case", ["boolean", ["feature-state", "picked"], false], 0.16, 0],
+        },
       },
       {
         id: "hexes",
@@ -574,10 +898,33 @@ async function main() {
         paint: { "line-color": "#ffffff", "line-opacity": 0.16, "line-width": 0.4 },
       },
       {
+        id: "hexes-off",
+        type: "fill",
+        source: "hexes",
+        layout: { visibility: "none" },
+        paint: { "fill-pattern": "off-hatch", "fill-opacity": 0.7 },
+      },
+      {
+        id: "hexes-off-line",
+        type: "line",
+        source: "hexes",
+        layout: { visibility: "none" },
+        paint: {
+          "line-color": "#121212",
+          "line-width": 1.15,
+          "line-dasharray": [1.6, 1.2],
+          "line-opacity": 0.9,
+        },
+      },
+      {
         id: "wards",
         type: "line",
         source: "wards",
-        paint: { "line-color": WARD_LINE, "line-width": 0.9, "line-opacity": 1 },
+        paint: {
+          "line-color": WARD_LINE,
+          "line-width": ["case", ["boolean", ["feature-state", "picked"], false], 2.2, 0.9],
+          "line-opacity": 1,
+        },
       },
       {
         id: "boundary",
@@ -814,6 +1161,283 @@ async function main() {
     rest.reduce((chain, slug) => chain.then(() => fetchCity(slug).catch(() => null)), Promise.resolve());
   };
 
+  const showPopup = (kind, feature, lngLat) => {
+    const props = { ...(feature.properties || {}) };
+    lastFitKey = "";
+    popup.setLngLat(lngLat).setHTML(popupHTML(kind, props, meta.cities[current], wardLookup)).addTo(map);
+    fitPopup({ resetScroll: true });
+    requestAnimationFrame(() => fitPopup({ resetScroll: true }));
+  };
+
+  const markWard = (feature) => {
+    if (pickedWard != null && map.getSource("wards")) {
+      try {
+        map.setFeatureState({ source: "wards", id: pickedWard }, { picked: false });
+      } catch (err) {
+        /* source rebuilt */
+      }
+    }
+    pickedWard = feature?.id;
+    if (pickedWard != null && map.getSource("wards")) {
+      try {
+        map.setFeatureState({ source: "wards", id: pickedWard }, { picked: true });
+      } catch (err) {
+        pickedWard = null;
+      }
+    }
+    document.querySelectorAll(".ward-row").forEach((el) => {
+      if (el.dataset.name === feature?.properties?.name) el.setAttribute("aria-current", "true");
+      else el.removeAttribute("aria-current");
+    });
+  };
+
+  const fitFeature = (feat, maxZoom = 14.2) => {
+    const bounds = featureBounds(feat);
+    const padding = edgePadding();
+    if (bounds) {
+      try {
+        map.fitBounds(bounds, { padding, duration: 500, maxZoom, pitch: map.getPitch(), bearing: 0 });
+        return;
+      } catch (err) {
+        /* fall through */
+      }
+    }
+    const center = featureCenter(feat);
+    if (center) map.easeTo({ center, zoom: Math.min(14.2, Math.max(map.getZoom(), 13.2)), duration: 500 });
+  };
+
+  const afterMove = (fn) => {
+    let done = false;
+    const run = () => {
+      if (done) return;
+      done = true;
+      fn();
+    };
+    map.once("moveend", run);
+    setTimeout(run, 650);
+  };
+
+  const maybeClosePanel = () => {
+    if (isMobile()) setPanelOpen(false);
+  };
+
+  const hideSearch = () => {
+    const box = document.getElementById("search-results");
+    if (box) {
+      box.hidden = true;
+      box.innerHTML = "";
+    }
+  };
+
+  const buildSearchIndex = (bundle) => {
+    const items = [];
+    (bundle.wards?.features || []).forEach((feat) => {
+      const name = nonempty(feat.properties.label) || nonempty(feat.properties.name);
+      if (!name) return;
+      items.push({ kind: "ward", name, sub: nonempty(feat.properties.lga) || "Ward", feature: feat });
+    });
+    const lgas = new Map();
+    (bundle.wards?.features || []).forEach((feat) => {
+      const lga = nonempty(feat.properties.lga);
+      if (!lga) return;
+      if (!lgas.has(lga)) lgas.set(lga, []);
+      lgas.get(lga).push(feat);
+    });
+    lgas.forEach((features, name) => {
+      items.push({ kind: "lga", name, sub: "Local government", features });
+    });
+    (bundle.places?.features || []).forEach((feat) => {
+      const name = nonempty(feat.properties.label) || nonempty(feat.properties.name);
+      if (!name) return;
+      items.push({ kind: "place", name, sub: nonempty(feat.properties.place) || "Place", feature: feat });
+    });
+    searchItems = items;
+  };
+
+  const openSearchHit = (item) => {
+    hideSearch();
+    const input = document.getElementById("place-search");
+    if (input) input.value = item.name;
+    if (item.kind === "lga") {
+      const bounds = new maplibregl.LngLatBounds();
+      item.features.forEach((feat) => {
+        const b = featureBounds(feat);
+        if (b) bounds.extend(b);
+      });
+      if (!bounds.isEmpty()) map.fitBounds(bounds, { padding: edgePadding(), duration: 500, maxZoom: 13.4, pitch: map.getPitch() });
+      maybeClosePanel();
+      return;
+    }
+    const feat = item.feature;
+    const center = featureCenter(feat);
+    if (!center) return;
+    if (item.kind === "ward") {
+      fitFeature(feat, 14.4);
+      afterMove(() => showPopup("wards-fill", feat, center));
+      markWard(feat);
+    } else {
+      map.easeTo({ center, zoom: Math.max(map.getZoom(), 13.6), duration: 480 });
+      afterMove(() => showPopup("labels-places", feat, center));
+    }
+    maybeClosePanel();
+  };
+
+  const renderSearch = (query) => {
+    const box = document.getElementById("search-results");
+    if (!box) return;
+    const q = foldText(query);
+    if (q.length < 2) {
+      hideSearch();
+      return;
+    }
+    const hits = searchItems
+      .map((item) => {
+        const score = matchScore(q, item.name);
+        if (score == null) return null;
+        const kindRank = item.kind === "ward" ? 0 : item.kind === "lga" ? 1 : 2;
+        return { item, score: score * 10 + kindRank };
+      })
+      .filter(Boolean)
+      .sort((a, b) => a.score - b.score || a.item.name.localeCompare(b.item.name))
+      .slice(0, 8);
+    if (!hits.length) {
+      box.hidden = false;
+      box.innerHTML = `<button type="button" class="search-hit" disabled>No match in ${meta.cities[current]?.name || "this city"}</button>`;
+      return;
+    }
+    box.hidden = false;
+    box.innerHTML = hits
+      .map(
+        ({ item }, i) =>
+          `<button type="button" class="search-hit" role="option" data-i="${i}" ${i === 0 ? 'aria-selected="true"' : ""}><span class="hit-kind">${item.sub}</span>${item.name}</button>`
+      )
+      .join("");
+    box.querySelectorAll(".search-hit").forEach((btn, i) => {
+      btn.addEventListener("click", () => openSearchHit(hits[i].item));
+    });
+  };
+
+  const renderWardList = () => {
+    const box = document.getElementById("ward-list");
+    if (!box) return;
+    const sort = document.getElementById("ward-sort")?.value || "f15";
+    const rows = (lastBundle?.wards?.features || []).slice();
+    rows.sort((a, b) => {
+      const pa = a.properties || {};
+      const pb = b.properties || {};
+      if (sort === "walk") return (Number(pb.walk) || 0) - (Number(pa.walk) || 0);
+      if (sort === "people") return (Number(pb.people) || 0) - (Number(pa.people) || 0);
+      return (Number(pa.f15) || 0) - (Number(pb.f15) || 0);
+    });
+    box.innerHTML = rows
+      .map((feat) => {
+        const p = feat.properties || {};
+        const name = nonempty(p.label) || nonempty(p.name) || "Ward";
+        return `<button type="button" class="ward-row" role="listitem" data-name="${String(p.name || "").replace(/"/g, "&quot;")}"><span><span class="ward-name">${name}</span><span class="ward-lga">${nonempty(p.lga) || ""}</span></span><span class="ward-stat">${pct(p.f15)}<span class="ward-walk">${minutes(p.walk)}</span></span></button>`;
+      })
+      .join("");
+    box.querySelectorAll(".ward-row").forEach((btn, i) => {
+      btn.addEventListener("click", () => {
+        const feat = rows[i];
+        const center = featureCenter(feat);
+        fitFeature(feat, 14.4);
+        markWard(feat);
+        if (center) afterMove(() => showPopup("wards-fill", feat, center));
+        maybeClosePanel();
+      });
+    });
+  };
+
+  const cityForPoint = (lng, lat) => {
+    for (const slug of meta.order || Object.keys(meta.cities)) {
+      const bbox = meta.cities[slug]?.bbox;
+      if (!bbox) continue;
+      if (lng >= bbox[0] && lat >= bbox[1] && lng <= bbox[2] && lat <= bbox[3]) return slug;
+    }
+    return null;
+  };
+
+  const snapToLngLat = (lng, lat) => {
+    const hexes = lastBundle?.hexes?.features || [];
+    const point = [lng, lat];
+    let hit = hexes.find((feat) => pointInFeature(point, feat));
+    if (!hit) {
+      let best = Infinity;
+      hexes.forEach((feat) => {
+        const c = hexCentroid(feat);
+        if (!c) return;
+        const d = (c[0] - lng) ** 2 + (c[1] - lat) ** 2;
+        if (d < best) {
+          best = d;
+          hit = feat;
+        }
+      });
+      if (!hit || best > 0.0004) {
+        flash("warning", "No neighbourhood here", "There is no tile under that point. Try a nearby street inside the city outline.");
+        return;
+      }
+    }
+    const center = hexCentroid(hit) || point;
+    map.easeTo({ center, zoom: Math.max(map.getZoom(), 14), duration: 500 });
+    afterMove(() => {
+      showPopup("hexes", hit, center);
+      if (hit.properties?.off_street) {
+        flash("warning", "Off mapped streets", "This neighbourhood sits more than 250 m from the walking network, so the minutes can mean a missing street as well as a missing clinic.");
+      }
+    });
+  };
+
+  const locateMe = () => {
+    const btn = document.getElementById("locate-btn");
+    if (!navigator.geolocation) {
+      flash("danger", "Location is not available", "This browser cannot read a GPS position.");
+      return;
+    }
+    if (btn) btn.loading = true;
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        if (btn) btn.loading = false;
+        const lng = pos.coords.longitude;
+        const lat = pos.coords.latitude;
+        const slug = cityForPoint(lng, lat);
+        if (!slug) {
+          flash("warning", "Outside the mapped cities", "You are outside Lagos, Ibadan, Kano, Port Harcourt and Abuja as drawn here. Search a ward instead.");
+          return;
+        }
+        if (slug !== current) {
+          locateAfter = { lng, lat };
+          document.getElementById("city-select").value = slug;
+          loadCity(slug);
+          maybeClosePanel();
+          return;
+        }
+        snapToLngLat(lng, lat);
+        maybeClosePanel();
+      },
+      (err) => {
+        if (btn) btn.loading = false;
+        const denied = err?.code === 1;
+        flash(
+          "danger",
+          denied ? "Location blocked" : "Could not find you",
+          denied ? "Allow location for this page, then try again." : "The GPS reading timed out. Try once more, or search a ward."
+        );
+      },
+      { enableHighAccuracy: false, timeout: 12000, maximumAge: 30000 }
+    );
+  };
+
+  const copyView = async () => {
+    writeView();
+    const url = location.href;
+    try {
+      await navigator.clipboard.writeText(url);
+      flash("success", "Link copied", "Anyone with the link opens this city, colour, filter and map position.");
+    } catch (err) {
+      window.prompt("Copy this link", url);
+    }
+  };
+
   const paintCity = (slug, bundle) => {
     const seq = ++paintSeq;
     wardLookup = new Map((bundle.wards?.features || []).map((f) => [f.properties.name, f.properties]));
@@ -821,6 +1445,11 @@ async function main() {
     city.clinics = bundle.clinics?.features?.length ?? city.clinics;
     city.schools = bundle.schools?.features?.length ?? city.schools;
     renderScores(city);
+    buildSearchIndex(bundle);
+    lastBundle = bundle;
+    renderWardList();
+    updateLiveShare();
+    pickedWard = null;
     let painted = false;
     const go = () => {
       if (painted || seq !== paintSeq) return;
@@ -833,9 +1462,27 @@ async function main() {
       }
       painted = true;
       map.resize();
-      flyToCity(slug, bundle.boundary);
+      if (locateAfter) {
+        const target = locateAfter;
+        locateAfter = null;
+        snapToLngLat(target.lng, target.lat);
+      } else if (holdCamera) {
+        holdCamera = false;
+        map.jumpTo({
+          center: [initial.camera.lng, initial.camera.lat],
+          zoom: initial.camera.zoom,
+          pitch: basemap === "color" ? basemapPitch() : map.getPitch(),
+        });
+      } else {
+        flyToCity(slug, bundle.boundary);
+      }
       showLoader(false);
       prefetchOthers();
+      scheduleWriteView();
+      if (bootColor) {
+        bootColor = false;
+        map.once("idle", () => changeBasemap("color"));
+      }
     };
     go();
     if (!painted) {
@@ -847,6 +1494,8 @@ async function main() {
   const loadCity = async (slug) => {
     const gen = ++loadGen;
     current = slug;
+    const citySelect = document.getElementById("city-select");
+    if (citySelect && citySelect.value !== slug) citySelect.value = slug;
     renderScores(meta.cities[slug]);
     renderLegend(theme);
     const firstPaint = !lastBundle;
@@ -948,6 +1597,7 @@ async function main() {
     const same = value === basemap && !(isRasterBasemap(value) && isVectorStyle());
     if (same && value !== "color") {
       applyRasterTiles(value);
+      scheduleWriteView();
       return;
     }
     const swapRaster = isRasterBasemap(prev) && isRasterBasemap(value) && prev !== value && !isVectorStyle();
@@ -958,6 +1608,7 @@ async function main() {
       afterStyle(() => {
         map.jumpTo({ ...camera, pitch: basemapPitch() });
         restoreThematic();
+        scheduleWriteView();
       });
       return;
     }
@@ -967,17 +1618,49 @@ async function main() {
       afterStyle(() => {
         map.jumpTo({ ...camera, pitch: 0 });
         restoreThematic();
+        scheduleWriteView();
       });
       return;
     }
 
     applyRasterTiles(value);
     map.setPitch(0);
+    scheduleWriteView();
   };
 
   map.on("styleimagemissing", (e) => {
-    if (e.id === "clinic-mark" || e.id === "school-mark") addIcons(map);
+    if (e.id === "clinic-mark" || e.id === "school-mark" || e.id === "off-hatch") addIcons(map);
   });
+
+  const applyInitialControls = () => {
+    const citySelect = document.getElementById("city-select");
+    const themeSelect = document.getElementById("theme-select");
+    if (citySelect) citySelect.value = current;
+    if (themeSelect) themeSelect.value = theme;
+    const slider = document.getElementById("minute-slider");
+    if (slider && initial.cutoff != null) slider.value = Math.max(5, Math.min(60, initial.cutoff));
+    if (initial.within) {
+      const el = document.getElementById("within-switch");
+      if (el) el.checked = true;
+    }
+    if (initial.beyond) {
+      const el = document.getElementById("beyond-switch");
+      if (el) el.checked = true;
+    }
+    if (initial.hideCutoff) {
+      const el = document.getElementById("cutoff-switch");
+      if (el) el.checked = true;
+    }
+    if (initial.off) {
+      const el = document.getElementById("lyr-off");
+      if (el) el.checked = true;
+    }
+    const toggle = document.getElementById("basemap-toggle");
+    const select = document.getElementById("basemap-select");
+    if (toggle) toggle.value = basemap === "color" ? "color" : basemap;
+    if (select) select.value = basemap === "color" ? "color" : basemap;
+  };
+  applyInitialControls();
 
   let started = false;
   const start = () => {
@@ -985,7 +1668,7 @@ async function main() {
     started = true;
     map.resize();
     addIcons(map);
-    loadCity("lagos");
+    loadCity(current);
   };
   map.on("load", start);
   map.on("style.load", () => map.resize());
@@ -1031,10 +1714,8 @@ async function main() {
         const wf = hits.find((h) => h.layer.id === "wards-fill");
         if (wf?.properties?.name) props.ward = wf.properties.name;
       }
-      popup
-        .setLngLat(e.lngLat)
-        .setHTML(popupHTML(kind, props, meta.cities[current], wardLookup))
-        .addTo(map);
+      showPopup(kind, { ...f, properties: props }, e.lngLat);
+      if (kind === "wards" || kind === "wards-fill" || kind === "labels-wards") markWard(f);
     } catch (err) {
       console.error(err);
       document.getElementById("city-blurb").textContent = String(err);
@@ -1048,20 +1729,45 @@ async function main() {
   bindSelect("theme-select", (e) => {
     theme = e.target.value;
     applyTheme();
+    scheduleWriteView();
   });
+  bindSelect("ward-sort", () => renderWardList());
   const bindAccessSwitch = (id, otherId) => {
     document.getElementById(id)?.addEventListener("calciteSwitchChange", (e) => {
       if (e.target.checked) {
         const other = document.getElementById(otherId);
         if (other) other.checked = false;
+        const cutoff = document.getElementById("cutoff-switch");
+        if (cutoff) cutoff.checked = false;
       }
       applyTheme();
+      scheduleWriteView();
     });
   };
   bindAccessSwitch("within-switch", "beyond-switch");
   bindAccessSwitch("beyond-switch", "within-switch");
-  ["lyr-hexes", "lyr-clinics", "lyr-schools", "lyr-wards", "lyr-places", "lyr-boundary"].forEach((id) => {
-    document.getElementById(id).addEventListener("calciteCheckboxChange", applyOverlays);
+  document.getElementById("cutoff-switch")?.addEventListener("calciteSwitchChange", (e) => {
+    if (e.target.checked) {
+      ["within-switch", "beyond-switch"].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.checked = false;
+      });
+    }
+    applyTheme();
+    scheduleWriteView();
+  });
+  const slider = document.getElementById("minute-slider");
+  slider?.addEventListener("calciteSliderInput", updateLiveShare);
+  slider?.addEventListener("calciteSliderChange", () => {
+    updateLiveShare();
+    if (document.getElementById("cutoff-switch")?.checked) applyTheme();
+    scheduleWriteView();
+  });
+  ["lyr-hexes", "lyr-clinics", "lyr-schools", "lyr-wards", "lyr-places", "lyr-boundary", "lyr-off"].forEach((id) => {
+    document.getElementById(id)?.addEventListener("calciteCheckboxChange", () => {
+      applyOverlays();
+      scheduleWriteView();
+    });
   });
 
   const syncBasemapControls = (value) => {
@@ -1127,6 +1833,30 @@ async function main() {
 
   document.getElementById("theme-toggle").addEventListener("click", () => setAppearance(!isDark()));
   document.getElementById("dark-switch").addEventListener("calciteSwitchChange", (e) => setAppearance(e.target.checked));
+  document.getElementById("locate-btn")?.addEventListener("click", locateMe);
+  document.getElementById("share-btn")?.addEventListener("click", copyView);
+  const searchInput = document.getElementById("place-search");
+  searchInput?.addEventListener("calciteInputInput", (e) => renderSearch(e.target.value));
+  searchInput?.addEventListener("calciteInputChange", (e) => renderSearch(e.target.value));
+  document.getElementById("search-go")?.addEventListener("click", () => {
+    const first = document.querySelector("#search-results .search-hit:not([disabled])");
+    if (first) first.click();
+    else renderSearch(searchInput?.value);
+  });
+  searchInput?.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") hideSearch();
+    if (e.key === "Enter") {
+      e.preventDefault();
+      const first = document.querySelector("#search-results .search-hit:not([disabled])");
+      first?.click();
+    }
+  });
+  document.addEventListener("click", (e) => {
+    const path = e.composedPath ? e.composedPath() : [];
+    if (path.some((node) => node?.id === "place-search" || node?.id === "search-results" || node?.id === "search-go")) return;
+    hideSearch();
+  });
+  map.on("moveend", scheduleWriteView);
   document.getElementById("menu-toggle").addEventListener("click", () => {
     setPanelOpen(document.getElementById("layers-panel").collapsed);
   });

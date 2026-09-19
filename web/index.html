@@ -11,7 +11,7 @@
     <title>Fifteen minutes on foot</title>
     <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css" />
-    <link rel="stylesheet" href="./src/style.css?v=19" />
+    <link rel="stylesheet" href="./src/style.css?v=25" />
     <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
   </head>
   <body>
@@ -38,6 +38,8 @@
             <calcite-segmented-control-item value="color">Buildings 2.5D</calcite-segmented-control-item>
             <calcite-segmented-control-item value="imagery">Imagery</calcite-segmented-control-item>
           </calcite-segmented-control>
+          <calcite-action id="locate-btn" icon="gps-on" text="My neighbourhood" scale="s" title="Open the neighbourhood I am in"></calcite-action>
+          <calcite-action id="share-btn" icon="link" text="Copy link" scale="s" title="Copy a link to this view"></calcite-action>
           <calcite-action id="theme-toggle" icon="brightness" text="Light" scale="s" title="Switch appearance"></calcite-action>
         </div>
       </calcite-navigation>
@@ -65,6 +67,14 @@
             <p class="blurb" id="city-blurb"></p>
             <div class="score-grid" id="score-grid"></div>
             <p class="fine frame-note" id="frame-note" hidden></p>
+
+            <calcite-label>
+              Find a ward or place
+              <calcite-input id="place-search" scale="s" placeholder="Ikoyi, Lugbe, Gwarinpa…" clearable>
+                <calcite-action id="search-go" slot="action" icon="search" text="Search"></calcite-action>
+              </calcite-input>
+            </calcite-label>
+            <div id="search-results" class="search-results" hidden role="listbox" aria-label="Search matches"></div>
 
             <calcite-label class="mobile-basemap">
               Basemap
@@ -96,7 +106,33 @@
                 <calcite-switch id="beyond-switch" scale="s"></calcite-switch>
                 Beyond 15 minutes only
               </calcite-label>
+              <div class="cutoff-block">
+                <div class="cutoff-head">
+                  <span>People under this walk</span>
+                  <strong id="minute-readout">15 min</strong>
+                </div>
+                <calcite-slider id="minute-slider" min="5" max="60" value="15" step="1"></calcite-slider>
+                <p class="fine" id="live-share"></p>
+                <calcite-label layout="inline">
+                  <calcite-switch id="cutoff-switch" scale="s"></calcite-switch>
+                  Hide neighbourhoods slower than this
+                </calcite-label>
+              </div>
             </div>
+
+            <calcite-accordion scale="s" selection-mode="single">
+              <calcite-accordion-item heading="Wards by walk" icon-start="list" expanded>
+                <calcite-label>
+                  Sort
+                  <calcite-select id="ward-sort" scale="s">
+                    <calcite-option value="f15" selected>Lowest share within 15 minutes</calcite-option>
+                    <calcite-option value="walk">Longest typical walk</calcite-option>
+                    <calcite-option value="people">Most people</calcite-option>
+                  </calcite-select>
+                </calcite-label>
+                <div id="ward-list" class="ward-list" role="list"></div>
+              </calcite-accordion-item>
+            </calcite-accordion>
 
             <calcite-label layout="inline" class="mobile-appearance">
               <calcite-switch id="dark-switch" scale="s" checked></calcite-switch>
@@ -128,7 +164,11 @@
               <calcite-checkbox id="lyr-boundary" checked scale="s"></calcite-checkbox>
               City outline
             </calcite-label>
-            <p class="fine">Clinic and school marks appear as you zoom in, so the city view stays readable.</p>
+            <calcite-label layout="inline">
+              <calcite-checkbox id="lyr-off" scale="s"></calcite-checkbox>
+              Off mapped streets
+            </calcite-label>
+            <p class="fine">Clinic and school marks appear as you zoom in, so the city view stays readable. Off mapped streets is a hatch, not a second colour theme.</p>
 
             <h3 class="block-title">Legend</h3>
             <div class="legend" id="legend"></div>
@@ -137,6 +177,9 @@
             <calcite-accordion scale="s" selection-mode="single">
               <calcite-accordion-item heading="How to read this" icon-start="question">
                 <div class="docs">
+                  <p>
+                    Search a ward or place. Drag the minutes bar to see how many people sit under that walk; the F15 score stays the 15-minute headline. Use your location to open the nearest neighbourhood. Off mapped streets is a diagnostic overlay.
+                  </p>
                   <p>
                     Tap a neighbourhood for the walk from that tile, and the ward it sits in. Tap a ward fill or a ward name for the ward’s scores. F15 is the share of people, not the share of tiles.
                   </p>
@@ -184,6 +227,10 @@
       <calcite-action id="layers-fab" class="layers-fab" icon="layers" text="Layers" scale="m" title="Open layers"></calcite-action>
     </calcite-shell>
     <script src="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.js"></script>
-    <script type="module" src="./src/main.js?v=22"></script>
+    <calcite-alert id="map-alert" label="Notice" kind="brand" auto-close auto-close-duration="medium">
+      <div slot="title" id="map-alert-title"></div>
+      <div slot="message" id="map-alert-msg"></div>
+    </calcite-alert>
+    <script type="module" src="./src/main.js?v=26"></script>
   </body>
 </html>
