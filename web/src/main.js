@@ -566,6 +566,7 @@ async function main() {
   let bootColor = false;
   let locateAfter = null;
   let urlTimer = 0;
+  let maybeOfferTour = () => {};
   const initial = readView();
   if (initial.city && meta.cities[initial.city]) current = initial.city;
   if (initial.theme && ["walk", "clinic", "school", "people"].includes(initial.theme)) theme = initial.theme;
@@ -762,6 +763,7 @@ async function main() {
     if (within) q.set("within", "1");
     else if (beyond) q.set("beyond", "1");
     else if (hide) q.set("max", String(cutoffValue()));
+    q.delete("tour");
     if (document.getElementById("lyr-off")?.checked) q.set("off", "1");
     try {
       const center = map.getCenter();
@@ -1479,6 +1481,7 @@ async function main() {
       showLoader(false);
       prefetchOthers();
       scheduleWriteView();
+      maybeOfferTour();
       if (bootColor) {
         bootColor = false;
         map.once("idle", () => changeBasemap("color"));
@@ -1814,6 +1817,224 @@ async function main() {
     requestAnimationFrame(() => map.resize());
   };
 
+  const TOUR_KEY = "fifteen-on-foot-tour-v1";
+  const TOUR_STEPS = [
+    {
+      title: "Fifteen minutes on foot",
+      body: "Each tile is a neighbourhood. Colour is walking time to clinics and schools. F15 is the share of people who live inside a 15-minute walk, not the share of tiles.",
+    },
+    {
+      target: "tour-city",
+      panel: true,
+      title: "City scores",
+      body: "Choose a city. The four scores belong to this map frame. Lagos and Abuja are city plates; the paper still reports the full metro.",
+    },
+    {
+      target: "tour-colour",
+      panel: true,
+      title: "What the colour means",
+      body: "Colour by minutes on foot, clinic only, school only, or people. Green is a short walk. Dark red is a long one.",
+    },
+    {
+      target: "tour-filter",
+      panel: true,
+      title: "Minutes and the 15-minute clip",
+      body: "The 15-minute switches clip the map. Drag the minutes bar to count people under that walk. The F15 score at the top stays the 15-minute headline.",
+    },
+    {
+      target: "tour-search",
+      panel: true,
+      expandWards: true,
+      title: "Find a ward",
+      body: "Type a ward or place. The ranked ward list below jumps the map. Lowest F15 is first, so the longest waits sit at the top.",
+    },
+    {
+      title: "Tap a neighbourhood",
+      body: "Tap a tile for its walk, people, and ward. Tap a ward fill for the ward scores. Gini is local plus city. N* is city-level only.",
+    },
+    {
+      target: "tour-layers",
+      panel: true,
+      title: "Layers",
+      body: "Turn layers on and off. Clinic and school marks wait until you zoom in. Off mapped streets is a hatch for tiles far from OSM paths.",
+    },
+    {
+      target: "tour-header",
+      title: "Keep going",
+      body: "Find your neighbourhood, copy a link to this view, or replay this tour from the question mark. The glossary in the panel spells out F15, Gini and N*.",
+    },
+  ];
+
+  let tourIndex = 0;
+  let tourTimer = 0;
+  let tourOffered = false;
+
+  const tourOpen = () => !document.getElementById("tour")?.hidden;
+
+  const layoutTour = (step) => {
+    const root = document.getElementById("tour");
+    const scrim = document.getElementById("tour-scrim");
+    const spot = document.getElementById("tour-spot");
+    const card = document.getElementById("tour-card");
+    if (!root || root.hidden || !card || !spot) return;
+    const pad = 8;
+    const hole = 6;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const target = step.target ? document.getElementById(step.target) : null;
+    if (target) {
+      target.scrollIntoView({ block: "nearest", inline: "nearest" });
+      const r = target.getBoundingClientRect();
+      if (scrim) scrim.hidden = true;
+      spot.hidden = false;
+      spot.style.left = `${Math.max(4, r.left - hole)}px`;
+      spot.style.top = `${Math.max(4, r.top - hole)}px`;
+      spot.style.width = `${Math.max(8, Math.min(vw - 8, r.width + hole * 2))}px`;
+      spot.style.height = `${Math.max(8, Math.min(vh - 8, r.height + hole * 2))}px`;
+    } else {
+      if (scrim) scrim.hidden = false;
+      spot.hidden = true;
+    }
+    const cw = Math.min(340, vw - 24);
+    const ch = card.offsetHeight || 220;
+    let left = (vw - cw) / 2;
+    let top = Math.max(pad, (vh - ch) / 2);
+    if (target) {
+      const r = target.getBoundingClientRect();
+      const roomRight = vw - r.right - 16;
+      const roomLeft = r.left - 16;
+      const roomBelow = vh - r.bottom - 16;
+      const roomAbove = r.top - 16;
+      if (vw <= 860) {
+        left = 12;
+        if (roomBelow >= ch + 8) top = r.bottom + 12;
+        else if (roomAbove >= ch + 8) top = r.top - ch - 12;
+        else top = Math.max(pad, vh - ch - pad);
+      } else if (roomRight >= cw + 8) {
+        left = r.right + 12;
+        top = Math.min(Math.max(pad, r.top), vh - ch - pad);
+      } else if (roomLeft >= cw + 8) {
+        left = r.left - cw - 12;
+        top = Math.min(Math.max(pad, r.top), vh - ch - pad);
+      } else if (roomBelow >= ch + 8) {
+        left = Math.min(Math.max(pad, r.left), vw - cw - pad);
+        top = r.bottom + 12;
+      } else if (roomAbove >= ch + 8) {
+        left = Math.min(Math.max(pad, r.left), vw - cw - pad);
+        top = r.top - ch - 12;
+      } else {
+        top = Math.max(pad, vh - ch - pad);
+      }
+    }
+    card.style.left = `${Math.max(pad, Math.min(left, vw - cw - pad))}px`;
+    card.style.top = `${Math.max(pad, Math.min(top, vh - ch - pad))}px`;
+    card.classList.add("is-placed");
+  };
+
+  const showTourStep = (i) => {
+    tourIndex = i;
+    const step = TOUR_STEPS[i];
+    const root = document.getElementById("tour");
+    const kicker = document.getElementById("tour-kicker");
+    const title = document.getElementById("tour-title");
+    const body = document.getElementById("tour-body");
+    const back = document.getElementById("tour-back");
+    const next = document.getElementById("tour-next");
+    if (!root || !step) return;
+    document.getElementById("tour-card")?.classList.remove("is-placed");
+    if (kicker) kicker.textContent = `${i + 1} of ${TOUR_STEPS.length}`;
+    if (title) title.textContent = step.title;
+    if (body) body.textContent = step.body;
+    if (back) back.hidden = i === 0;
+    if (next) next.textContent = i === TOUR_STEPS.length - 1 ? "Done" : "Next";
+    if (step.panel) setPanelOpen(true);
+    else if (isMobile()) setPanelOpen(false);
+    if (step.expandWards) {
+      const acc = document.getElementById("ward-accordion");
+      if (acc) acc.expanded = true;
+    }
+    const apply = () => {
+      if (tourIndex !== i || root.hidden) return;
+      layoutTour(step);
+    };
+    requestAnimationFrame(() => requestAnimationFrame(apply));
+    if (tourTimer) clearTimeout(tourTimer);
+    tourTimer = setTimeout(apply, step.panel ? 320 : 40);
+  };
+
+  const stopTour = (done) => {
+    const root = document.getElementById("tour");
+    if (root) root.hidden = true;
+    if (tourTimer) clearTimeout(tourTimer);
+    if (done) {
+      try {
+        localStorage.setItem(TOUR_KEY, "1");
+      } catch (err) {
+        /* private mode */
+      }
+    }
+    const q = new URLSearchParams(location.search);
+    if (q.has("tour")) {
+      q.delete("tour");
+      const next = `${location.pathname}${q.toString() ? `?${q}` : ""}${location.hash}`;
+      history.replaceState(null, "", next);
+    }
+  };
+
+  const startTour = () => {
+    const root = document.getElementById("tour");
+    if (!root) return;
+    tourOffered = true;
+    root.hidden = false;
+    showTourStep(0);
+    document.getElementById("tour-next")?.focus();
+  };
+
+  maybeOfferTour = () => {
+    if (tourOffered) return;
+    const param = new URLSearchParams(location.search).get("tour");
+    if (param === "0") {
+      tourOffered = true;
+      return;
+    }
+    tourOffered = true;
+    setTimeout(() => {
+      if (!document.getElementById("tour") || tourOpen()) return;
+      startTour();
+    }, 800);
+  };
+
+  document.getElementById("tour-next")?.addEventListener("click", () => {
+    if (tourIndex >= TOUR_STEPS.length - 1) stopTour(true);
+    else showTourStep(tourIndex + 1);
+  });
+  document.getElementById("tour-back")?.addEventListener("click", () => {
+    if (tourIndex > 0) showTourStep(tourIndex - 1);
+  });
+  document.getElementById("tour-skip")?.addEventListener("click", () => stopTour(true));
+  document.getElementById("tour-btn")?.addEventListener("click", startTour);
+  document.getElementById("tour-replay")?.addEventListener("click", startTour);
+  window.addEventListener("keydown", (e) => {
+    if (!tourOpen()) return;
+    if (e.key === "Escape") {
+      e.preventDefault();
+      stopTour(true);
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      if (tourIndex >= TOUR_STEPS.length - 1) stopTour(true);
+      else showTourStep(tourIndex + 1);
+    } else if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      if (tourIndex > 0) showTourStep(tourIndex - 1);
+    }
+  });
+  window.addEventListener("resize", () => {
+    if (tourOpen()) layoutTour(TOUR_STEPS[tourIndex]);
+  });
+  window.visualViewport?.addEventListener("resize", () => {
+    if (tourOpen()) layoutTour(TOUR_STEPS[tourIndex]);
+  });
+
   const applyMobileChrome = ({ crossing = false } = {}) => {
     const mobile = isMobile();
     const shellPanel = document.getElementById("layers-panel");
@@ -1881,6 +2102,7 @@ async function main() {
   window.addEventListener("orientationchange", () => setTimeout(() => map.resize(), 300));
   window.visualViewport?.addEventListener("resize", () => map.resize());
   setAppearance(true);
+  if (lastBundle) maybeOfferTour();
 }
 
 main().catch((err) => {

@@ -576,3 +576,122 @@ html.calcite-mode-dark .popup-head {
     font-size: 12.5px;
   }
 }
+
+.tour[hidden] {
+  display: none !important;
+}
+
+.tour {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  cursor: default;
+}
+
+.tour-scrim {
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 0.55);
+}
+
+.tour-scrim[hidden] {
+  display: none !important;
+}
+
+.tour-spot {
+  position: fixed;
+  z-index: 10001;
+  border: 2px solid var(--brand);
+  border-radius: 4px;
+  box-shadow: 0 0 0 9999px rgb(0 0 0 / 0.58);
+  pointer-events: none;
+}
+
+.tour-card {
+  position: fixed;
+  z-index: 10002;
+  width: min(340px, calc(100vw - 24px));
+  max-height: min(70dvh, 520px);
+  overflow: auto;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 32px rgb(0 0 0 / 0.38);
+  padding: 14px 14px 12px;
+  visibility: hidden;
+}
+
+.tour-card.is-placed {
+  visibility: visible;
+}
+
+.tour-kicker {
+  margin: 0 0 6px;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.tour-card h2 {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  color: var(--ink);
+}
+
+.tour-card p#tour-body {
+  margin: 0 0 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.tour-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.tour-text,
+.tour-ghost,
+.tour-next {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 7px 12px;
+  font-size: 13px;
+}
+
+.tour-text {
+  margin-right: auto;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+}
+
+.tour-ghost {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.tour-ghost[hidden] {
+  display: none;
+}
+
+.tour-next {
+  border: 0;
+  background: var(--brand);
+  color: #fff;
+  font-weight: 600;
+}
+
+.tour-text:hover,
+.tour-ghost:hover {
+  background: var(--wash);
+}
