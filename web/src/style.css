@@ -112,7 +112,8 @@ calcite-shell-panel[slot="panel-bottom"] {
 }
 
 .mobile-basemap,
-.mobile-appearance {
+.mobile-appearance,
+.mobile-basemap-menu {
   display: none;
 }
 
@@ -527,7 +528,18 @@ html.calcite-mode-dark .popup-head {
 
   .mobile-basemap,
   .mobile-appearance {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mobile-appearance {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .mobile-basemap-menu {
+    display: inline-flex;
   }
 
   #menu-toggle,

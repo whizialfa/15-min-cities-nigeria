@@ -11,7 +11,7 @@
     <title>Fifteen minutes on foot</title>
     <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css" />
-    <link rel="stylesheet" href="./src/style.css?v=28" />
+    <link rel="stylesheet" href="./src/style.css?v=29" />
     <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
   </head>
   <body>
@@ -38,6 +38,15 @@
             <calcite-segmented-control-item value="color">Buildings 2.5D</calcite-segmented-control-item>
             <calcite-segmented-control-item value="imagery">Imagery</calcite-segmented-control-item>
           </calcite-segmented-control>
+          <calcite-dropdown id="basemap-menu" class="mobile-basemap-menu" scale="s" placement="bottom-end" overlay-positioning="fixed" type="click">
+            <calcite-action slot="trigger" icon="basemap" text="Basemap" scale="s" title="Basemap"></calcite-action>
+            <calcite-dropdown-group selection-mode="single">
+              <calcite-dropdown-item data-basemap="gray" selected>Gray</calcite-dropdown-item>
+              <calcite-dropdown-item data-basemap="streets">Streets</calcite-dropdown-item>
+              <calcite-dropdown-item data-basemap="color">Buildings 2.5D</calcite-dropdown-item>
+              <calcite-dropdown-item data-basemap="imagery">Imagery</calcite-dropdown-item>
+            </calcite-dropdown-group>
+          </calcite-dropdown>
           <calcite-action id="tour-btn" icon="question" text="Tour" scale="s" title="How to use this map"></calcite-action>
           <calcite-action id="locate-btn" icon="gps-on" text="My neighbourhood" scale="s" title="Open the neighbourhood I am in"></calcite-action>
           <calcite-action id="share-btn" icon="link" text="Copy link" scale="s" title="Copy a link to this view"></calcite-action>
@@ -259,6 +268,6 @@
       <div slot="title" id="map-alert-title"></div>
       <div slot="message" id="map-alert-msg"></div>
     </calcite-alert>
-    <script type="module" src="./src/main.js?v=28"></script>
+    <script type="module" src="./src/main.js?v=29"></script>
   </body>
 </html>
