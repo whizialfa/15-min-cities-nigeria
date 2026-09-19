@@ -10,37 +10,36 @@ const PLACE_INK = "#37322e";
 const HALO = "#fafafa";
 const GLYPHS = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
 const LIBERTY = "https://tiles.openfreemap.org/styles/liberty";
+const ASSET = "19";
+const ESRI_CREDIT = "Tiles © Esri · GRID3 clinics and schools";
 
 const EMPTY = { type: "FeatureCollection", features: [] };
+
+const bust = (url) => `${url}${url.includes("?") ? "&" : "?"}v=${ASSET}`;
 
 const RASTER = {
   gray: {
     light: {
-      tiles: ["https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"],
-      labels: "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+      tiles: [bust("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}")],
+      labels: bust("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}"),
     },
     dark: {
-      tiles: ["https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}"],
-      labels: "https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}",
+      tiles: [bust("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}")],
+      labels: bust("https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}"),
     },
     maxzoom: 16,
-    attribution: "Tiles © Esri · GRID3 clinics and schools · OSM streets",
+    attribution: ESRI_CREDIT,
   },
   imagery: {
-    tiles: ["https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}"],
-    labels: "https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}",
+    tiles: [bust("https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}")],
+    labels: bust("https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}"),
     maxzoom: 19,
-    attribution: "Tiles © Esri · GRID3 clinics and schools · OSM streets",
+    attribution: ESRI_CREDIT,
   },
   streets: {
-    light: {
-      tiles: ["a", "b", "c", "d"].map((s) => `https://${s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}@2x.png`),
-    },
-    dark: {
-      tiles: ["a", "b", "c", "d"].map((s) => `https://${s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}@2x.png`),
-    },
-    maxzoom: 20,
-    attribution: "© OpenStreetMap © CARTO · GRID3 clinics and schools",
+    tiles: [bust("https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}")],
+    maxzoom: 19,
+    attribution: ESRI_CREDIT,
   },
 };
 
@@ -61,11 +60,19 @@ function rasterSpec(key) {
     const tone = isDark() ? RASTER.gray.dark : RASTER.gray.light;
     return { ...tone, maxzoom: RASTER.gray.maxzoom, attribution: RASTER.gray.attribution };
   }
-  if (key === "streets") {
-    const tone = isDark() ? RASTER.streets.dark : RASTER.streets.light;
-    return { ...tone, maxzoom: RASTER.streets.maxzoom, attribution: RASTER.streets.attribution };
-  }
+  if (key === "streets") return RASTER.streets;
   return RASTER.imagery;
+}
+
+function rasterPaint(key) {
+  const darkStreets = isDark() && key === "streets";
+  return {
+    "raster-opacity": 1,
+    "raster-fade-duration": 0,
+    "raster-brightness-min": darkStreets ? 0.06 : 0,
+    "raster-brightness-max": darkStreets ? 0.76 : 1,
+    "raster-saturation": darkStreets ? -0.15 : 0,
+  };
 }
 
 function isRasterBasemap(key) {
@@ -98,16 +105,17 @@ function fieldFor(theme) {
 
 function rasterStyle(key) {
   const spec = rasterSpec(key);
+  const paint = rasterPaint(key);
   const layers = [
     { id: "bg", type: "background", paint: { "background-color": isDark() ? "#1a1a1a" : "#e5e5e5" } },
-    { id: "basemap", type: "raster", source: "basemap", paint: { "raster-opacity": 1, "raster-fade-duration": 0 } },
+    { id: "basemap", type: "raster", source: "basemap", paint },
   ];
   const sources = {
     basemap: { type: "raster", tiles: spec.tiles, tileSize: 256, maxzoom: spec.maxzoom, attribution: spec.attribution },
   };
   if (spec.labels) {
     sources.labels = { type: "raster", tiles: [spec.labels], tileSize: 256, maxzoom: spec.maxzoom };
-    layers.push({ id: "basemap-labels", type: "raster", source: "labels", paint: { "raster-opacity": 1, "raster-fade-duration": 0 } });
+    layers.push({ id: "basemap-labels", type: "raster", source: "labels", paint });
   }
   return { version: 8, glyphs: GLYPHS, sources, layers };
 }
@@ -376,9 +384,10 @@ function showLoader(on) {
 
 async function loadJSON(path, tries = 3) {
   let last;
+  const url = bust(path);
   for (let i = 0; i < tries; i += 1) {
     try {
-      const res = await fetch(path);
+      const res = await fetch(url, { cache: "no-store" });
       if (!res.ok) throw new Error(`${path} ${res.status}`);
       return await res.json();
     } catch (err) {
@@ -418,8 +427,15 @@ async function main() {
     pitch: 0,
     cooperativeGestures: false,
     fadeDuration: 0,
+    refreshExpiredTiles: true,
     dragRotate: !isMobile(),
     touchPitch: !isMobile(),
+    transformRequest: (url, resourceType) => {
+      if (resourceType === "Tile" && /arcgisonline\.com/.test(url) && !/[?&]v=/.test(url)) {
+        return { url: bust(url) };
+      }
+      return { url };
+    },
   });
   window.__map = map;
   map.addControl(new maplibregl.NavigationControl({ visualizePitch: !isMobile(), showCompass: !isMobile() }), "bottom-right");
@@ -502,16 +518,18 @@ async function main() {
     const wardText = dark ? "#e6e1db" : "#554e4b";
     const boundary = dark ? "#f0f0f0" : INK;
     const wardLine = dark ? "rgba(230,230,230,0.55)" : WARD_LINE;
-    const setText = (id, color) => {
+    const setText = (id, color, buffer = 1.4) => {
       if (!map.getLayer(id)) return;
       map.setPaintProperty(id, "text-color", color);
       map.setPaintProperty(id, "text-halo-color", halo);
+      map.setPaintProperty(id, "text-halo-width", buffer);
+      map.setPaintProperty(id, "text-halo-blur", buffer > 2 ? 0.45 : 0.2);
     };
-    setText("labels-places", place);
-    setText("labels-places-pinned", place);
-    setText("labels-wards", wardText);
-    setText("labels-clinics", CLINIC);
-    setText("labels-schools", SCHOOL);
+    setText("labels-places", place, 1.6);
+    setText("labels-places-pinned", place, 1.6);
+    setText("labels-wards", wardText, 1.5);
+    setText("labels-clinics", CLINIC, 2.8);
+    setText("labels-schools", SCHOOL, 2.8);
     if (map.getLayer("boundary")) map.setPaintProperty("boundary", "line-color", boundary);
     if (map.getLayer("wards")) map.setPaintProperty("wards", "line-color", wardLine);
   };
@@ -657,12 +675,12 @@ async function main() {
           "text-field": ["get", "name"],
           "text-font": ["Noto Sans Regular"],
           "text-size": ["interpolate", ["linear"], ["zoom"], 15.2, 10, 17, 12],
-          "text-offset": [0, 1.15],
+          "text-offset": [0, 1.25],
           "text-optional": true,
-          "text-padding": 2,
+          "text-padding": 4,
           "text-max-width": 10,
         },
-        paint: { "text-color": CLINIC, "text-halo-color": HALO, "text-halo-width": 1.1 },
+        paint: { "text-color": CLINIC, "text-halo-color": HALO, "text-halo-width": 2.8, "text-halo-blur": 0.45 },
       },
       {
         id: "labels-schools",
@@ -673,12 +691,12 @@ async function main() {
           "text-field": ["get", "name"],
           "text-font": ["Noto Sans Regular"],
           "text-size": ["interpolate", ["linear"], ["zoom"], 15.2, 10, 17, 12],
-          "text-offset": [0, 1.15],
+          "text-offset": [0, 1.25],
           "text-optional": true,
-          "text-padding": 2,
+          "text-padding": 4,
           "text-max-width": 10,
         },
-        paint: { "text-color": SCHOOL, "text-halo-color": HALO, "text-halo-width": 1.1 },
+        paint: { "text-color": SCHOOL, "text-halo-color": HALO, "text-halo-width": 2.8, "text-halo-blur": 0.45 },
       },
     ];
     layers.forEach((layer) => map.addLayer(layer));
@@ -843,7 +861,7 @@ async function main() {
       if (gen !== loadGen) return;
       showLoader(false);
       document.getElementById("city-blurb").textContent =
-        `Map data missing for this city. From the repo root run python -m proximity.web_map. (${err})`;
+        `Could not load ${meta.cities[slug]?.name || slug} from the server. Refresh the page.`;
     }
   };
 
@@ -880,6 +898,14 @@ async function main() {
 
   const isVectorStyle = () => Boolean(map.getSource("openmaptiles"));
 
+  const applyRasterPaint = (key = basemap) => {
+    const paint = rasterPaint(key);
+    ["basemap", "basemap-labels"].forEach((id) => {
+      if (!map.getLayer(id)) return;
+      Object.entries(paint).forEach(([prop, value]) => map.setPaintProperty(id, prop, value));
+    });
+  };
+
   const applyRasterTiles = (key) => {
     const spec = rasterSpec(key);
     const src = map.getSource("basemap");
@@ -893,7 +919,7 @@ async function main() {
         map.addSource("labels", { type: "raster", tiles: [spec.labels], tileSize: 256, maxzoom: spec.maxzoom });
       }
       if (!map.getLayer("basemap-labels")) {
-        const layer = { id: "basemap-labels", type: "raster", source: "labels", paint: { "raster-opacity": 1, "raster-fade-duration": 0 } };
+        const layer = { id: "basemap-labels", type: "raster", source: "labels", paint: rasterPaint(key) };
         if (under && map.getLayer(under)) map.addLayer(layer, under);
         else map.addLayer(layer);
       } else if (under) {
@@ -907,6 +933,7 @@ async function main() {
       map.removeLayer("basemap-labels");
       if (map.getSource("labels")) map.removeSource("labels");
     }
+    applyRasterPaint(key);
     return true;
   };
 
@@ -922,6 +949,7 @@ async function main() {
       applyRasterTiles(value);
       return;
     }
+    const swapRaster = isRasterBasemap(prev) && isRasterBasemap(value) && prev !== value && !isVectorStyle();
     basemap = value;
 
     if (value === "color") {
@@ -933,7 +961,7 @@ async function main() {
       return;
     }
 
-    if (prev === "color" || isVectorStyle() || !map.getSource("basemap")?.setTiles) {
+    if (prev === "color" || isVectorStyle() || swapRaster || !map.getSource("basemap")?.setTiles) {
       map.setStyle(rasterStyle(value), { diff: false });
       afterStyle(() => {
         map.jumpTo({ ...camera, pitch: 0 });
@@ -1063,6 +1091,7 @@ async function main() {
     const themeMeta = document.querySelector("meta[name='theme-color']");
     if (themeMeta) themeMeta.setAttribute("content", dark ? "#1a1a1a" : "#0079c1");
     if (isRasterBasemap(basemap) && basemap !== "imagery" && !isVectorStyle()) applyRasterTiles(basemap);
+    else applyRasterPaint();
     applyMapChrome();
   };
 
