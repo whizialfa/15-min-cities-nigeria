@@ -11,7 +11,7 @@
     <title>Fifteen minutes on foot</title>
     <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css" />
-    <link rel="stylesheet" href="./src/style.css?v=25" />
+    <link rel="stylesheet" href="./src/style.css?v=28" />
     <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
   </head>
   <body>
@@ -31,13 +31,14 @@
           heading="Fifteen minutes on foot"
           description="Walking to clinics and schools"
         ></calcite-navigation-logo>
-        <div slot="content-end" class="header-tools">
+        <div slot="content-end" class="header-tools" id="tour-header">
           <calcite-segmented-control id="basemap-toggle" class="desktop-basemap" scale="s">
             <calcite-segmented-control-item value="gray" checked>Gray</calcite-segmented-control-item>
             <calcite-segmented-control-item value="streets">Streets</calcite-segmented-control-item>
             <calcite-segmented-control-item value="color">Buildings 2.5D</calcite-segmented-control-item>
             <calcite-segmented-control-item value="imagery">Imagery</calcite-segmented-control-item>
           </calcite-segmented-control>
+          <calcite-action id="tour-btn" icon="question" text="Tour" scale="s" title="How to use this map"></calcite-action>
           <calcite-action id="locate-btn" icon="gps-on" text="My neighbourhood" scale="s" title="Open the neighbourhood I am in"></calcite-action>
           <calcite-action id="share-btn" icon="link" text="Copy link" scale="s" title="Copy a link to this view"></calcite-action>
           <calcite-action id="theme-toggle" icon="brightness" text="Light" scale="s" title="Switch appearance"></calcite-action>
@@ -53,6 +54,7 @@
       >
         <calcite-panel id="side-panel" heading="Choose a city" description="Walking at 5 km/h">
           <div class="panel-body">
+            <div id="tour-city">
             <calcite-label>
               City
               <calcite-select id="city-select" scale="s">
@@ -67,7 +69,9 @@
             <p class="blurb" id="city-blurb"></p>
             <div class="score-grid" id="score-grid"></div>
             <p class="fine frame-note" id="frame-note" hidden></p>
+            </div>
 
+            <div id="tour-search">
             <calcite-label>
               Find a ward or place
               <calcite-input id="place-search" scale="s" placeholder="Ikoyi, Lugbe, Gwarinpa…" clearable>
@@ -75,6 +79,7 @@
               </calcite-input>
             </calcite-label>
             <div id="search-results" class="search-results" hidden role="listbox" aria-label="Search matches"></div>
+            </div>
 
             <calcite-label class="mobile-basemap">
               Basemap
@@ -86,6 +91,7 @@
               </calcite-select>
             </calcite-label>
 
+            <div id="tour-colour">
             <calcite-label>
               Colour
               <calcite-select id="theme-select" scale="s">
@@ -95,8 +101,9 @@
                 <calcite-option value="people">People per neighbourhood</calcite-option>
               </calcite-select>
             </calcite-label>
+            </div>
 
-            <div class="access-filters">
+            <div class="access-filters" id="tour-filter">
               <h3 class="block-title">15-minute filter</h3>
               <calcite-label layout="inline">
                 <calcite-switch id="within-switch" scale="s"></calcite-switch>
@@ -120,8 +127,9 @@
               </div>
             </div>
 
+            <div id="tour-wards">
             <calcite-accordion scale="s" selection-mode="single">
-              <calcite-accordion-item heading="Wards by walk" icon-start="list" expanded>
+              <calcite-accordion-item id="ward-accordion" heading="Wards by walk" icon-start="list" expanded>
                 <calcite-label>
                   Sort
                   <calcite-select id="ward-sort" scale="s">
@@ -133,12 +141,14 @@
                 <div id="ward-list" class="ward-list" role="list"></div>
               </calcite-accordion-item>
             </calcite-accordion>
+            </div>
 
             <calcite-label layout="inline" class="mobile-appearance">
               <calcite-switch id="dark-switch" scale="s" checked></calcite-switch>
               Dark appearance
             </calcite-label>
 
+            <div id="tour-layers">
             <h3 class="block-title">Layers</h3>
             <calcite-label layout="inline">
               <calcite-checkbox id="lyr-hexes" checked scale="s"></calcite-checkbox>
@@ -169,6 +179,7 @@
               Off mapped streets
             </calcite-label>
             <p class="fine">Clinic and school marks appear as you zoom in, so the city view stays readable. Off mapped streets is a hatch, not a second colour theme.</p>
+            </div>
 
             <h3 class="block-title">Legend</h3>
             <div class="legend" id="legend"></div>
@@ -177,6 +188,9 @@
             <calcite-accordion scale="s" selection-mode="single">
               <calcite-accordion-item heading="How to read this" icon-start="question">
                 <div class="docs">
+                  <p>
+                    <calcite-button id="tour-replay" appearance="outline" width="full" icon-start="question">Take the map tour</calcite-button>
+                  </p>
                   <p>
                     Search a ward or place. Drag the minutes bar to see how many people sit under that walk; the F15 score stays the 15-minute headline. Use your location to open the nearest neighbourhood. Off mapped streets is a diagnostic overlay.
                   </p>
@@ -226,11 +240,25 @@
       <div id="map" role="application" aria-label="Walking access map"></div>
       <calcite-action id="layers-fab" class="layers-fab" icon="layers" text="Layers" scale="m" title="Open layers"></calcite-action>
     </calcite-shell>
+    <div id="tour" class="tour" hidden>
+      <div class="tour-scrim" id="tour-scrim"></div>
+      <div class="tour-spot" id="tour-spot" hidden></div>
+      <aside class="tour-card" id="tour-card" role="dialog" aria-modal="true" aria-labelledby="tour-title">
+        <p class="tour-kicker" id="tour-kicker">1 of 8</p>
+        <h2 id="tour-title">Fifteen minutes on foot</h2>
+        <p id="tour-body"></p>
+        <div class="tour-actions">
+          <button type="button" class="tour-text" id="tour-skip">Skip</button>
+          <button type="button" class="tour-ghost" id="tour-back">Back</button>
+          <button type="button" class="tour-next" id="tour-next">Next</button>
+        </div>
+      </aside>
+    </div>
     <script src="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.js"></script>
     <calcite-alert id="map-alert" label="Notice" kind="brand" auto-close auto-close-duration="medium">
       <div slot="title" id="map-alert-title"></div>
       <div slot="message" id="map-alert-msg"></div>
     </calcite-alert>
-    <script type="module" src="./src/main.js?v=26"></script>
+    <script type="module" src="./src/main.js?v=28"></script>
   </body>
 </html>
