@@ -26,6 +26,8 @@ data/processed/*
 maps/*
 !maps/.gitkeep
 !maps/README.md
+!maps/*.png
+!maps/*.pdf
 charts/*
 !charts/.gitkeep
 !charts/README.md
@@ -44,5 +46,5 @@ charts/*
 *.pbf
 *.graphml
 *.zip
-notes/*.pdf
-qgis/*.qgz
+# Colour paper PDF is already in web/paper/
+notes/fifteen_minute_access_nigeria.pdf
