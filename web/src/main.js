@@ -1635,6 +1635,16 @@ async function main() {
     if (e.id === "clinic-mark" || e.id === "school-mark" || e.id === "off-hatch") addIcons(map);
   });
 
+  const syncBasemapControls = (value) => {
+    const toggle = document.getElementById("basemap-toggle");
+    const select = document.getElementById("basemap-select");
+    if (toggle) toggle.value = value;
+    if (select) select.value = value;
+    document.querySelectorAll("#basemap-menu calcite-dropdown-item").forEach((item) => {
+      item.selected = item.dataset.basemap === value;
+    });
+  };
+
   const applyInitialControls = () => {
     const citySelect = document.getElementById("city-select");
     const themeSelect = document.getElementById("theme-select");
@@ -1658,10 +1668,7 @@ async function main() {
       const el = document.getElementById("lyr-off");
       if (el) el.checked = true;
     }
-    const toggle = document.getElementById("basemap-toggle");
-    const select = document.getElementById("basemap-select");
-    if (toggle) toggle.value = basemap === "color" ? "color" : basemap;
-    if (select) select.value = basemap === "color" ? "color" : basemap;
+    syncBasemapControls(basemap === "color" ? "color" : basemap);
   };
   applyInitialControls();
 
@@ -1773,12 +1780,6 @@ async function main() {
     });
   });
 
-  const syncBasemapControls = (value) => {
-    const toggle = document.getElementById("basemap-toggle");
-    const select = document.getElementById("basemap-select");
-    if (toggle) toggle.value = value;
-    if (select) select.value = value;
-  };
   document.getElementById("basemap-toggle").addEventListener("calciteSegmentedControlChange", (e) => {
     syncBasemapControls(e.target.value);
     changeBasemap(e.target.value);
@@ -1786,6 +1787,13 @@ async function main() {
   bindSelect("basemap-select", (e) => {
     syncBasemapControls(e.target.value);
     changeBasemap(e.target.value);
+  });
+  document.getElementById("basemap-menu")?.addEventListener("calciteDropdownSelect", (e) => {
+    const item = e.target.selectedItems?.[0];
+    const value = item?.dataset?.basemap;
+    if (!value) return;
+    syncBasemapControls(value);
+    changeBasemap(value);
   });
 
   const setAppearance = (dark) => {
