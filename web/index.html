@@ -2,24 +2,37 @@
 <html lang="en" class="calcite-mode-light">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0079c1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="15 min on foot" />
     <title>Fifteen minutes on foot</title>
     <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css" />
-    <link rel="stylesheet" href="./src/style.css?v=7" />
+    <link rel="stylesheet" href="./src/style.css?v=12" />
     <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
   </head>
   <body>
     <calcite-loader id="boot-loader" label="Loading map"></calcite-loader>
     <calcite-shell content-behind>
       <calcite-navigation slot="header">
+        <calcite-action
+          id="menu-toggle"
+          slot="navigation-action"
+          icon="hamburger"
+          text="Layers"
+          title="Open layers"
+        ></calcite-action>
         <calcite-navigation-logo
+          id="nav-logo"
           slot="logo"
           heading="Fifteen minutes on foot"
           description="Walking to clinics and schools"
         ></calcite-navigation-logo>
         <div slot="content-end" class="header-tools">
-          <calcite-segmented-control id="basemap-toggle" scale="s">
+          <calcite-segmented-control id="basemap-toggle" class="desktop-basemap" scale="s">
             <calcite-segmented-control-item value="gray" checked>Gray</calcite-segmented-control-item>
             <calcite-segmented-control-item value="color">Buildings 2.5D</calcite-segmented-control-item>
             <calcite-segmented-control-item value="imagery">Imagery</calcite-segmented-control-item>
@@ -28,7 +41,13 @@
         </div>
       </calcite-navigation>
 
-      <calcite-shell-panel slot="panel-start" display-mode="float" width-scale="s">
+      <calcite-shell-panel
+        id="layers-panel"
+        slot="panel-start"
+        display-mode="dock"
+        width-scale="s"
+        resizable
+      >
         <calcite-panel id="side-panel" heading="Choose a city" description="Walking at 5 km/h">
           <div class="panel-body">
             <calcite-label>
@@ -70,18 +89,23 @@
               Beyond 15 minutes only
             </calcite-label>
 
+            <calcite-label layout="inline" class="mobile-appearance">
+              <calcite-switch id="dark-switch" scale="s"></calcite-switch>
+              Dark appearance
+            </calcite-label>
+
             <h3 class="block-title">Layers</h3>
             <calcite-label layout="inline">
               <calcite-checkbox id="lyr-hexes" checked scale="s"></calcite-checkbox>
               Neighbourhoods
             </calcite-label>
             <calcite-label layout="inline">
-              <calcite-checkbox id="lyr-clinics" scale="s"></calcite-checkbox>
-              Clinics
+              <calcite-checkbox id="lyr-clinics" checked scale="s"></calcite-checkbox>
+              <span>Clinics <span id="count-clinics" class="layer-count"></span></span>
             </calcite-label>
             <calcite-label layout="inline">
-              <calcite-checkbox id="lyr-schools" scale="s"></calcite-checkbox>
-              Schools
+              <calcite-checkbox id="lyr-schools" checked scale="s"></calcite-checkbox>
+              <span>Schools <span id="count-schools" class="layer-count"></span></span>
             </calcite-label>
             <calcite-label layout="inline">
               <calcite-checkbox id="lyr-wards" checked scale="s"></calcite-checkbox>
@@ -104,7 +128,7 @@
               <calcite-accordion-item heading="How to read this" icon-start="question">
                 <div class="docs">
                   <p>
-                    Click a neighbourhood for the walk from that tile, and the ward it sits in. Click a ward fill or a ward name for the ward’s scores. F15 is the share of people, not the share of tiles.
+                    Tap a neighbourhood for the walk from that tile, and the ward it sits in. Tap a ward fill or a ward name for the ward’s scores. F15 is the share of people, not the share of tiles.
                   </p>
                   <p>
                     Clinics on the map are GRID3 buildings. N* (how many well-placed new clinics would cover 90% of people) is a siting test, not a second set of dots. It lives in the glossary.
@@ -147,8 +171,9 @@
       </calcite-shell-panel>
 
       <div id="map" role="application" aria-label="Walking access map"></div>
+      <calcite-action id="layers-fab" class="layers-fab" icon="layers" text="Layers" scale="m" title="Open layers"></calcite-action>
     </calcite-shell>
     <script src="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.js"></script>
-    <script type="module" src="./src/main.js?v=8"></script>
+    <script type="module" src="./src/main.js?v=12"></script>
   </body>
 </html>

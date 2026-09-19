@@ -103,7 +103,7 @@ function hexPaint(theme, breaks) {
   };
 }
 
-function rasterIcon(draw, size = 32) {
+function rasterIcon(draw, size = 40) {
   const canvas = document.createElement("canvas");
   canvas.width = canvas.height = size;
   const ctx = canvas.getContext("2d");
@@ -117,44 +117,49 @@ function rasterIcon(draw, size = 32) {
 }
 
 function addIcons(map) {
+  if (!map.getStyle()) return;
   const clinic = rasterIcon((ctx, size) => {
-    const r = 5;
+    const r = 7;
     ctx.fillStyle = CLINIC;
-    ctx.strokeStyle = "rgba(255,255,255,0.92)";
-    ctx.lineWidth = 1.6;
+    ctx.strokeStyle = "rgba(255,255,255,0.95)";
+    ctx.lineWidth = 2;
     ctx.beginPath();
     ctx.roundRect(2, 2, size - 4, size - 4, r);
     ctx.fill();
     ctx.stroke();
     ctx.fillStyle = "#fff";
-    const arm = 4;
-    const bar = 12;
+    const arm = 5;
+    const bar = 16;
     ctx.fillRect((size - arm) / 2, (size - bar) / 2, arm, bar);
     ctx.fillRect((size - bar) / 2, (size - arm) / 2, bar, arm);
   });
   const school = rasterIcon((ctx, size) => {
     ctx.fillStyle = SCHOOL;
     ctx.beginPath();
-    ctx.arc(size / 2, size / 2, size / 2 - 1.5, 0, Math.PI * 2);
+    ctx.arc(size / 2, size / 2, size / 2 - 2, 0, Math.PI * 2);
     ctx.fill();
-    ctx.strokeStyle = "rgba(255,255,255,0.92)";
-    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = "rgba(255,255,255,0.95)";
+    ctx.lineWidth = 2;
     ctx.stroke();
     ctx.fillStyle = "#fff";
     ctx.beginPath();
-    ctx.moveTo(size / 2, 7);
-    ctx.lineTo(23, 14);
-    ctx.lineTo(9, 14);
+    ctx.moveTo(size / 2, 8);
+    ctx.lineTo(size * 0.78, 17);
+    ctx.lineTo(size * 0.22, 17);
     ctx.closePath();
     ctx.fill();
-    ctx.fillRect(11, 14, 10, 9);
-    ctx.fillRect(14.5, 17, 3, 6);
-    ctx.fillRect(size / 2 - 0.7, 5.5, 1.4, 3);
+    ctx.fillRect(size * 0.32, 17, size * 0.36, 12);
+    ctx.fillRect(size / 2 - 2.2, 21, 4.4, 8);
+    ctx.fillRect(size / 2 - 1, 6, 2, 4);
   });
-  if (map.hasImage("clinic-mark")) map.removeImage("clinic-mark");
-  if (map.hasImage("school-mark")) map.removeImage("school-mark");
-  map.addImage("clinic-mark", clinic);
-  map.addImage("school-mark", school);
+  try {
+    if (map.hasImage("clinic-mark")) map.removeImage("clinic-mark");
+    if (map.hasImage("school-mark")) map.removeImage("school-mark");
+    map.addImage("clinic-mark", clinic);
+    map.addImage("school-mark", school);
+  } catch (err) {
+    console.warn(err);
+  }
 }
 
 function row(label, value) {
@@ -290,6 +295,10 @@ function renderScores(city) {
     .map(([value, label]) => `<div class="score"><div class="score-value">${value}</div><div class="score-label">${label}</div></div>`)
     .join("");
   document.getElementById("city-blurb").textContent = city.blurb;
+  const clinicsEl = document.getElementById("count-clinics");
+  const schoolsEl = document.getElementById("count-schools");
+  if (clinicsEl) clinicsEl.textContent = city.clinics != null ? `(${fmt(city.clinics)})` : "";
+  if (schoolsEl) schoolsEl.textContent = city.schools != null ? `(${fmt(city.schools)})` : "";
   const panel = document.getElementById("side-panel");
   panel.heading = city.name;
   panel.description = city.frame ? `${city.frame} · 5 km/h walk` : "Walking at 5 km/h";
@@ -333,11 +342,17 @@ async function loadJSON(path, tries = 3) {
   throw last;
 }
 
+const MOBILE_MQ = "(max-width: 860px)";
+function isMobile() {
+  return window.matchMedia(MOBILE_MQ).matches;
+}
+
 async function main() {
   const meta = await loadJSON("./data/metrics.json");
   document.title = meta.title;
   const cityCache = new Map();
   let loadGen = 0;
+  let paintSeq = 0;
   let current = "lagos";
   let theme = "walk";
   let basemap = "gray";
@@ -350,15 +365,25 @@ async function main() {
     style: rasterStyle("gray"),
     center: [8.1, 9.2],
     zoom: 5.6,
-    attributionControl: true,
+    attributionControl: false,
     maxPitch: 60,
     pitch: 0,
+    cooperativeGestures: false,
+    fadeDuration: 0,
+    dragRotate: !isMobile(),
+    touchPitch: !isMobile(),
   });
   window.__map = map;
-  map.addControl(new maplibregl.NavigationControl({ visualizePitch: true }), "bottom-right");
-  map.addControl(new maplibregl.ScaleControl({ unit: "metric" }), "bottom-left");
+  map.addControl(new maplibregl.NavigationControl({ visualizePitch: !isMobile(), showCompass: !isMobile() }), "bottom-right");
+  map.addControl(new maplibregl.ScaleControl({ unit: "metric", maxWidth: isMobile() ? 72 : 100 }), "bottom-left");
+  map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
+  if (isMobile() && map.touchZoomRotate) map.touchZoomRotate.disableRotation();
 
-  const popup = new maplibregl.Popup({ closeButton: true, maxWidth: "320px" });
+  const popup = new maplibregl.Popup({
+    closeButton: true,
+    maxWidth: "min(320px, calc(100vw - 20px))",
+    offset: 12,
+  });
 
   const cityLayerIds = [
     "labels-clinics",
@@ -367,9 +392,7 @@ async function main() {
     "labels-places",
     "labels-places-pinned",
     "clinics",
-    "clinics-cluster",
     "schools",
-    "schools-cluster",
     "boundary",
     "wards",
     "hexes-line",
@@ -407,11 +430,9 @@ async function main() {
     setVisibility(map, "hexes-line", hexesOn);
     const clinicsOn = document.getElementById("lyr-clinics").checked;
     setVisibility(map, "clinics", clinicsOn);
-    setVisibility(map, "clinics-cluster", clinicsOn);
     setVisibility(map, "labels-clinics", clinicsOn);
     const schoolsOn = document.getElementById("lyr-schools").checked;
     setVisibility(map, "schools", schoolsOn);
-    setVisibility(map, "schools-cluster", schoolsOn);
     setVisibility(map, "labels-schools", schoolsOn);
     const wardsOn = document.getElementById("lyr-wards").checked;
     setVisibility(map, "wards", wardsOn);
@@ -423,32 +444,24 @@ async function main() {
     setVisibility(map, "boundary", document.getElementById("lyr-boundary").checked);
   };
 
-  const insertBefore = () => {
-    if (map.getLayer("building-3d")) return "building-3d";
-    if (map.getLayer("basemap-labels")) return "basemap-labels";
-    const firstSymbol = map.getStyle()?.layers?.find((layer) => layer.type === "symbol");
-    return firstSymbol?.id;
-  };
-
   const addCityLayers = (slug, bundle) => {
     lastBundle = bundle;
     removeCityLayers();
     addIcons(map);
     const sparse = slug === "abuja";
-    const add = (id, data, extra = {}) => {
-      map.addSource(id, { type: "geojson", data: data || EMPTY, generateId: true, ...extra });
+    const add = (id, data) => {
+      map.addSource(id, { type: "geojson", data: data || EMPTY, generateId: true });
     };
     add("hexes", bundle.hexes);
     add("wards", bundle.wards);
     add("boundary", bundle.boundary);
     add("places", bundle.places);
-    add("clinics", bundle.clinics, { cluster: true, clusterRadius: 46, clusterMaxZoom: 12 });
-    add("schools", bundle.schools, { cluster: true, clusterRadius: 46, clusterMaxZoom: 12 });
+    add("clinics", bundle.clinics);
+    add("schools", bundle.schools);
 
     const markSize = sparse
-      ? ["interpolate", ["linear"], ["zoom"], 10, 0.42, 14, 0.62, 16, 0.78]
-      : ["interpolate", ["linear"], ["zoom"], 10, 0.36, 14, 0.52, 16, 0.68];
-    const before = insertBefore();
+      ? ["interpolate", ["linear"], ["zoom"], 9, 0.85, 12, 1.05, 16, 1.25]
+      : ["interpolate", ["linear"], ["zoom"], 9, 0.7, 12, 0.9, 16, 1.1];
     const layers = [
       {
         id: "wards-fill",
@@ -481,51 +494,29 @@ async function main() {
         paint: { "line-color": INK, "line-width": 2.4 },
       },
       {
-        id: "schools-cluster",
-        type: "circle",
-        source: "schools",
-        filter: ["has", "point_count"],
-        paint: {
-          "circle-color": "#9eb6c7",
-          "circle-radius": ["step", ["get", "point_count"], 12, 25, 16, 80, 20],
-          "circle-stroke-color": SCHOOL,
-          "circle-stroke-width": 1,
-        },
-      },
-      {
-        id: "clinics-cluster",
-        type: "circle",
-        source: "clinics",
-        filter: ["has", "point_count"],
-        paint: {
-          "circle-color": "#e4a3a3",
-          "circle-radius": ["step", ["get", "point_count"], 12, 25, 16, 80, 20],
-          "circle-stroke-color": CLINIC,
-          "circle-stroke-width": 1,
-        },
-      },
-      {
         id: "schools",
         type: "symbol",
         source: "schools",
-        filter: ["!", ["has", "point_count"]],
         layout: {
           "icon-image": "school-mark",
           "icon-size": markSize,
           "icon-allow-overlap": true,
           "icon-ignore-placement": true,
+          "icon-padding": 0,
+          "icon-anchor": "center",
         },
       },
       {
         id: "clinics",
         type: "symbol",
         source: "clinics",
-        filter: ["!", ["has", "point_count"]],
         layout: {
           "icon-image": "clinic-mark",
           "icon-size": markSize,
           "icon-allow-overlap": true,
           "icon-ignore-placement": true,
+          "icon-padding": 0,
+          "icon-anchor": "center",
         },
       },
       {
@@ -587,7 +578,6 @@ async function main() {
         type: "symbol",
         source: "clinics",
         minzoom: 15.2,
-        filter: ["!", ["has", "point_count"]],
         layout: {
           "text-field": ["get", "name"],
           "text-font": ["Noto Sans Regular"],
@@ -604,7 +594,6 @@ async function main() {
         type: "symbol",
         source: "schools",
         minzoom: 15.2,
-        filter: ["!", ["has", "point_count"]],
         layout: {
           "text-field": ["get", "name"],
           "text-font": ["Noto Sans Regular"],
@@ -617,21 +606,25 @@ async function main() {
         paint: { "text-color": SCHOOL, "text-halo-color": HALO, "text-halo-width": 1.1 },
       },
     ];
-    const under3d = new Set(["wards-fill", "hexes", "hexes-line"]);
-    layers.forEach((layer) => {
-      const beforeId = under3d.has(layer.id) ? before : undefined;
-      if (beforeId && map.getLayer(beforeId)) map.addLayer(layer, beforeId);
-      else map.addLayer(layer);
-    });
+    layers.forEach((layer) => map.addLayer(layer));
     applyOverlays();
     applyTheme();
   };
 
+  const basemapPitch = () => {
+    if (basemap !== "color") return 0;
+    return isMobile() ? 28 : 48;
+  };
+
   const edgePadding = () => {
     map.resize();
+    if (isMobile()) {
+      const open = !document.getElementById("layers-panel").collapsed;
+      return { top: 56, right: 18, bottom: open ? 72 : 56, left: 18 };
+    }
     const width = map.getContainer().clientWidth || 800;
-    const panel = document.querySelector("calcite-shell-panel");
-    const panelW = panel ? Math.round(panel.getBoundingClientRect().width) : 0;
+    const panel = document.getElementById("layers-panel");
+    const panelW = panel && !panel.collapsed ? Math.round(panel.getBoundingClientRect().width) : 0;
     const left = width > panelW + 280 ? panelW + 16 : 48;
     return { top: 64, right: 48, bottom: 48, left };
   };
@@ -639,7 +632,13 @@ async function main() {
   const flyToCity = (slug, boundary) => {
     const padding = edgePadding();
     const feat = boundary?.features?.[0];
-    const maxZoom = basemap === "color" ? 13.2 : 12.6;
+    const maxZoom = basemap === "color" ? (isMobile() ? 13.0 : 13.2) : isMobile() ? 12.8 : 12.6;
+    const minZoom = isMobile() ? 11.6 : 10.8;
+    const pitch = basemapPitch();
+    const camera = { padding, duration: 700, maxZoom, pitch, bearing: 0 };
+    const clamp = () => {
+      if (map.getZoom() < minZoom) map.easeTo({ zoom: minZoom, duration: 280 });
+    };
     if (!feat) {
       const bbox = meta.cities[slug].bbox;
       map.fitBounds(
@@ -647,8 +646,9 @@ async function main() {
           [bbox[0], bbox[1]],
           [bbox[2], bbox[3]],
         ],
-        { padding, duration: 700, maxZoom, pitch: basemap === "color" ? 48 : 0, bearing: 0 }
+        camera
       );
+      map.once("moveend", clamp);
       return;
     }
     const b = new maplibregl.LngLatBounds();
@@ -661,10 +661,11 @@ async function main() {
     };
     walk(feat.geometry.coordinates);
     try {
-      map.fitBounds(b, { padding, duration: 700, maxZoom, pitch: basemap === "color" ? 48 : 0, bearing: 0 });
+      map.fitBounds(b, camera);
     } catch (err) {
-      map.fitBounds(b, { padding: 40, duration: 700, maxZoom });
+      map.fitBounds(b, { padding: 24, duration: 700, maxZoom, pitch });
     }
+    map.once("moveend", clamp);
   };
 
   const fetchCity = async (slug) => {
@@ -681,12 +682,21 @@ async function main() {
   };
 
   const paintCity = (slug, bundle) => {
+    const seq = ++paintSeq;
     wardLookup = new Map((bundle.wards?.features || []).map((f) => [f.properties.name, f.properties]));
+    const city = { ...meta.cities[slug] };
+    city.clinics = bundle.clinics?.features?.length ?? city.clinics;
+    city.schools = bundle.schools?.features?.length ?? city.schools;
+    renderScores(city);
+    let painted = false;
     const go = () => {
+      if (painted || seq !== paintSeq) return;
+      painted = true;
       try {
         addCityLayers(slug, bundle);
         map.resize();
         requestAnimationFrame(() => {
+          map.resize();
           flyToCity(slug, bundle.boundary);
           showLoader(false);
         });
@@ -696,13 +706,20 @@ async function main() {
       }
     };
     if (map.isStyleLoaded()) go();
-    else map.once("style.load", go);
+    else {
+      map.once("style.load", go);
+      map.once("idle", go);
+      setTimeout(go, 1800);
+    }
   };
 
   const loadCity = async (slug) => {
     const gen = ++loadGen;
     current = slug;
     showLoader(true);
+    const failsafe = setTimeout(() => {
+      if (gen === loadGen) showLoader(false);
+    }, 8000);
     renderScores(meta.cities[slug]);
     renderLegend(theme);
     try {
@@ -714,7 +731,35 @@ async function main() {
       showLoader(false);
       document.getElementById("city-blurb").textContent =
         `Map data missing for this city. From the repo root run python -m proximity.web_map. (${err})`;
+    } finally {
+      setTimeout(() => clearTimeout(failsafe), 8000);
     }
+  };
+
+  const firstCityLayer = () => ["wards-fill", "hexes", "hexes-line", "wards"].find((id) => map.getLayer(id));
+
+  const afterStyle = (fn) => {
+    let done = false;
+    const run = () => {
+      if (done) return;
+      done = true;
+      fn();
+    };
+    if (map.isStyleLoaded()) {
+      run();
+      return;
+    }
+    map.once("style.load", run);
+    const poll = setInterval(() => {
+      if (map.isStyleLoaded()) {
+        clearInterval(poll);
+        run();
+      }
+    }, 120);
+    setTimeout(() => {
+      clearInterval(poll);
+      run();
+    }, 2200);
   };
 
   const restoreThematic = () => {
@@ -729,13 +774,22 @@ async function main() {
     const src = map.getSource("basemap");
     if (!src || !src.setTiles) return false;
     src.setTiles(spec.tiles);
+    const under = firstCityLayer();
     if (spec.labels) {
       if (map.getSource("labels")?.setTiles) {
         map.getSource("labels").setTiles([spec.labels]);
       } else if (!map.getSource("labels")) {
         map.addSource("labels", { type: "raster", tiles: [spec.labels], tileSize: 256, maxzoom: spec.maxzoom });
-        if (!map.getLayer("basemap-labels")) {
-          map.addLayer({ id: "basemap-labels", type: "raster", source: "labels", paint: { "raster-opacity": 1, "raster-fade-duration": 0 } });
+      }
+      if (!map.getLayer("basemap-labels")) {
+        const layer = { id: "basemap-labels", type: "raster", source: "labels", paint: { "raster-opacity": 1, "raster-fade-duration": 0 } };
+        if (under && map.getLayer(under)) map.addLayer(layer, under);
+        else map.addLayer(layer);
+      } else if (under) {
+        try {
+          map.moveLayer("basemap-labels", under);
+        } catch (err) {
+          /* already below */
         }
       }
     } else if (map.getLayer("basemap-labels")) {
@@ -746,35 +800,32 @@ async function main() {
   };
 
   const changeBasemap = (value) => {
-    if (value === basemap && !(value === "gray" && isVectorStyle())) {
-      if (value !== "color") applyRasterTiles(value);
+    const camera = {
+      center: map.getCenter(),
+      zoom: map.getZoom(),
+      bearing: map.getBearing(),
+    };
+    const prev = basemap;
+    const same = value === basemap && !(value === "gray" && isVectorStyle());
+    if (same && value !== "color") {
+      applyRasterTiles(value);
       return;
     }
-    const prev = basemap;
     basemap = value;
-    const center = map.getCenter();
-    const zoom = map.getZoom();
-    const bearing = map.getBearing();
 
     if (value === "color") {
-      map.setStyle(LIBERTY);
-      map.once("style.load", () => {
-        map.setCenter(center);
-        map.setZoom(zoom);
-        map.setPitch(48);
-        map.setBearing(bearing);
+      map.setStyle(LIBERTY, { diff: false });
+      afterStyle(() => {
+        map.jumpTo({ ...camera, pitch: basemapPitch() });
         restoreThematic();
       });
       return;
     }
 
-    if (prev === "color" || isVectorStyle()) {
-      map.setStyle(rasterStyle(value));
-      map.once("style.load", () => {
-        map.setCenter(center);
-        map.setZoom(zoom);
-        map.setPitch(0);
-        map.setBearing(0);
+    if (prev === "color" || isVectorStyle() || !map.getSource("basemap")?.setTiles) {
+      map.setStyle(rasterStyle(value), { diff: false });
+      afterStyle(() => {
+        map.jumpTo({ ...camera, pitch: 0 });
         restoreThematic();
       });
       return;
@@ -783,6 +834,10 @@ async function main() {
     applyRasterTiles(value);
     map.setPitch(0);
   };
+
+  map.on("styleimagemissing", (e) => {
+    if (e.id === "clinic-mark" || e.id === "school-mark") addIcons(map);
+  });
 
   map.on("load", () => {
     addIcons(map);
@@ -816,18 +871,6 @@ async function main() {
 
   map.on("click", (e) => {
     try {
-      for (const clusterId of ["clinics-cluster", "schools-cluster"]) {
-        if (!map.getLayer(clusterId)) continue;
-        const clustered = map.queryRenderedFeatures(e.point, { layers: [clusterId] });
-        if (clustered.length) {
-          const src = map.getSource(clustered[0].source);
-          src.getClusterExpansionZoom(clustered[0].properties.cluster_id, (err, zoom) => {
-            if (err) return;
-            map.easeTo({ center: clustered[0].geometry.coordinates, zoom });
-          });
-          return;
-        }
-      }
       const hits = map.queryRenderedFeatures(e.point, { layers: hitLayers.filter((id) => map.getLayer(id)) });
       if (!hits.length) {
         popup.remove();
@@ -835,14 +878,15 @@ async function main() {
       }
       const prefer = hitLayers.find((id) => hits.some((f) => f.layer.id === id));
       const f = hits.find((h) => h.layer.id === prefer) || hits[0];
+      const kind = f.layer.id.replace(/-dot$/, "");
       const props = { ...f.properties };
-      if (f.layer.id === "hexes" && !props.ward) {
+      if (kind === "hexes" && !props.ward) {
         const wf = hits.find((h) => h.layer.id === "wards-fill");
         if (wf?.properties?.name) props.ward = wf.properties.name;
       }
       popup
         .setLngLat(e.lngLat)
-        .setHTML(popupHTML(f.layer.id, props, meta.cities[current], wardLookup))
+        .setHTML(popupHTML(kind, props, meta.cities[current], wardLookup))
         .addTo(map);
     } catch (err) {
       console.error(err);
@@ -878,15 +922,73 @@ async function main() {
     changeBasemap(e.target.value);
   });
 
-  document.getElementById("theme-toggle").addEventListener("click", () => {
-    const dark = !isDark();
+  const setAppearance = (dark) => {
     document.documentElement.classList.toggle("calcite-mode-dark", dark);
     document.documentElement.classList.toggle("calcite-mode-light", !dark);
     const action = document.getElementById("theme-toggle");
-    action.icon = dark ? "brightness" : "moon";
-    action.text = dark ? "Light" : "Dark";
+    if (action) {
+      action.icon = dark ? "brightness" : "moon";
+      action.text = dark ? "Light" : "Dark";
+    }
+    const darkSwitch = document.getElementById("dark-switch");
+    if (darkSwitch) darkSwitch.checked = dark;
     if (basemap === "gray" && !isVectorStyle()) applyRasterTiles("gray");
+  };
+
+  const setPanelOpen = (open) => {
+    const shellPanel = document.getElementById("layers-panel");
+    const panel = document.getElementById("side-panel");
+    const menu = document.getElementById("menu-toggle");
+    const fab = document.getElementById("layers-fab");
+    shellPanel.collapsed = !open;
+    if (open) panel.closed = false;
+    if (menu) menu.icon = open ? "x" : "hamburger";
+    if (fab) fab.hidden = open;
+    requestAnimationFrame(() => map.resize());
+  };
+
+  const applyMobileChrome = ({ crossing = false } = {}) => {
+    const mobile = isMobile();
+    const shellPanel = document.getElementById("layers-panel");
+    const panel = document.getElementById("side-panel");
+    const logo = document.getElementById("nav-logo");
+    shellPanel.slot = "panel-start";
+    shellPanel.displayMode = mobile ? "overlay" : "dock";
+    shellPanel.resizable = true;
+    panel.closable = mobile;
+    if (logo) {
+      logo.heading = mobile ? "15 min on foot" : "Fifteen minutes on foot";
+      logo.description = mobile ? "Clinics and schools" : "Walking to clinics and schools";
+    }
+    if (crossing) setPanelOpen(!mobile);
+    map.resize();
+  };
+
+  document.getElementById("theme-toggle").addEventListener("click", () => setAppearance(!isDark()));
+  document.getElementById("dark-switch").addEventListener("calciteSwitchChange", (e) => setAppearance(e.target.checked));
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    setPanelOpen(document.getElementById("layers-panel").collapsed);
   });
+  document.getElementById("layers-fab")?.addEventListener("click", () => {
+    setPanelOpen(document.getElementById("layers-panel").collapsed);
+  });
+  document.getElementById("side-panel").addEventListener("calcitePanelClose", () => setPanelOpen(false));
+
+  const panelEl = document.getElementById("layers-panel");
+  if (window.ResizeObserver) new ResizeObserver(() => map.resize()).observe(panelEl);
+
+  let lastMobile = isMobile();
+  applyMobileChrome({ crossing: true });
+  const mq = window.matchMedia(MOBILE_MQ);
+  const onBreakpoint = () => {
+    const mobile = mq.matches;
+    applyMobileChrome({ crossing: mobile !== lastMobile });
+    lastMobile = mobile;
+  };
+  if (mq.addEventListener) mq.addEventListener("change", onBreakpoint);
+  else mq.addListener(onBreakpoint);
+  window.addEventListener("orientationchange", () => setTimeout(() => map.resize(), 300));
+  window.visualViewport?.addEventListener("resize", () => map.resize());
 }
 
 main().catch((err) => {
