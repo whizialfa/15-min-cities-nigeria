@@ -10,8 +10,12 @@ const PLACE_INK = "#37322e";
 const HALO = "#fafafa";
 const GLYPHS = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
 const LIBERTY = "https://tiles.openfreemap.org/styles/liberty";
-const ASSET = "19";
-const ESRI_CREDIT = "Tiles © Esri · GRID3 clinics and schools";
+const ASSET = "40";
+const ESRI_CREDIT = "Tiles © Esri · GRID3 clinics and schools · OSM streets";
+const ROAD = "#5c4524";
+const ROAD_DARK = "#edd9a4";
+const ROAD_CASE = "#f6f1e6";
+const ROAD_CASE_DARK = "#101010";
 
 const EMPTY = { type: "FeatureCollection", features: [] };
 
@@ -48,7 +52,15 @@ const fmt = (n) => {
   return Number(n).toLocaleString("en-US");
 };
 const pct = (n) => (n == null || Number.isNaN(Number(n)) ? "n/a" : `${Number(n).toFixed(1)}%`);
-const minutes = (n) => (n == null || Number.isNaN(Number(n)) ? "n/a" : `${Number(n).toFixed(1)} min`);
+const minutes = (n) => {
+  if (n == null || n === "" || Number.isNaN(Number(n))) return "n/a";
+  const m = Number(n);
+  if (m >= 0 && m < 1) {
+    const sec = Math.max(1, Math.round(m * 60));
+    return `${sec} s`;
+  }
+  return `${m.toFixed(1)} min`;
+};
 const nonempty = (s) => (s && String(s).trim() && String(s).trim() !== "nan" ? String(s).trim() : "");
 
 function isDark() {
@@ -103,7 +115,7 @@ function fieldFor(theme) {
   return "minutes";
 }
 
-const VIEW_KEYS = ["city", "color", "theme", "bm", "within", "beyond", "max", "off", "lat", "lng", "z"];
+const VIEW_KEYS = ["city", "color", "theme", "bm", "within", "beyond", "max", "off", "streets", "lat", "lng", "z"];
 
 function foldText(s) {
   return String(s || "")
@@ -201,6 +213,7 @@ function readView() {
     cutoff: Number.isFinite(max) ? max : null,
     hideCutoff: Number.isFinite(max),
     off: q.get("off") === "1",
+    streets: q.get("streets") === "1",
     camera: Number.isFinite(lat) && Number.isFinite(lng) ? { lat, lng, zoom: Number.isFinite(z) ? z : 12.4 } : null,
   };
 }
@@ -515,6 +528,11 @@ function setVisibility(map, id, on) {
   if (map.getLayer(id)) map.setLayoutProperty(id, "visibility", on ? "visible" : "none");
 }
 
+function checkboxOn(id) {
+  const el = document.getElementById(id);
+  return Boolean(el?.checked);
+}
+
 function showLoader(on) {
   const el = document.getElementById("boot-loader");
   if (on) {
@@ -543,13 +561,38 @@ async function loadJSON(path, tries = 3) {
 }
 
 const MOBILE_MQ = "(max-width: 860px)";
+function isCoarsePointer() {
+  return (
+    window.matchMedia("(pointer: coarse)").matches ||
+    window.matchMedia("(hover: none)").matches ||
+    (typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1)
+  );
+}
 function isMobile() {
-  return window.matchMedia(MOBILE_MQ).matches;
+  const shortSide = Math.min(window.screen.width || 0, window.screen.height || 0);
+  if (window.matchMedia(MOBILE_MQ).matches) return true;
+  const touchy =
+    isCoarsePointer() || (typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1);
+  // Landscape phones and Safari/Chrome "desktop site" still report a wide layout.
+  return touchy && shortSide > 0 && shortSide <= 512;
+}
+function restoreDeviceViewport() {
+  if (!isMobile()) return;
+  const shortSide = Math.min(window.screen.width || 0, window.screen.height || 0);
+  if (!shortSide || window.innerWidth <= 860) return;
+  const meta = document.querySelector('meta[name="viewport"]');
+  if (!meta) return;
+  meta.setAttribute(
+    "content",
+    "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+  );
 }
 
 async function main() {
   const meta = await loadJSON("./data/metrics.json");
   document.title = meta.title;
+  const byline = document.getElementById("mast-byline");
+  if (byline && meta.author) byline.textContent = meta.author;
   const cityData = new Map();
   const cityWait = new Map();
   let loadGen = 0;
@@ -585,8 +628,9 @@ async function main() {
     cooperativeGestures: false,
     fadeDuration: 0,
     refreshExpiredTiles: true,
-    dragRotate: !isMobile(),
-    touchPitch: !isMobile(),
+    dragRotate: !isMobile() && !isCoarsePointer(),
+    touchPitch: !isMobile() && !isCoarsePointer(),
+    dragPan: { maxSpeed: 1600, deceleration: 1800 },
     transformRequest: (url, resourceType) => {
       if (resourceType === "Tile" && /arcgisonline\.com/.test(url) && !/[?&]v=/.test(url)) {
         return { url: bust(url) };
@@ -595,10 +639,26 @@ async function main() {
     },
   });
   window.__map = map;
-  map.addControl(new maplibregl.NavigationControl({ visualizePitch: !isMobile(), showCompass: !isMobile() }), "bottom-right");
+  map.addControl(
+    new maplibregl.NavigationControl({
+      visualizePitch: !isMobile() && !isCoarsePointer(),
+      showCompass: !isMobile() && !isCoarsePointer(),
+    }),
+    "bottom-right"
+  );
   map.addControl(new maplibregl.ScaleControl({ unit: "metric", maxWidth: isMobile() ? 72 : 100 }), "bottom-left");
-  map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right");
-  if (isMobile() && map.touchZoomRotate) map.touchZoomRotate.disableRotation();
+  map.addControl(
+    new maplibregl.AttributionControl({
+      compact: true,
+      customAttribution: meta.author ? `Map by ${meta.author}` : undefined,
+    }),
+    "bottom-right"
+  );
+  if (isMobile() || isCoarsePointer()) {
+    map.dragRotate.disable();
+    map.touchPitch.disable();
+    if (map.touchZoomRotate) map.touchZoomRotate.disableRotation();
+  }
 
   const popup = new maplibregl.Popup({
     closeButton: true,
@@ -701,6 +761,10 @@ async function main() {
     "schools",
     "boundary",
     "wards",
+    "roads-main",
+    "roads-main-case",
+    "roads",
+    "roads-case",
     "hexes-off-line",
     "hexes-off",
     "hexes-line",
@@ -712,7 +776,7 @@ async function main() {
     cityLayerIds.forEach((id) => {
       if (map.getLayer(id)) map.removeLayer(id);
     });
-    ["clinics", "schools", "boundary", "wards", "hexes", "places"].forEach((id) => {
+    ["clinics", "schools", "boundary", "wards", "hexes", "places", "roads"].forEach((id) => {
       if (map.getSource(id)) map.removeSource(id);
     });
   };
@@ -765,6 +829,7 @@ async function main() {
     else if (hide) q.set("max", String(cutoffValue()));
     q.delete("tour");
     if (document.getElementById("lyr-off")?.checked) q.set("off", "1");
+    if (checkboxOn("lyr-roads")) q.set("streets", "1");
     try {
       const center = map.getCenter();
       q.set("lat", center.lat.toFixed(5));
@@ -810,24 +875,29 @@ async function main() {
   };
 
   const applyOverlays = () => {
-    const hexesOn = document.getElementById("lyr-hexes").checked;
+    const hexesOn = checkboxOn("lyr-hexes");
     setVisibility(map, "hexes", hexesOn);
     setVisibility(map, "hexes-line", hexesOn);
-    const clinicsOn = document.getElementById("lyr-clinics").checked;
+    const clinicsOn = checkboxOn("lyr-clinics");
     setVisibility(map, "clinics", clinicsOn);
     setVisibility(map, "labels-clinics", clinicsOn);
-    const schoolsOn = document.getElementById("lyr-schools").checked;
+    const schoolsOn = checkboxOn("lyr-schools");
     setVisibility(map, "schools", schoolsOn);
     setVisibility(map, "labels-schools", schoolsOn);
-    const wardsOn = document.getElementById("lyr-wards").checked;
+    const wardsOn = checkboxOn("lyr-wards");
     setVisibility(map, "wards", wardsOn);
     setVisibility(map, "wards-fill", wardsOn);
     setVisibility(map, "labels-wards", wardsOn);
-    const placesOn = document.getElementById("lyr-places").checked;
+    const placesOn = checkboxOn("lyr-places");
     setVisibility(map, "labels-places", placesOn);
     setVisibility(map, "labels-places-pinned", placesOn);
-    setVisibility(map, "boundary", document.getElementById("lyr-boundary").checked);
-    const offOn = document.getElementById("lyr-off")?.checked;
+    setVisibility(map, "boundary", checkboxOn("lyr-boundary"));
+    const roadsOn = checkboxOn("lyr-roads");
+    setVisibility(map, "roads-case", roadsOn);
+    setVisibility(map, "roads", roadsOn);
+    setVisibility(map, "roads-main-case", roadsOn);
+    setVisibility(map, "roads-main", roadsOn);
+    const offOn = checkboxOn("lyr-off");
     setVisibility(map, "hexes-off", offOn);
     setVisibility(map, "hexes-off-line", offOn);
   };
@@ -853,6 +923,12 @@ async function main() {
     setText("labels-schools", wardText, 1.5);
     if (map.getLayer("boundary")) map.setPaintProperty("boundary", "line-color", boundary);
     if (map.getLayer("wards")) map.setPaintProperty("wards", "line-color", wardLine);
+    const road = dark ? ROAD_DARK : ROAD;
+    const roadCase = dark ? ROAD_CASE_DARK : ROAD_CASE;
+    if (map.getLayer("roads-case")) map.setPaintProperty("roads-case", "line-color", roadCase);
+    if (map.getLayer("roads")) map.setPaintProperty("roads", "line-color", road);
+    if (map.getLayer("roads-main-case")) map.setPaintProperty("roads-main-case", "line-color", roadCase);
+    if (map.getLayer("roads-main")) map.setPaintProperty("roads-main", "line-color", road);
     if (map.getLayer("hexes-off-line")) {
       map.setPaintProperty("hexes-off-line", "line-color", dark ? "#f4f4f4" : "#121212");
     }
@@ -872,6 +948,7 @@ async function main() {
     add("places", bundle.places);
     add("clinics", bundle.clinics);
     add("schools", bundle.schools);
+    add("roads", bundle.roads);
 
     const markSize = sparse
       ? ["interpolate", ["linear"], ["zoom"], 12, 0.14, 14, 0.28, 16, 0.44]
@@ -916,6 +993,54 @@ async function main() {
           "line-width": 1.15,
           "line-dasharray": [1.6, 1.2],
           "line-opacity": 0.9,
+        },
+      },
+      {
+        id: "roads-case",
+        type: "line",
+        source: "roads",
+        filter: ["!=", ["get", "kind"], "main"],
+        layout: { visibility: "none", "line-cap": "round", "line-join": "round" },
+        paint: {
+          "line-color": isDark() ? ROAD_CASE_DARK : ROAD_CASE,
+          "line-width": ["interpolate", ["linear"], ["zoom"], 10, 1.9, 12, 2.4, 14, 3.1, 16, 4],
+          "line-opacity": 0.95,
+        },
+      },
+      {
+        id: "roads",
+        type: "line",
+        source: "roads",
+        filter: ["!=", ["get", "kind"], "main"],
+        layout: { visibility: "none", "line-cap": "round", "line-join": "round" },
+        paint: {
+          "line-color": isDark() ? ROAD_DARK : ROAD,
+          "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.9, 12, 1.2, 14, 1.7, 16, 2.3],
+          "line-opacity": 1,
+        },
+      },
+      {
+        id: "roads-main-case",
+        type: "line",
+        source: "roads",
+        filter: ["==", ["get", "kind"], "main"],
+        layout: { visibility: "none", "line-cap": "round", "line-join": "round" },
+        paint: {
+          "line-color": isDark() ? ROAD_CASE_DARK : ROAD_CASE,
+          "line-width": ["interpolate", ["linear"], ["zoom"], 10, 2.6, 12, 3.3, 14, 4.2, 16, 5.4],
+          "line-opacity": 0.95,
+        },
+      },
+      {
+        id: "roads-main",
+        type: "line",
+        source: "roads",
+        filter: ["==", ["get", "kind"], "main"],
+        layout: { visibility: "none", "line-cap": "round", "line-join": "round" },
+        paint: {
+          "line-color": isDark() ? ROAD_DARK : ROAD,
+          "line-width": ["interpolate", ["linear"], ["zoom"], 10, 1.25, 12, 1.7, 14, 2.4, 16, 3.2],
+          "line-opacity": 1,
         },
       },
       {
@@ -1063,6 +1188,7 @@ async function main() {
     map.getSource("places").setData(bundle.places || EMPTY);
     map.getSource("clinics").setData(bundle.clinics || EMPTY);
     map.getSource("schools").setData(bundle.schools || EMPTY);
+    if (map.getSource("roads")) map.getSource("roads").setData(bundle.roads || EMPTY);
     applyOverlays();
     applyTheme();
   };
@@ -1128,7 +1254,7 @@ async function main() {
     if (cityData.has(slug)) return Promise.resolve(cityData.get(slug));
     if (cityWait.has(slug)) return cityWait.get(slug);
     const base = `./data/cities/${slug}`;
-    const names = ["hexes", "boundary", "wards", "clinics", "schools", "places"];
+    const names = ["hexes", "boundary", "wards", "clinics", "schools", "places", "roads"];
     const bundle = {};
     let cursor = 0;
     const worker = async () => {
@@ -1136,7 +1262,7 @@ async function main() {
         const name = names[cursor];
         cursor += 1;
         bundle[name] =
-          name === "places"
+          name === "places" || name === "roads"
             ? await loadJSON(`${base}/${name}.geojson`).catch(() => EMPTY)
             : await loadJSON(`${base}/${name}.geojson`);
       }
@@ -1327,9 +1453,13 @@ async function main() {
     rows.sort((a, b) => {
       const pa = a.properties || {};
       const pb = b.properties || {};
-      if (sort === "walk") return (Number(pb.walk) || 0) - (Number(pa.walk) || 0);
-      if (sort === "people") return (Number(pb.people) || 0) - (Number(pa.people) || 0);
-      return (Number(pa.f15) || 0) - (Number(pb.f15) || 0);
+      const num = (v, missing) => {
+        const n = Number(v);
+        return Number.isFinite(n) ? n : missing;
+      };
+      if (sort === "walk") return num(pb.walk, -1) - num(pa.walk, -1);
+      if (sort === "people") return num(pb.people, -1) - num(pa.people, -1);
+      return num(pa.f15, Infinity) - num(pb.f15, Infinity);
     });
     box.innerHTML = rows
       .map((feat) => {
@@ -1668,6 +1798,10 @@ async function main() {
       const el = document.getElementById("lyr-off");
       if (el) el.checked = true;
     }
+    if (initial.streets) {
+      const el = document.getElementById("lyr-roads");
+      if (el) el.checked = true;
+    }
     syncBasemapControls(basemap === "color" ? "color" : basemap);
   };
   applyInitialControls();
@@ -1773,11 +1907,15 @@ async function main() {
     if (document.getElementById("cutoff-switch")?.checked) applyTheme();
     scheduleWriteView();
   });
-  ["lyr-hexes", "lyr-clinics", "lyr-schools", "lyr-wards", "lyr-places", "lyr-boundary", "lyr-off"].forEach((id) => {
-    document.getElementById(id)?.addEventListener("calciteCheckboxChange", () => {
-      applyOverlays();
-      scheduleWriteView();
-    });
+  const syncLayers = () => {
+    applyOverlays();
+    scheduleWriteView();
+  };
+  ["lyr-hexes", "lyr-clinics", "lyr-schools", "lyr-roads", "lyr-wards", "lyr-places", "lyr-boundary", "lyr-off"].forEach((id) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener("calciteCheckboxChange", syncLayers);
+    el.addEventListener("click", () => requestAnimationFrame(syncLayers));
   });
 
   document.getElementById("basemap-toggle").addEventListener("calciteSegmentedControlChange", (e) => {
@@ -1868,7 +2006,7 @@ async function main() {
       target: "tour-layers",
       panel: true,
       title: "Layers",
-      body: "Turn layers on and off. Clinic and school marks wait until you zoom in. Off mapped streets is a hatch for tiles far from OSM paths.",
+      body: "Turn layers on and off. Walking streets is its own layer: tick it to draw the streets the walk is timed on, untick to hide them. Clinic and school marks wait until you zoom in.",
     },
     {
       target: "tour-header",
@@ -1917,7 +2055,7 @@ async function main() {
       const roomLeft = r.left - 16;
       const roomBelow = vh - r.bottom - 16;
       const roomAbove = r.top - 16;
-      if (vw <= 860) {
+      if (isMobile()) {
         left = 12;
         if (roomBelow >= ch + 8) top = r.bottom + 12;
         else if (roomAbove >= ch + 8) top = r.top - ch - 12;
@@ -2047,21 +2185,42 @@ async function main() {
     if (tourOpen()) layoutTour(TOUR_STEPS[tourIndex]);
   });
 
+  const applyMapGestures = () => {
+    const lock = isMobile() || isCoarsePointer();
+    if (lock === applyMapGestures.lock) return;
+    applyMapGestures.lock = lock;
+    if (lock) {
+      map.dragRotate.disable();
+      map.touchPitch.disable();
+      map.touchZoomRotate?.disableRotation();
+      if (Math.abs(map.getBearing()) > 2) map.easeTo({ bearing: 0, duration: 180 });
+    } else {
+      map.dragRotate.enable();
+      map.touchPitch.enable();
+      map.touchZoomRotate?.enableRotation();
+    }
+  };
+
   const applyMobileChrome = ({ crossing = false } = {}) => {
+    restoreDeviceViewport();
     const mobile = isMobile();
+    document.documentElement.classList.toggle("is-phone", mobile);
     const shellPanel = document.getElementById("layers-panel");
     const panel = document.getElementById("side-panel");
     const logo = document.getElementById("nav-logo");
     shellPanel.slot = "panel-start";
     shellPanel.displayMode = mobile ? "overlay" : "dock";
-    shellPanel.resizable = true;
+    shellPanel.resizable = !mobile;
     panel.closable = true;
     if (logo) {
       logo.heading = mobile ? "15 min on foot" : "Fifteen minutes on foot";
-      logo.description = mobile ? "Clinics and schools" : "Walking to clinics and schools";
+      logo.description = mobile
+        ? meta.author || "Clinics and schools"
+        : "Walking to clinics and schools";
     }
+    applyMapGestures();
     if (crossing) setPanelOpen(!mobile);
-    map.resize();
+    requestAnimationFrame(() => map.resize());
   };
 
   document.getElementById("theme-toggle").addEventListener("click", () => setAppearance(!isDark()));
@@ -2103,15 +2262,20 @@ async function main() {
 
   let lastMobile = isMobile();
   applyMobileChrome({ crossing: true });
-  const mq = window.matchMedia(MOBILE_MQ);
   const onBreakpoint = () => {
-    const mobile = mq.matches;
+    const mobile = isMobile();
     applyMobileChrome({ crossing: mobile !== lastMobile });
     lastMobile = mobile;
   };
+  const mq = window.matchMedia(MOBILE_MQ);
   if (mq.addEventListener) mq.addEventListener("change", onBreakpoint);
   else mq.addListener(onBreakpoint);
-  window.addEventListener("orientationchange", () => setTimeout(() => map.resize(), 300));
+  let layoutTimer = 0;
+  window.addEventListener("orientationchange", () => setTimeout(onBreakpoint, 280));
+  window.addEventListener("resize", () => {
+    clearTimeout(layoutTimer);
+    layoutTimer = setTimeout(onBreakpoint, 80);
+  });
   window.visualViewport?.addEventListener("resize", () => map.resize());
   setAppearance(true);
   if (lastBundle) maybeOfferTour();

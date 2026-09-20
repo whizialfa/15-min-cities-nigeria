@@ -2,16 +2,38 @@
 <html lang="en" class="calcite-mode-dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <script>
+      (() => {
+        const short = Math.min(screen.width || 0, screen.height || 0);
+        const coarse =
+          matchMedia("(pointer: coarse)").matches ||
+          matchMedia("(hover: none)").matches ||
+          (navigator.maxTouchPoints || 0) > 1;
+        const phone =
+          matchMedia("(max-width: 860px)").matches || (coarse && short > 0 && short <= 512);
+        document.documentElement.classList.toggle("is-phone", phone);
+        if (phone && innerWidth > 860) {
+          const meta = document.querySelector('meta[name="viewport"]');
+          if (meta) {
+            meta.setAttribute(
+              "content",
+              "width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content"
+            );
+          }
+        }
+      })();
+    </script>
     <meta name="theme-color" content="#1a1a1a" />
     <meta name="color-scheme" content="dark light" />
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-title" content="15 min on foot" />
+    <meta name="author" content="Wisdom Akpabio" />
     <title>Fifteen minutes on foot</title>
     <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css" />
-    <link rel="stylesheet" href="./src/style.css?v=32" />
+    <link rel="stylesheet" href="./src/style.css?v=40" />
     <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
   </head>
   <body>
@@ -31,6 +53,7 @@
           heading="Fifteen minutes on foot"
           description="Walking to clinics and schools"
         ></calcite-navigation-logo>
+        <span id="mast-byline" class="mast-byline" slot="content-start">Wisdom Akpabio</span>
         <div slot="content-end" class="header-tools" id="tour-header">
           <calcite-segmented-control id="basemap-toggle" class="desktop-basemap" scale="s">
             <calcite-segmented-control-item value="gray" checked>Gray</calcite-segmented-control-item>
@@ -172,6 +195,10 @@
               <span>Schools <span id="count-schools" class="layer-count"></span></span>
             </calcite-label>
             <calcite-label layout="inline">
+              <calcite-checkbox id="lyr-roads" scale="s"></calcite-checkbox>
+              Walking streets
+            </calcite-label>
+            <calcite-label layout="inline">
               <calcite-checkbox id="lyr-wards" checked scale="s"></calcite-checkbox>
               Wards
             </calcite-label>
@@ -187,7 +214,7 @@
               <calcite-checkbox id="lyr-off" scale="s"></calcite-checkbox>
               Off mapped streets
             </calcite-label>
-            <p class="fine">Clinic and school marks appear as you zoom in, so the city view stays readable. Off mapped streets is a hatch, not a second colour theme.</p>
+            <p class="fine">Tick Walking streets to draw the OSM streets the walk is timed on. Untick to hide them. Clinic and school marks appear as you zoom in. Off mapped streets is a hatch, not a second colour theme.</p>
             </div>
 
             <h3 class="block-title">Legend</h3>
@@ -215,6 +242,7 @@
                   <p>
                     <a href="./paper/fifteen_minute_access_nigeria.pdf" download>Download the academic paper (PDF)</a>
                   </p>
+                  <p>Map by Wisdom Akpabio. Streets from OpenStreetMap. Clinics, schools and people from GRID3 and WorldPop.</p>
                 </div>
               </calcite-accordion-item>
               <calcite-accordion-item heading="Glossary" icon-start="book">
@@ -268,6 +296,6 @@
       <div slot="title" id="map-alert-title"></div>
       <div slot="message" id="map-alert-msg"></div>
     </calcite-alert>
-    <script type="module" src="./src/main.js?v=32"></script>
+    <script type="module" src="./src/main.js?v=40"></script>
   </body>
 </html>
