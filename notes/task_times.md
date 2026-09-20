@@ -76,3 +76,7 @@ Cut is AMAC plus Kubwa, Dutse and Usuma only. Not the rest of Bwari (Kawu, Igu, 
 - `2026-09-20 23:15:16 WAT` start **reprint brief PDF**
 - `2026-09-20 23:15:35 WAT` done **reprint brief PDF** in **0.3 min** (19 s)
 - `2026-09-20 23:15:35 WAT` done **reprint PDFs with villages** in **1.1 min** (64 s from pandoc)
+
+- `2026-09-20 23:27:00 WAT` start **search settlements** — Find a place indexes every stored village
+- `2026-09-20 23:32:24 WAT` done **settlements_search.json** — 7,079 points
+- `2026-09-20 23:42:22 WAT` done **search settlements** — Dakwa, Dei-Dei, Eneka fly the map

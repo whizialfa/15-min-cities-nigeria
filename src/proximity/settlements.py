@@ -3,11 +3,13 @@
 GRID3 settlement names (eHealth Africa / GRID3, 2021) clipped to
 `{slug}_study_boundary.gpkg`. OSM `place=town|village|hamlet|locality` fills
 names GRID3 missed. Points only. Not drawn on print plates. Nearest name is
-attached to web-map hex and ward popups.
+attached to web-map hex and ward popups. The live map Find-a-place box
+indexes every stored point (`web/data/settlements_search.json`).
 """
 
 from __future__ import annotations
 
+import json
 import re
 import subprocess
 from pathlib import Path
@@ -456,7 +458,48 @@ def build(slugs: list[str] | None = None, *, refresh_osm: bool = False) -> pd.Da
         .reset_index()
     )
     summary.to_csv(DATA_PROCESSED / "settlements_summary.csv", index=False)
+    write_search_index(table)
     return table
+
+
+def write_search_index(table: pd.DataFrame | None = None) -> Path:
+    """Compact JSON for the web map search box. Every stored study-outline point."""
+    if table is None:
+        csv = DATA_PROCESSED / "settlements.csv"
+        table = pd.read_csv(csv) if csv.exists() else pd.DataFrame(columns=CSV_COLS)
+    rows = []
+    for rec in table.itertuples(index=False):
+        name = str(getattr(rec, "name", "") or "").strip()
+        if not name:
+            continue
+        try:
+            lon = round(float(rec.lon), 5)
+            lat = round(float(rec.lat), 5)
+        except (TypeError, ValueError):
+            continue
+        if not (3.0 <= lon <= 15.0 and 4.0 <= lat <= 14.0):
+            continue
+        alt = str(getattr(rec, "alt_name", "") or "").strip()
+        rows.append(
+            {
+                "n": name,
+                "a": alt,
+                "k": str(getattr(rec, "kind", "") or "settlement"),
+                "src": str(getattr(rec, "source", "") or ""),
+                "slug": str(getattr(rec, "slug", "") or ""),
+                "city": str(getattr(rec, "city", "") or ""),
+                "ward": str(getattr(rec, "ward", "") or ""),
+                "lga": str(getattr(rec, "lga", "") or ""),
+                "pri": int(getattr(rec, "is_primary", 0) or 0),
+                "plate": int(getattr(rec, "in_plate", 0) or 0),
+                "lon": lon,
+                "lat": lat,
+            }
+        )
+    out = WEB_DATA / "settlements_search.json"
+    out.parent.mkdir(parents=True, exist_ok=True)
+    out.write_text(json.dumps(rows, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    return out
 
 
 def export_web_points(slug: str, gdf: gpd.GeoDataFrame | None = None) -> Path | None:

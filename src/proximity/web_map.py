@@ -13,7 +13,7 @@ from mapclassify import FisherJenks
 from .cities import ABUJA_PLATE_WARDS, CITIES, LAGOS_PLATE_LGAS
 from .metrics import gini
 from .paths import DATA_PROCESSED, WEB_DATA
-from .settlements import attach_to_hexes, attach_to_wards, load_city as load_settlements
+from .settlements import attach_to_hexes, attach_to_wards, load_city as load_settlements, write_search_index
 
 CITIES_DIR = WEB_DATA / "cities"
 POP_MIN = 5.0
@@ -836,6 +836,7 @@ def export() -> Path:
         if counts.get("schools") is not None:
             city["schools"] = counts["schools"]
     (WEB_DATA / "metrics.json").write_text(json.dumps(meta, indent=2))
+    write_search_index()
     return WEB_DATA / "metrics.json"
 
 

@@ -226,7 +226,7 @@ calcite-shell-panel[slot="panel-bottom"] {
   flex-direction: column;
   border: 1px solid var(--line);
   background: var(--paper);
-  max-height: 196px;
+  max-height: 280px;
   overflow: auto;
   overscroll-behavior: contain;
 }

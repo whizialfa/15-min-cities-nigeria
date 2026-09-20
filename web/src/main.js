@@ -10,7 +10,7 @@ const PLACE_INK = "#37322e";
 const HALO = "#fafafa";
 const GLYPHS = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
 const LIBERTY = "https://tiles.openfreemap.org/styles/liberty";
-const ASSET = "41";
+const ASSET = "42";
 const ESRI_CREDIT = "Tiles © Esri · GRID3 clinics and schools · OSM streets";
 const ROAD = "#5c4524";
 const ROAD_DARK = "#edd9a4";
@@ -127,6 +127,18 @@ function foldText(s) {
     .trim();
 }
 
+function compactText(s) {
+  return foldText(s).replace(/[-'./]/g, "").replace(/\s+/g, "");
+}
+
+function escapeHtml(s) {
+  return String(s || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 function walkCoords(coords, fn) {
   if (typeof coords[0] === "number") {
     fn(coords);
@@ -192,8 +204,33 @@ function matchScore(query, name) {
   if (n.startsWith(q)) return 1;
   if (n.split(/[\s-/]+/).some((part) => part.startsWith(q))) return 2;
   if (n.includes(q)) return 3;
+  const cq = compactText(query);
+  const cn = compactText(name);
+  if (!cq || cq.length < 2 || !cn) return null;
+  if (cn === cq) return 0;
+  if (cn.startsWith(cq)) return 1;
+  if (/[- ]/.test(q) && cn.includes(cq)) return 3;
   return null;
 }
+
+function bestMatch(query, names) {
+  let best = null;
+  names.forEach((name, i) => {
+    const score = matchScore(query, name);
+    if (score == null) return;
+    const ranked = score + (i === 0 ? 0 : 0.25);
+    if (best == null || ranked < best) best = ranked;
+  });
+  return best;
+}
+
+const PLACE_KIND = {
+  settlement: "Settlement",
+  village: "Village",
+  hamlet: "Hamlet",
+  town: "Town",
+  locality: "Locality",
+};
 
 function readView() {
   const q = new URLSearchParams(location.search);
@@ -473,6 +510,21 @@ function popupHTML(kind, props, city, wardLookup) {
     return `<div class="popup-head">${props.label || props.name}</div>
       <div class="popup-body">${nonempty(props.place) ? props.place : "Named place"}${cityContext(city)}</div>`;
   }
+  if (kind === "search-pin") {
+    const kindLabel = PLACE_KIND[props.kind] || "Settlement";
+    const src = props.source === "osm" ? "OpenStreetMap" : "GRID3";
+    return `<div class="popup-head">${escapeHtml(props.name)}</div>
+      <div class="popup-body">
+        <dl>
+          ${row("Kind", kindLabel)}
+          ${nonempty(props.ward) ? row("Ward", escapeHtml(props.ward)) : ""}
+          ${nonempty(props.lga) ? row("Local government", escapeHtml(props.lga)) : ""}
+          ${nonempty(props.city) ? row("City", escapeHtml(props.city)) : ""}
+          ${row("Source", src)}
+          ${Number(props.plate) === 0 ? row("On the printed plate", "No. It sits on the wider study outline.") : ""}
+        </dl>
+      </div>`;
+  }
   return "";
 }
 
@@ -614,7 +666,10 @@ async function main() {
   let pickedWard = null;
   let wardLookup = new Map();
   let lastBundle = null;
-  let searchItems = [];
+  let citySearchItems = [];
+  let settlementItems = [];
+  let searchAfter = null;
+  let searchPin = null;
   let holdCamera = false;
   let bootColor = false;
   let locateAfter = null;
@@ -1188,6 +1243,7 @@ async function main() {
     applyOverlays();
     applyTheme();
     applyMapChrome();
+    ensureSearchPin();
   };
 
   const updateCityData = (slug, bundle) => {
@@ -1201,6 +1257,7 @@ async function main() {
     if (map.getSource("roads")) map.getSource("roads").setData(bundle.roads || EMPTY);
     applyOverlays();
     applyTheme();
+    ensureSearchPin();
   };
 
   const basemapPitch = () => {
@@ -1367,12 +1424,103 @@ async function main() {
     }
   };
 
+  const settlementItem = (row) => {
+    const name = nonempty(row.n);
+    if (!name) return null;
+    const lon = Number(row.lon);
+    const lat = Number(row.lat);
+    if (!Number.isFinite(lon) || !Number.isFinite(lat)) return null;
+    const ward = nonempty(row.ward);
+    const city = nonempty(row.city);
+    const kind = nonempty(row.k) || "settlement";
+    const kindLabel = PLACE_KIND[kind] || "Settlement";
+    const where = [ward, city].filter(Boolean).join(", ");
+    const props = {
+      name,
+      alt: nonempty(row.a),
+      kind,
+      source: nonempty(row.src),
+      ward,
+      lga: nonempty(row.lga),
+      city,
+      plate: Number(row.plate) === 1 ? 1 : 0,
+    };
+    return {
+      kind: "settlement",
+      name,
+      alt: nonempty(row.a),
+      sub: where ? `${kindLabel} · ${where}` : kindLabel,
+      slug: nonempty(row.slug),
+      city,
+      ward,
+      lga: nonempty(row.lga),
+      primary: Number(row.pri) === 1,
+      plate: Number(row.plate) === 1,
+      lon,
+      lat,
+      feature: { type: "Feature", properties: props, geometry: { type: "Point", coordinates: [lon, lat] } },
+    };
+  };
+
+  const clearSearchPin = () => {
+    searchPin = null;
+    if (map.getSource("search-pin")) map.getSource("search-pin").setData(EMPTY);
+  };
+
+  const ensureSearchPin = () => {
+    if (!map.getStyle() || !map.getSource("hexes")) return;
+    if (!map.getSource("search-pin")) {
+      map.addSource("search-pin", { type: "geojson", data: EMPTY });
+    }
+    if (!map.getLayer("search-pin")) {
+      map.addLayer({
+        id: "search-pin",
+        type: "circle",
+        source: "search-pin",
+        paint: {
+          "circle-radius": ["interpolate", ["linear"], ["zoom"], 11, 5.5, 15, 8],
+          "circle-color": "#0079c1",
+          "circle-stroke-color": "#ffffff",
+          "circle-stroke-width": 2.2,
+        },
+      });
+    } else {
+      try {
+        map.moveLayer("search-pin");
+      } catch (err) {
+        /* already on top */
+      }
+    }
+    if (searchPin?.feature) {
+      map.getSource("search-pin").setData({ type: "FeatureCollection", features: [searchPin.feature] });
+    }
+  };
+
+  const goToSettlement = (item) => {
+    const lon = item.lon;
+    const lat = item.lat;
+    if (!Number.isFinite(lon) || !Number.isFinite(lat)) return;
+    searchPin = item;
+    ensureSearchPin();
+    if (map.getSource("search-pin")) {
+      map.getSource("search-pin").setData({ type: "FeatureCollection", features: [item.feature] });
+    }
+    const zoom = Math.max(14.4, Math.min(Number.isFinite(map.getZoom()) ? map.getZoom() : 14.4, 16));
+    try {
+      map.stop();
+    } catch (err) {
+      /* not moving */
+    }
+    map.easeTo({ center: [lon, lat], zoom, duration: 520, pitch: map.getPitch() });
+    afterMove(() => showPopup("search-pin", item.feature, [lon, lat]));
+  };
+
   const buildSearchIndex = (bundle) => {
     const items = [];
     (bundle.wards?.features || []).forEach((feat) => {
       const name = nonempty(feat.properties.label) || nonempty(feat.properties.name);
       if (!name) return;
-      items.push({ kind: "ward", name, sub: nonempty(feat.properties.lga) || "Ward", feature: feat });
+      items.push({ kind: "ward", name, sub: nonempty(feat.properties.lga) || "Ward", feature: feat, slug: current });
     });
     const lgas = new Map();
     (bundle.wards?.features || []).forEach((feat) => {
@@ -1382,20 +1530,35 @@ async function main() {
       lgas.get(lga).push(feat);
     });
     lgas.forEach((features, name) => {
-      items.push({ kind: "lga", name, sub: "Local government", features });
+      items.push({ kind: "lga", name, sub: "Local government", features, slug: current });
     });
     (bundle.places?.features || []).forEach((feat) => {
       const name = nonempty(feat.properties.label) || nonempty(feat.properties.name);
       if (!name) return;
-      items.push({ kind: "place", name, sub: nonempty(feat.properties.place) || "Place", feature: feat });
+      items.push({ kind: "place", name, sub: nonempty(feat.properties.place) || "Place", feature: feat, slug: current });
     });
-    searchItems = items;
+    citySearchItems = items;
   };
 
   const openSearchHit = (item) => {
     hideSearch();
+    tourOffered = true;
+    const tour = document.getElementById("tour");
+    if (tour) tour.hidden = true;
     const input = document.getElementById("place-search");
     if (input) input.value = item.name;
+    if (item.kind === "settlement") {
+      if (item.slug && item.slug !== current) {
+        searchAfter = item;
+        loadCity(item.slug);
+        maybeClosePanel();
+        return;
+      }
+      goToSettlement(item);
+      maybeClosePanel();
+      return;
+    }
+    clearSearchPin();
     if (item.kind === "lga") {
       const bounds = new maplibregl.LngLatBounds();
       item.features.forEach((feat) => {
@@ -1428,32 +1591,46 @@ async function main() {
       hideSearch();
       return;
     }
-    const hits = searchItems
+    const hits = citySearchItems
+      .concat(settlementItems)
       .map((item) => {
-        const score = matchScore(q, item.name);
+        const score = bestMatch(q, [item.name, item.alt].filter(Boolean));
         if (score == null) return null;
-        const kindRank = item.kind === "ward" ? 0 : item.kind === "lga" ? 1 : 2;
-        return { item, score: score * 10 + kindRank };
+        const kindRank = item.kind === "ward" ? 0 : item.kind === "lga" ? 1 : item.kind === "place" ? 2 : 3;
+        const cityRank = !item.slug || item.slug === current ? 0 : 6;
+        const primary = item.kind === "settlement" && !item.primary ? 0.35 : 0;
+        const plate = item.kind === "settlement" && item.plate === false ? 0.25 : 0;
+        return { item, score: score * 10 + kindRank + cityRank + primary + plate };
       })
       .filter(Boolean)
       .sort((a, b) => a.score - b.score || a.item.name.localeCompare(b.item.name))
-      .slice(0, 8);
+      .slice(0, 12);
     if (!hits.length) {
       box.hidden = false;
-      box.innerHTML = `<button type="button" class="search-hit" disabled>No match in ${meta.cities[current]?.name || "this city"}</button>`;
+      box.innerHTML = `<button type="button" class="search-hit" disabled>No match in the stored settlements</button>`;
       return;
     }
     box.hidden = false;
     box.innerHTML = hits
       .map(
         ({ item }, i) =>
-          `<button type="button" class="search-hit" role="option" data-i="${i}" ${i === 0 ? 'aria-selected="true"' : ""}><span class="hit-kind">${item.sub}</span>${item.name}</button>`
+          `<button type="button" class="search-hit" role="option" data-i="${i}" ${i === 0 ? 'aria-selected="true"' : ""}><span class="hit-kind">${escapeHtml(item.sub)}</span>${escapeHtml(item.name)}</button>`
       )
       .join("");
     box.querySelectorAll(".search-hit").forEach((btn, i) => {
       btn.addEventListener("click", () => openSearchHit(hits[i].item));
     });
   };
+
+  loadJSON("./data/settlements_search.json")
+    .then((rows) => {
+      settlementItems = (Array.isArray(rows) ? rows : []).map(settlementItem).filter(Boolean);
+      const typed = document.getElementById("place-search")?.value;
+      if (typed) renderSearch(typed);
+    })
+    .catch(() => {
+      settlementItems = [];
+    });
 
   const renderWardList = () => {
     const box = document.getElementById("ward-list");
@@ -1582,6 +1759,7 @@ async function main() {
 
   const paintCity = (slug, bundle) => {
     const seq = ++paintSeq;
+    if (!searchAfter) clearSearchPin();
     wardLookup = new Map((bundle.wards?.features || []).map((f) => [f.properties.name, f.properties]));
     const city = { ...meta.cities[slug] };
     city.clinics = bundle.clinics?.features?.length ?? city.clinics;
@@ -1608,6 +1786,10 @@ async function main() {
         const target = locateAfter;
         locateAfter = null;
         snapToLngLat(target.lng, target.lat);
+      } else if (searchAfter) {
+        const item = searchAfter;
+        searchAfter = null;
+        goToSettlement(item);
       } else if (holdCamera) {
         holdCamera = false;
         map.jumpTo({
@@ -1830,6 +2012,7 @@ async function main() {
   setTimeout(start, 400);
 
   const hitLayers = [
+    "search-pin",
     "clinics",
     "schools",
     "labels-places-pinned",
@@ -2005,8 +2188,8 @@ async function main() {
       target: "tour-search",
       panel: true,
       expandWards: true,
-      title: "Find a ward",
-      body: "Type a ward or place. The ranked ward list below jumps the map. Lowest F15 is first, so the longest waits sit at the top.",
+      title: "Find a place",
+      body: "Type a ward, village or settlement. Dakwa, Dei-Dei, Eneka and the rest of the stored names jump the map. The ranked ward list below still sorts by the longest wait first.",
     },
     {
       title: "Tap a neighbourhood",
@@ -2027,7 +2210,7 @@ async function main() {
 
   let tourIndex = 0;
   let tourTimer = 0;
-  let tourOffered = false;
+  let tourOffered = new URLSearchParams(location.search).get("tour") === "0";
 
   const tourOpen = () => !document.getElementById("tour")?.hidden;
 
