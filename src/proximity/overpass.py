@@ -49,6 +49,9 @@ def count_amenities(city: City, amenities: list[str]) -> int:
 PLACE_RANKS = ("city", "town", "suburb", "quarter", "neighbourhood", "village", "hamlet")
 DISTRICT_RANKS = ("suburb", "quarter", "neighbourhood")
 VILLAGE_RANKS = ("town", "village", "hamlet", "locality")
+JUNCTION_BARE = frozenset(
+    {"junction", "roundabout", "flyover", "interchange", "crossing", "t-junction", "t junction"}
+)
 
 
 def _place_query(south: float, west: float, north: float, east: float, places: tuple[str, ...]) -> str:
@@ -177,6 +180,55 @@ def fetch_villages(city: City) -> gpd.GeoDataFrame:
                 "osm_id": el.get("id"),
                 "place": tags.get("place") or "locality",
                 "name": tags["name"],
+                "geometry": Point(lon, lat),
+            }
+        )
+    if not rows:
+        return gpd.GeoDataFrame(columns=["osm_id", "place", "name", "geometry"], crs=4326)
+    return gpd.GeoDataFrame(rows, crs=4326)
+
+
+def fetch_junctions(city: City) -> gpd.GeoDataFrame:
+    """Named OSM junctions, roundabouts and flyovers. Nodes, plus named roundabout ways."""
+    west, south, east, north = city.bbox
+    bbox = f"{south},{west},{north},{east}"
+    query = f"""[out:json][timeout:60];
+(
+  node["highway"="motorway_junction"]["name"]({bbox});
+  node["junction"]["name"]({bbox});
+  node["highway"="mini_roundabout"]["name"]({bbox});
+  way["junction"="roundabout"]["name"]({bbox});
+  node["highway"]["name"~"Junction|Roundabout|Flyover|Interchange",i]({bbox});
+);
+out center;"""
+    payload = _run(query, timeout=70)
+    rows = []
+    seen = set()
+    for el in payload.get("elements", []):
+        tags = el.get("tags") or {}
+        name = (tags.get("name") or "").strip()
+        if not name or name.casefold() in JUNCTION_BARE:
+            continue
+        lat = el.get("lat") or (el.get("center") or {}).get("lat")
+        lon = el.get("lon") or (el.get("center") or {}).get("lon")
+        if lat is None or lon is None:
+            continue
+        key = (round(float(lon), 5), round(float(lat), 5), name.casefold())
+        if key in seen:
+            continue
+        seen.add(key)
+        junction = (tags.get("junction") or tags.get("highway") or "junction").lower()
+        if "roundabout" in name.casefold() or junction in {"roundabout", "mini_roundabout"}:
+            kind = "roundabout"
+        elif "flyover" in name.casefold() or "interchange" in name.casefold():
+            kind = "junction"
+        else:
+            kind = "junction"
+        rows.append(
+            {
+                "osm_id": el.get("id"),
+                "place": kind,
+                "name": name,
                 "geometry": Point(lon, lat),
             }
         )

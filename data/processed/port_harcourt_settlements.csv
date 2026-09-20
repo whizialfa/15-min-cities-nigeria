@@ -4,6 +4,7 @@ Port Harcourt,port_harcourt,Abuloma,,settlement,grid3,Tere Ama Femie,Port-Harcou
 Port Harcourt,port_harcourt,Akwaka Rumueme,,settlement,grid3,Mgbuosimini,Obio–Akpor,Rivers,0,1,6.992333,4.829639
 Port Harcourt,port_harcourt,Ala Polo Ph,,settlement,grid3,Harbour,Port-Harcourt,Rivers,0,1,7.020667,4.77
 Port Harcourt,port_harcourt,Alakahia,,settlement,grid3,Alakahia,Obio–Akpor,Rivers,0,1,6.927667,4.886528
+Port Harcourt,port_harcourt,Alakohia Junction,,junction,osm,Alakahia,Obio–Akpor,Rivers,0,1,6.9221,4.888195
 Port Harcourt,port_harcourt,Alaohai,,settlement,grid3,Rukpakwolosi,Obio–Akpor,Rivers,0,1,7.020772,4.865891
 Port Harcourt,port_harcourt,Alioparanwo,,settlement,grid3,Rumuolata,Obio–Akpor,Rivers,0,1,6.925855,4.836663
 Port Harcourt,port_harcourt,Alozo,,village,osm,Rukpakwolosi,Obio–Akpor,Rivers,0,1,6.981944,4.873611
@@ -20,6 +21,7 @@ Port Harcourt,port_harcourt,Coronation Layout,,settlement,grid3,Coronation Layou
 Port Harcourt,port_harcourt,Diobu,,village,osm,Coronation Layout,Port-Harcourt,Rivers,0,1,7.00733,4.799993
 Port Harcourt,port_harcourt,Dobu,,village,osm,Eagle Island,Port-Harcourt,Rivers,0,1,6.98778,4.805616
 Port Harcourt,port_harcourt,Eagle Island,,settlement,grid3,Eagle Island,Port-Harcourt,Rivers,0,1,6.983806,4.785083
+Port Harcourt,port_harcourt,East - West Road,,roundabout,osm,Rumunduru,Obio–Akpor,Rivers,0,1,7.056317,4.864281
 Port Harcourt,port_harcourt,Ede Okua Abuloma,,settlement,grid3,Tere Ama Femie,Port-Harcourt,Rivers,0,1,7.057333,4.785667
 Port Harcourt,port_harcourt,Egbelu Ozodo,,settlement,grid3,Rumuo Darawere,Obio–Akpor,Rivers,0,1,6.958611,4.858917
 Port Harcourt,port_harcourt,Egberuukwu Oyigbo,,settlement,grid3,Egberuukwu Oyigbo,Obio–Akpor,Rivers,0,1,7.11089,4.86398
@@ -41,6 +43,7 @@ Port Harcourt,port_harcourt,Elimgbu,,village,osm,Rumunduru,Obio–Akpor,Rivers,0
 Port Harcourt,port_harcourt,Eliowham,,settlement,grid3,Rumunduru,Obio–Akpor,Rivers,0,1,7.037833,4.869472
 Port Harcourt,port_harcourt,Eliowhani,,village,osm,Mgbesilaru,Obio–Akpor,Rivers,0,1,7.033192,4.866601
 Port Harcourt,port_harcourt,Eliozu,,village,osm,Rukpakwolosi,Obio–Akpor,Rivers,0,1,7.02316,4.863384
+Port Harcourt,port_harcourt,Eliozu Roundabout,,roundabout,osm,Rukpakwolosi,Obio–Akpor,Rivers,0,1,7.021716,4.859303
 Port Harcourt,port_harcourt,Eneka,,settlement,grid3,Rumuoji Eneka,Obio–Akpor,Rivers,0,1,7.040889,4.897389
 Port Harcourt,port_harcourt,Eneka,,village,osm,Rumuoji Eneka,Obio–Akpor,Rivers,0,1,7.033307,4.899709
 Port Harcourt,port_harcourt,Eremo Ogbagoro,,village,osm,Mgbu Minkpiti,Obio–Akpor,Rivers,0,1,6.97146,4.789665
@@ -59,6 +62,7 @@ Port Harcourt,port_harcourt,Iwofe A,,settlement,grid3,Mgbu Minkpiti,Obio–Akpor
 Port Harcourt,port_harcourt,Iwofe B,,settlement,grid3,Mgbu Minkpiti,Obio–Akpor,Rivers,0,1,6.959633,4.799399
 Port Harcourt,port_harcourt,Kidney Island,,settlement,grid3,Old GRA,Port-Harcourt,Rivers,0,1,7.006889,4.78625
 Port Harcourt,port_harcourt,Makahia,,settlement,grid3,Alakahia,Obio–Akpor,Rivers,0,1,6.923714,4.901385
+Port Harcourt,port_harcourt,Market Junction,,junction,osm,Rumuepirikom,Obio–Akpor,Rivers,0,1,6.981332,4.826379
 Port Harcourt,port_harcourt,Mgbu Akani,,settlement,grid3,Mgbu Minkpiti,Obio–Akpor,Rivers,0,1,6.959639,4.820139
 Port Harcourt,port_harcourt,Mgbu Akara,,settlement,grid3,Mgbu Minkpiti,Obio–Akpor,Rivers,0,1,6.9675,4.837444
 Port Harcourt,port_harcourt,Mgbu Akatali,,settlement,grid3,Mgbu Minkpiti,Obio–Akpor,Rivers,0,1,6.962306,4.817417
@@ -75,6 +79,7 @@ Port Harcourt,port_harcourt,Nkpolu,,settlement,grid3,Rukpakwolosi,Obio–Akpor,R
 Port Harcourt,port_harcourt,Nkpolu Orowo,,settlement,grid3,Nkpolu Orowo,Port-Harcourt,Rivers,0,1,6.999333,4.810472
 Port Harcourt,port_harcourt,Nkpolu Oroworukwo,,settlement,grid3,Oro Obasiolu,Port-Harcourt,Rivers,0,1,6.994722,4.805139
 Port Harcourt,port_harcourt,Odumini Orusa,,settlement,grid3,Eagle Island,Port-Harcourt,Rivers,0,1,6.988306,4.801056
+Port Harcourt,port_harcourt,Ofrima Roundabout,,roundabout,osm,Alakahia,Obio–Akpor,Rivers,0,1,6.920463,4.902686
 Port Harcourt,port_harcourt,Ogbogoro,,settlement,grid3,Rumuolata,Obio–Akpor,Rivers,0,1,6.927302,4.847117
 Port Harcourt,port_harcourt,Ogboro,,village,osm,Rukpakwolosi,Obio–Akpor,Rivers,0,1,6.986947,4.873387
 Port Harcourt,port_harcourt,Ogbum Nu Abali,,settlement,grid3,Orogbum,Port-Harcourt,Rivers,0,1,7.0095,4.80225

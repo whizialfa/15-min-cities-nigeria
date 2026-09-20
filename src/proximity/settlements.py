@@ -2,9 +2,8 @@
 
 GRID3 settlement names (eHealth Africa / GRID3, 2021) clipped to
 `{slug}_study_boundary.gpkg`. OSM `place=town|village|hamlet|locality` fills
-names GRID3 missed. Points only. Not drawn on print plates. Nearest name is
-attached to web-map hex and ward popups. The live map Find-a-place box
-indexes every stored point (`web/data/settlements_search.json`).
+names GRID3 missed. Named OSM junctions and roundabouts are a separate
+fill so Find-a-place can land on Berger, CBN Junction, Labo Junction.
 """
 
 from __future__ import annotations
@@ -18,7 +17,7 @@ import geopandas as gpd
 import pandas as pd
 
 from .cities import ABUJA_PLATE_WARDS, CITIES, LAGOS_PLATE_LGAS, City
-from .overpass import VILLAGE_RANKS, fetch_villages
+from .overpass import VILLAGE_RANKS, fetch_junctions, fetch_villages
 from .paths import DATA_PROCESSED, DATA_RAW, WEB_DATA
 from .wards import PLACEHOLDER_LOOSE, settlement_gpkg, tidy_label
 
@@ -32,6 +31,12 @@ OSM_NOISE = re.compile(
     r"roundabout|apartments?|quarters?)\b",
     re.I,
 )
+JUNCTION_PLUS = re.compile(r"\b[A-Z0-9]{2,}\+[A-Z0-9]{2,}\b", re.I)
+JUNCTION_ROADISH = re.compile(
+    r"\b(?:street|close|lane|avenue|drive|crescent)\s*$", re.I
+)
+JUNCTION_KEEP = re.compile(r"\b(?:junction|roundabout|interchange|flyover)\b", re.I)
+JUNCTION_SKIP = frozenset({"culvert", "bridge", "bus stop", "church bus stop"})
 CSV_COLS = (
     "city",
     "slug",
@@ -152,6 +157,17 @@ def _usable_name(name: object) -> bool:
     return not PLACEHOLDER_LOOSE.match(raw)
 
 
+def _ok_junction_name(name: object) -> bool:
+    raw = str(name or "").strip()
+    if raw.casefold() in JUNCTION_SKIP:
+        return False
+    if JUNCTION_PLUS.search(raw):
+        return False
+    if JUNCTION_ROADISH.search(raw) and not JUNCTION_KEEP.search(raw):
+        return False
+    return True
+
+
 def _grid3_rows(city: City, union) -> gpd.GeoDataFrame:
     raw = _read_bbox(city)
     if raw.empty:
@@ -179,6 +195,10 @@ def _grid3_rows(city: City, union) -> gpd.GeoDataFrame:
 
 def _osm_cache(slug: str) -> Path:
     return DATA_RAW / f"{slug}_osm_villages.geojson"
+
+
+def _junction_cache(slug: str) -> Path:
+    return DATA_RAW / f"{slug}_osm_junctions.geojson"
 
 
 def _osm_from_file(path: Path) -> gpd.GeoDataFrame:
@@ -236,6 +256,61 @@ def _osm_rows(city: City, union, *, refresh: bool) -> gpd.GeoDataFrame:
         return gdf
     gdf["alt_name"] = ""
     gdf["kind"] = gdf["place"].astype(str).str.lower() if "place" in gdf.columns else "village"
+    gdf["source"] = "osm"
+    gdf["is_primary"] = 0
+    gdf["state"] = city.state
+    gdf["grid3_ward"] = ""
+    gdf["grid3_lga"] = ""
+    return gdf[
+        ["name", "alt_name", "kind", "source", "is_primary", "state", "grid3_ward", "grid3_lga", "geometry"]
+    ].reset_index(drop=True)
+
+
+def _points_from_file(path: Path) -> gpd.GeoDataFrame:
+    if not path.exists():
+        return gpd.GeoDataFrame(columns=["osm_id", "place", "name", "geometry"], crs=4326)
+    gdf = gpd.read_file(path)
+    if gdf.empty:
+        return gdf
+    if gdf.crs is None:
+        gdf = gdf.set_crs(4326)
+    return gdf.to_crs(4326)
+
+
+def _junction_rows(city: City, union, *, refresh: bool) -> gpd.GeoDataFrame:
+    cache = _junction_cache(city.slug)
+    empty = gpd.GeoDataFrame(columns=["name", "alt_name", "kind", "source", "is_primary", "geometry"], crs=4326)
+    gdf = gpd.GeoDataFrame(columns=["osm_id", "place", "name", "geometry"], crs=4326)
+    if cache.exists() and not refresh:
+        gdf = _points_from_file(cache)
+    else:
+        try:
+            gdf = fetch_junctions(city)
+        except Exception as exc:
+            print(f"{city.slug} OSM junctions failed: {exc}", flush=True)
+            gdf = gpd.GeoDataFrame(columns=["osm_id", "place", "name", "geometry"], crs=4326)
+        if gdf is not None and not gdf.empty:
+            gdf.to_file(cache, driver="GeoJSON")
+        elif cache.exists():
+            gdf = _points_from_file(cache)
+    if gdf is None or gdf.empty:
+        return empty
+    gdf = _clip(gdf, union)
+    if gdf.empty:
+        return gdf
+    gdf["name"] = gdf["name"].map(tidy_label)
+    keep = [
+        _usable_name(n)
+        and _ok_junction_name(n)
+        and str(n).casefold() not in {city.name.casefold(), "nigeria", "fct"}
+        for n in gdf["name"]
+    ]
+    gdf = gdf.loc[keep].copy()
+    if gdf.empty:
+        return gdf
+    kind = gdf["place"].astype(str).str.lower() if "place" in gdf.columns else "junction"
+    gdf["alt_name"] = ""
+    gdf["kind"] = kind.where(kind.isin(("junction", "roundabout")), "junction")
     gdf["source"] = "osm"
     gdf["is_primary"] = 0
     gdf["state"] = city.state
@@ -314,7 +389,8 @@ def city_settlements(city: City, *, refresh_osm: bool = False) -> gpd.GeoDataFra
         raise FileNotFoundError(f"{city.slug}_study_boundary.gpkg missing")
     grid3 = _grid3_rows(city, union)
     osm = _osm_rows(city, union, refresh=refresh_osm)
-    frames = [f for f in (grid3, osm) if f is not None and not f.empty]
+    junctions = _junction_rows(city, union, refresh=refresh_osm)
+    frames = [f for f in (grid3, osm, junctions) if f is not None and not f.empty]
     if not frames:
         return gpd.GeoDataFrame(columns=list(CSV_COLS) + ["geometry"], crs=4326)
     gdf = gpd.GeoDataFrame(pd.concat(frames, ignore_index=True), crs=4326)
@@ -365,9 +441,10 @@ def write_city(city: City, *, refresh_osm: bool = False) -> gpd.GeoDataFrame:
     _as_table(gdf).to_csv(csv, index=False)
     n_grid3 = int((gdf["source"] == "grid3").sum())
     n_osm = int((gdf["source"] == "osm").sum())
+    n_junc = int(gdf["kind"].isin(("junction", "roundabout")).sum())
     n_plate = int(gdf["in_plate"].sum())
     print(
-        f"{city.slug:<15} {len(gdf):>5} settlements  grid3={n_grid3} osm={n_osm} on_plate={n_plate}",
+        f"{city.slug:<15} {len(gdf):>5} settlements  grid3={n_grid3} osm={n_osm} junctions={n_junc} on_plate={n_plate}",
         flush=True,
     )
     return gdf
@@ -396,7 +473,10 @@ def attach_to_hexes(hexes: gpd.GeoDataFrame, settlements: gpd.GeoDataFrame | Non
     utm = out.estimate_utm_crs()
     pts = out.to_crs(utm).copy()
     pts.geometry = pts.geometry.representative_point()
-    named = settlements[settlements["name"].astype(str).str.strip().ne("")].to_crs(utm)
+    named = settlements[settlements["name"].astype(str).str.strip().ne("")].copy()
+    if "kind" in named.columns:
+        named = named[~named["kind"].astype(str).str.lower().isin(("junction", "roundabout"))]
+    named = named.to_crs(utm)
     if named.empty:
         return out
     joined = gpd.sjoin_nearest(
@@ -423,6 +503,10 @@ def attach_to_wards(wards: gpd.GeoDataFrame, settlements: gpd.GeoDataFrame | Non
     if key is None:
         return out
     pts = settlements[settlements["name"].astype(str).str.strip().ne("")].copy()
+    if "kind" in pts.columns:
+        pts = pts[~pts["kind"].astype(str).str.lower().isin(("junction", "roundabout"))]
+    if pts.empty:
+        return out
     joined = gpd.sjoin(pts[["name", "is_primary", "geometry"]], out[[key, "geometry"]], predicate="within", how="inner")
     if joined.empty:
         return out

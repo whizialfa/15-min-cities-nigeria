@@ -1,20 +1,20 @@
 # Named settlements in the study outlines
 
-Coordinate list of populated places inside each city’s **study boundary**, not the print-plate clip. Points only. They are not drawn on the QGIS plates. Nearest name is attached to the web-map hex and ward popups. The live map **Find a ward, village or place** box indexes every stored point and flies to it.
+Coordinate list of populated places inside each city’s **study boundary**, not the print-plate clip. Points only. They are not drawn on the QGIS plates. Nearest village or settlement name is attached to the web-map hex and ward popups. Named junctions stay off those place strings so they do not steal neighbourhood names. The live map **Find a ward, village or place** box indexes every stored point, including junctions, and flies to it.
 
-Source: GRID3 settlement points (eHealth Africa / GRID3, 2021; CC BY 4.0), clipped to `{slug}_study_boundary.gpkg`. OSM `place=town|village|hamlet|locality` is a fill where Overpass answered. Rebuild: `python -m proximity.settlements`.
+Source: GRID3 settlement points (eHealth Africa / GRID3, 2021; CC BY 4.0), clipped to `{slug}_study_boundary.gpkg`. OSM `place=town|village|hamlet|locality` is a village fill where Overpass answered. Named OSM junctions, roundabouts and interchanges (`highway=motorway_junction`, `junction=*`, named roundabout ways, highway nodes with Junction/Roundabout/Flyover/Interchange in the name) are a separate fill. Village names that are only “junction” stay out of the village query. Rebuild: `python -m proximity.settlements`.
 
-Tables: `data/processed/settlements.csv` (all five), `{slug}_settlements.csv`, `settlements_summary.csv`. Points: `{slug}_settlements.gpkg` (gitignored) and `web/data/cities/{slug}/settlements.geojson` (not a map layer). Search index: `web/data/settlements_search.json`.
+Tables: `data/processed/settlements.csv` (all five), `{slug}_settlements.csv`, `settlements_summary.csv`. Points: `{slug}_settlements.gpkg` (gitignored) and `web/data/cities/{slug}/settlements.geojson` (not a map layer). Search index: `web/data/settlements_search.json` (7,174 points).
 
-| City | Study points | GRID3 | OSM | On the printed plate |
-|---|---:|---:|---:|---:|
-| Lagos | 1,094 | 1,035 | 59 | 461 (seven LGAs) |
-| Kano | 5,085 | 5,034 | 51 | 5,085 |
-| Ibadan | 324 | 323 | 1 | 324 |
-| Port Harcourt | 197 | 163 | 34 | 197 |
-| Abuja | 379 | 358 | 21 | 271 (ten wards) |
+| City | Study points | GRID3 | OSM | Junctions | On the printed plate |
+|---|---:|---:|---:|---:|---:|
+| Lagos | 1,122 | 1,035 | 87 | 28 | 479 (seven LGAs) |
+| Kano | 5,089 | 5,034 | 55 | 4 | 5,089 |
+| Ibadan | 332 | 323 | 9 | 5 | 332 |
+| Port Harcourt | 202 | 163 | 39 | 5 | 202 |
+| Abuja | 429 | 358 | 71 | 50 | 320 (ten wards) |
 
-Kano’s count is the GRID3 named-settlement census, so it includes every named compound in the eight metro LGAs, not only villages. Ibadan’s OSM fill is thin because Overpass 504’d; GRID3 still covers the core five LGAs.
+OSM is villages plus junctions. Junctions is the named-junction subset (92 across the five cities). Kano’s count is the GRID3 named-settlement census, so it includes every named compound in the eight metro LGAs, not only villages. Ibadan’s OSM village fill is still thin; GRID3 covers the core five LGAs. Search hits include Ojodu Berger Interchange, Falomo Roundabout, Ojota Interchange, CBN Junction, Dei Dei Junction, Labo Junction, Adeoyo Roundabout, Eliozu Roundabout.
 
 ## Abuja north-west (the populated place on the plate)
 
