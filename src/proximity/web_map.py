@@ -151,6 +151,29 @@ def _share_within(frame: pd.DataFrame, col: str, pop: np.ndarray) -> float:
     return float(pop[ok & (val <= THRESHOLD_MIN)].sum() / pop.sum())
 
 
+def _ward_hex_overlap(hexes: gpd.GeoDataFrame, wards: gpd.GeoDataFrame) -> gpd.GeoDataFrame:
+    """Slice each hexagon across the wards it covers, so a tiny ward still gets people."""
+    keep_h = [c for c in ("pop", "PT_k", "t_health", "t_school", "off_network", "geometry") if c in hexes.columns]
+    keep_w = [c for c in ("locator", "lganame", "geometry") if c in wards.columns]
+    if "locator" not in keep_w:
+        return gpd.GeoDataFrame()
+    utm = wards.estimate_utm_crs()
+    h = hexes[keep_h].to_crs(utm).copy()
+    w = wards[keep_w].to_crs(utm).copy()
+    h.geometry = h.geometry.make_valid()
+    w.geometry = w.geometry.make_valid()
+    h["_hex_area"] = h.geometry.area.replace(0, np.nan)
+    try:
+        ov = gpd.overlay(h, w, how="intersection", keep_geom_type=False)
+    except Exception:
+        ov = gpd.GeoDataFrame()
+    if ov is None or ov.empty:
+        return gpd.GeoDataFrame()
+    frac = (ov.geometry.area / ov["_hex_area"]).clip(0, 1).fillna(0)
+    ov["_people"] = ov["pop"].fillna(0) * frac
+    return ov
+
+
 def _nice(value: float) -> float:
     if value < 250:
         step = 50
@@ -322,6 +345,46 @@ def _points_in_mask(gdf: gpd.GeoDataFrame | None, mask_wgs) -> gpd.GeoDataFrame 
     return joined.drop(columns=["index_right"], errors="ignore").reset_index(drop=True)
 
 
+def _road_kind(value) -> str:
+    text = str(value or "").lower()
+    if any(tag in text for tag in ("motorway", "trunk", "primary")):
+        return "main"
+    return "street"
+
+
+def _roads(slug: str, mask) -> gpd.GeoDataFrame | None:
+    """Walking streets for the map. Keep the carriageways, drop service tracks."""
+    gdf = _load(DATA_PROCESSED / f"{slug}_walk_edges.gpkg", layer=f"{slug}_walk_edges")
+    if gdf is None or gdf.empty:
+        return None
+    if "highway" in gdf.columns:
+        hwy = gdf["highway"].astype(str).str.lower()
+        drop = hwy.str.contains("service|track|path|footway|steps|cycleway|construction", regex=True)
+        gdf = gdf.loc[~drop].copy()
+    if mask is not None:
+        frame = gpd.GeoDataFrame({"geometry": [mask]}, crs=4326)
+        try:
+            gdf = gpd.clip(gdf, frame, keep_geom_type=True)
+        except Exception:
+            gdf = gdf[gdf.intersects(mask)].copy()
+    gdf = gdf[gdf.geometry.notna() & ~gdf.geometry.is_empty].copy()
+    if gdf.empty:
+        return None
+    gdf["kind"] = gdf["highway"].map(_road_kind) if "highway" in gdf.columns else "street"
+    utm = gdf.estimate_utm_crs()
+    work = gdf[["kind", "geometry"]].to_crs(utm)
+    work["geometry"] = work.geometry.simplify(30.0, preserve_topology=False)
+    work = work[work.geometry.notna() & ~work.geometry.is_empty]
+    work = work[work.geometry.length >= 40]
+    if work.empty:
+        return None
+    if len(work) > 18000:
+        main = work[work["kind"] == "main"]
+        street = work[work["kind"] != "main"].iloc[::2]
+        work = gpd.GeoDataFrame(pd.concat([main, street], ignore_index=True), geometry="geometry", crs=utm)
+    return work.to_crs(4326)
+
+
 def _count_in(points: gpd.GeoDataFrame | None, wards: gpd.GeoDataFrame) -> pd.Series:
     empty = pd.Series(0, index=wards.index, dtype=int)
     if points is None or points.empty or "locator" not in wards.columns:
@@ -437,14 +500,17 @@ def _wards(slug: str, hexes_all: gpd.GeoDataFrame | None, clinics, schools) -> g
         if mapped.any() and pop_all[mapped].sum() > 0:
             city_f15 = float(pop_all[mapped & (pt <= THRESHOLD_MIN)].sum() / pop_all.sum()) * 100.0
 
-        pts = hexes_all.copy()
-        pts.geometry = pts.geometry.representative_point()
-        keep = [c for c in ("locator", "lganame", "geometry") if c in gdf.columns]
-        joined = gpd.sjoin(pts, gdf[keep], predicate="within", how="inner")
+        ov = _ward_hex_overlap(hexes_all, gdf)
+        if ov is None or ov.empty:
+            pts = hexes_all.copy()
+            pts.geometry = pts.geometry.representative_point()
+            keep = [c for c in ("locator", "lganame", "geometry") if c in gdf.columns]
+            ov = gpd.sjoin(pts, gdf[keep], predicate="within", how="inner")
+            ov["_people"] = ov["pop"].fillna(0)
 
         rows = []
-        for (locator, lga), chunk in joined.groupby(["locator", "lganame"], dropna=False):
-            pop = chunk["pop"].fillna(0).to_numpy(dtype=float)
+        for (locator, lga), chunk in ov.groupby(["locator", "lganame"], dropna=False):
+            pop = chunk["_people"].to_numpy(dtype=float) if "_people" in chunk.columns else chunk["pop"].fillna(0).to_numpy(dtype=float)
             people = float(pop.sum())
             f15 = _share_within(chunk, "PT_k", pop)
             f15_h = _share_within(chunk, "t_health", pop)
@@ -726,6 +792,10 @@ def export_city(slug: str) -> dict:
     if places is not None and not places.empty:
         _write_fc(places, out / "places.geojson", ["name", "label", "place", "rank", "pinned", "priority", "always"])
         written["places"] = len(places)
+    roads = _roads(slug, mask)
+    if roads is not None and not roads.empty:
+        _write_fc(roads, out / "roads.geojson", ["kind"])
+        written["roads"] = len(roads)
     print(f"  {slug}: {written}", flush=True)
     return written
 
