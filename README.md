@@ -20,7 +20,7 @@ Never report F15 without quoting `completeness.csv`. Print plates do not hatch t
 
 ## Results
 
-The write-up is [`notes/results.md`](notes/results.md). Colour PDF with the plates and charts: [`web/paper/fifteen_minute_access_nigeria.pdf`](web/paper/fifteen_minute_access_nigeria.pdf). Summary: [`notes/brief.md`](notes/brief.md). Five cities, OSM walk graph at 5 km/h, dual access to **n = 5** health and education POIs, GRID3/WorldPop NGA v3.0 population on 200 m hexes. Metro LGAs are the study boundary (not GHS urban centres); Abuja also includes Kubwa, Dutse and Usuma in Bwari. Area and density are measured on `{slug}_study_boundary.gpkg`.
+The write-up is [`notes/results.md`](notes/results.md). Colour PDF with the plates and charts: [`web/paper/fifteen_minute_access_nigeria.pdf`](web/paper/fifteen_minute_access_nigeria.pdf). Summary: [`notes/brief.md`](notes/brief.md). Named settlements inside each study outline (points, coordinates): [`data/processed/settlements.csv`](data/processed/settlements.csv) and [`notes/settlements.md`](notes/settlements.md). Five cities, OSM walk graph at 5 km/h, dual access to **n = 5** health and education POIs, GRID3/WorldPop NGA v3.0 population on 200 m hexes. Metro LGAs are the study boundary (not GHS urban centres); Abuja also includes Kubwa, Dutse and Usuma in Bwari. Area and density are measured on `{slug}_study_boundary.gpkg`.
 
 | City | Area | Population | Density | PT_city | F15 | Gini | F15 health | F15 schools |
 |---|---|---|---|---|---|---|---|---|

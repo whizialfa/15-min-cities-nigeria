@@ -48,6 +48,7 @@ def count_amenities(city: City, amenities: list[str]) -> int:
 
 PLACE_RANKS = ("city", "town", "suburb", "quarter", "neighbourhood", "village", "hamlet")
 DISTRICT_RANKS = ("suburb", "quarter", "neighbourhood")
+VILLAGE_RANKS = ("town", "village", "hamlet", "locality")
 
 
 def _place_query(south: float, west: float, north: float, east: float, places: tuple[str, ...]) -> str:
@@ -147,6 +148,34 @@ def fetch_named(city: City, names: tuple[str, ...]) -> gpd.GeoDataFrame:
             {
                 "osm_id": el.get("id"),
                 "place": tags.get("place") or tags.get("landuse") or "locality",
+                "name": tags["name"],
+                "geometry": Point(lon, lat),
+            }
+        )
+    if not rows:
+        return gpd.GeoDataFrame(columns=["osm_id", "place", "name", "geometry"], crs=4326)
+    return gpd.GeoDataFrame(rows, crs=4326)
+
+
+def fetch_villages(city: City) -> gpd.GeoDataFrame:
+    """OSM named towns, villages, hamlets and localities. Nodes only, so it stays light."""
+    west, south, east, north = city.bbox
+    ors = "".join(
+        f'  node["place"="{p}"]["name"]({south},{west},{north},{east});\n' for p in VILLAGE_RANKS
+    )
+    query = f"[out:json][timeout:60];\n(\n{ors});\nout;"
+    payload = _run(query, timeout=70)
+    rows = []
+    for el in payload.get("elements", []):
+        tags = el.get("tags") or {}
+        lat = el.get("lat")
+        lon = el.get("lon")
+        if lat is None or lon is None or not tags.get("name"):
+            continue
+        rows.append(
+            {
+                "osm_id": el.get("id"),
+                "place": tags.get("place") or "locality",
                 "name": tags["name"],
                 "geometry": Point(lon, lat),
             }

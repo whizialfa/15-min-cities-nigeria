@@ -10,7 +10,7 @@ const PLACE_INK = "#37322e";
 const HALO = "#fafafa";
 const GLYPHS = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
 const LIBERTY = "https://tiles.openfreemap.org/styles/liberty";
-const ASSET = "40";
+const ASSET = "41";
 const ESRI_CREDIT = "Tiles © Esri · GRID3 clinics and schools · OSM streets";
 const ROAD = "#5c4524";
 const ROAD_DARK = "#edd9a4";
@@ -349,6 +349,14 @@ function row(label, value) {
   return `<dt>${label}</dt><dd>${value}</dd>`;
 }
 
+function placeRow(props) {
+  const name = nonempty(props.place);
+  if (!name) return "";
+  const metres = Number(props.place_m);
+  if (Number.isFinite(metres) && metres >= 400) return row("Place", `Near ${name}`);
+  return row("Place", name);
+}
+
 function giniText(v) {
   if (v == null || Number.isNaN(Number(v))) return "n/a";
   return Number(v).toFixed(2);
@@ -395,6 +403,7 @@ function wardBlock(props, city, { heading = true, cityStats = true } = {}) {
         ${row("People still beyond 15 minutes", fmt(props.beyond))}
         ${row("GRID3 clinics in this ward", fmt(props.clinics))}
         ${row("GRID3 schools in this ward", fmt(props.schools))}
+        ${nonempty(props.places) ? row("Named settlements", props.places) : ""}
         ${props.off_pct != null ? row("People off mapped streets", pct(props.off_pct)) : ""}
         ${props.gini != null ? row("How uneven walks are here (Gini)", giniText(props.gini)) : ""}
         ${cityStats && city?.gini != null ? row("How uneven walks are in the city (Gini)", giniText(city.gini)) : ""}
@@ -419,6 +428,7 @@ function popupHTML(kind, props, city, wardLookup) {
           ${row("To a clinic", `${minutes(props.clinic_min)}${clinicN}`)}
           ${row("To a school", `${minutes(props.school_min)}${schoolN}`)}
           ${row("People in this neighbourhood", fmt(props.people))}
+          ${placeRow(props)}
           ${nonempty(props.lga) ? row("Local government", props.lga) : ""}
           ${props.off_street ? row("Street map", "This tile sits off the mapped walk network") : ""}
           ${city?.gini != null ? row("How uneven walks are in the city (Gini)", giniText(city.gini)) : ""}

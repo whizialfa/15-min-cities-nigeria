@@ -1,0 +1,325 @@
+city,slug,name,alt_name,kind,source,ward,lga,state,is_primary,in_plate,lon,lat
+Ibadan,ibadan,Aare,,settlement,grid3,Bashorun,Ibadan North,Oyo,1,1,3.910278,7.42258
+Ibadan,ibadan,Aba Alaka,,settlement,grid3,Ago Tapa,Ibadan North,Oyo,1,1,3.893035,7.407903
+Ibadan,ibadan,Abebi,,settlement,grid3,Abebi,Ibadan North West,Oyo,1,1,3.894103,7.386743
+Ibadan,ibadan,Academy Olomi,,settlement,grid3,Odeaje,Ibadan North East,Oyo,1,1,3.918098,7.33991
+Ibadan,ibadan,Ago Taylor Ibadan South West,,settlement,grid3,Apata–Odo Ona,Ibadan South West,Oyo,1,1,3.85522,7.378
+Ibadan,ibadan,Alabosa GRA,,settlement,grid3,Alesinloye,Ibadan South West,Oyo,1,1,3.86136,7.38281
+Ibadan,ibadan,Alaro Ijokodo,Ijokodo,settlement,grid3,Sango,Ibadan North,Oyo,1,1,3.888168,7.426524
+Ibadan,ibadan,Apata Kekere,,settlement,grid3,Agbowo,Ibadan North,Oyo,1,1,3.91359,7.450085
+Ibadan,ibadan,Awolowo,,settlement,grid3,Old Bodija,Ibadan North,Oyo,1,1,3.91071,7.416753
+Ibadan,ibadan,Ayeye,,settlement,grid3,Bere,Ibadan North West,Oyo,1,1,3.894109,7.37952
+Ibadan,ibadan,Barracks,,settlement,grid3,Basorun,Ibadan North East,Oyo,1,1,3.932355,7.40391
+Ibadan,ibadan,Benjamin,,settlement,grid3,Eleyele,Ibadan North West,Oyo,1,1,3.867542,7.414555
+Ibadan,ibadan,Born Photo,,settlement,grid3,Beere–Mapo,Ibadan South East,Oyo,1,1,3.891629,7.374509
+Ibadan,ibadan,College Cresicent,,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,1,1,3.85416,7.36302
+Ibadan,ibadan,Ekeyedo Oga Nla,,settlement,grid3,Inalende,Ibadan North West,Oyo,1,1,3.88856,7.39527
+Ibadan,ibadan,Felele,,settlement,grid3,Challenge,Ibadan South East,Oyo,1,1,3.88737,7.343502
+Ibadan,ibadan,Gege,,settlement,grid3,Foko–Ologede,Ibadan South West,Oyo,1,1,3.891483,7.377287
+Ibadan,ibadan,IDI Oro,,settlement,grid3,Irefin,Ibadan North East,Oyo,1,1,3.917723,7.392098
+Ibadan,ibadan,Ikolaba Estate,,settlement,grid3,Bashorun,Ibadan North,Oyo,1,1,3.91925,7.415727
+Ibadan,ibadan,Ilupeju,,settlement,grid3,Molete,Ibadan South East,Oyo,1,1,3.899297,7.360225
+Ibadan,ibadan,Jericho,,settlement,grid3,Afonta,Ibadan North West,Oyo,1,1,3.863213,7.391658
+Ibadan,ibadan,Joyce B,Oke Ado,settlement,grid3,Oke Ado–Liberty,Ibadan South West,Oyo,1,1,3.866508,7.368727
+Ibadan,ibadan,Kudeti,,settlement,grid3,Molete,Ibadan South East,Oyo,1,1,3.896517,7.362718
+Ibadan,ibadan,Nfallence,,settlement,grid3,Popoyemoja,Ibadan South West,Oyo,1,1,3.88603,7.35895
+Ibadan,ibadan,Ode Ige,,settlement,grid3,Odinjo,Ibadan South East,Oyo,1,1,3.911455,7.360453
+Ibadan,ibadan,Oke Itunu,,settlement,grid3,Oke Itunu,Ibadan North,Oyo,1,1,3.890252,7.414792
+Ibadan,ibadan,Oke Seni,,settlement,grid3,Idikan–Olorisaoko,Ibadan North West,Oyo,1,1,3.88871,7.385
+Ibadan,ibadan,Okesuna,,settlement,grid3,Owode,Ibadan South East,Oyo,1,1,3.90672,7.35734
+Ibadan,ibadan,Olopomewa,,settlement,grid3,Eleyele,Ibadan North West,Oyo,1,1,3.87159,7.419187
+Ibadan,ibadan,Omowunmi,,settlement,grid3,Adesola,Ibadan South East,Oyo,1,1,3.923693,7.365315
+Ibadan,ibadan,Samonda,,settlement,grid3,Samonda,Ibadan North,Oyo,1,1,3.905913,7.43377
+Ibadan,ibadan,Tobi Rentals Area,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,1,1,3.849755,7.419272
+Ibadan,ibadan,Aare Avenue,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.916097,7.425303
+Ibadan,ibadan,Aba Alade Olorunshogo,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.928648,7.363878
+Ibadan,ibadan,Aba Ela,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.836072,7.420145
+Ibadan,ibadan,Aba Igbira,Aba Igbira Adeoyo First Gate,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.859728,7.355702
+Ibadan,ibadan,Aba Igbira 2,Omololu Olunloyo GRA,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.864388,7.344903
+Ibadan,ibadan,Aba Igbira GRA,Omololu Olunloyo GRA,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.860778,7.347223
+Ibadan,ibadan,Aba Igbira Ringroad,Arapaja Estate,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.86201,7.353277
+Ibadan,ibadan,Aba Nla,Omi Adio,settlement,grid3,Old Bodija,Ibadan North,Oyo,0,1,3.908985,7.410694
+Ibadan,ibadan,Abanla,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.82975,7.428623
+Ibadan,ibadan,Abayomi,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.940093,7.403305
+Ibadan,ibadan,Abayomi Area,Abayomi Atele,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.940883,7.401502
+Ibadan,ibadan,Abebi,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.853407,7.402165
+Ibadan,ibadan,Abegunde Ibadan South West,,settlement,grid3,Agbokojo,Ibadan South West,Oyo,0,1,3.856533,7.338552
+Ibadan,ibadan,Adabeji,,settlement,grid3,Oritamerin (sw),Ibadan South West,Oyo,0,1,3.845096,7.371649
+Ibadan,ibadan,Adamasingba,,settlement,grid3,Sabo,Ibadan North,Oyo,0,1,3.886838,7.398914
+Ibadan,ibadan,Adegoke Ibadan South West,,settlement,grid3,Challenge,Ibadan South East,Oyo,0,1,3.87123,7.33641
+Ibadan,ibadan,Adekinle Koloko,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.924345,7.374495
+Ibadan,ibadan,Adeleye Community,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.836818,7.430012
+Ibadan,ibadan,Adesola Irepodun,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.925103,7.357663
+Ibadan,ibadan,Adetana Ifelodun,,settlement,grid3,Odeaje,Ibadan North East,Oyo,0,1,3.925347,7.352015
+Ibadan,ibadan,Adetokun Extension,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.84046,7.42216
+Ibadan,ibadan,Adewumi Ifelodun,,settlement,grid3,Odeaje,Ibadan North East,Oyo,0,1,3.925305,7.352852
+Ibadan,ibadan,Adigun,,settlement,grid3,Odeaje,Ibadan North East,Oyo,0,1,3.927157,7.343878
+Ibadan,ibadan,Afronta,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.87814,7.39116
+Ibadan,ibadan,Agbaje,Adeosun Street,settlement,grid3,Sango,Ibadan North,Oyo,0,1,3.875927,7.42988
+Ibadan,ibadan,Agbeni,,settlement,grid3,Amule–Atere,Ibadan South West,Oyo,0,1,3.88718,7.381165
+Ibadan,ibadan,Agbo Ile Kure,,settlement,grid3,Adesola,Ibadan South East,Oyo,0,1,3.919878,7.365528
+Ibadan,ibadan,Agbole Ogede Ifelodun,,settlement,grid3,Odeaje,Ibadan North East,Oyo,0,1,3.924873,7.353342
+Ibadan,ibadan,Agbowo,,settlement,grid3,Agbowo,Ibadan North,Oyo,0,1,3.920128,7.448397
+Ibadan,ibadan,Agbowo Express,,settlement,grid3,Agbowo,Ibadan North,Oyo,0,1,3.923483,7.440284
+Ibadan,ibadan,Ago Taylor Ibadan North West,,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.8608,7.378974
+Ibadan,ibadan,Agodi GRA,,settlement,grid3,Agodi,Ibadan North,Oyo,0,1,3.91264,7.404612
+Ibadan,ibadan,Agodi Gate,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.918978,7.394712
+Ibadan,ibadan,Agodi Secretariat,,settlement,grid3,Old Bodija,Ibadan North,Oyo,0,1,3.908813,7.409343
+Ibadan,ibadan,Agodi Yidi,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.921548,7.397137
+Ibadan,ibadan,Agoro,,settlement,grid3,Agugu,Ibadan North East,Oyo,0,1,3.93024,7.387205
+Ibadan,ibadan,Agugu Oja,,settlement,grid3,Agugu,Ibadan North East,Oyo,0,1,3.922205,7.384091
+Ibadan,ibadan,Ajadi Area,Back Of Tipper Garage Ologuneru,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.836405,7.432943
+Ibadan,ibadan,Ajewole Timothy,Ashi Area,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.932182,7.431953
+Ibadan,ibadan,Ajumose GRA,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.852727,7.396575
+Ibadan,ibadan,Akeke Lagelu 1,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.93749,7.41208
+Ibadan,ibadan,Akere,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.93908,7.357465
+Ibadan,ibadan,Akigbola,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.918806,7.431236
+Ibadan,ibadan,Akiloye,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.912278,7.414728
+Ibadan,ibadan,Akinleye Ifelodun,,settlement,grid3,Odeaje,Ibadan North East,Oyo,0,1,3.924425,7.354197
+Ibadan,ibadan,Akinloye,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.936847,7.409663
+Ibadan,ibadan,Akinsoji Area,,settlement,grid3,Agugu,Ibadan North East,Oyo,0,1,3.93582,7.38142
+Ibadan,ibadan,Akintola,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.88296,7.395827
+Ibadan,ibadan,Alafara,,settlement,grid3,Alafara,Ibadan North East,Oyo,0,1,3.906263,7.383187
+Ibadan,ibadan,Alafara,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.826848,7.425397
+Ibadan,ibadan,Alafara Olubadan,,settlement,grid3,Oja Gbo,Ibadan North East,Oyo,0,1,3.907312,7.380602
+Ibadan,ibadan,Alaghafo,,settlement,grid3,Agodi,Ibadan North,Oyo,0,1,3.91275,7.395018
+Ibadan,ibadan,Alaja,Alafara,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.832888,7.41716
+Ibadan,ibadan,Alaja Land,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.828855,7.42142
+Ibadan,ibadan,Alalubosa Lakeside GRA,,settlement,grid3,Alesinloye,Ibadan South West,Oyo,0,1,3.860085,7.379798
+Ibadan,ibadan,Alesinloye,,settlement,grid3,Alesinloye,Ibadan South West,Oyo,0,1,3.872168,7.383257
+Ibadan,ibadan,Ali Iwo,,settlement,grid3,Irefin,Ibadan North East,Oyo,0,1,3.915383,7.392453
+Ibadan,ibadan,Amadiya Musfala,,settlement,grid3,Odeaje,Ibadan North East,Oyo,0,1,3.927627,7.342348
+Ibadan,ibadan,Amuda,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.942377,7.414262
+Ibadan,ibadan,Anfani,,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.87876,7.36034
+Ibadan,ibadan,Apata Area,,settlement,grid3,Agbowo,Ibadan North,Oyo,0,1,3.91652,7.449888
+Ibadan,ibadan,Are,,settlement,grid3,Nalende,Ibadan North,Oyo,0,1,3.897586,7.386318
+Ibadan,ibadan,Arewa Ifelodun,,settlement,grid3,Odeaje,Ibadan North East,Oyo,0,1,3.92816,7.350277
+Ibadan,ibadan,Asaka,,settlement,grid3,Foko–Ologede,Ibadan South West,Oyo,0,1,3.88638,7.37228
+Ibadan,ibadan,Ashi,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.931192,7.42687
+Ibadan,ibadan,Awotunde Adeyalo,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.935348,7.365903
+Ibadan,ibadan,Ayekale,,settlement,grid3,Agugu,Ibadan North East,Oyo,0,1,3.928445,7.377342
+Ibadan,ibadan,Baba Sale,Oke Offa,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.914153,7.387235
+Ibadan,ibadan,Bada Oke Adu,,settlement,grid3,Irefin,Ibadan North East,Oyo,0,1,3.916615,7.390963
+Ibadan,ibadan,Basorun,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.936982,7.415918
+Ibadan,ibadan,Basorun Bibinari,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.929442,7.406838
+Ibadan,ibadan,Beere,,settlement,grid3,Beere–Mapo,Ibadan South East,Oyo,0,1,3.898795,7.379047
+Ibadan,ibadan,Beere Mapo,,settlement,grid3,Beere–Mapo,Ibadan South East,Oyo,0,1,3.899057,7.376565
+Ibadan,ibadan,Bestway,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.931172,7.40275
+Ibadan,ibadan,Bode,,settlement,grid3,Popoyemoja,Ibadan South West,Oyo,0,1,3.890993,7.361227
+Ibadan,ibadan,Bode Wasinmi,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.934048,7.412063
+Ibadan,ibadan,Bodija,Bodija Market,settlement,grid3,Agbowo,Ibadan North,Oyo,0,1,3.916383,7.433627
+Ibadan,ibadan,Bolumole,Ring Road,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.875027,7.35133
+Ibadan,ibadan,Bolumole,,settlement,grid3,Molete,Ibadan South East,Oyo,0,1,3.88788,7.34852
+Ibadan,ibadan,Carpenter Community,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.836295,7.429413
+Ibadan,ibadan,Challenge,Idi Odo,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.880625,7.350928
+Ibadan,ibadan,Chief Akindele Obiwale Avenue,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.845255,7.420082
+Ibadan,ibadan,Dugbe,,settlement,grid3,Ekotedo,Ibadan North West,Oyo,0,1,3.8777,7.388748
+Ibadan,ibadan,Dugbe Alawo,,settlement,grid3,Ekotedo,Ibadan North West,Oyo,0,1,3.88329,7.39002
+Ibadan,ibadan,Ebrohime,,settlement,grid3,Samonda,Ibadan North,Oyo,0,1,3.903213,7.44262
+Ibadan,ibadan,Elekuro,,settlement,grid3,Asanike,Ibadan South East,Oyo,0,1,3.908042,7.369843
+Ibadan,ibadan,Eleta,,settlement,grid3,Asanike,Ibadan South East,Oyo,0,1,3.905218,7.366162
+Ibadan,ibadan,Eleta,,settlement,grid3,Odinjo,Ibadan South East,Oyo,0,1,3.910811,7.355853
+Ibadan,ibadan,Elewura,Ring Road,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.87662,7.350008
+Ibadan,ibadan,Eleyele,,settlement,grid3,Eleyele,Ibadan North West,Oyo,0,1,3.870653,7.412097
+Ibadan,ibadan,Eleyele Forest Reserve,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.850508,7.431706
+Ibadan,ibadan,Eleyele Forest Settlement,Eleyele Dam,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.85162,7.431824
+Ibadan,ibadan,Eleyele Hg Works,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.85326,7.41613
+Ibadan,ibadan,Emmanuel Estate,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.830233,7.42044
+Ibadan,ibadan,Eruwa Garage,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.856673,7.41766
+Ibadan,ibadan,Expoyo,,settlement,grid3,Samonda,Ibadan North,Oyo,0,1,3.898687,7.429185
+Ibadan,ibadan,Eyinni,,settlement,grid3,Challenge,Ibadan South East,Oyo,0,1,3.87521,7.33826
+Ibadan,ibadan,Falana,,settlement,grid3,Challenge,Ibadan South East,Oyo,0,1,3.877917,7.342819
+Ibadan,ibadan,Fasanya Area,,settlement,grid3,Adesola,Ibadan South East,Oyo,0,1,3.921777,7.361017
+Ibadan,ibadan,Favours,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.911184,7.418668
+Ibadan,ibadan,Felele Bello,,settlement,grid3,Challenge,Ibadan South East,Oyo,0,1,3.88364,7.33558
+Ibadan,ibadan,Fijabi,,settlement,grid3,Beere–Mapo,Ibadan South East,Oyo,0,1,3.89435,7.37671
+Ibadan,ibadan,Fire Challenge,,settlement,grid3,Challenge,Ibadan South East,Oyo,0,1,3.88273,7.35256
+Ibadan,ibadan,First Power Line,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.846935,7.420487
+Ibadan,ibadan,Gbenla,,settlement,grid3,Irefin,Ibadan North East,Oyo,0,1,3.914062,7.392248
+Ibadan,ibadan,Gege Olopa,,settlement,grid3,Isale Osi–Oja'ba,Ibadan South West,Oyo,0,1,3.891183,7.374403
+Ibadan,ibadan,Harmony Estate,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.84249,7.417218
+Ibadan,ibadan,Holy Trinity,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.929153,7.395517
+Ibadan,ibadan,Housing,,settlement,grid3,Old Bodija,Ibadan North,Oyo,0,1,3.901385,7.419622
+Ibadan,ibadan,IDI Ape,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.926863,7.403002
+Ibadan,ibadan,IDI Arere,,settlement,grid3,Isale Osi–Oja'ba,Ibadan South West,Oyo,0,1,3.895357,7.366955
+Ibadan,ibadan,IDI Arere,,settlement,grid3,Oja'ba,Ibadan South East,Oyo,0,1,3.896001,7.370536
+Ibadan,ibadan,IDI Aro,,settlement,grid3,Ita-Ege,Ibadan South East,Oyo,0,1,3.904679,7.368321
+Ibadan,ibadan,IDI Ishin,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.86044,7.398712
+Ibadan,ibadan,IDI Obi,,settlement,grid3,Agodi,Ibadan North,Oyo,0,1,3.91258,7.40055
+Ibadan,ibadan,IDI Obi,,settlement,grid3,Agugu,Ibadan North East,Oyo,0,1,3.923122,7.384588
+Ibadan,ibadan,IDI Ogungun,,settlement,grid3,Agodi,Ibadan North,Oyo,0,1,3.918023,7.394987
+Ibadan,ibadan,IDI Omo,Atenda,settlement,grid3,Agodi,Ibadan North,Oyo,0,1,3.914025,7.393652
+Ibadan,ibadan,IDI Oro Ekotero,,settlement,grid3,Ekotedo,Ibadan North West,Oyo,0,1,3.88451,7.390971
+Ibadan,ibadan,IDI Oro Elewa,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.827745,7.436065
+Ibadan,ibadan,IDI Osan,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.84766,7.42899
+Ibadan,ibadan,IDI Osan Via Adetokun,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.850067,7.430135
+Ibadan,ibadan,Ibadan Polytechnic,,settlement,grid3,Samonda,Ibadan North,Oyo,0,1,3.883688,7.437566
+Ibadan,ibadan,Ibikunle,,settlement,grid3,Oritamerin (nw),Ibadan North West,Oyo,0,1,3.89337,7.38187
+Ibadan,ibadan,Idiaraba Koloko,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.926283,7.374197
+Ibadan,ibadan,Idikan,,settlement,grid3,Idikan–Olorisaoko,Ibadan North West,Oyo,0,1,3.89104,7.38303
+Ibadan,ibadan,Idioro Elewa Adetokan,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.84546,7.42228
+Ibadan,ibadan,Idiorogbo Adekinle Koloko,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.924217,7.370287
+Ibadan,ibadan,Idishin,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.854782,7.401652
+Ibadan,ibadan,Ifedapo,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.934522,7.366807
+Ibadan,ibadan,Ifelajulo Olorunshogo,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.929992,7.360925
+Ibadan,ibadan,Ifelajulo Toyinbo,,settlement,grid3,Agugu,Ibadan North East,Oyo,0,1,3.938323,7.373375
+Ibadan,ibadan,Ifelodun Tioya,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.938814,7.359417
+Ibadan,ibadan,Ijaybbawo,,settlement,grid3,Eleyele,Ibadan North West,Oyo,0,1,3.862718,7.41205
+Ibadan,ibadan,Ik Dairo,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.926083,7.396713
+Ibadan,ibadan,Ikolaba,,settlement,grid3,Old Bodija,Ibadan North,Oyo,0,1,3.911765,7.412303
+Ibadan,ibadan,Ikolaba,,settlement,grid3,Agodi,Ibadan North,Oyo,0,1,3.922761,7.404945
+Ibadan,ibadan,Ile Oke,,settlement,grid3,Agodi,Ibadan North,Oyo,0,1,3.910563,7.393255
+Ibadan,ibadan,Ile Tuntun,,settlement,grid3,Owode,Ibadan South East,Oyo,0,1,3.903835,7.361862
+Ibadan,ibadan,Iletuntun,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.835767,7.411283
+Ibadan,ibadan,Ilo,,settlement,grid3,Alesinloye,Ibadan South West,Oyo,0,1,3.86554,7.38033
+Ibadan,ibadan,Imale N Falaafia,,settlement,grid3,Oke Ado–Liberty,Ibadan South West,Oyo,0,1,3.884853,7.36457
+Ibadan,ibadan,Inalende,,settlement,grid3,Inalende,Ibadan North West,Oyo,0,1,3.891053,7.395015
+Ibadan,ibadan,Ire Akari,,settlement,grid3,Nalende,Ibadan North,Oyo,0,1,3.89116,7.39896
+Ibadan,ibadan,Ire Akari Muslim,,settlement,grid3,Odinjo,Ibadan South East,Oyo,0,1,3.917883,7.351257
+Ibadan,ibadan,Irefin,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.914787,7.388687
+Ibadan,ibadan,Irefin Area,,settlement,grid3,Irefin,Ibadan North East,Oyo,0,1,3.910797,7.390667
+Ibadan,ibadan,Irepodun,,settlement,grid3,Agugu,Ibadan North East,Oyo,0,1,3.937065,7.374813
+Ibadan,ibadan,Irewole,Eleruku,settlement,grid3,Odeaje,Ibadan North East,Oyo,0,1,3.92108,7.350685
+Ibadan,ibadan,Isale Jebu,,settlement,grid3,Isale Osi–Oja'ba,Ibadan South West,Oyo,0,1,3.89536,7.37292
+Ibadan,ibadan,Isale Osi,Born Photo,settlement,grid3,Isale Osi–Oja'ba,Ibadan South West,Oyo,0,1,3.891258,7.373885
+Ibadan,ibadan,Isele Ijebu,,settlement,grid3,Oja'ba,Ibadan South East,Oyo,0,1,3.895989,7.369472
+Ibadan,ibadan,Ite Titun,,settlement,grid3,Odinjo,Ibadan South East,Oyo,0,1,3.908689,7.359088
+Ibadan,ibadan,Iyaganku,,settlement,grid3,Alesinloye,Ibadan South West,Oyo,0,1,3.865898,7.37014
+Ibadan,ibadan,Iyaganku GRA,,settlement,grid3,Alesinloye,Ibadan South West,Oyo,0,1,3.869103,7.379257
+Ibadan,ibadan,Iyana Ade Oyo,Ring Road,settlement,grid3,Oke Ado–Liberty,Ibadan South West,Oyo,0,1,3.869022,7.361185
+Ibadan,ibadan,Iyana Bodija,,settlement,grid3,Agbowo,Ibadan North,Oyo,0,1,3.92695,7.438115
+Ibadan,ibadan,Jagun Alade,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.928617,7.364695
+Ibadan,ibadan,Jaleoyemi Semi Bio,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.923652,7.357883
+Ibadan,ibadan,Jebewon,Sabo,settlement,grid3,Oke Itunu,Ibadan North,Oyo,0,1,3.887579,7.40634
+Ibadan,ibadan,Jericho,,village,osm,Afonta,Ibadan North West,Oyo,0,1,3.864756,7.394823
+Ibadan,ibadan,Jesus Estate,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.933662,7.425709
+Ibadan,ibadan,Jonku 1,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.942302,7.413142
+Ibadan,ibadan,Kajola Area,,settlement,grid3,Agbowo,Ibadan North,Oyo,0,1,3.918025,7.449885
+Ibadan,ibadan,Kodeti,,settlement,grid3,Molete,Ibadan South East,Oyo,0,1,3.9004,7.35919
+Ibadan,ibadan,Koloko Arikeuyo,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.924637,7.371827
+Ibadan,ibadan,Kongi,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.911173,7.426044
+Ibadan,ibadan,Kufayaku,,settlement,grid3,Odinjo,Ibadan South East,Oyo,0,1,3.918928,7.349413
+Ibadan,ibadan,Labo Junction,,settlement,grid3,Asanike,Ibadan South East,Oyo,0,1,3.905608,7.370988
+Ibadan,ibadan,Ladoke Akintola,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.914912,7.416402
+Ibadan,ibadan,Letmauck Cantonment Nigerian Army Area,Polo,settlement,grid3,Eleyele,Ibadan North West,Oyo,0,1,3.871318,7.403255
+Ibadan,ibadan,Liberty,,settlement,grid3,Oke Ado–Liberty,Ibadan South West,Oyo,0,1,3.872517,7.368235
+Ibadan,ibadan,Madeko Okikiade,,settlement,grid3,Agugu,Ibadan North East,Oyo,0,1,3.936742,7.37492
+Ibadan,ibadan,Mapo,,settlement,grid3,Beere–Mapo,Ibadan South East,Oyo,0,1,3.895855,7.375654
+Ibadan,ibadan,Mbc Akinwande,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.857403,7.415517
+Ibadan,ibadan,Mechanic Village,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.848902,7.419152
+Ibadan,ibadan,Mercyland Estate,,settlement,grid3,Eleyele,Ibadan North West,Oyo,0,1,3.873633,7.415287
+Ibadan,ibadan,Mile 110,,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.860424,7.378669
+Ibadan,ibadan,Mobic,,settlement,grid3,Oritamerin (sw),Ibadan South West,Oyo,0,1,3.842161,7.371555
+Ibadan,ibadan,Mobil,Ring Road,settlement,grid3,Oke Ado–Liberty,Ibadan South West,Oyo,0,1,3.861145,7.367645
+Ibadan,ibadan,Mokola,Ago Ebira,settlement,grid3,Ago Tapa,Ibadan North,Oyo,0,1,3.891987,7.40462
+Ibadan,ibadan,Mokola Ori Oke,,settlement,grid3,Old Bodija,Ibadan North,Oyo,0,1,3.901448,7.403755
+Ibadan,ibadan,Mokore,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.927788,7.36281
+Ibadan,ibadan,Molete,,settlement,grid3,Molete,Ibadan South East,Oyo,0,1,3.894873,7.345342
+Ibadan,ibadan,Molete,,settlement,grid3,Popoyemoja,Ibadan South West,Oyo,0,1,3.887558,7.361182
+Ibadan,ibadan,Montala,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.918623,7.390825
+Ibadan,ibadan,Muslim,,settlement,grid3,Odinjo,Ibadan South East,Oyo,0,1,3.92014,7.35409
+Ibadan,ibadan,Obasa,,settlement,grid3,Old Bodija,Ibadan North,Oyo,0,1,3.897373,7.413707
+Ibadan,ibadan,Ode Jayi Area,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.92415,7.39143
+Ibadan,ibadan,Odejayi,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.924067,7.395098
+Ibadan,ibadan,Odinjo,,settlement,grid3,Odinjo,Ibadan South East,Oyo,0,1,3.91607,7.35917
+Ibadan,ibadan,Odo Oba,,settlement,grid3,Molete,Ibadan South East,Oyo,0,1,3.901738,7.346468
+Ibadan,ibadan,Odo Olo,,settlement,grid3,Inalende,Ibadan North West,Oyo,0,1,3.890592,7.398381
+Ibadan,ibadan,Odo Ona,,settlement,grid3,Apata–Odo Ona,Ibadan South West,Oyo,0,1,3.854773,7.375843
+Ibadan,ibadan,Odo Osun,,settlement,grid3,Odo Osun,Ibadan North East,Oyo,0,1,3.901828,7.38076
+Ibadan,ibadan,Odusanya,,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.87182,7.35525
+Ibadan,ibadan,Ogbori Efon Adekinle,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.918315,7.369353
+Ibadan,ibadan,Ogundare Laoye,,settlement,grid3,Odeaje,Ibadan North East,Oyo,0,1,3.928328,7.346808
+Ibadan,ibadan,Ogunpa,,settlement,grid3,Ekotedo,Ibadan North West,Oyo,0,1,3.881027,7.388665
+Ibadan,ibadan,Oja Gbo,,settlement,grid3,Oja Gbo,Ibadan North East,Oyo,0,1,3.910037,7.378875
+Ibadan,ibadan,Oja Oba,,settlement,grid3,Oja'ba,Ibadan South East,Oyo,0,1,3.895769,7.373975
+Ibadan,ibadan,Oje,,settlement,grid3,Oje,Ibadan North East,Oyo,0,1,3.908232,7.389045
+Ibadan,ibadan,Ojonusa Area Eleyele,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.855527,7.417028
+Ibadan,ibadan,Oju Odo,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.924232,7.375897
+Ibadan,ibadan,Oju Odo Elta,,settlement,grid3,Odinjo,Ibadan South East,Oyo,0,1,3.91401,7.351969
+Ibadan,ibadan,Oke,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.926825,7.388663
+Ibadan,ibadan,Oke Ado 1,,settlement,grid3,Oke Ado–Liberty,Ibadan South West,Oyo,0,1,3.874987,7.36804
+Ibadan,ibadan,Oke Ado 2,Imalefalafia,settlement,grid3,Oke Ado–Liberty,Ibadan South West,Oyo,0,1,3.873637,7.362787
+Ibadan,ibadan,Oke Alaro,,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.84507,7.35143
+Ibadan,ibadan,Oke Are,,settlement,grid3,Oke Are,Ibadan North,Oyo,0,1,3.897981,7.383634
+Ibadan,ibadan,Oke Aremo,,settlement,grid3,Yemetu,Ibadan North,Oyo,0,1,3.90047,7.389973
+Ibadan,ibadan,Oke Bola,,settlement,grid3,Molete–Oke Ado,Ibadan South West,Oyo,0,1,3.880975,7.382025
+Ibadan,ibadan,Oke Bola,,settlement,grid3,Alesinloye,Ibadan South West,Oyo,0,1,3.877573,7.383342
+Ibadan,ibadan,Oke Odo,,settlement,grid3,Oke-Oluokun,Ibadan South East,Oyo,0,1,3.902402,7.362642
+Ibadan,ibadan,Oke Offa Baba Sale,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.914522,7.38758
+Ibadan,ibadan,Oke Padre,,settlement,grid3,Ekotedo,Ibadan North West,Oyo,0,1,3.88612,7.38722
+Ibadan,ibadan,Okerorun,,settlement,grid3,Owode,Ibadan South East,Oyo,0,1,3.90804,7.35002
+Ibadan,ibadan,Okiki Ade Babanla,,settlement,grid3,Agugu,Ibadan North East,Oyo,0,1,3.939252,7.373487
+Ibadan,ibadan,Okoro,,settlement,grid3,Sango,Ibadan North,Oyo,0,1,3.8832,7.420852
+Ibadan,ibadan,Olarewaju Obirin,,settlement,grid3,Odinjo,Ibadan South East,Oyo,0,1,3.919562,7.35479
+Ibadan,ibadan,Oloode Oja,,settlement,grid3,Owode,Ibadan South East,Oyo,0,1,3.9133,7.34881
+Ibadan,ibadan,Olori Isa Oko,,settlement,grid3,Idikan–Olorisaoko,Ibadan North West,Oyo,0,1,3.89244,7.38531
+Ibadan,ibadan,Oloronbo,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.939689,7.415045
+Ibadan,ibadan,Olorunnisola Community,Ajadi Second Gate,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.837288,7.433558
+Ibadan,ibadan,Olorunsogo,Molete,settlement,grid3,Challenge,Ibadan South East,Oyo,0,1,3.885079,7.352659
+Ibadan,ibadan,Olorunsogo Ibadan North East,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.9287,7.36232
+Ibadan,ibadan,Olorunsogo Road,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.93449,7.35804
+Ibadan,ibadan,Olunloyo,,settlement,grid3,Kobomoje,Ibadan South East,Oyo,0,1,3.899428,7.369033
+Ibadan,ibadan,Olunloyo,,settlement,grid3,Oke-Oluokun,Ibadan South East,Oyo,0,1,3.90005,7.365578
+Ibadan,ibadan,Oluseyi,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.86977,7.42031
+Ibadan,ibadan,Oluwo Kekere,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.923337,7.41461
+Ibadan,ibadan,Oluwonla,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.93283,7.414756
+Ibadan,ibadan,Oluyemi Avenue,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.856583,7.401025
+Ibadan,ibadan,Oluyole,Ring Road,settlement,grid3,Oritamerin (sw),Ibadan South West,Oyo,0,1,3.841876,7.365196
+Ibadan,ibadan,Oluyole Estate,,settlement,grid3,Apata–Odo Ona,Ibadan South West,Oyo,0,1,3.848448,7.371708
+Ibadan,ibadan,Oluyole Industrial Area,,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.847136,7.355393
+Ibadan,ibadan,Oluyole Industrial Estate,,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.844397,7.361242
+Ibadan,ibadan,Oluyoro Oke Offa,,settlement,grid3,Oke Adu,Ibadan North East,Oyo,0,1,3.917552,7.386923
+Ibadan,ibadan,Omitowoju,,settlement,grid3,Ekotedo,Ibadan North West,Oyo,0,1,3.887453,7.39513
+Ibadan,ibadan,Omolewa Area,,settlement,grid3,Yemetu,Ibadan North,Oyo,0,1,3.904977,7.396638
+Ibadan,ibadan,One Iye Area,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.850795,7.417743
+Ibadan,ibadan,One Molete,Molete,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.883417,7.35602
+Ibadan,ibadan,Oni Area,,settlement,grid3,Yemetu,Ibadan North,Oyo,0,1,3.903783,7.394773
+Ibadan,ibadan,Onireke,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.879592,7.392897
+Ibadan,ibadan,Onireke Quarters,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.880187,7.394918
+Ibadan,ibadan,Onitiju,,settlement,grid3,Adesola,Ibadan South East,Oyo,0,1,3.920988,7.363192
+Ibadan,ibadan,Oniuu,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.860805,7.415393
+Ibadan,ibadan,Oniyanri,,settlement,grid3,Abebi,Ibadan North West,Oyo,0,1,3.89313,7.389793
+Ibadan,ibadan,Oniyedu Olorunshogo,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.929867,7.362113
+Ibadan,ibadan,Opo Yeosa,,settlement,grid3,Nalende,Ibadan North,Oyo,0,1,3.893625,7.38602
+Ibadan,ibadan,Opoyeosa,,settlement,grid3,Asukuna,Ibadan North West,Oyo,0,1,3.893869,7.383088
+Ibadan,ibadan,Oranyan,,settlement,grid3,Molete,Ibadan South East,Oyo,0,1,3.90072,7.3544
+Ibadan,ibadan,Oranyan,,settlement,grid3,Oja Gbo,Ibadan North East,Oyo,0,1,3.905937,7.372975
+Ibadan,ibadan,Oranyan,,settlement,grid3,Oranyan (ne),Ibadan North East,Oyo,0,1,3.901121,7.375778
+Ibadan,ibadan,Oranyan,,settlement,grid3,Oranyan (se),Ibadan South East,Oyo,0,1,3.901293,7.373109
+Ibadan,ibadan,Oremeji Olusogo,,settlement,grid3,Oke Itunu,Ibadan North,Oyo,0,1,3.89116,7.412292
+Ibadan,ibadan,Ori Eru,,settlement,grid3,Oritamerin (nw),Ibadan North West,Oyo,0,1,3.891298,7.380622
+Ibadan,ibadan,Orita Challenge,,settlement,grid3,Challenge,Ibadan South East,Oyo,0,1,3.87043,7.33752
+Ibadan,ibadan,Orita Mefa,UCH Area,settlement,grid3,Old Bodija,Ibadan North,Oyo,0,1,3.90332,7.401179
+Ibadan,ibadan,Orita Merin,,settlement,grid3,Agbaje–Idikan,Ibadan North West,Oyo,0,1,3.893225,7.377892
+Ibadan,ibadan,Oritamerin,,settlement,grid3,Agbaje–Idikan,Ibadan North West,Oyo,0,1,3.891935,7.377208
+Ibadan,ibadan,Oritamerin Ttoya,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.93836,7.35809
+Ibadan,ibadan,Oriya Ui Samonda,Samonda,settlement,grid3,Samonda,Ibadan North,Oyo,0,1,3.906735,7.438285
+Ibadan,ibadan,Oshibodu,,settlement,grid3,Molete,Ibadan South East,Oyo,0,1,3.88905,7.34981
+Ibadan,ibadan,Ososami,,settlement,grid3,Oke Ado–Liberty,Ibadan South West,Oyo,0,1,3.870519,7.360593
+Ibadan,ibadan,Osuntokun,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.910343,7.423453
+Ibadan,ibadan,Owode,,settlement,grid3,Owode,Ibadan South East,Oyo,0,1,3.912305,7.350525
+Ibadan,ibadan,Owode Ibadan South East,,settlement,grid3,Odinjo,Ibadan South East,Oyo,0,1,3.91517,7.34753
+Ibadan,ibadan,Oxygen Tutors Area,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.850807,7.416142
+Ibadan,ibadan,Oyelakin Irepodun,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.9263,7.356145
+Ibadan,ibadan,Railway Quarters,,settlement,grid3,Afonta,Ibadan North West,Oyo,0,1,3.87378,7.39151
+Ibadan,ibadan,Ring Road,,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.869602,7.360011
+Ibadan,ibadan,S T Phase 2,,settlement,grid3,Eleyele,Ibadan North West,Oyo,0,1,3.870335,7.404242
+Ibadan,ibadan,Salami Estate,,settlement,grid3,Bashorun,Ibadan North,Oyo,0,1,3.920935,7.418662
+Ibadan,ibadan,Sango,Bembo,settlement,grid3,Sango,Ibadan North,Oyo,0,1,3.895928,7.426088
+Ibadan,ibadan,Sapayi,,settlement,grid3,Beere–Mapo,Ibadan South East,Oyo,0,1,3.89357,7.37769
+Ibadan,ibadan,Save and Serve,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.851308,7.416068
+Ibadan,ibadan,St Anthony Close,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.854177,7.416592
+Ibadan,ibadan,Surulere,,settlement,grid3,Aperin,Ibadan North East,Oyo,0,1,3.925305,7.369473
+Ibadan,ibadan,Tctc,Idi Ope,settlement,grid3,Eleyele,Ibadan North West,Oyo,0,1,3.863175,7.413433
+Ibadan,ibadan,Temidire Odo Oba,,settlement,grid3,Molete,Ibadan South East,Oyo,0,1,3.90147,7.35034
+Ibadan,ibadan,Testing Ground,,settlement,grid3,Basorun,Ibadan North East,Oyo,0,1,3.92789,7.402282
+Ibadan,ibadan,Tewogbade,,settlement,grid3,Ita-Ege,Ibadan South East,Oyo,0,1,3.902133,7.366432
+Ibadan,ibadan,Tioya Ogbere,,settlement,grid3,Atipe,Ibadan North East,Oyo,0,1,3.93834,7.35687
+Ibadan,ibadan,Total Garden,,settlement,grid3,Agodi,Ibadan North,Oyo,0,1,3.910062,7.398172
+Ibadan,ibadan,Town Planning,Foko Layout,settlement,grid3,Ring Road–Challenge–Oluyole,Ibadan South West,Oyo,0,1,3.858392,7.372447
+Ibadan,ibadan,U I,,settlement,grid3,Samonda,Ibadan North,Oyo,0,1,3.906246,7.442623
+Ibadan,ibadan,Unity Layout,,settlement,grid3,Olopomewa,Ibadan North West,Oyo,0,1,3.855682,7.415842
+Ibadan,ibadan,Veterinary,,settlement,grid3,Oke Itunu,Ibadan North,Oyo,0,1,3.889723,7.411983
+Ibadan,ibadan,Yejide,,settlement,grid3,Molete,Ibadan South East,Oyo,0,1,3.89461,7.35983
+Ibadan,ibadan,Yemetu,,settlement,grid3,Yemetu,Ibadan North,Oyo,0,1,3.900635,7.393742
+Ibadan,ibadan,Yemetu Igosun,,settlement,grid3,Yemetu,Ibadan North,Oyo,0,1,3.906712,7.391632

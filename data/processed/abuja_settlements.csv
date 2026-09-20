@@ -1,0 +1,380 @@
+city,slug,name,alt_name,kind,source,ward,lga,state,is_primary,in_plate,lon,lat
+Abuja,abuja,Chika,,settlement,grid3,Kabusa,Municipal Area Council,Fct,1,1,7.4076,8.99277
+Abuja,abuja,Dakwa 2,,settlement,grid3,Kubwa,Bwari,Fct,1,1,7.23344,9.11201
+Abuja,abuja,Durumi,,settlement,grid3,Garki,Municipal Area Council,Fct,1,1,7.47342,9.01212
+Abuja,abuja,Dutse Alhaji,,settlement,grid3,Dutse,Bwari,Fct,1,1,7.37108,9.13999
+Abuja,abuja,Dutsen Garki,,settlement,grid3,Garki,Municipal Area Council,Fct,1,1,7.48647,8.97718
+Abuja,abuja,Garki Area 1,,settlement,grid3,City Centre,Municipal Area Council,Fct,1,1,7.47081,9.03104
+Abuja,abuja,Garki II Area 11,,settlement,grid3,City Centre,Municipal Area Council,Fct,1,1,7.495693,9.036343
+Abuja,abuja,Idu Okoro 1,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,1,1,7.35932,9.071586
+Abuja,abuja,Jahi 1,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,1,1,7.441215,9.095588
+Abuja,abuja,Jikwoyi,,settlement,grid3,Karu,Municipal Area Council,Fct,1,1,7.57064,8.99625
+Abuja,abuja,Karsana,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,1,1,7.336888,9.124612
+Abuja,abuja,Ketti,,settlement,grid3,Kabusa,Municipal Area Council,Fct,1,1,7.394345,8.926513
+Abuja,abuja,Kubwa,,settlement,grid3,Usuma,Bwari,Fct,1,1,7.340659,9.157236
+Abuja,abuja,Kubwa Village,,settlement,grid3,Kubwa,Bwari,Fct,1,1,7.32067,9.15287
+Abuja,abuja,Kuchigoro,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,1,1,7.4222,9.01582
+Abuja,abuja,Kugbo 1 Catholic Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,1,1,7.545435,9.024805
+Abuja,abuja,Life Camp,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,1,1,7.3984,9.077644
+Abuja,abuja,Lugbe Fha,,settlement,grid3,Kabusa,Municipal Area Council,Fct,1,1,7.324432,8.9661
+Abuja,abuja,Mabushi Nakowa,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,1,1,7.45503,9.081898
+Abuja,abuja,Nyanya,,settlement,grid3,Nyanya,Municipal Area Council,Fct,1,1,7.56728,9.0221
+Abuja,abuja,Shape 1,,settlement,grid3,Dutse,Bwari,Fct,1,1,7.56625,9.11062
+Abuja,abuja,Wuye,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,1,1,7.44584,9.0531
+Abuja,abuja,Zhako Yako,,settlement,grid3,Kabusa,Municipal Area Council,Fct,1,1,7.45576,8.88937
+Abuja,abuja,Aguiyi Ironsi Cantonment,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.527106,9.066544
+Abuja,abuja,Aleyita,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.40119,8.99125
+Abuja,abuja,Anakita,Ketti Village,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.39999,8.918928
+Abuja,abuja,Anguwan Gbagyi Gbagalape,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.576948,9.057723
+Abuja,abuja,Anguwan Hausawa,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.568053,9.020879
+Abuja,abuja,Apo,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.499663,8.973643
+Abuja,abuja,Apo Resettlement,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.496071,8.986626
+Abuja,abuja,Apo Roundabout Settlement,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.491201,9.015012
+Abuja,abuja,Apo Sunrise Plaza,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.498213,8.98745
+Abuja,abuja,Apostolic Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.577281,9.055646
+Abuja,abuja,Aquamarine Estate,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.495247,8.955519
+Abuja,abuja,Area 1 Dagba,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.468185,9.023745
+Abuja,abuja,Area A 1,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.566813,9.027618
+Abuja,abuja,Area A1 Islamiya School,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.567152,9.027812
+Abuja,abuja,Area A2 Block7,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.568182,9.026715
+Abuja,abuja,Area B,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569712,9.029081
+Abuja,abuja,Area B Extention,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.567707,9.031571
+Abuja,abuja,Area B Extention Capital City Blessed Academy,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569632,9.032162
+Abuja,abuja,Area B Extention Deeper Life,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569593,9.03168
+Abuja,abuja,Area B Extention Fountain Academy,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.571367,9.033225
+Abuja,abuja,Area B Extention Redeem Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57007,9.03433
+Abuja,abuja,Area B Extention Revival Outreach,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569366,9.032552
+Abuja,abuja,Area B Extention Ris School,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.571372,9.033502
+Abuja,abuja,Area B Extention United Evangelical School,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.571068,9.032242
+Abuja,abuja,Area B Extention the Redeemed Sanctified Zion Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569765,9.034213
+Abuja,abuja,Area C Costom,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.573738,9.032126
+Abuja,abuja,Area C Extension,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.575284,9.032865
+Abuja,abuja,Area C Hilltop,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57454,9.035682
+Abuja,abuja,Area C Mopol,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.575356,9.033876
+Abuja,abuja,Area C Quaters,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.573243,9.03243
+Abuja,abuja,Area D Block 110,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.577293,9.029326
+Abuja,abuja,Area D Ss Peter and Paul Nyanya,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.577475,9.02865
+Abuja,abuja,Area F 1 Vicilly Excel School,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57243,9.026092
+Abuja,abuja,Area F2,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.570645,9.02811
+Abuja,abuja,Army Barrack,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.511988,9.081396
+Abuja,abuja,Aso,,village,osm,City Centre,Municipal Area Council,Federal Capital Territory,0,1,7.530023,9.051892
+Abuja,abuja,Aso Drive,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.507107,9.077642
+Abuja,abuja,Asokoro,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.519072,9.036776
+Abuja,abuja,Asokoro,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.526076,9.049439
+Abuja,abuja,Asokoro Extension Paduma Hill,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.525494,9.026969
+Abuja,abuja,Baracha Estate,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.448599,9.012553
+Abuja,abuja,Barack,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.573362,9.027886
+Abuja,abuja,Barracks Lungi,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.52313,9.09061
+Abuja,abuja,Bmuko,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.37497,9.18586
+Abuja,abuja,Borehole,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.573498,9.028862
+Abuja,abuja,Boundary Road,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.58007,9.03248
+Abuja,abuja,Boundary Road Explot School,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.577793,9.028682
+Abuja,abuja,Boundary Road Gods Anoited School,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.580172,9.02889
+Abuja,abuja,Boundary Road Twin Academy,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.580515,9.036134
+Abuja,abuja,Brick City Kubwa Phase 2,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.290836,9.143631
+Abuja,abuja,Burum,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.437832,8.889332
+Abuja,abuja,Catholic Gate,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.579769,9.029168
+Abuja,abuja,Cbn Housing Estate,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.487734,8.971171
+Abuja,abuja,Cbn Junction,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.5026,9.031828
+Abuja,abuja,Christ Church Boundary,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57969,9.029057
+Abuja,abuja,Chuks Estate,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57993,9.036342
+Abuja,abuja,Church of Christ,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.575634,9.057018
+Abuja,abuja,City Gate Police Baracks,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.432636,9.027933
+Abuja,abuja,Citygate,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.454399,9.019379
+Abuja,abuja,Custom Estate,,settlement,grid3,Karu,Municipal Area Council,Fct,0,1,7.564143,9.00424
+Abuja,abuja,Dagba,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.461438,9.017773
+Abuja,abuja,Dagbana,,settlement,grid3,Karu,Municipal Area Council,Fct,0,1,7.575998,8.96824
+Abuja,abuja,Dakin Biyu Karshi,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.4368,8.87598
+Abuja,abuja,Dakwa,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.237283,9.114223
+Abuja,abuja,Dakwa 1,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.2385,9.11397
+Abuja,abuja,Damangaza,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.47087,8.98183
+Abuja,abuja,Dape Village,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.372327,9.091294
+Abuja,abuja,Darlington Pampers Special Academy,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.577012,9.057402
+Abuja,abuja,Dawaki,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.39106,9.12737
+Abuja,abuja,Deeper Life 2,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.577115,9.055434
+Abuja,abuja,Dei Dei Shagari Quarters,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.253198,9.114467
+Abuja,abuja,Deidei,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.25895,9.11446
+Abuja,abuja,Dnako,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.44662,8.97715
+Abuja,abuja,Dominion Chapel,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.575047,9.035205
+Abuja,abuja,Dunamis School,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.580657,9.032647
+Abuja,abuja,Durumi 2,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.46829,9.00995
+Abuja,abuja,Dutse Baupma,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.38139,9.17361
+Abuja,abuja,Dutse Garki Apo,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.48997,8.975697
+Abuja,abuja,Dutse Makaranta,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.3794,9.16617
+Abuja,abuja,Dutse Saukale,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.37852,9.14853
+Abuja,abuja,Dutsen Alhaji,,town,osm,Dutse,Bwari,Federal Capital Territory,0,1,7.372661,9.139959
+Abuja,abuja,Efab Estate,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.460299,8.975395
+Abuja,abuja,Efab Global Estate,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.392139,9.043007
+Abuja,abuja,Ercc Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.576275,9.056626
+Abuja,abuja,F H A 1,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57787,9.02218
+Abuja,abuja,F H A 2,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57834,9.017785
+Abuja,abuja,Flames of Fire,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.575365,9.05625
+Abuja,abuja,Force Headquarters Residential Quarters,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.504232,9.053195
+Abuja,abuja,Galadimawa,Galadimawa Sun City,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.428561,8.993952
+Abuja,abuja,Galadimawa,,village,osm,Kabusa,Municipal Area Council,Federal Capital Territory,0,1,7.430556,8.984722
+Abuja,abuja,Galadimawa Village,,village,osm,Kabusa,Municipal Area Council,Federal Capital Territory,0,1,7.423885,8.994567
+Abuja,abuja,Galadinmawa,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.418472,8.98625
+Abuja,abuja,Garki Area 10,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.47036,9.02575
+Abuja,abuja,Garki Area 11,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.50192,9.04348
+Abuja,abuja,Garki Area 2,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.478637,9.043294
+Abuja,abuja,Garki Area 8,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.48955,9.03495
+Abuja,abuja,Garki Village,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.48599,9.02085
+Abuja,abuja,Gbagalape Aso C Junction,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.579088,9.053668
+Abuja,abuja,Gbagalape Kudu,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.580595,9.054764
+Abuja,abuja,Gbagarape,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.56859,9.02038
+Abuja,abuja,Gbalango,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.31555,9.143316
+Abuja,abuja,Gishiri,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.466848,9.099005
+Abuja,abuja,Gishiri Mbuwaha,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.4642,9.09996
+Abuja,abuja,Gods Anoited,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.580277,9.028127
+Abuja,abuja,Guzape,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.503773,9.009392
+Abuja,abuja,Guzape,,village,osm,Garki,Municipal Area Council,Federal Capital Territory,0,1,7.52,9.018889
+Abuja,abuja,Gwarinpa,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.401971,9.111039
+Abuja,abuja,Gwarinpa,,town,osm,Gwarinpa,Municipal Area Council,Federal Capital Territory,0,1,7.408056,9.099444
+Abuja,abuja,Hill City Church Nyanya Market,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569152,9.026212
+Abuja,abuja,Iddo Gbagy,Patachi,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.36535,9.085575
+Abuja,abuja,Idp Camp Kuchigoro,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.435715,9.010256
+Abuja,abuja,Inter House Sport,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57351,9.029556
+Abuja,abuja,Jabi,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.407895,9.014514
+Abuja,abuja,Jabi 1,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.44219,9.10473
+Abuja,abuja,Jabi 2,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.442452,9.106848
+Abuja,abuja,Jabi Main,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.42153,9.06419
+Abuja,abuja,Jabi Maje,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.407222,9.045556
+Abuja,abuja,Jayi 1,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.43997,9.09619
+Abuja,abuja,Jibi Dei Dei,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.254777,9.145027
+Abuja,abuja,Jibi Poweye,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.25873,9.12012
+Abuja,abuja,Jikakuchi,,village,osm,Dutse,Bwari,Federal Capital Territory,0,1,7.558611,9.108056
+Abuja,abuja,Jikoko,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.46608,9.14087
+Abuja,abuja,Jiru,,village,osm,Gwarinpa,Municipal Area Council,Federal Capital Territory,0,1,7.454597,9.116833
+Abuja,abuja,Jiwa A,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.321353,9.085718
+Abuja,abuja,Junbic Apartment and Suites,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.442068,9.016062
+Abuja,abuja,Kado Kuchi,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.43604,9.0942
+Abuja,abuja,Kagini,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.300606,9.13888
+Abuja,abuja,Kaima,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.53817,9.08801
+Abuja,abuja,Karmajiji,,village,osm,Gwarinpa,Municipal Area Council,Federal Capital Territory,0,1,7.42297,9.023996
+Abuja,abuja,Karon Majigi,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.42399,9.02399
+Abuja,abuja,Karsana 2,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.334805,9.102515
+Abuja,abuja,Karu,,village,osm,Karu,Municipal Area Council,Federal Capital Territory,0,1,7.575053,9.011352
+Abuja,abuja,Karu St Mary Catholic Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.573566,9.01545
+Abuja,abuja,Karu Village,,settlement,grid3,Karu,Municipal Area Council,Fct,0,1,7.57255,9.00611
+Abuja,abuja,Karu Village Extension,Kugbo Masalachi,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.535026,9.015386
+Abuja,abuja,Katambe,,village,osm,Karu,Municipal Area Council,Federal Capital Territory,0,1,7.585902,9.013229
+Abuja,abuja,Katampe 1,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.51181,9.12832
+Abuja,abuja,Katampe 2,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.512849,9.121146
+Abuja,abuja,Katampe Kubwa,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.32464,9.15316
+Abuja,abuja,Katampe New Extension,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.431923,9.128492
+Abuja,abuja,Keti,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.39397,8.9296
+Abuja,abuja,Kingdom First Christian Assembly Nyanya Market,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569763,9.025882
+Abuja,abuja,Kings Gate Favorite Academy,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.576445,9.055897
+Abuja,abuja,Kobin Madaki,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.526728,8.997551
+Abuja,abuja,Kpadana,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.4329,9.07275
+Abuja,abuja,Kubwa,,town,osm,Usuma,Bwari,Federal Capital Territory,0,1,7.341078,9.152675
+Abuja,abuja,Kubwa Phase2,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.322652,9.143491
+Abuja,abuja,Kubwa Pw,,settlement,grid3,Usuma,Bwari,Fct,0,1,7.33859,9.14931
+Abuja,abuja,Kuchibeda Village Gwarinpa,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.367621,9.095367
+Abuja,abuja,Kuchingoro,,village,osm,Gwarinpa,Municipal Area Council,Federal Capital Territory,0,1,7.420378,9.016317
+Abuja,abuja,Kudu,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.581847,9.058425
+Abuja,abuja,Kugbo,,village,osm,Nyanya,Municipal Area Council,Federal Capital Territory,0,1,7.548122,9.022787
+Abuja,abuja,Kugbo 1,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.548252,9.026725
+Abuja,abuja,Kugbo 1 Kings and Queens Academy,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.546625,9.02838
+Abuja,abuja,Kugbo 1 Mechanic,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.556893,9.023935
+Abuja,abuja,Kugbo 1 Rccg,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.55083,9.028995
+Abuja,abuja,Kugbo 1 Rccg,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.548107,9.027793
+Abuja,abuja,Kugbo 2,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.545308,9.02098
+Abuja,abuja,Kugbo Extension,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.54705,9.023235
+Abuja,abuja,Kukwab Kubwa,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.32128,9.14452
+Abuja,abuja,Kuruduma 1,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.52773,9.0148
+Abuja,abuja,Kurunduma,,village,osm,Garki,Municipal Area Council,Federal Capital Territory,0,1,7.529444,9.016111
+Abuja,abuja,Ladan Plaza,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.566288,9.023505
+Abuja,abuja,Larris Estate Wumba District,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.49169,8.955551
+Abuja,abuja,Lugbe,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.371063,8.97212
+Abuja,abuja,Mabushi,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.45421,9.08191
+Abuja,abuja,Maitam Micisipi,,settlement,grid3,Wuse,Municipal Area Council,Fct,0,1,7.49993,9.082243
+Abuja,abuja,Maitama,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.32526,9.15302
+Abuja,abuja,Malaysian Garden,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.489708,8.944483
+Abuja,abuja,Mape,,village,osm,Dutse,Bwari,Federal Capital Territory,0,1,7.492651,9.144655
+Abuja,abuja,Mararaba Takushira,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.45628,8.89502
+Abuja,abuja,Mechanic Village Apo,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.498213,8.957661
+Abuja,abuja,Mopol Barracck,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.27389,9.13005
+Abuja,abuja,Mpape,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.494809,9.136447
+Abuja,abuja,National Assembly Estate,Beggar Life Camp,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.48699,9.023458
+Abuja,abuja,National Assembly Quarters,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.388727,9.078622
+Abuja,abuja,Nkst Road Area,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.574342,9.034839
+Abuja,abuja,Nyanya,,village,osm,Nyanya,Municipal Area Council,Federal Capital Territory,0,1,7.569914,9.021256
+Abuja,abuja,Nyanya City Collage,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.572457,9.023733
+Abuja,abuja,Nyanya Extension Back of Nncp,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.565824,9.022734
+Abuja,abuja,Nyanya Market,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.568825,9.0243
+Abuja,abuja,Nyanya Market Curtain Line,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.568567,9.024061
+Abuja,abuja,Nyanya Redeemed Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569658,9.027122
+Abuja,abuja,Nyanya Village Market Side,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.568112,9.023936
+Abuja,abuja,Nyikuru Kubwa,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.31845,9.146026
+Abuja,abuja,Old Dei Dei,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.259555,9.115299
+Abuja,abuja,Opposite Ecwa Area,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.574568,9.034926
+Abuja,abuja,Phase 4,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.575252,9.044164
+Abuja,abuja,Phase 4 Ramatec,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57868,9.041128
+Abuja,abuja,Pigba,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.48614,8.95805
+Abuja,abuja,Piwoyi,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.39352,8.99957
+Abuja,abuja,Police Barrack,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.573425,9.028022
+Abuja,abuja,Police Quaters,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.573038,9.028214
+Abuja,abuja,Pyaksa,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.40236,8.96419
+Abuja,abuja,Pyape 2,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569248,9.040862
+Abuja,abuja,Pyape 2 Christ Apostolic Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569633,9.041895
+Abuja,abuja,Pyape 2 Gods Power of Covenant and Mercy Ministry,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.56963,9.041656
+Abuja,abuja,Pyape 2 Holy Child Academy,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.571517,9.042348
+Abuja,abuja,Pyape 2 Junction Mini Market,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569885,9.040303
+Abuja,abuja,Pyape 2 Rredeemed Christian Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.568685,9.043945
+Abuja,abuja,Pyape 2 the Lords City Church,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.569297,9.044082
+Abuja,abuja,Pyape Extention,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.5791,9.026465
+Abuja,abuja,Pyape Village,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.57672,9.02621
+Abuja,abuja,Redeem Boundary,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.579584,9.028958
+Abuja,abuja,Redeem J Rohi,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.579852,9.028972
+Abuja,abuja,Rinjin Dakwa,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.22007,9.09629
+Abuja,abuja,Rugan,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.437545,9.03715
+Abuja,abuja,Sabojibi,,village,osm,Kubwa,Bwari,Federal Capital Territory,0,1,7.260204,9.116589
+Abuja,abuja,Sabon Lugbe II,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.332736,8.946989
+Abuja,abuja,School,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.573278,9.032001
+Abuja,abuja,Secondary School Gate,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.573595,9.029074
+Abuja,abuja,Sereti,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.434162,8.939858
+Abuja,abuja,Shagari's Quarters,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.2534,9.11318
+Abuja,abuja,Shape 2,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.56782,9.11254
+Abuja,abuja,Shoprite Novare Apo 2 Mall,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.492677,8.984879
+Abuja,abuja,Star Prime School,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.579988,9.05441
+Abuja,abuja,Sumapma,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.52752,9.1433
+Abuja,abuja,Supreme Court Quarters,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.574553,9.02399
+Abuja,abuja,Takalafia Sabo,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.43623,8.88332
+Abuja,abuja,Takalafia Tsoho,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.41702,8.8826
+Abuja,abuja,Takushara,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.457247,8.881297
+Abuja,abuja,Tasha,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.461054,8.937527
+Abuja,abuja,Tashan Fulani,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.48191,8.87587
+Abuja,abuja,Tawakaltu Estate,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.495049,8.960791
+Abuja,abuja,Tos Douglas Cresent,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.441684,9.012323
+Abuja,abuja,Tudun Wada,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.36649,8.99818
+Abuja,abuja,Tugan Fulani Mauke,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.224829,9.106916
+Abuja,abuja,Tugan Galadima,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.24616,9.10248
+Abuja,abuja,Tungan Kwaso,,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.250081,9.105006
+Abuja,abuja,Twins Academy,,settlement,grid3,Nyanya,Municipal Area Council,Fct,0,1,7.580535,9.035921
+Abuja,abuja,Utako,,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.44464,9.07144
+Abuja,abuja,Villa Nova Estate,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.490172,8.979146
+Abuja,abuja,Waru,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.49441,8.935486
+Abuja,abuja,Waru,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.48532,8.92895
+Abuja,abuja,Wassa,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.474288,8.880676
+Abuja,abuja,Water Board Quarters,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.505991,9.102196
+Abuja,abuja,White Hoise Apartment and Suite,,settlement,grid3,City Centre,Municipal Area Council,Fct,0,1,7.440839,9.015089
+Abuja,abuja,Wilbahi Estate Kuchiogoro,Union Home Estate Kuchigoro,settlement,grid3,Gwarinpa,Municipal Area Council,Fct,0,1,7.422404,9.010718
+Abuja,abuja,Woman Boku,Dogodaji,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.322603,9.150152
+Abuja,abuja,Wumba,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.48394,8.9633
+Abuja,abuja,Wuse II,,settlement,grid3,Wuse,Municipal Area Council,Fct,0,1,7.494508,9.07764
+Abuja,abuja,Yemutu,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.4739,8.92913
+Abuja,abuja,Zango,Shagari Quarters,settlement,grid3,Kubwa,Bwari,Fct,0,1,7.253738,9.116676
+Abuja,abuja,Zhabuyi,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.37307,9.17168
+Abuja,abuja,Zhidu I,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.384975,9.025296
+Abuja,abuja,Zhidu II,,settlement,grid3,Kabusa,Municipal Area Council,Fct,0,1,7.374509,9.016583
+Abuja,abuja,Zhigakuchi,,settlement,grid3,Dutse,Bwari,Fct,0,1,7.557207,9.109597
+Abuja,abuja,Zone E Apo Legislative Quarters,,settlement,grid3,Garki,Municipal Area Council,Fct,0,1,7.485139,9.010085
+Abuja,abuja,Aco,,settlement,grid3,Gui,Municipal Area Council,Fct,1,0,7.32707,8.935923
+Abuja,abuja,Angwan Fulani,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,1,0,7.268476,9.101435
+Abuja,abuja,Dakwa Village,,settlement,grid3,Jiwa,Municipal Area Council,Fct,1,0,7.256213,9.078695
+Abuja,abuja,Gwagwa,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,1,0,7.31619,9.08689
+Abuja,abuja,Kuchigbe,,settlement,grid3,Gui,Municipal Area Council,Fct,1,0,7.295715,8.896916
+Abuja,abuja,Kurudu,,settlement,grid3,Orozo,Municipal Area Council,Fct,1,0,7.55087,8.95219
+Abuja,abuja,Zauda Jiwa,,settlement,grid3,Jiwa,Municipal Area Council,Fct,1,0,7.291507,9.035363
+Abuja,abuja,Abbatior Dabana,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.578744,8.951138
+Abuja,abuja,Aco Estate,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.32497,8.94232
+Abuja,abuja,Akinde,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.294913,8.895678
+Abuja,abuja,Amma Pepple Estate,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.285651,8.95345
+Abuja,abuja,Angwan Boka,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.324312,9.02024
+Abuja,abuja,Angwan Sayawa,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.335066,8.937236
+Abuja,abuja,Angwan Shuaibu,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.20742,9.0108
+Abuja,abuja,Anka,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.54874,8.93458
+Abuja,abuja,Aviation Estate,Aviation Village,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.265891,8.958981
+Abuja,abuja,Azhata,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.5508,8.93138
+Abuja,abuja,Barewa,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.293387,8.909466
+Abuja,abuja,Barwa,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.295195,8.928505
+Abuja,abuja,Bassan Jiwa,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.28101,9.01235
+Abuja,abuja,Chorin Bisa,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.515786,8.858991
+Abuja,abuja,Daisan,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.27969,8.93183
+Abuja,abuja,Dakwa Dantata,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.245278,9.099208
+Abuja,abuja,Dakwa I,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.245684,9.098982
+Abuja,abuja,Dakwa II,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.25426,9.08875
+Abuja,abuja,Dana Village Orozo,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.551542,8.881738
+Abuja,abuja,Dape Village,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.382113,9.061042
+Abuja,abuja,Diamond Estate Life Camp,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.388243,9.057481
+Abuja,abuja,Fillin Dabo,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.28118,9.09504
+Abuja,abuja,Fulani Gosa,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.295346,8.916628
+Abuja,abuja,Fulani Settlement University Hospital,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.170648,8.979758
+Abuja,abuja,Gbessa,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.250674,8.955585
+Abuja,abuja,Gbessa Community,Gbessa Town,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.254672,8.933687
+Abuja,abuja,Gidan Gwona,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.302888,9.066587
+Abuja,abuja,Gidan Mangoro,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.563724,8.917008
+Abuja,abuja,Gosa Paipai,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.291993,8.940728
+Abuja,abuja,Gossa Sarki,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.29888,8.94717
+Abuja,abuja,Gossa Toge,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.29077,8.94747
+Abuja,abuja,Goza 1,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.305867,8.938108
+Abuja,abuja,Gugugu I,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.509952,8.895349
+Abuja,abuja,Gugugu II,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.52525,8.886168
+Abuja,abuja,Gugugu Village,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.530627,8.887847
+Abuja,abuja,Gui,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.220845,8.92474
+Abuja,abuja,Guida,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.31044,9.1246
+Abuja,abuja,Gvi,Tungan Madaki,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.254889,9.009548
+Abuja,abuja,Gyadna,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.33297,9.07242
+Abuja,abuja,Hulumi,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.34986,9.03019
+Abuja,abuja,Iddo Maji,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.217471,8.943917
+Abuja,abuja,Iddo Sabo,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.228753,8.96076
+Abuja,abuja,Iddo Sarki Pada,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.210085,8.985138
+Abuja,abuja,Idon Kasa,,village,osm,Gui,Municipal Area Council,Federal Capital Territory,0,0,7.209889,8.985884
+Abuja,abuja,Idu By Niprid Farm,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.338745,9.068098
+Abuja,abuja,Idu Industrial Area,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.397866,9.037528
+Abuja,abuja,Idu Okoro S,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.354758,9.066714
+Abuja,abuja,Immigration Quarters,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.250158,8.968591
+Abuja,abuja,Jiwa,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.30934,9.08209
+Abuja,abuja,Jiwa,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.318005,9.083008
+Abuja,abuja,Kaba,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.29873,9.11604
+Abuja,abuja,Kagini,,village,osm,Gwagwa,Municipal Area Council,Federal Capital Territory,0,0,7.298752,9.132668
+Abuja,abuja,Karmo,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.35881,9.059214
+Abuja,abuja,Karshi,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.54372,8.938192
+Abuja,abuja,Karum,,village,osm,Jiwa,Municipal Area Council,Federal Capital Territory,0,0,7.378611,9.057778
+Abuja,abuja,Kokonle,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.21016,9.0214
+Abuja,abuja,Kokopi Village,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.257515,9.079043
+Abuja,abuja,Konkola 1,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.210213,9.014978
+Abuja,abuja,Kpakuru 1,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.20538,9.01505
+Abuja,abuja,Kpakuru 2,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.19223,9.01661
+Abuja,abuja,Kpakuru 3,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.201188,9.008431
+Abuja,abuja,Kuyami,El Rufai,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.303753,8.971097
+Abuja,abuja,Lokotiye Community,Ozoro Karshi,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.584285,8.890722
+Abuja,abuja,Mopol 44 Barracks Kuje,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.258336,8.950568
+Abuja,abuja,Ninje,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.291958,8.896404
+Abuja,abuja,Nuwalegi,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.25957,8.96645
+Abuja,abuja,Nyanya,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.560992,8.925871
+Abuja,abuja,Old Karamo,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.37453,9.06379
+Abuja,abuja,Orozo,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.56217,8.90354
+Abuja,abuja,Orozo 2,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.5539,8.88495
+Abuja,abuja,Paipe,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.360321,9.034745
+Abuja,abuja,Paipe Village,Paipe Industrial Area,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.371555,9.04269
+Abuja,abuja,Pamilium Estate,Yoruba Estate,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.565705,8.936466
+Abuja,abuja,Piyanko,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.587979,8.871756
+Abuja,abuja,Rugan Muhammed,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.291517,9.052742
+Abuja,abuja,Ruganardor,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.26243,9.066847
+Abuja,abuja,Rungan Fulani,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.296455,9.048698
+Abuja,abuja,Sabo Anagada,Woyo,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.166963,9.020886
+Abuja,abuja,Saburi,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.283947,9.100472
+Abuja,abuja,Second Gate Kagini,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.298345,9.133648
+Abuja,abuja,Shape,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.49654,8.90927
+Abuja,abuja,Shelter Origin Estate,,settlement,grid3,Orozo,Municipal Area Council,Fct,0,0,7.560003,8.930305
+Abuja,abuja,Shishinda,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.20566,9.03612
+Abuja,abuja,Takalafia Gogobiri,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.29123,9.03262
+Abuja,abuja,Takalafiya,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.291927,9.037525
+Abuja,abuja,Takalago,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.18431,9.0037
+Abuja,abuja,Tasha 1,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.32873,9.0787
+Abuja,abuja,Tatagya,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.33643,9.07521
+Abuja,abuja,Tsohon Jiwa,Old Jiwa,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.27136,9.049415
+Abuja,abuja,Tunga Fulani,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.273216,9.103193
+Abuja,abuja,Tunga Kwaso,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.249788,9.003821
+Abuja,abuja,Tunga Wakili,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.247778,9.039681
+Abuja,abuja,Tunga Wakili Deidei,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.258446,9.107966
+Abuja,abuja,Tungan Madaki,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.244484,9.021875
+Abuja,abuja,Tungan Nasara,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.23505,9.06073
+Abuja,abuja,Wukara,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.289882,8.997212
+Abuja,abuja,Wulmo,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.2753,8.98852
+Abuja,abuja,Wupa Village,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.318125,9.001183
+Abuja,abuja,Yeliwan Zuba,,settlement,grid3,Gui,Municipal Area Council,Fct,0,0,7.21027,9.03024
+Abuja,abuja,Zauda Village,,settlement,grid3,Gwagwa,Municipal Area Council,Fct,0,0,7.29463,9.096202
+Abuja,abuja,Zuba,,settlement,grid3,Jiwa,Municipal Area Council,Fct,0,0,7.21476,9.084911
