@@ -1,0 +1,1095 @@
+city,slug,name,alt_name,kind,source,ward,lga,state,is_primary,in_plate,lon,lat
+Lagos,lagos,Adeniji Adele,,settlement,grid3,Okepopo East,Lagos Island,Lagos,1,1,3.397832,6.456415
+Lagos,lagos,Agarawu,,settlement,grid3,Oko-Awo–Agarawu,Lagos Island,Lagos,1,1,3.38994,6.457078
+Lagos,lagos,Alagomeji,,settlement,grid3,Harvey,Lagos Mainland,Lagos,1,1,3.378046,6.499872
+Lagos,lagos,Ashaoku,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,1,1,3.360048,6.528193
+Lagos,lagos,Ayantunga,,settlement,grid3,Babalosa 1,Mushin,Lagos,1,1,3.357367,6.53079
+Lagos,lagos,Badia,,settlement,grid3,Badia,Apapa,Lagos,1,1,3.358845,6.468738
+Lagos,lagos,Balogun,,settlement,grid3,Balogun,Lagos Island,Lagos,1,1,3.383744,6.456807
+Lagos,lagos,Coker,,settlement,grid3,Jinadu Aiyetoro,Surulere,Lagos,1,1,3.337417,6.487068
+Lagos,lagos,Gbangba,,settlement,grid3,Igbehin,Mushin,Lagos,1,1,3.337828,6.521312
+Lagos,lagos,Harvey,,settlement,grid3,Harvey,Lagos Mainland,Lagos,1,1,3.372673,6.509272
+Lagos,lagos,Idumota,,settlement,grid3,Idumoyingbo,Lagos Island,Lagos,1,1,3.386877,6.462458
+Lagos,lagos,Ijora,,settlement,grid3,Ijora,Apapa,Lagos,1,1,3.364198,6.465172
+Lagos,lagos,Isale Eko,,settlement,grid3,Idumoyingbo,Lagos Island,Lagos,1,1,3.386862,6.464283
+Lagos,lagos,Itun Agan,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,1,1,3.360867,6.425833
+Lagos,lagos,Kelani Off Moshalashi,,settlement,grid3,Moshalashi–Agoro,Mushin,Lagos,1,1,3.353956,6.526467
+Lagos,lagos,Light House Abagbo 1,,settlement,grid3,Tarkwa Bay,Eti Osa,Lagos,1,1,3.391111,6.403957
+Lagos,lagos,Makoko,,settlement,grid3,Makoko,Lagos Mainland,Lagos,1,1,3.386781,6.496301
+Lagos,lagos,Ogungbaiye,,settlement,grid3,Babalosa 2,Mushin,Lagos,1,1,3.354543,6.525005
+Lagos,lagos,Orile,,settlement,grid3,Osho,Surulere,Lagos,1,1,3.333677,6.479385
+Lagos,lagos,Shakiru Akinlade,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,1,1,3.618937,6.42685
+Lagos,lagos,Suru Alaba,,settlement,grid3,Coker,Surulere,Lagos,1,1,3.320098,6.462655
+Lagos,lagos,Abagbo,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.381087,6.408819
+Lagos,lagos,Abiodun,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.356953,6.529984
+Lagos,lagos,Abule Ijesha,,settlement,grid3,Abule Ijesha,Lagos Mainland,Lagos,0,1,3.377702,6.525974
+Lagos,lagos,Adebeshi Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.358465,6.531595
+Lagos,lagos,Adedoja,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.358945,6.528507
+Lagos,lagos,Adekunle,,settlement,grid3,Adekunle–Aiyetoro,Lagos Mainland,Lagos,0,1,3.383059,6.493331
+Lagos,lagos,Adekunle,,settlement,grid3,Alagomeji,Lagos Mainland,Lagos,0,1,3.38106,6.495002
+Lagos,lagos,Adeniran Ogunsanya,,settlement,grid3,Adeniran Ogunsanya,Surulere,Lagos,0,1,3.360365,6.496263
+Lagos,lagos,Adeogun,,settlement,grid3,Ojo-Oniyun,Lagos Mainland,Lagos,0,1,3.375703,6.482192
+Lagos,lagos,Aderupoko,,settlement,grid3,Salami–Baiyewunmi,Lagos Mainland,Lagos,0,1,3.393127,6.50689
+Lagos,lagos,Adeyanju Street,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.359545,6.524288
+Lagos,lagos,Adeyemi,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354207,6.525662
+Lagos,lagos,Adeyemi Off Omoniyi,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.35609,6.525388
+Lagos,lagos,Ado,,settlement,grid3,Addo–Okeira,Eti Osa,Lagos,0,1,3.581222,6.490292
+Lagos,lagos,Ado,,village,osm,Addo–Okeira,Eti Osa,Lagos,0,1,3.58283,6.495868
+Lagos,lagos,Afisi,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.343211,6.519308
+Lagos,lagos,Afolabi Street,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.339404,6.516954
+Lagos,lagos,Agala,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.369444,6.415278
+Lagos,lagos,Aganran,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.354872,6.527889
+Lagos,lagos,Agaran Ojuwoye Junction,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.354941,6.528165
+Lagos,lagos,Agarawu,,settlement,grid3,Okepopo West,Lagos Island,Lagos,0,1,3.392911,6.455589
+Lagos,lagos,Agarawu,,settlement,grid3,Okepopo East,Lagos Island,Lagos,0,1,3.394801,6.457811
+Lagos,lagos,Agbadon,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.564129,6.442703
+Lagos,lagos,Agege Motor,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.363088,6.526198
+Lagos,lagos,Agege Motor Road,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.356923,6.527098
+Lagos,lagos,Agoro,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.338205,6.521559
+Lagos,lagos,Agoro Abogun,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.338219,6.521731
+Lagos,lagos,Aguda,,settlement,grid3,Nuru Oniwo,Surulere,Lagos,0,1,3.339678,6.496967
+Lagos,lagos,Aguda,,settlement,grid3,Irone,Surulere,Lagos,0,1,3.330776,6.484118
+Lagos,lagos,Agunbiade,,settlement,grid3,Agunbiade,Surulere,Lagos,0,1,3.330164,6.495631
+Lagos,lagos,Agungi,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.516668,6.444425
+Lagos,lagos,Ahmadu Bello Way,,settlement,grid3,Tarkwa Bay,Eti Osa,Lagos,0,1,3.409387,6.422715
+Lagos,lagos,Aileru,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.36325,6.526812
+Lagos,lagos,Ajah,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.570264,6.478014
+Lagos,lagos,Ajah,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.517638,6.447168
+Lagos,lagos,Ajah,,town,osm,Ajah,Eti Osa,Lagos,0,1,3.562386,6.469472
+Lagos,lagos,Ajayi Bembe,,settlement,grid3,Abule Oja,Lagos Mainland,Lagos,0,1,3.382958,6.519897
+Lagos,lagos,Ajeabo,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.337818,6.519645
+Lagos,lagos,Ajele,,settlement,grid3,Ajele,Lagos Island,Lagos,0,1,3.396738,6.45128
+Lagos,lagos,Ajibade Close,,settlement,grid3,Onike–Oyadiran,Lagos Mainland,Lagos,0,1,3.383143,6.506372
+Lagos,lagos,Ajibore,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.35422,6.529698
+Lagos,lagos,Ajiran Agugin,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.514175,6.453376
+Lagos,lagos,Ajose Street,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.344124,6.521018
+Lagos,lagos,Akala,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.361075,6.52708
+Lagos,lagos,Akamo,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.36247,6.528833
+Lagos,lagos,Akanbi,,settlement,grid3,Onike–Oyadiran,Lagos Mainland,Lagos,0,1,3.382472,6.51544
+Lagos,lagos,Akani,,settlement,grid3,Okesuna–Alase,Shomolu,Lagos,0,1,3.379168,6.536323
+Lagos,lagos,Akerele,,settlement,grid3,Gbaja Obele-Odan,Surulere,Lagos,0,1,3.359318,6.49929
+Lagos,lagos,Akin Adeshola,,settlement,grid3,Victoria Island,Eti Osa,Lagos,0,1,3.423872,6.423942
+Lagos,lagos,Akinbiyi,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.36249,6.525517
+Lagos,lagos,Akinhanmi Cole,,settlement,grid3,Akinhanmi Cole,Surulere,Lagos,0,1,3.362038,6.515248
+Lagos,lagos,Akins,,settlement,grid3,Addo–Okeira,Eti Osa,Lagos,0,1,3.584792,6.483748
+Lagos,lagos,Akintola Close,,settlement,grid3,Idi-Araba,Mushin,Lagos,0,1,3.355619,6.521563
+Lagos,lagos,Akintunde Close,,settlement,grid3,Salami–Baiyewunmi,Lagos Mainland,Lagos,0,1,3.384845,6.511235
+Lagos,lagos,Akoka,,settlement,grid3,Akoka–Anu-Oluwapo,Shomolu,Lagos,0,1,3.388961,6.531928
+Lagos,lagos,Alade,,settlement,grid3,Orile Somolu–Alade,Shomolu,Lagos,0,1,3.376202,6.533926
+Lagos,lagos,Alafia,,settlement,grid3,Alafia–Adeoyo,Mushin,Lagos,0,1,3.346,6.523295
+Lagos,lagos,Alaguntan,,village,osm,Ilasan–Orile,Eti Osa,Lagos,0,1,3.491592,6.424867
+Lagos,lagos,Alaka,,settlement,grid3,Iponri–Eric Moore,Surulere,Lagos,0,1,3.353027,6.48378
+Lagos,lagos,Alaka Community,,settlement,grid3,Aralile,Surulere,Lagos,0,1,3.361932,6.49504
+Lagos,lagos,Alakija Street,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.372033,6.519766
+Lagos,lagos,Alasia,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.598269,6.470187
+Lagos,lagos,Alfred Way,,settlement,grid3,Ikoyi 1,Eti Osa,Lagos,0,1,3.432817,6.460065
+Lagos,lagos,Alhaji Street,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.360063,6.526762
+Lagos,lagos,Alli,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.358927,6.527185
+Lagos,lagos,Alpha Beach,,settlement,grid3,Maroko–Okun Alfa,Eti Osa,Lagos,0,1,3.525672,6.432958
+Lagos,lagos,Aluko Street,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.357443,6.522443
+Lagos,lagos,Amity Estate,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.666207,6.468995
+Lagos,lagos,Amodu,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.361755,6.526178
+Lagos,lagos,Amodu Akala,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.362607,6.527228
+Lagos,lagos,Amos Adesanya,,settlement,grid3,Makoko,Lagos Mainland,Lagos,0,1,3.386022,6.496915
+Lagos,lagos,Amos Olayinka,,settlement,grid3,Makoko,Lagos Mainland,Lagos,0,1,3.385288,6.497208
+Lagos,lagos,Amusa,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.338643,6.521584
+Lagos,lagos,Anifowoshe,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.339992,6.520961
+Lagos,lagos,Animshaun,,village,osm,Iponri–Eric Moore,Surulere,Lagos,0,1,3.350065,6.483343
+Lagos,lagos,Anjorin,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.369555,6.444877
+Lagos,lagos,Anuoluwapo,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.362012,6.528242
+Lagos,lagos,Apapa,,settlement,grid3,Apapa,Apapa,Lagos,0,1,3.362262,6.448913
+Lagos,lagos,Apapa,,settlement,grid3,Oduduwa,Apapa,Lagos,0,1,3.356492,6.448088
+Lagos,lagos,Apapa Wharf,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.37237,6.441902
+Lagos,lagos,Apesin Street Luth Road,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.355465,6.522103
+Lagos,lagos,Apollo,,settlement,grid3,Makoko,Lagos Mainland,Lagos,0,1,3.389803,6.499228
+Lagos,lagos,Araba,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.336795,6.522231
+Lagos,lagos,Aralile Community,,settlement,grid3,Aralile,Surulere,Lagos,0,1,3.365195,6.503402
+Lagos,lagos,Araromi,,settlement,grid3,Araromi,Lagos Mainland,Lagos,0,1,3.390145,6.482114
+Lagos,lagos,Araromi Odo,,settlement,grid3,Araromi Odo,Lagos Island,Lagos,0,1,3.405702,6.446037
+Lagos,lagos,Areago Street,,settlement,grid3,Abule Oja,Lagos Mainland,Lagos,0,1,3.381083,6.517557
+Lagos,lagos,Aro Town,,settlement,grid3,Maroko–Okun Alfa,Eti Osa,Lagos,0,1,3.511252,6.426432
+Lagos,lagos,Arowolo,,settlement,grid3,Salami–Baiyewunmi,Lagos Mainland,Lagos,0,1,3.391693,6.507415
+Lagos,lagos,Asabi,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.35714,6.527822
+Lagos,lagos,Asaoky Street,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.35911,6.527463
+Lagos,lagos,Ashaoku,,settlement,grid3,Alakara,Mushin,Lagos,0,1,3.363294,6.525809
+Lagos,lagos,Awoyejo,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.360887,6.529642
+Lagos,lagos,Ayo Opadokun Avenue,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.377305,6.511203
+Lagos,lagos,Ayonuga,,settlement,grid3,Alakara,Mushin,Lagos,0,1,3.365685,6.527228
+Lagos,lagos,Baale Place,,settlement,grid3,Addo–Okeira,Eti Osa,Lagos,0,1,3.608587,6.486968
+Lagos,lagos,Babatunde Ayilara,,settlement,grid3,Babatunde Ayilara,Surulere,Lagos,0,1,3.355872,6.507315
+Lagos,lagos,Babs Animashaun,,settlement,grid3,Savage,Surulere,Lagos,0,1,3.34838,6.486983
+Lagos,lagos,Badia,,settlement,grid3,Gaskiya,Apapa,Lagos,0,1,3.353016,6.469711
+Lagos,lagos,Bado,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.544401,6.447354
+Lagos,lagos,Badore,,settlement,grid3,Badore–Langbasa,Eti Osa,Lagos,0,1,3.616197,6.51019
+Lagos,lagos,Bajulaiye,,settlement,grid3,Bajulaiye,Shomolu,Lagos,0,1,3.382146,6.531237
+Lagos,lagos,Bale,,settlement,grid3,Bale,Surulere,Lagos,0,1,3.338019,6.477707
+Lagos,lagos,Balogun,,settlement,grid3,Alakara,Mushin,Lagos,0,1,3.364543,6.52677
+Lagos,lagos,Banana Island,,settlement,grid3,Okepopo West,Lagos Island,Lagos,0,1,3.395776,6.455558
+Lagos,lagos,Banana Island,,settlement,grid3,Epetedo West,Lagos Island,Lagos,0,1,3.398732,6.45668
+Lagos,lagos,Banana Island,,settlement,grid3,Ikoyi 1,Eti Osa,Lagos,0,1,3.44914,6.460891
+Lagos,lagos,Banana Island,,settlement,grid3,Ijeh–Dolphin Estate,Eti Osa,Lagos,0,1,3.411033,6.459939
+Lagos,lagos,Banana Island,,settlement,grid3,Lafiaji,Lagos Island,Lagos,0,1,3.40378,6.456167
+Lagos,lagos,Barbwire,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.545469,6.42394
+Lagos,lagos,Bariga,,settlement,grid3,Aiyetoro–Mafowoku,Shomolu,Lagos,0,1,3.387968,6.538908
+Lagos,lagos,Barikisu Iyede,,settlement,grid3,Onike–Oyadiran,Lagos Mainland,Lagos,0,1,3.382525,6.513423
+Lagos,lagos,Baruwa,,settlement,grid3,Baruwa (Surulere),Surulere,Lagos,0,1,3.34179,6.506722
+Lagos,lagos,Bashua,,settlement,grid3,Bashua East and West,Shomolu,Lagos,0,1,3.37559,6.530858
+Lagos,lagos,Birrel Avenue,,settlement,grid3,Onike–Oyadiran,Lagos Mainland,Lagos,0,1,3.378725,6.508763
+Lagos,lagos,Buraimon,,settlement,grid3,Apelehin,Shomolu,Lagos,0,1,3.39179,6.540648
+Lagos,lagos,Car Wash,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.481628,6.442522
+Lagos,lagos,Cardoso Street,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354114,6.522954
+Lagos,lagos,Cardoso Street Luth Road,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354234,6.523268
+Lagos,lagos,Chevron,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.536418,6.464041
+Lagos,lagos,Coker,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.358605,6.529753
+Lagos,lagos,Coker Aguda,,settlement,grid3,Irone,Surulere,Lagos,0,1,3.338115,6.492638
+Lagos,lagos,Commercial Avenue,,settlement,grid3,Onike–Oyadiran,Lagos Mainland,Lagos,0,1,3.384057,6.502515
+Lagos,lagos,Cooperative Villa Settlement,,settlement,grid3,Addo–Okeira,Eti Osa,Lagos,0,1,3.614885,6.499455
+Lagos,lagos,Crown Estate,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.647081,6.465373
+Lagos,lagos,Daycare No 8 Erikitola Street,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.357783,6.524253
+Lagos,lagos,Dideolu Estate,,settlement,grid3,Apese–6 Extension,Eti Osa,Lagos,0,1,3.442263,6.426615
+Lagos,lagos,Dockyard,,settlement,grid3,Marine Beach,Apapa,Lagos,0,1,3.366338,6.45851
+Lagos,lagos,Doctor Umoh Lekki,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.477192,6.446692
+Lagos,lagos,Durosinmi Etti Drive,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.46483,6.437222
+Lagos,lagos,Ebute Elefun,,settlement,grid3,Epetedo East,Lagos Island,Lagos,0,1,3.399973,6.454287
+Lagos,lagos,Ebute Metta,,settlement,grid3,Ojo-Oniyun,Lagos Mainland,Lagos,0,1,3.37453,6.486698
+Lagos,lagos,Ebute Metta,,settlement,grid3,Botanical Garden,Lagos Mainland,Lagos,0,1,3.37472,6.48162
+Lagos,lagos,Ebute Metta Lagos Mainland,,settlement,grid3,Iponri–Olaleye,Lagos Mainland,Lagos,0,1,3.372405,6.497962
+Lagos,lagos,Ecko Boys,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.358689,6.523502
+Lagos,lagos,Efon,,settlement,grid3,Maroko–Okun Alfa,Eti Osa,Lagos,0,1,3.521488,6.43838
+Lagos,lagos,Ekore Oworo,,settlement,grid3,Seriki-Okuta,Shomolu,Lagos,0,1,3.396205,6.543984
+Lagos,lagos,Eleganza,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.555431,6.466144
+Lagos,lagos,Elegba Street,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.358108,6.527965
+Lagos,lagos,Elegushin,,settlement,grid3,Ilasan–Orile,Eti Osa,Lagos,0,1,3.481577,6.429433
+Lagos,lagos,Elegusi Beach Way,,settlement,grid3,Ilasan–Orile,Eti Osa,Lagos,0,1,3.488305,6.432972
+Lagos,lagos,Eriktola,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.357604,6.524405
+Lagos,lagos,Esugbayi,,settlement,grid3,Otto,Lagos Mainland,Lagos,0,1,3.38039,6.474833
+Lagos,lagos,Eti Osa Indigenous Town,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.561296,6.466378
+Lagos,lagos,Falomo,,settlement,grid3,Falomo–Oyinkan Abayomi,Eti Osa,Lagos,0,1,3.430185,6.443708
+Lagos,lagos,Falomo,,village,osm,Falomo–Oyinkan Abayomi,Eti Osa,Lagos,0,1,3.433333,6.45
+Lagos,lagos,Fatai Arobieke Crescent,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.479772,6.454855
+Lagos,lagos,Folami Street,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.360015,6.522644
+Lagos,lagos,Freeman Glover,,settlement,grid3,Freeman–Glover,Lagos Mainland,Lagos,0,1,3.383559,6.486838
+Lagos,lagos,Gaskiya,,settlement,grid3,Abete,Apapa,Lagos,0,1,3.35684,6.466303
+Lagos,lagos,Gbaja Community,,settlement,grid3,Gbaja Obele-Odan,Surulere,Lagos,0,1,3.363697,6.50408
+Lagos,lagos,Gbelejo,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.363128,6.41558
+Lagos,lagos,Gbetho Street,,settlement,grid3,Aderupoko–Ijebu Qters,Lagos Mainland,Lagos,0,1,3.387089,6.50465
+Lagos,lagos,Gbolagas,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.5568,6.451665
+Lagos,lagos,Gegede,,settlement,grid3,Apese–6 Extension,Eti Osa,Lagos,0,1,3.449773,6.43707
+Lagos,lagos,Goblin Sabe Rd,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.370402,6.520735
+Lagos,lagos,Greenville Estate,,settlement,grid3,Badore–Langbasa,Eti Osa,Lagos,0,1,3.5936,6.50993
+Lagos,lagos,Herbert Macaulay Way,,settlement,grid3,Oyingbo,Lagos Mainland,Lagos,0,1,3.387454,6.479405
+Lagos,lagos,Herbert Macaulay Way,,settlement,grid3,Iponri–Olaleye,Lagos Mainland,Lagos,0,1,3.38034,6.488272
+Lagos,lagos,Herbert Macaulay Way,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.377558,6.511225
+Lagos,lagos,Hi Tech,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.603627,6.467302
+Lagos,lagos,Humuani,,settlement,grid3,Okesuna–Alase,Shomolu,Lagos,0,1,3.380613,6.533039
+Lagos,lagos,IDI Iroko Resettlement Scheme,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.566552,6.451827
+Lagos,lagos,Ibikunle,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.376627,6.513492
+Lagos,lagos,Ibrahimo,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.360965,6.528072
+Lagos,lagos,Idado,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.521695,6.439567
+Lagos,lagos,Idiaraba,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354407,6.523067
+Lagos,lagos,Idowu Lane,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.35841,6.521525
+Lagos,lagos,Idumagbo,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.359652,6.528928
+Lagos,lagos,Idunmagbo,,settlement,grid3,Anikantamo,Lagos Island,Lagos,0,1,3.393125,6.459063
+Lagos,lagos,Idunmota,,settlement,grid3,Oke-Arin–Idumota,Lagos Island,Lagos,0,1,3.387719,6.460222
+Lagos,lagos,Iganmu,,settlement,grid3,Nuru Oniwo,Surulere,Lagos,0,1,3.348587,6.496768
+Lagos,lagos,Igbala,,settlement,grid3,Maroko–Okun Alfa,Eti Osa,Lagos,0,1,3.508645,6.434427
+Lagos,lagos,Igbarere,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.35968,6.527717
+Lagos,lagos,Igbari,,settlement,grid3,Igbari,Shomolu,Lagos,0,1,3.384148,6.527592
+Lagos,lagos,Igbehin,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.33656,6.518659
+Lagos,lagos,Igbeyin Adun,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.361825,6.529885
+Lagos,lagos,Igbo Efon,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.521545,6.442475
+Lagos,lagos,Igbobi Sabe,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.368498,6.522372
+Lagos,lagos,Igboefon,,village,osm,Ilasan–Orile,Eti Osa,Lagos,0,1,3.5,6.433333
+Lagos,lagos,Ijaye,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.361512,6.529408
+Lagos,lagos,Ijero,,settlement,grid3,Aloba–Desalu,Lagos Mainland,Lagos,0,1,3.370885,6.483883
+Lagos,lagos,Ijero Lane,,settlement,grid3,Aloba–Desalu,Lagos Mainland,Lagos,0,1,3.370857,6.482475
+Lagos,lagos,Ijesha,,settlement,grid3,Ogunsami–Karounwi,Surulere,Lagos,0,1,3.338,6.499608
+Lagos,lagos,Ijeshatado,,settlement,grid3,Airways,Surulere,Lagos,0,1,3.32881,6.487933
+Lagos,lagos,Ijora Badia,,settlement,grid3,Owoseni,Apapa,Lagos,0,1,3.359012,6.469108
+Lagos,lagos,Ijora Oloye,,settlement,grid3,Ijora,Apapa,Lagos,0,1,3.367273,6.468975
+Lagos,lagos,Ijoraolopa,,settlement,grid3,Ijora,Apapa,Lagos,0,1,3.376623,6.46931
+Lagos,lagos,Ikate,,settlement,grid3,Ilasan–Orile,Eti Osa,Lagos,0,1,3.484002,6.43313
+Lagos,lagos,Ikate Lekki,,settlement,grid3,Ilasan–Orile,Eti Osa,Lagos,0,1,3.492098,6.434223
+Lagos,lagos,Ikateahliapalm Sprung,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.495351,6.447952
+Lagos,lagos,Ikota,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.548535,6.447793
+Lagos,lagos,Ikota,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.559277,6.466449
+Lagos,lagos,Ikota Bridge,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.548508,6.449512
+Lagos,lagos,Ikota First Gate,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.555325,6.45169
+Lagos,lagos,Ikota Village Ajah,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.565977,6.448243
+Lagos,lagos,Ikoyi,,settlement,grid3,Ijeh–Dolphin Estate,Eti Osa,Lagos,0,1,3.419515,6.4588
+Lagos,lagos,Ikoyi,,settlement,grid3,Ikoyi 2,Eti Osa,Lagos,0,1,3.42851,6.451784
+Lagos,lagos,Ila,,settlement,grid3,Alafia–Adeoyo,Mushin,Lagos,0,1,3.345502,6.522842
+Lagos,lagos,Ilado,,village,osm,Ilasan–Orile,Eti Osa,Lagos,0,1,3.466744,6.428495
+Lagos,lagos,Ilado,,village,osm,Abraham Adesanya,Apapa,Lagos,0,1,3.379583,6.432329
+Lagos,lagos,Ilaje,,settlement,grid3,Akoka–Anu-Oluwapo,Shomolu,Lagos,0,1,3.39606,6.528077
+Lagos,lagos,Ilasamaja,,settlement,grid3,Alafia–Adeoyo,Mushin,Lagos,0,1,3.344186,6.522789
+Lagos,lagos,Illupeju,,settlement,grid3,Ilupeju Industrial,Mushin,Lagos,0,1,3.354312,6.554668
+Lagos,lagos,Imoba,,settlement,grid3,Ikoyi 1,Eti Osa,Lagos,0,1,3.449113,6.465467
+Lagos,lagos,Imoru,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.360717,6.527063
+Lagos,lagos,Iponri,,settlement,grid3,Adeniran Ogunsanya,Surulere,Lagos,0,1,3.359588,6.493852
+Lagos,lagos,Iponri Community,,settlement,grid3,Iponri–Olaleye,Lagos Mainland,Lagos,0,1,3.366739,6.486087
+Lagos,lagos,Iranla,,settlement,grid3,Addo–Okeira,Eti Osa,Lagos,0,1,3.607186,6.487486
+Lagos,lagos,Iranla,,village,osm,Addo–Okeira,Eti Osa,Lagos,0,1,3.612743,6.488832
+Lagos,lagos,Irede,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.372692,6.429988
+Lagos,lagos,Iroko Awe,,settlement,grid3,Ilasan–Orile,Eti Osa,Lagos,0,1,3.49761,6.429067
+Lagos,lagos,Irokosu Street,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.339402,6.517497
+Lagos,lagos,Iru,,settlement,grid3,1004–Aboyade,Eti Osa,Lagos,0,1,3.438049,6.433342
+Lagos,lagos,Isale Eko,,settlement,grid3,Idunganran–Idumagbo,Lagos Island,Lagos,0,1,3.391959,6.463461
+Lagos,lagos,Isaleeko,,settlement,grid3,Idunganran–Idumagbo,Lagos Island,Lagos,0,1,3.393263,6.463755
+Lagos,lagos,Ishaga,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.344742,6.519659
+Lagos,lagos,Itafaaji,,settlement,grid3,Isale Gangan,Lagos Island,Lagos,0,1,3.39194,6.456885
+Lagos,lagos,Itire Ijeshatedo,,settlement,grid3,Odo Eran–Ogunlana,Mushin,Lagos,0,1,3.32604,6.505177
+Lagos,lagos,Itire Mushin,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.336257,6.509813
+Lagos,lagos,Itire Surulere,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.339415,6.514238
+Lagos,lagos,Itirin,,village,osm,1004–Aboyade,Eti Osa,Lagos,0,1,3.433333,6.433319
+Lagos,lagos,Itirin Town,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.564277,6.441404
+Lagos,lagos,Iya Victoria Luth Road,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354585,6.524025
+Lagos,lagos,Iyasunna,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.361548,6.524981
+Lagos,lagos,Jakande,,town,osm,Ilasan–Orile,Eti Osa,Lagos,0,1,3.508018,6.434419
+Lagos,lagos,Jakande Gate,,settlement,grid3,Ilasan–Orile,Eti Osa,Lagos,0,1,3.502158,6.435663
+Lagos,lagos,Jakande Roundabout,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.508487,6.442418
+Lagos,lagos,Jidanu,,settlement,grid3,Olateju,Mushin,Lagos,0,1,3.359739,6.534863
+Lagos,lagos,Jidanu,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.360148,6.531352
+Lagos,lagos,John Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.357548,6.531138
+Lagos,lagos,Joseph Harrison Street,,settlement,grid3,Aderupoko–Ijebu Qters,Lagos Mainland,Lagos,0,1,3.38808,6.505125
+Lagos,lagos,Kakawa,,settlement,grid3,Olosun–Ojo Oto,Lagos Island,Lagos,0,1,3.389193,6.45347
+Lagos,lagos,Kappa Mushin,,settlement,grid3,Ilupeju Industrial,Mushin,Lagos,0,1,3.355052,6.54796
+Lagos,lagos,Kareem Agoro,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.342539,6.522012
+Lagos,lagos,Keffi Obalende,,settlement,grid3,Obalende,Eti Osa,Lagos,0,1,3.414995,6.448343
+Lagos,lagos,Kekereowo,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.340352,6.518876
+Lagos,lagos,Kelani,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.355192,6.526126
+Lagos,lagos,Kirikiri Depot Sea,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.333825,6.435283
+Lagos,lagos,Kogi,Ejigun,settlement,grid3,Orile Somolu–Alade,Shomolu,Lagos,0,1,3.376822,6.535613
+Lagos,lagos,Kumuyi Street,,settlement,grid3,Ojuwoye,Mushin,Lagos,0,1,3.355842,6.533488
+Lagos,lagos,Labinjo Lane,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.359677,6.525443
+Lagos,lagos,Ladilack,,settlement,grid3,Aiyetoro–Mafowoku,Shomolu,Lagos,0,1,3.386723,6.541575
+Lagos,lagos,Ladipo,,settlement,grid3,Mushin–Atewolara,Mushin,Lagos,0,1,3.34836,6.534513
+Lagos,lagos,Lafiaji,,settlement,grid3,Odam,Lagos Island,Lagos,0,1,3.401867,6.451002
+Lagos,lagos,Lagos Island,,town,osm,Alagba–Obadina,Lagos Island,Lagos,0,1,3.389702,6.454595
+Lagos,lagos,Lake Garden Phase 4,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.597135,6.460415
+Lagos,lagos,Lake Garden Phase 5,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.597238,6.460607
+Lagos,lagos,Langbasa,,settlement,grid3,Badore–Langbasa,Eti Osa,Lagos,0,1,3.581455,6.504667
+Lagos,lagos,Lawanson,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.348485,6.512602
+Lagos,lagos,Lekki,,settlement,grid3,Maroko–Okun Alfa,Eti Osa,Lagos,0,1,3.510967,6.436693
+Lagos,lagos,Lekki Peninsula II,,town,osm,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.519843,6.439772
+Lagos,lagos,Lekki Phase I,,town,osm,Ikate–Lekki,Eti Osa,Lagos,0,1,3.47047,6.441399
+Lagos,lagos,Lekki Phase One,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.470465,6.437112
+Lagos,lagos,Liasu,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.337865,6.520877
+Lagos,lagos,Light House Abagbo 2,,settlement,grid3,Tarkwa Bay,Eti Osa,Lagos,0,1,3.384175,6.404345
+Lagos,lagos,Light House Estate,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.549558,6.429738
+Lagos,lagos,Lsdpc Estate,,settlement,grid3,Okobaba,Lagos Mainland,Lagos,0,1,3.387567,6.490887
+Lagos,lagos,Luth Junction,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.355267,6.526649
+Lagos,lagos,Luth Junction Off Agege Motor Road,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.35487,6.526367
+Lagos,lagos,Luth Road,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354929,6.52514
+Lagos,lagos,Mafowoku,,settlement,grid3,Apelehin,Shomolu,Lagos,0,1,3.384678,6.547345
+Lagos,lagos,Majek Firstgate Abijo,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.655811,6.46944
+Lagos,lagos,Marine,,settlement,grid3,Oduduwa,Apapa,Lagos,0,1,3.355778,6.441112
+Lagos,lagos,Marine Beach,,settlement,grid3,Marine Beach,Apapa,Lagos,0,1,3.360776,6.45731
+Lagos,lagos,Marker,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.356298,6.53205
+Lagos,lagos,Maroko,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.462347,6.446035
+Lagos,lagos,Martins Street,,settlement,grid3,Idi-Araba,Mushin,Lagos,0,1,3.357607,6.521019
+Lagos,lagos,Maruwa,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.468688,6.432245
+Lagos,lagos,Mechanic Villiage,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.336414,6.517176
+Lagos,lagos,Mega Chicken Settlement,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.555085,6.449727
+Lagos,lagos,Megamound,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.572719,6.440583
+Lagos,lagos,Moba,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.570498,6.452938
+Lagos,lagos,Moba,,village,osm,Ikate–Lekki,Eti Osa,Lagos,0,1,3.480854,6.452134
+Lagos,lagos,Monasry,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.640986,6.45844
+Lagos,lagos,Mopelola,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.342035,6.520271
+Lagos,lagos,Mopo-Akinlade,,village,osm,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.621303,6.426449
+Lagos,lagos,Morocco,,settlement,grid3,Igbobi–Fadeyi,Shomolu,Lagos,0,1,3.374317,6.52778
+Lagos,lagos,Motayo Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.354742,6.530887
+Lagos,lagos,Muda Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.357722,6.531108
+Lagos,lagos,Mumuni Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.355957,6.529985
+Lagos,lagos,Muritala Mohammed Way,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.370757,6.511268
+Lagos,lagos,Mushin Ajina,,settlement,grid3,Ogunsami–Karounwi,Surulere,Lagos,0,1,3.333986,6.503232
+Lagos,lagos,New Garage,,settlement,grid3,Apelehin,Shomolu,Lagos,0,1,3.393153,6.54804
+Lagos,lagos,Nil,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.546887,6.431157
+Lagos,lagos,Oba,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.342084,6.52103
+Lagos,lagos,Oba Lane,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.342174,6.521442
+Lagos,lagos,Obale,,settlement,grid3,Badia,Apapa,Lagos,0,1,3.362982,6.468922
+Lagos,lagos,Obalemisoro,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.564267,6.446481
+Lagos,lagos,Obalola Lane,,settlement,grid3,Oyingbo,Lagos Mainland,Lagos,0,1,3.387696,6.479266
+Lagos,lagos,Obanikoro,,settlement,grid3,Pedro–Gbagada,Shomolu,Lagos,0,1,3.369643,6.549768
+Lagos,lagos,Obele Oniwala,,settlement,grid3,Obele Oniwala,Surulere,Lagos,0,1,3.353764,6.514928
+Lagos,lagos,Odan,,settlement,grid3,Ajele,Lagos Island,Lagos,0,1,3.395385,6.448863
+Lagos,lagos,Odi Olowo,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.357012,6.530383
+Lagos,lagos,Odi Olowo Mushin,,settlement,grid3,Ojuwoye,Mushin,Lagos,0,1,3.355127,6.533183
+Lagos,lagos,Odo Aladura,,settlement,grid3,Papa Ajao,Mushin,Lagos,0,1,3.342818,6.54448
+Lagos,lagos,Odo Olowu,,settlement,grid3,Odo-Olowu,Surulere,Lagos,0,1,3.324147,6.497242
+Lagos,lagos,Odo Shimowu,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.344146,6.517461
+Lagos,lagos,Odofin,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.339349,6.519794
+Lagos,lagos,Odunaike,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.337506,6.518935
+Lagos,lagos,Odunsi,,settlement,grid3,Ilaje,Shomolu,Lagos,0,1,3.393937,6.535335
+Lagos,lagos,Oduntan,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.359189,6.525292
+Lagos,lagos,Offin,,settlement,grid3,Oke-Olowogbowo,Lagos Island,Lagos,0,1,3.382747,6.459557
+Lagos,lagos,Ogayemi Close,,settlement,grid3,Aderupoko–Ijebu Qters,Lagos Mainland,Lagos,0,1,3.389525,6.501487
+Lagos,lagos,Ogogoro,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.392711,6.425206
+Lagos,lagos,Ogombo,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.611769,6.456619
+Lagos,lagos,Ogombo Ajah,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.607124,6.4451
+Lagos,lagos,Ogoyo Village,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.568925,6.455922
+Lagos,lagos,Ogumbo,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.62783,6.456877
+Lagos,lagos,Ogumbo,,settlement,grid3,Ibuowo–Owotutu,Shomolu,Lagos,0,1,3.379652,6.542287
+Lagos,lagos,Ogungbaiye Street Luth Road,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354922,6.52487
+Lagos,lagos,Ogunlana Avenue,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.617707,6.475183
+Lagos,lagos,Ojo,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.361183,6.526492
+Lagos,lagos,Ojomu,,village,osm,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.520632,6.455036
+Lagos,lagos,Ojuelegba,,settlement,grid3,Mosafejo Ojuelegba,Surulere,Lagos,0,1,3.366367,6.509682
+Lagos,lagos,Ojuwoye,,settlement,grid3,Alafia–Adeoyo,Mushin,Lagos,0,1,3.348353,6.528496
+Lagos,lagos,Ojuwoye,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.354237,6.528656
+Lagos,lagos,Ojuwoye Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.355802,6.52906
+Lagos,lagos,Oke Anaye Close,,settlement,grid3,Aderupoko–Ijebu Qters,Lagos Mainland,Lagos,0,1,3.387708,6.50353
+Lagos,lagos,Oke Arin,,settlement,grid3,Oke-Arin–Idumota,Lagos Island,Lagos,0,1,3.384225,6.460238
+Lagos,lagos,Oke Ira,,settlement,grid3,Addo–Okeira,Eti Osa,Lagos,0,1,3.579472,6.487973
+Lagos,lagos,Oko Agbo,,village,osm,Tarkwa Bay,Eti Osa,Lagos,0,1,3.382214,6.403971
+Lagos,lagos,Oko Awo,,settlement,grid3,Ilupesi–Ebute Awo,Lagos Island,Lagos,0,1,3.390628,6.458983
+Lagos,lagos,Okobaba,,settlement,grid3,Okobaba,Lagos Mainland,Lagos,0,1,3.38987,6.491237
+Lagos,lagos,Okooba Eleragbe Extension,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.632113,6.472103
+Lagos,lagos,Okoya,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.36234,6.52933
+Lagos,lagos,Okoya,,settlement,grid3,Kayode–Fadeyi,Mushin,Lagos,0,1,3.364581,6.531976
+Lagos,lagos,Okun Ajah,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.585222,6.426546
+Lagos,lagos,Okun Ajah,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.558591,6.426544
+Lagos,lagos,Okun Ajah Baales Palace,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.598752,6.429064
+Lagos,lagos,Okun Alfa,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.528802,6.424406
+Lagos,lagos,Okunade Street,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.345349,6.522021
+Lagos,lagos,Okunaja,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.582521,6.424293
+Lagos,lagos,Ola,,settlement,grid3,Oduselu–Ola,Mushin,Lagos,0,1,3.332222,6.505762
+Lagos,lagos,Olabode Olayemi,,settlement,grid3,Aderupoko–Ijebu Qters,Lagos Mainland,Lagos,0,1,3.38921,6.502092
+Lagos,lagos,Olafimihan Street,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.345222,6.522339
+Lagos,lagos,Olaideawoye,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.33704,6.516927
+Lagos,lagos,Olaleye Community,,settlement,grid3,Iponri–Olaleye,Lagos Mainland,Lagos,0,1,3.368697,6.486095
+Lagos,lagos,Olaniyan,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.359469,6.52178
+Lagos,lagos,Olapade,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.356115,6.528053
+Lagos,lagos,Olarewaju,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.347214,6.524012
+Lagos,lagos,Ologun Agbaje Victoria Island,,settlement,grid3,Lafiaji,Lagos Island,Lagos,0,1,3.406833,6.449525
+Lagos,lagos,Olokolo,,settlement,grid3,Maroko–Okun Alfa,Eti Osa,Lagos,0,1,3.516413,6.436342
+Lagos,lagos,Olokonla,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.606254,6.474924
+Lagos,lagos,Olomowewe,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.359935,6.530267
+Lagos,lagos,Olorunshogo Mushin,,settlement,grid3,Mushin–Atewolara,Mushin,Lagos,0,1,3.349315,6.537263
+Lagos,lagos,Olosa,,settlement,grid3,Kuramo School–Lekki,Eti Osa,Lagos,0,1,3.429382,6.427678
+Lagos,lagos,Oloto,,settlement,grid3,Botanical Garden,Lagos Mainland,Lagos,0,1,3.374875,6.479963
+Lagos,lagos,Oloto East,,settlement,grid3,Oyingbo,Lagos Mainland,Lagos,0,1,3.38707,6.478915
+Lagos,lagos,Olowo,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.358313,6.531414
+Lagos,lagos,Olowogbowo,,settlement,grid3,Oke-Olowogbowo,Lagos Island,Lagos,0,1,3.382102,6.45543
+Lagos,lagos,Olowu,,settlement,grid3,Epetedo East,Lagos Island,Lagos,0,1,3.402105,6.455942
+Lagos,lagos,Olugborogan Palace,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.538312,6.438968
+Lagos,lagos,Olumorokun Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.354363,6.529148
+Lagos,lagos,Olusanya Street,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.338432,6.517579
+Lagos,lagos,Olusoji,,settlement,grid3,Aiyetoro–Mafowoku,Shomolu,Lagos,0,1,3.390133,6.539192
+Lagos,lagos,Oluwole,,settlement,grid3,Oluwole,Lagos Island,Lagos,0,1,3.38596,6.456294
+Lagos,lagos,Omoniyi Street,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.356107,6.52494
+Lagos,lagos,Onala,,settlement,grid3,Isale Gangan,Lagos Island,Lagos,0,1,3.391818,6.457675
+Lagos,lagos,Onayade Community,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.36842,6.522612
+Lagos,lagos,Onikan,,settlement,grid3,Odam,Lagos Island,Lagos,0,1,3.401602,6.444938
+Lagos,lagos,Onikoyi,,settlement,grid3,Ikoyi 1,Eti Osa,Lagos,0,1,3.447666,6.454744
+Lagos,lagos,Onipanu,,settlement,grid3,Ilupeju,Mushin,Lagos,0,1,3.36221,6.545625
+Lagos,lagos,Onipanu,,settlement,grid3,Ilupeju Industrial,Mushin,Lagos,0,1,3.364076,6.552457
+Lagos,lagos,Oniru,,settlement,grid3,Apese–6 Extension,Eti Osa,Lagos,0,1,3.452462,6.436407
+Lagos,lagos,Oniru Palace,,settlement,grid3,Apese–6 Extension,Eti Osa,Lagos,0,1,3.450083,6.430015
+Lagos,lagos,Onitiri Lay Out,,settlement,grid3,Onike–Oyadiran,Lagos Mainland,Lagos,0,1,3.38217,6.515245
+Lagos,lagos,Onoyungbo,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.346185,6.521348
+Lagos,lagos,Opeloyeru,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.361838,6.528575
+Lagos,lagos,Orange Island,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.485446,6.453581
+Lagos,lagos,Oremeji,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.337444,6.517897
+Lagos,lagos,Orile Iganmu,,settlement,grid3,Sari,Apapa,Lagos,0,1,3.347368,6.478905
+Lagos,lagos,Orile Ilasan,,settlement,grid3,Ilasan–Orile,Eti Osa,Lagos,0,1,3.495185,6.429558
+Lagos,lagos,Osapa London,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.511985,6.44052
+Lagos,lagos,Osborne Ikoyi,,settlement,grid3,Ikoyi 1,Eti Osa,Lagos,0,1,3.427508,6.460522
+Lagos,lagos,Otumara,,settlement,grid3,Botanical Garden,Lagos Mainland,Lagos,0,1,3.374658,6.47959
+Lagos,lagos,Oweh,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.369767,6.523502
+Lagos,lagos,Owode Orile Bariga,,settlement,grid3,Owode–Orile Bariga,Shomolu,Lagos,0,1,3.38517,6.534554
+Lagos,lagos,Owodunni,,settlement,grid3,Owodunni,Mushin,Lagos,0,1,3.36358,6.536822
+Lagos,lagos,Owokere,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.33665,6.51703
+Lagos,lagos,Owokoniran Street,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.359059,6.525665
+Lagos,lagos,Oyegbata,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.339679,6.52034
+Lagos,lagos,Oyegunle,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.362562,6.526617
+Lagos,lagos,Oyinkan,,settlement,grid3,Onitire,Mushin,Lagos,0,1,3.341659,6.518267
+Lagos,lagos,Ozumba Way,,settlement,grid3,Victoria Island,Eti Osa,Lagos,0,1,3.422203,6.43635
+Lagos,lagos,Palmgrove,,settlement,grid3,Ijebu Tedo,Shomolu,Lagos,0,1,3.368403,6.541753
+Lagos,lagos,Park View Estate,,settlement,grid3,Ikoyi 1,Eti Osa,Lagos,0,1,3.441208,6.455908
+Lagos,lagos,Part Akanro,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.336783,6.520921
+Lagos,lagos,Peaceland Estate,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.615598,6.455792
+Lagos,lagos,Pedro,,settlement,grid3,Pedro–Gbagada,Shomolu,Lagos,0,1,3.375907,6.541759
+Lagos,lagos,Peninsula,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.46536,6.447208
+Lagos,lagos,Peninsula II,,settlement,grid3,Okun Ajah–Okunmopo,Eti Osa,Lagos,0,1,3.588013,6.459841
+Lagos,lagos,Polo Aguda,,settlement,grid3,Ajele,Lagos Island,Lagos,0,1,3.393048,6.452713
+Lagos,lagos,Post Office Road,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.355625,6.53098
+Lagos,lagos,Prince Lateef Ogunleye Palace Ogombo 2,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.60711,6.467908
+Lagos,lagos,Progressive Estate,,settlement,grid3,Aloba–Desalu,Lagos Mainland,Lagos,0,1,3.371462,6.485175
+Lagos,lagos,Queens Drive,,settlement,grid3,Falomo–Oyinkan Abayomi,Eti Osa,Lagos,0,1,3.451267,6.44304
+Lagos,lagos,Raimi Oladimeji,,settlement,grid3,Botanical Garden,Lagos Mainland,Lagos,0,1,3.374475,6.479795
+Lagos,lagos,Ramoni,,settlement,grid3,Ramoni,Surulere,Lagos,0,1,3.345864,6.506862
+Lagos,lagos,Rasheed Line,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.345285,6.51983
+Lagos,lagos,Redemption Way,,settlement,grid3,Oyingbo,Lagos Mainland,Lagos,0,1,3.387468,6.48185
+Lagos,lagos,Rev Williams Avenue,,settlement,grid3,Onike–Oyadiran,Lagos Mainland,Lagos,0,1,3.383318,6.50369
+Lagos,lagos,Sabo,,settlement,grid3,Alagomeji,Lagos Mainland,Lagos,0,1,3.37807,6.505867
+Lagos,lagos,Sadiku Apapa Express,,settlement,grid3,Alafia–Adeoyo,Mushin,Lagos,0,1,3.342781,6.522698
+Lagos,lagos,Sakajojo,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.34121,6.52052
+Lagos,lagos,Saki Iganmu,,settlement,grid3,Owoseni,Apapa,Lagos,0,1,3.354223,6.468642
+Lagos,lagos,Sakiru Anjorin Lake Phase 1,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.473068,6.45192
+Lagos,lagos,Salamotu,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.341635,6.522576
+Lagos,lagos,Sangotedo,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.656256,6.473837
+Lagos,lagos,Sangotedo,,town,osm,Sangotedo,Eti Osa,Lagos,0,1,3.635581,6.471022
+Lagos,lagos,Sangotedo Lekki,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.626182,6.475212
+Lagos,lagos,Sanusi I,,settlement,grid3,Sanusi 1,Surulere,Lagos,0,1,3.332535,6.500155
+Lagos,lagos,Sari Iganmu,,settlement,grid3,Alafia,Apapa,Lagos,0,1,3.345928,6.476367
+Lagos,lagos,Shodeinde Hughes Close,,settlement,grid3,Aderupoko–Ijebu Qters,Lagos Mainland,Lagos,0,1,3.388197,6.502815
+Lagos,lagos,Shogbesan,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.342475,6.521849
+Lagos,lagos,Shokunbi,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.358522,6.532045
+Lagos,lagos,Shomolu,,settlement,grid3,Onipanu,Shomolu,Lagos,0,1,3.36848,6.535875
+Lagos,lagos,Shonola,,settlement,grid3,Aloba–Desalu,Lagos Mainland,Lagos,0,1,3.370661,6.483216
+Lagos,lagos,Smith Street,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.363193,6.526543
+Lagos,lagos,Sojinu Close,,settlement,grid3,Aderupoko–Ijebu Qters,Lagos Mainland,Lagos,0,1,3.388653,6.502395
+Lagos,lagos,South Point Estate,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.554498,6.431555
+Lagos,lagos,Stadium,,settlement,grid3,Aralile,Surulere,Lagos,0,1,3.365133,6.502398
+Lagos,lagos,Surulere,,settlement,grid3,Shitta Bank Olemoh,Surulere,Lagos,0,1,3.353535,6.505175
+Lagos,lagos,Surulere,,town,osm,Shitta Bank Olemoh,Surulere,Lagos,0,1,3.357116,6.500803
+Lagos,lagos,Takway Bay,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.39331,6.412535
+Lagos,lagos,Thomas,,settlement,grid3,Ojo-Oniyun,Lagos Mainland,Lagos,0,1,3.377475,6.483102
+Lagos,lagos,Thomas,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.574547,6.469927
+Lagos,lagos,Tom Jones,,settlement,grid3,Oke-Arin–Idumota,Lagos Island,Lagos,0,1,3.387683,6.45815
+Lagos,lagos,Tomaro,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.36235,6.418023
+Lagos,lagos,Town Planning Way,,settlement,grid3,Ilupeju Industrial,Mushin,Lagos,0,1,3.357382,6.556665
+Lagos,lagos,Twin Lake Estate,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.534753,6.445046
+Lagos,lagos,Unilag,,settlement,grid3,Abule Oja,Lagos Mainland,Lagos,0,1,3.385675,6.523913
+Lagos,lagos,United Estate,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.634233,6.467311
+Lagos,lagos,Unity Avenue,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.335716,6.522058
+Lagos,lagos,Victoria Island,,settlement,grid3,1004–Aboyade,Eti Osa,Lagos,0,1,3.43051,6.438373
+Lagos,lagos,Victoria Island,,town,osm,Kuramo School–Lekki,Eti Osa,Lagos,0,1,3.42599,6.430028
+Lagos,lagos,Wharf,,settlement,grid3,Anjorin,Apapa,Lagos,0,1,3.366632,6.451208
+Lagos,lagos,Williams Ladega Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.356067,6.530455
+Lagos,lagos,Yaba,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.374633,6.519649
+Lagos,lagos,Yaba Tech,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.375485,6.51567
+Lagos,lagos,Abosede Aro Street,,settlement,grid3,Abesan 2,Alimosho,Lagos,1,0,3.268043,6.61675
+Lagos,lagos,Ajao Estate,,settlement,grid3,Ajao Estate,Oshodi–Isolo,Lagos,1,0,3.324517,6.551328
+Lagos,lagos,Akingbaye,,settlement,grid3,Akingbaye,Oshodi–Isolo,Lagos,1,0,3.321665,6.535398
+Lagos,lagos,Alahun Osumba,,settlement,grid3,Kirikiri and Environ,Amuwo Odofin,Lagos,1,0,3.301801,6.449319
+Lagos,lagos,Alausa,,settlement,grid3,Alausa,Ikeja,Lagos,1,0,3.358601,6.610677
+Lagos,lagos,Amukoko,,settlement,grid3,Amukoko,Ajeromi–Ifelodun,Lagos,1,0,3.34267,6.466208
+Lagos,lagos,Anifowoshe,,settlement,grid3,Anifowoshe,Ikeja,Lagos,1,0,3.334486,6.601309
+Lagos,lagos,Egudu Baale,Egudu,settlement,grid3,Isale Odo–Ayige,Agege,Lagos,1,0,3.299775,6.621271
+Lagos,lagos,Fashoro,,settlement,grid3,Ipaja,Alimosho,Lagos,1,0,3.260726,6.614311
+Lagos,lagos,Ifoshin,,settlement,grid3,Ifoshin,Oshodi–Isolo,Lagos,1,0,3.297761,6.541944
+Lagos,lagos,Iju Agbado,,settlement,grid3,Iju Ishaga,Ifako–Ijaye,Lagos,1,0,3.315887,6.67419
+Lagos,lagos,Isale Oja,,settlement,grid3,Sango,Agege,Lagos,1,0,3.328203,6.617728
+Lagos,lagos,Kuje,,settlement,grid3,Kuje,Amuwo Odofin,Lagos,1,0,3.295633,6.456613
+Lagos,lagos,Magbede Odun Crescent,,settlement,grid3,Bada-Megida,Alimosho,Lagos,1,0,3.23024,6.600865
+Lagos,lagos,Ogudu,,settlement,grid3,Ogudu,Kosofe,Lagos,1,0,3.38308,6.581574
+Lagos,lagos,Olusosun,,settlement,grid3,Olusosun,Ikeja,Lagos,1,0,3.38078,6.595063
+Lagos,lagos,Onigbongbo,,settlement,grid3,Onigbongbo,Ikeja,Lagos,1,0,3.362272,6.573832
+Lagos,lagos,Opebi,,settlement,grid3,Opebi,Ikeja,Lagos,1,0,3.355892,6.59502
+Lagos,lagos,Oregun,,settlement,grid3,Alausa,Ikeja,Lagos,1,0,3.361975,6.603855
+Lagos,lagos,Orile,,settlement,grid3,Okekoto,Agege,Lagos,1,0,3.312059,6.626562
+Lagos,lagos,Oto Awori,,settlement,grid3,Ijanikin,Ojo,Lagos,1,0,3.118372,6.496763
+Lagos,lagos,Section 1,,settlement,grid3,Abesan 1,Alimosho,Lagos,1,0,3.272093,6.60568
+Lagos,lagos,6th Avenue Festac Town,,settlement,grid3,Orire,Amuwo Odofin,Lagos,0,0,3.285257,6.480707
+Lagos,lagos,Abaranje,,settlement,grid3,Abaranje–Okerube,Alimosho,Lagos,0,0,3.25778,6.54065
+Lagos,lagos,Abattoir,,settlement,grid3,Agbado Dalemo,Ifako–Ijaye,Lagos,0,0,3.314677,6.647963
+Lagos,lagos,Abesan 2 Sector 28,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.26259,6.61353
+Lagos,lagos,Abiara,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.268333,6.612364
+Lagos,lagos,Abimbola Fagbo Street,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.271331,6.615994
+Lagos,lagos,Abisi Village,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.270017,6.61391
+Lagos,lagos,Aboru,,settlement,grid3,Aboru,Alimosho,Lagos,0,0,3.287197,6.622379
+Lagos,lagos,Abosese Aro,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.266673,6.61612
+Lagos,lagos,Abowaba,,settlement,grid3,Ikosi Isheri,Kosofe,Lagos,0,0,3.404407,6.637967
+Lagos,lagos,Abule Ado Amuwo Odofin,,settlement,grid3,Ado Soba,Amuwo Odofin,Lagos,0,0,3.255005,6.460785
+Lagos,lagos,Abule Egba,,settlement,grid3,Agbelekale,Alimosho,Lagos,0,0,3.280102,6.64836
+Lagos,lagos,Abule Egba,,settlement,grid3,Agbado Dalemo,Ifako–Ijaye,Lagos,0,0,3.311955,6.657092
+Lagos,lagos,Abule Egun,,settlement,grid3,Abesan 1,Alimosho,Lagos,0,0,3.269455,6.604482
+Lagos,lagos,Abule Era,,settlement,grid3,Oto-Awori,Ojo,Lagos,0,0,3.144928,6.478836
+Lagos,lagos,Abule Odu,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.279645,6.589915
+Lagos,lagos,Abule Onigbagbo,,settlement,grid3,Opebi,Ikeja,Lagos,0,0,3.357702,6.585922
+Lagos,lagos,Abule Onilu,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.252928,6.578027
+Lagos,lagos,Abule Osun,,settlement,grid3,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.249258,6.455557
+Lagos,lagos,Abule Osun Waterside,,settlement,grid3,I Irede,Amuwo Odofin,Lagos,0,0,3.234392,6.427318
+Lagos,lagos,Abuleegba,,settlement,grid3,Abule Egba–Ilupeju,Ifako–Ijaye,Lagos,0,0,3.298546,6.662479
+Lagos,lagos,Adaloko,,settlement,grid3,Ajangbadi,Ojo,Lagos,0,0,3.156948,6.480398
+Lagos,lagos,Adele Town,,settlement,grid3,Oto-Awori,Ojo,Lagos,0,0,3.132778,6.479678
+Lagos,lagos,Adeleye Taiwo,,settlement,grid3,Irewe,Ojo,Lagos,0,0,3.141722,6.41616
+Lagos,lagos,Adeniyi Jones,,settlement,grid3,Seriki-Aro,Ikeja,Lagos,0,0,3.339038,6.605753
+Lagos,lagos,Adeniyi Jones,,settlement,grid3,Ogba–Oluwole,Ikeja,Lagos,0,0,3.345865,6.611107
+Lagos,lagos,Adetiba,,settlement,grid3,Alakuko Ajegunle,Ifako–Ijaye,Lagos,0,0,3.260538,6.698505
+Lagos,lagos,Ado Soba Abule Ado,,settlement,grid3,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.247185,6.47644
+Lagos,lagos,Adule Odun,,settlement,grid3,Okunola,Alimosho,Lagos,0,0,3.276526,6.591087
+Lagos,lagos,Aduragbemi,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.264437,6.663108
+Lagos,lagos,Afariogun,,settlement,grid3,Afariogun,Oshodi–Isolo,Lagos,0,0,3.342386,6.553672
+Lagos,lagos,Afromedia,,settlement,grid3,Ajangbadi,Ojo,Lagos,0,0,3.177085,6.474888
+Lagos,lagos,Afromedia Ajangbadi,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.158999,6.476092
+Lagos,lagos,Agbado Oke Odo,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.253097,6.652358
+Lagos,lagos,Agbara,,settlement,grid3,Oto-Awori,Ojo,Lagos,0,0,3.10575,6.499088
+Lagos,lagos,Agbelekale,,settlement,grid3,Oke-Odo,Alimosho,Lagos,0,0,3.284726,6.639975
+Lagos,lagos,Agbenaje,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.245005,6.639677
+Lagos,lagos,Agbenale Ikola,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.243572,6.64571
+Lagos,lagos,Agbenuba,,settlement,grid3,Agbelekale,Alimosho,Lagos,0,0,3.263996,6.648767
+Lagos,lagos,Agboju,,settlement,grid3,Agboju and Environ,Amuwo Odofin,Lagos,0,0,3.286078,6.457731
+Lagos,lagos,Agbotikuyo,,settlement,grid3,Papa Ashafa,Agege,Lagos,0,0,3.312866,6.62506
+Lagos,lagos,Agboyi,,settlement,grid3,Agboyi 1,Kosofe,Lagos,0,0,3.409685,6.578113
+Lagos,lagos,Agege,,settlement,grid3,Sango,Agege,Lagos,0,0,3.324341,6.626599
+Lagos,lagos,Agege Bye Pass,,settlement,grid3,Isale Oja,Agege,Lagos,0,0,3.32319,6.615658
+Lagos,lagos,Agelete,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.190308,6.514462
+Lagos,lagos,Agidingbi,,settlement,grid3,Alausa,Ikeja,Lagos,0,0,3.352652,6.622577
+Lagos,lagos,Agiliti,,settlement,grid3,Orile-Ketu,Kosofe,Lagos,0,0,3.396777,6.61315
+Lagos,lagos,Agiliti 2,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.398114,6.62893
+Lagos,lagos,Agiliti Maidan,,settlement,grid3,Idera,Kosofe,Lagos,0,0,3.398251,6.613566
+Lagos,lagos,Ago,,settlement,grid3,Okota,Oshodi–Isolo,Lagos,0,0,3.316781,6.512565
+Lagos,lagos,Ago,,settlement,grid3,Apena,Oshodi–Isolo,Lagos,0,0,3.300338,6.4857
+Lagos,lagos,Ago Okota,,settlement,grid3,Eko Akete,Amuwo Odofin,Lagos,0,0,3.309788,6.478203
+Lagos,lagos,Ago Palace,,town,osm,Okota,Oshodi–Isolo,Lagos,0,0,3.305963,6.503038
+Lagos,lagos,Agodo,,settlement,grid3,Egbe-Agodo,Alimosho,Lagos,0,0,3.279372,6.532017
+Lagos,lagos,Agor,,settlement,grid3,Apena,Oshodi–Isolo,Lagos,0,0,3.297721,6.504968
+Lagos,lagos,Aguda,,settlement,grid3,Aguda,Ikeja,Lagos,0,0,3.351496,6.639176
+Lagos,lagos,Ailegun,,settlement,grid3,Ailegun,Oshodi–Isolo,Lagos,0,0,3.293688,6.529908
+Lagos,lagos,Aiyetoro,,settlement,grid3,Aiyetoro,Ajeromi–Ifelodun,Lagos,0,0,3.347059,6.458702
+Lagos,lagos,Aiyetoto-Asogun,,village,osm,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.24476,6.450892
+Lagos,lagos,Ajabandi Last Bustop,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.167194,6.462408
+Lagos,lagos,Ajangbadi,,settlement,grid3,Sabo-Oniba,Ojo,Lagos,0,0,3.177633,6.459888
+Lagos,lagos,Ajasa,,settlement,grid3,Agbelekale,Alimosho,Lagos,0,0,3.260477,6.637943
+Lagos,lagos,Ajegunle,,settlement,grid3,Odo-Ogun–Ajegunle,Kosofe,Lagos,0,0,3.429862,6.606997
+Lagos,lagos,Ajegunle,,settlement,grid3,Ajegunle,Ajeromi–Ifelodun,Lagos,0,0,3.340098,6.455279
+Lagos,lagos,Ajegunle,,settlement,grid3,Bale Alayabiagba,Ajeromi–Ifelodun,Lagos,0,0,3.351359,6.455502
+Lagos,lagos,Ajelogo,,settlement,grid3,Agidi–Orishigun,Kosofe,Lagos,0,0,3.397199,6.599757
+Lagos,lagos,Ajose Close,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.264687,6.617348
+Lagos,lagos,Akaraba,Akaraba Village,settlement,grid3,Ilado Tomaro,Amuwo Odofin,Lagos,0,0,3.332612,6.408766
+Lagos,lagos,Akera,,settlement,grid3,Alagbado–Kollinton,Ifako–Ijaye,Lagos,0,0,3.283733,6.685998
+Lagos,lagos,Akerebe Eriyo Ishashi Town,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.158352,6.49086
+Lagos,lagos,Akesan,,settlement,grid3,Akesan-Obadore,Alimosho,Lagos,0,0,3.228848,6.541904
+Lagos,lagos,Akilo,,settlement,grid3,Ogba–Oluwole,Ikeja,Lagos,0,0,3.336862,6.61758
+Lagos,lagos,Akingbaiye,,settlement,grid3,Akingbaye,Oshodi–Isolo,Lagos,0,0,3.319742,6.528747
+Lagos,lagos,Akingbaye,,settlement,grid3,Ishaga–Ire-Akari,Oshodi–Isolo,Lagos,0,0,3.323133,6.528597
+Lagos,lagos,Akingbaye,,settlement,grid3,Ilasamaja,Oshodi–Isolo,Lagos,0,0,3.333227,6.529426
+Lagos,lagos,Akinyele Estate,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.262995,6.610745
+Lagos,lagos,Akiode,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.357288,6.641755
+Lagos,lagos,Akora Villas,,settlement,grid3,Ogba–Oluwole,Ikeja,Lagos,0,0,3.345964,6.613394
+Lagos,lagos,Akowonjo,,settlement,grid3,Omituntun-Olori,Alimosho,Lagos,0,0,3.309113,6.606043
+Lagos,lagos,Akowonjo,,settlement,grid3,Akowonjo–Ilupeju,Alimosho,Lagos,0,0,3.301232,6.597672
+Lagos,lagos,Akowonjo,,village,osm,Dopemu,Agege,Lagos,0,0,3.310308,6.610479
+Lagos,lagos,Alaba,,settlement,grid3,Ojo Town,Ojo,Lagos,0,0,3.196638,6.459998
+Lagos,lagos,Alaba Oro,,settlement,grid3,Owoyemi,Ajeromi–Ifelodun,Lagos,0,0,3.330227,6.465162
+Lagos,lagos,Alade,,settlement,grid3,Alade,Ikeja,Lagos,0,0,3.3479,6.603848
+Lagos,lagos,Alagba,,village,osm,Oyewole–Alaagba,Agege,Lagos,0,0,3.302497,6.62148
+Lagos,lagos,Alagbado,,settlement,grid3,Alakuko Ajegunle,Ifako–Ijaye,Lagos,0,0,3.267692,6.693012
+Lagos,lagos,Alaiyabiagba,,village,osm,Oluwa–Akere,Ajeromi–Ifelodun,Lagos,0,0,3.333272,6.449919
+Lagos,lagos,Alaja,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.240739,6.593695
+Lagos,lagos,Alakija,,settlement,grid3,Agboju and Environ,Amuwo Odofin,Lagos,0,0,3.274432,6.456737
+Lagos,lagos,Alakoto Ibafon,,settlement,grid3,Alakoto–Ibafon,Ajeromi–Ifelodun,Lagos,0,0,3.33649,6.443569
+Lagos,lagos,Alapere,,settlement,grid3,Arowosegbe–Alapere,Kosofe,Lagos,0,0,3.397657,6.586195
+Lagos,lagos,Alaso,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.245643,6.657833
+Lagos,lagos,Alaso Amikanle,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.24604,6.648522
+Lagos,lagos,Alausa,,village,osm,Alausa,Ikeja,Lagos,0,0,3.35658,6.609615
+Lagos,lagos,Alfred Garden Estate,,settlement,grid3,Olusosun,Ikeja,Lagos,0,0,3.37337,6.591527
+Lagos,lagos,Alibaba,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.170142,6.505857
+Lagos,lagos,Alimosho,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.2432,6.58547
+Lagos,lagos,Alimosho,,settlement,grid3,Oki,Alimosho,Lagos,0,0,3.29589,6.611369
+Lagos,lagos,Allen,,settlement,grid3,Alade,Ikeja,Lagos,0,0,3.350905,6.60338
+Lagos,lagos,Amikanle,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.253842,6.654565
+Lagos,lagos,Amole,,settlement,grid3,Atan Lagos,Alimosho,Lagos,0,0,3.244977,6.600544
+Lagos,lagos,Amukoko,,settlement,grid3,Oke Oja,Ajeromi–Ifelodun,Lagos,0,0,3.347056,6.469506
+Lagos,lagos,Amukoko,,settlement,grid3,Ojora Amukoko,Ajeromi–Ifelodun,Lagos,0,0,3.340224,6.470698
+Lagos,lagos,Amukoko,,settlement,grid3,Apasa Amukoko,Ajeromi–Ifelodun,Lagos,0,0,3.334482,6.467132
+Lagos,lagos,Amuwo Odofin,,settlement,grid3,Ifelodun,Amuwo Odofin,Lagos,0,0,3.298517,6.46715
+Lagos,lagos,Amuwo Odofin Industrial Area,,settlement,grid3,Eko Akete,Amuwo Odofin,Lagos,0,0,3.323956,6.477976
+Lagos,lagos,Anifowoshe,,settlement,grid3,Shogunle,Oshodi–Isolo,Lagos,0,0,3.338262,6.58006
+Lagos,lagos,Anifowoshe Street Near Shilo,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.269127,6.615898
+Lagos,lagos,Animashaun Street,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.271178,6.614892
+Lagos,lagos,Anthony Village,,settlement,grid3,Anthony,Kosofe,Lagos,0,0,3.369203,6.559177
+Lagos,lagos,Apata Idiorogbo,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.216327,6.567718
+Lagos,lagos,Apena Jagundeyi Community,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.223918,6.581387
+Lagos,lagos,Arabanje,,settlement,grid3,Abaranje–Okerube,Alimosho,Lagos,0,0,3.242875,6.540935
+Lagos,lagos,Araromi Kolawole,,settlement,grid3,Agidi–Orishigun,Kosofe,Lagos,0,0,3.402843,6.599605
+Lagos,lagos,Araromi Quarters,,settlement,grid3,Agidi–Orishigun,Kosofe,Lagos,0,0,3.399864,6.599428
+Lagos,lagos,Area 4,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.21742,6.495532
+Lagos,lagos,Ashimolowo 5th Avenue,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.269186,6.612872
+Lagos,lagos,Ashipa,,village,osm,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.255278,6.582778
+Lagos,lagos,Asipa Community,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.231333,6.513643
+Lagos,lagos,Asore,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.171485,6.508305
+Lagos,lagos,Association Avenue,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.267139,6.555064
+Lagos,lagos,Aswani,,settlement,grid3,Alagbeji,Oshodi–Isolo,Lagos,0,0,3.33332,6.54099
+Lagos,lagos,Atan Kekere,,settlement,grid3,Atan Lagos,Alimosho,Lagos,0,0,3.250143,6.593132
+Lagos,lagos,Atanda,,settlement,grid3,Isale Oja,Agege,Lagos,0,0,3.327366,6.609317
+Lagos,lagos,Atankekere,,settlement,grid3,Atan Lagos,Alimosho,Lagos,0,0,3.247473,6.600835
+Lagos,lagos,Atitebi,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.221173,6.573357
+Lagos,lagos,Avenue,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.272269,6.612756
+Lagos,lagos,Awodi Ora,,settlement,grid3,Awodi-Ora,Ajeromi–Ifelodun,Lagos,0,0,3.3303,6.452622
+Lagos,lagos,Awokoya Street Amosu,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.267332,6.612275
+Lagos,lagos,Awolowo Way,,settlement,grid3,Anifowoshe,Ikeja,Lagos,0,0,3.337988,6.595988
+Lagos,lagos,Awori,,settlement,grid3,Egbeda,Alimosho,Lagos,0,0,3.28972,6.590532
+Lagos,lagos,Ayetoro Abule Titun,,settlement,grid3,Alagbado–Kollinton,Ifako–Ijaye,Lagos,0,0,3.278163,6.686147
+Lagos,lagos,Ayetoro Ijanikin,,settlement,grid3,Ijanikin,Ojo,Lagos,0,0,3.148382,6.494173
+Lagos,lagos,Ayobo,,settlement,grid3,Ayobo,Alimosho,Lagos,0,0,3.237138,6.604013
+Lagos,lagos,Baba Ode Town,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.214757,6.56833
+Lagos,lagos,Babalola Close,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.269578,6.615335
+Lagos,lagos,Bada,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.22981,6.584844
+Lagos,lagos,Badia,,settlement,grid3,Oke Oja,Ajeromi–Ifelodun,Lagos,0,0,3.351439,6.466921
+Lagos,lagos,Bako Estate,,settlement,grid3,Odo-Ogun–Ajegunle,Kosofe,Lagos,0,0,3.417045,6.599357
+Lagos,lagos,Bale Animashanu,,settlement,grid3,Alagbado–Kollinton,Ifako–Ijaye,Lagos,0,0,3.277042,6.687285
+Lagos,lagos,Balogun,,settlement,grid3,Alade,Ikeja,Lagos,0,0,3.348335,6.606365
+Lagos,lagos,Baracks,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.229683,6.45947
+Lagos,lagos,Baruwa,,settlement,grid3,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.258348,6.5815
+Lagos,lagos,Baruwa Ipaja,,settlement,grid3,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.272867,6.6009
+Lagos,lagos,Baruwa Pipeline,,settlement,grid3,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.271155,6.590588
+Lagos,lagos,Bolorunpelu,,locality,osm,Egbe-Agodo,Alimosho,Lagos,0,0,3.273056,6.545278
+Lagos,lagos,Bucknor,,settlement,grid3,Oke-Afa,Oshodi–Isolo,Lagos,0,0,3.298803,6.517053
+Lagos,lagos,Campground,,settlement,grid3,Anthony,Kosofe,Lagos,0,0,3.375883,6.563227
+Lagos,lagos,Candos,,settlement,grid3,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.250195,6.583535
+Lagos,lagos,Candos Ipaja,,settlement,grid3,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.268495,6.599513
+Lagos,lagos,Cele,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.267674,6.612664
+Lagos,lagos,Cele Apata,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.218487,6.574917
+Lagos,lagos,Cele Ijanikin,,settlement,grid3,Ijanikin,Ojo,Lagos,0,0,3.126421,6.497122
+Lagos,lagos,Cele Ikosi,,settlement,grid3,Ikosi-Oke,Kosofe,Lagos,0,0,3.375782,6.608958
+Lagos,lagos,Cele Sabo Oniba,,settlement,grid3,Sabo-Oniba,Ojo,Lagos,0,0,3.175516,6.456061
+Lagos,lagos,Cele Town,,settlement,grid3,Etegbin,Ojo,Lagos,0,0,3.149533,6.459322
+Lagos,lagos,Celestial Avenue Estate,,settlement,grid3,Oke-Ira Powerline,Ikeja,Lagos,0,0,3.350018,6.654148
+Lagos,lagos,Central Business District,,settlement,grid3,Alausa,Ikeja,Lagos,0,0,3.356773,6.61579
+Lagos,lagos,Century,,settlement,grid3,Apena,Oshodi–Isolo,Lagos,0,0,3.30237,6.514027
+Lagos,lagos,Coker,,settlement,grid3,Ifako–Coker,Ifako–Ijaye,Lagos,0,0,3.330617,6.64115
+Lagos,lagos,Command,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.25754,6.623449
+Lagos,lagos,Command Ipaja,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.245837,6.641012
+Lagos,lagos,Cresh At Bale Amosu Street,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.269275,6.61231
+Lagos,lagos,Dabiri Close,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.269267,6.613728
+Lagos,lagos,Dadi,,settlement,grid3,Taffi,Ojo,Lagos,0,0,3.02678,6.399503
+Lagos,lagos,Dalemo Alakuko,,settlement,grid3,Alakuko Ajegunle,Ifako–Ijaye,Lagos,0,0,3.281347,6.689892
+Lagos,lagos,David Street,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.268465,6.612253
+Lagos,lagos,Demuri,,settlement,grid3,Bamgbe–Elebiju,Kosofe,Lagos,0,0,3.388257,6.597733
+Lagos,lagos,Diamond Estate,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.263668,6.577622
+Lagos,lagos,Dopemu,,settlement,grid3,Santos–Ilupeju,Alimosho,Lagos,0,0,3.309614,6.597485
+Lagos,lagos,Dopemu,,settlement,grid3,Awori Oniwaya,Agege,Lagos,0,0,3.312783,6.614461
+Lagos,lagos,Dopemu,,settlement,grid3,Dopemu,Agege,Lagos,0,0,3.316142,6.608196
+Lagos,lagos,Ebira Community,,settlement,grid3,Aguda,Ikeja,Lagos,0,0,3.350747,6.636583
+Lagos,lagos,Egan,,settlement,grid3,Egan (Ojo),Ojo,Lagos,0,0,3.137943,6.449327
+Lagos,lagos,Egan,,settlement,grid3,Egan (Alimosho),Alimosho,Lagos,0,0,3.22377,6.558422
+Lagos,lagos,Egbe,,settlement,grid3,Egbe-Agodo,Alimosho,Lagos,0,0,3.275552,6.534311
+Lagos,lagos,Egbe Idimu,,settlement,grid3,Egbe-Agodo,Alimosho,Lagos,0,0,3.277598,6.54437
+Lagos,lagos,Egbe Liasu,,settlement,grid3,Egbe-Liasu,Alimosho,Lagos,0,0,3.28255,6.552882
+Lagos,lagos,Egbeda,,settlement,grid3,Egbeda,Alimosho,Lagos,0,0,3.292467,6.596857
+Lagos,lagos,Egbeda Idimu,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.259323,6.576025
+Lagos,lagos,Egudu Baale,,settlement,grid3,Alaguntan,Alimosho,Lagos,0,0,3.300912,6.611659
+Lagos,lagos,Egudu Baale,,settlement,grid3,Egbeda,Alimosho,Lagos,0,0,3.295259,6.599055
+Lagos,lagos,Ejigbo,,settlement,grid3,Aigbaka,Oshodi–Isolo,Lagos,0,0,3.295205,6.560353
+Lagos,lagos,Ejigbo,,settlement,grid3,Ailegun,Oshodi–Isolo,Lagos,0,0,3.305784,6.53206
+Lagos,lagos,Ejigbo,,settlement,grid3,Fadu,Oshodi–Isolo,Lagos,0,0,3.301583,6.550252
+Lagos,lagos,Ekore Oworo,,settlement,grid3,Olubori–Mosafejo,Kosofe,Lagos,0,0,3.402307,6.550893
+Lagos,lagos,Ekore Oworo,,settlement,grid3,Mende,Kosofe,Lagos,0,0,3.382309,6.5664
+Lagos,lagos,Elachi,,village,osm,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.283186,6.415273
+Lagos,lagos,Ellebell,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.268324,6.611613
+Lagos,lagos,Era,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.122569,6.476876
+Lagos,lagos,Ese Ofin,,settlement,grid3,Egan (Ojo),Ojo,Lagos,0,0,3.147265,6.440712
+Lagos,lagos,Eso,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.218408,6.577068
+Lagos,lagos,Esterpod,,settlement,grid3,Araromi–Ifako,Kosofe,Lagos,0,0,3.383745,6.562448
+Lagos,lagos,Etegbin Oto Awori,,settlement,grid3,Etegbin,Ojo,Lagos,0,0,3.149953,6.453888
+Lagos,lagos,Ewutuntun,,settlement,grid3,Ewutuntun,Oshodi–Isolo,Lagos,0,0,3.337113,6.568418
+Lagos,lagos,Fagba,,settlement,grid3,Tabon Tabon–Egbir,Ifako–Ijaye,Lagos,0,0,3.321017,6.657572
+Lagos,lagos,Fagbile Phase 3,,settlement,grid3,Isheri Oshun,Alimosho,Lagos,0,0,3.269148,6.505077
+Lagos,lagos,Falete Close,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.272439,6.612281
+Lagos,lagos,Faloye Ketu,,settlement,grid3,Oto-Awori,Ojo,Lagos,0,0,3.154053,6.488808
+Lagos,lagos,Fatoki,,settlement,grid3,Egan (Alimosho),Alimosho,Lagos,0,0,3.221548,6.549882
+Lagos,lagos,Fatokun,,settlement,grid3,Abule Egba,Alimosho,Lagos,0,0,3.294108,6.647653
+Lagos,lagos,Federal Housing Estate Akinogun,,settlement,grid3,Mosan–Akinoggun,Alimosho,Lagos,0,0,3.284368,6.613233
+Lagos,lagos,Festac,,town,osm,Orire,Amuwo Odofin,Lagos,0,0,3.283937,6.468273
+Lagos,lagos,Festac 111,,settlement,grid3,Irepodun,Amuwo Odofin,Lagos,0,0,3.27593,6.46122
+Lagos,lagos,Festac 2,,settlement,grid3,Ifelodun,Amuwo Odofin,Lagos,0,0,3.300595,6.462682
+Lagos,lagos,Festac I,,settlement,grid3,Eko Akete,Amuwo Odofin,Lagos,0,0,3.301958,6.483517
+Lagos,lagos,First Avenue Festac Town,,settlement,grid3,Ifelodun,Amuwo Odofin,Lagos,0,0,3.295263,6.471825
+Lagos,lagos,First Gate,,settlement,grid3,Akiode,Ikeja,Lagos,0,0,3.353296,6.623802
+Lagos,lagos,Four Square,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.268825,6.617475
+Lagos,lagos,GRA,,settlement,grid3,GRA,Ikeja,Lagos,0,0,3.36023,6.576908
+Lagos,lagos,GRA,,settlement,grid3,GRA,Ikeja,Lagos,0,0,3.35618,6.586982
+Lagos,lagos,Gate,,settlement,grid3,Mosan–Akinoggun,Alimosho,Lagos,0,0,3.273171,6.605156
+Lagos,lagos,Gbadamosi,,settlement,grid3,Ipaja,Alimosho,Lagos,0,0,3.261418,6.614028
+Lagos,lagos,Gbadamosi,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.358951,6.649951
+Lagos,lagos,Gbagada,,settlement,grid3,Olubori–Mosafejo,Kosofe,Lagos,0,0,3.399496,6.556381
+Lagos,lagos,Gbagada,,town,osm,Araromi–Ifako,Kosofe,Lagos,0,0,3.383621,6.558073
+Lagos,lagos,Gloryland Estate,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.27517,6.57713
+Lagos,lagos,Gowan Estate,,settlement,grid3,Gowon Estate,Alimosho,Lagos,0,0,3.290248,6.601962
+Lagos,lagos,Gowon Estate,,settlement,grid3,Gowon Estate,Alimosho,Lagos,0,0,3.285415,6.606366
+Lagos,lagos,Grace Estate,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.274483,6.590048
+Lagos,lagos,Graceland,,settlement,grid3,Atan Lagos,Alimosho,Lagos,0,0,3.250824,6.593116
+Lagos,lagos,Grammar School,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.358085,6.644943
+Lagos,lagos,Hand of Fire City,,settlement,grid3,Ikotun,Alimosho,Lagos,0,0,3.25116,6.552957
+Lagos,lagos,Hillview Zone,,settlement,grid3,Ogudu,Kosofe,Lagos,0,0,3.387615,6.576907
+Lagos,lagos,Iba,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.197862,6.487023
+Lagos,lagos,Iba Lcda,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.200823,6.50573
+Lagos,lagos,Ibafon,,settlement,grid3,Ibafon,Ajeromi–Ifelodun,Lagos,0,0,3.327626,6.445101
+Lagos,lagos,Ibasa,,settlement,grid3,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.249864,6.422181
+Lagos,lagos,Ibasa,,village,osm,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.254871,6.423781
+Lagos,lagos,Ibese,,village,osm,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.254905,6.412437
+Lagos,lagos,Ibeshe Town,Gedeme,settlement,grid3,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.257561,6.413264
+Lagos,lagos,Ibukun Estate,,settlement,grid3,Alabata,Alimosho,Lagos,0,0,3.297667,6.60493
+Lagos,lagos,Idera Ajegunle,,settlement,grid3,Odo-Ogun–Ajegunle,Kosofe,Lagos,0,0,3.417348,6.61229
+Lagos,lagos,Idimu,,settlement,grid3,Idimu,Alimosho,Lagos,0,0,3.285958,6.571218
+Lagos,lagos,Idimu,,settlement,grid3,Unity Estate,Alimosho,Lagos,0,0,3.28454,6.578408
+Lagos,lagos,Idimu Council,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.2795,6.567888
+Lagos,lagos,Idimu Titu II Community,,settlement,grid3,Aigbaka,Oshodi–Isolo,Lagos,0,0,3.295515,6.562437
+Lagos,lagos,Idimu Tutu Paiko,,settlement,grid3,Aigbaka,Oshodi–Isolo,Lagos,0,0,3.294257,6.565973
+Lagos,lagos,Idoluwo,,village,osm,Etegbin,Ojo,Lagos,0,0,3.103389,6.452064
+Lagos,lagos,Idowu Ajasa,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.265425,6.615529
+Lagos,lagos,Idowuegba,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.259788,6.576847
+Lagos,lagos,Ifako,,settlement,grid3,Olubori–Mosafejo,Kosofe,Lagos,0,0,3.39613,6.559068
+Lagos,lagos,Ifako,,settlement,grid3,Ijaiye–Ifako,Ifako–Ijaye,Lagos,0,0,3.3304,6.633602
+Lagos,lagos,Ifako Gbagada,,settlement,grid3,Araromi–Ifako,Kosofe,Lagos,0,0,3.392415,6.562417
+Lagos,lagos,Ifako Soluyi,,settlement,grid3,Araromi–Ifako,Kosofe,Lagos,0,0,3.390893,6.559903
+Lagos,lagos,Ifelodun Street,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.269832,6.617946
+Lagos,lagos,Ifesowapo Abule Egun,,settlement,grid3,Eko Akete,Amuwo Odofin,Lagos,0,0,3.298357,6.46935
+Lagos,lagos,Ifesowapo Community,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.248022,6.642658
+Lagos,lagos,Igando,,settlement,grid3,Igando,Alimosho,Lagos,0,0,3.237287,6.552535
+Lagos,lagos,Igando,,town,osm,Egan (Alimosho),Alimosho,Lagos,0,0,3.231001,6.548657
+Lagos,lagos,Igando,,village,osm,Egan (Ojo),Ojo,Lagos,0,0,3.126237,6.44026
+Lagos,lagos,Igando New Town,,settlement,grid3,Ikotun,Alimosho,Lagos,0,0,3.24617,6.568572
+Lagos,lagos,Igbede,,village,osm,Sabo-Oniba,Ojo,Lagos,0,0,3.160594,6.453593
+Lagos,lagos,Igbede Ojo,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.163165,6.460093
+Lagos,lagos,Igbo Elerin Central,,settlement,grid3,Okokomaiko,Ojo,Lagos,0,0,3.188025,6.482243
+Lagos,lagos,Igboelerin,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.191894,6.487227
+Lagos,lagos,Igbolobi,,settlement,grid3,Irewe,Ojo,Lagos,0,0,3.183333,6.416667
+Lagos,lagos,Igbologun,,village,osm,Ilado Tomaro,Amuwo Odofin,Lagos,0,0,3.329673,6.419078
+Lagos,lagos,Igbologun Snake Island,,settlement,grid3,Ilado Tomaro,Amuwo Odofin,Lagos,0,0,3.329537,6.417817
+Lagos,lagos,Igesu,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.228227,6.57754
+Lagos,lagos,Ijagemo,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.239987,6.516098
+Lagos,lagos,Ijagemo,,village,osm,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.225138,6.50504
+Lagos,lagos,Ijaiye,,settlement,grid3,Ijaiye Gbirinmi,Ifako–Ijaye,Lagos,0,0,3.293586,6.672235
+Lagos,lagos,Ijaiye Ifako,,settlement,grid3,Powerline–Oko-Oba,Agege,Lagos,0,0,3.315307,6.644087
+Lagos,lagos,Ijaiye Ifako,,settlement,grid3,Ijaiye Oke-Ira,Ifako–Ijaye,Lagos,0,0,3.336028,6.639984
+Lagos,lagos,Ijaiye Ifako,,settlement,grid3,Ifako Pele,Ifako–Ijaye,Lagos,0,0,3.33162,6.645269
+Lagos,lagos,Ijaiye Ifako,,settlement,grid3,Orile,Agege,Lagos,0,0,3.313123,6.645886
+Lagos,lagos,Ijanikin,,settlement,grid3,Ijanikin,Ojo,Lagos,0,0,3.141663,6.494352
+Lagos,lagos,Ijanikin,,village,osm,Ijanikin,Ojo,Lagos,0,0,3.1208,6.496658
+Lagos,lagos,Ije,,settlement,grid3,Isheri Oshun,Alimosho,Lagos,0,0,3.256833,6.496232
+Lagos,lagos,Ije Ododo,,village,osm,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.248696,6.499121
+Lagos,lagos,Ijegun,,settlement,grid3,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.259298,6.406263
+Lagos,lagos,Ijegun,,settlement,grid3,Isheri Oshun,Alimosho,Lagos,0,0,3.262672,6.50851
+Lagos,lagos,Ijegun Egba,,settlement,grid3,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.258227,6.444098
+Lagos,lagos,Ijegun Fin Niger Oriade Lcda,,settlement,grid3,Ijegun (Amuwo),Amuwo Odofin,Lagos,0,0,3.261644,6.454703
+Lagos,lagos,Ijegun Imore Navy Town,,settlement,grid3,Ijegun (Amuwo),Amuwo Odofin,Lagos,0,0,3.277314,6.442075
+Lagos,lagos,Ijegun Jetty Ibasa,,settlement,grid3,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.265198,6.425572
+Lagos,lagos,Ijegun Water Side,,settlement,grid3,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.259338,6.436368
+Lagos,lagos,Ijeododo,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.249639,6.499685
+Lagos,lagos,Iju,,village,osm,Iju Ishaga,Ifako–Ijaye,Lagos,0,0,3.32589,6.669251
+Lagos,lagos,Iju Community,,settlement,grid3,Iju Ishaga,Ifako–Ijaye,Lagos,0,0,3.317395,6.673342
+Lagos,lagos,Iju Ishaga,,settlement,grid3,Ifako Pele,Ifako–Ijaye,Lagos,0,0,3.326532,6.652004
+Lagos,lagos,Iju Ishaga,,settlement,grid3,Iju Obawole,Ifako–Ijaye,Lagos,0,0,3.325455,6.668373
+Lagos,lagos,Iju Ishaga,,settlement,grid3,Ijaiye Ojokoro,Ifako–Ijaye,Lagos,0,0,3.288231,6.67192
+Lagos,lagos,Ikaare,Ikaare Village,settlement,grid3,I Irede,Amuwo Odofin,Lagos,0,0,3.235249,6.418599
+Lagos,lagos,Ikeja Cantonement,,settlement,grid3,Onigbongbo,Ikeja,Lagos,0,0,3.360847,6.567417
+Lagos,lagos,Ikeja GRA,,settlement,grid3,Opebi,Ikeja,Lagos,0,0,3.358016,6.587979
+Lagos,lagos,Ikeja GRA,,settlement,grid3,GRA,Ikeja,Lagos,0,0,3.353572,6.585903
+Lagos,lagos,Ikola,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.245232,6.62362
+Lagos,lagos,Ikola Ilumo Community,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.254968,6.619982
+Lagos,lagos,Ikola Ilumu,,settlement,grid3,Ajasa–Amikanle,Alimosho,Lagos,0,0,3.24898,6.625105
+Lagos,lagos,Ikosi,,settlement,grid3,Ikosi-Oke,Kosofe,Lagos,0,0,3.384825,6.596333
+Lagos,lagos,Ikosi,,locality,osm,Agiliti–Maidan,Kosofe,Lagos,0,0,3.383611,6.600556
+Lagos,lagos,Ikosi Cele,,settlement,grid3,Ikosi-Oke,Kosofe,Lagos,0,0,3.376307,6.60771
+Lagos,lagos,Ikosi Isheri,,settlement,grid3,Ikosi-Oke,Kosofe,Lagos,0,0,3.37813,6.606827
+Lagos,lagos,Ikosi Isheri,,settlement,grid3,Agiliti–Maidan,Kosofe,Lagos,0,0,3.383435,6.600055
+Lagos,lagos,Ikosi Isheri,,settlement,grid3,Ikosi Isheri,Kosofe,Lagos,0,0,3.429796,6.610684
+Lagos,lagos,Ikosi Ketu,,settlement,grid3,Orile-Ikosi,Kosofe,Lagos,0,0,3.386943,6.60733
+Lagos,lagos,Ikotun,,settlement,grid3,Ikotun,Alimosho,Lagos,0,0,3.255368,6.562547
+Lagos,lagos,Ikotun,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.257804,6.523112
+Lagos,lagos,Ikotun,,town,osm,Ikotun,Alimosho,Lagos,0,0,3.268266,6.552298
+Lagos,lagos,Ikotun Egbe,,settlement,grid3,Egbe-Agodo,Alimosho,Lagos,0,0,3.282741,6.540663
+Lagos,lagos,Ikotun Igando,,settlement,grid3,Abaranje–Okerube,Alimosho,Lagos,0,0,3.236623,6.523025
+Lagos,lagos,Ilamoshe,,settlement,grid3,Ilamoshe,Oshodi–Isolo,Lagos,0,0,3.318173,6.540833
+Lagos,lagos,Ilasa,,settlement,grid3,Ilasamaja,Oshodi–Isolo,Lagos,0,0,3.330621,6.519493
+Lagos,lagos,Ilashe,Ilashe Beach,settlement,grid3,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.290971,6.405409
+Lagos,lagos,Ilashe,,village,osm,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.278869,6.406476
+Lagos,lagos,Ile Iwe,,settlement,grid3,Agbelekale,Alimosho,Lagos,0,0,3.271806,6.640198
+Lagos,lagos,Ilogbo,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.141638,6.46803
+Lagos,lagos,Ilogbo Elegba,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.131015,6.464805
+Lagos,lagos,Iloro,,settlement,grid3,Isale Oja,Agege,Lagos,0,0,3.324168,6.610255
+Lagos,lagos,Ilu Tutun,,settlement,grid3,Ilado Tomaro,Amuwo Odofin,Lagos,0,0,3.34997,6.42166
+Lagos,lagos,Ilufe,,settlement,grid3,Ojo Town,Ojo,Lagos,0,0,3.191549,6.454535
+Lagos,lagos,Imole Ogoluw Close,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.263066,6.615148
+Lagos,lagos,Imude,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.120449,6.460586
+Lagos,lagos,Ipaja,,settlement,grid3,Ipaja,Alimosho,Lagos,0,0,3.255827,6.613398
+Lagos,lagos,Ipaja,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.219063,6.591022
+Lagos,lagos,Ipaja Ayobo,,settlement,grid3,Mosan–Akinoggun,Alimosho,Lagos,0,0,3.273842,6.604738
+Lagos,lagos,Ipaye,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.190162,6.493197
+Lagos,lagos,Irawo,,settlement,grid3,Odo-Ogun–Ajegunle,Kosofe,Lagos,0,0,3.418057,6.601102
+Lagos,lagos,Ire Akari,,settlement,grid3,Ishaga–Ire-Akari,Oshodi–Isolo,Lagos,0,0,3.319308,6.525976
+Lagos,lagos,Ire Akari,,settlement,grid3,Ilasamaja,Oshodi–Isolo,Lagos,0,0,3.31948,6.516448
+Lagos,lagos,Irede,,settlement,grid3,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.2526,6.434
+Lagos,lagos,Irede,,village,osm,I Irede,Amuwo Odofin,Lagos,0,0,3.233698,6.426983
+Lagos,lagos,Irepo Estate,,settlement,grid3,Abaranje–Okerube,Alimosho,Lagos,0,0,3.253923,6.551913
+Lagos,lagos,Irepodun,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.270052,6.617159
+Lagos,lagos,Irewe,,settlement,grid3,Irewe,Ojo,Lagos,0,0,3.143435,6.418982
+Lagos,lagos,Isa Lawal,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.257903,6.574859
+Lagos,lagos,Isaga,,settlement,grid3,Iju Ogundimu,Ifako–Ijaye,Lagos,0,0,3.336025,6.671525
+Lagos,lagos,Isale Odo,,settlement,grid3,Ipaja,Alimosho,Lagos,0,0,3.256343,6.616625
+Lagos,lagos,Isale Oja,,settlement,grid3,Keke,Agege,Lagos,0,0,3.331115,6.621955
+Lagos,lagos,Isale Oja,,settlement,grid3,Onilekere,Ikeja,Lagos,0,0,3.325069,6.606261
+Lagos,lagos,Isalu,,settlement,grid3,Ogba–Oluwole,Ikeja,Lagos,0,0,3.352748,6.631278
+Lagos,lagos,Isashi,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.169252,6.496793
+Lagos,lagos,Isasi,,village,osm,Igbo-Elerin,Ojo,Lagos,0,0,3.166667,6.5
+Lagos,lagos,Isefun,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.205802,6.576856
+Lagos,lagos,Ishaga,,settlement,grid3,Ishaga–Ire-Akari,Oshodi–Isolo,Lagos,0,0,3.328382,6.524993
+Lagos,lagos,Ishagira Settlement,,settlement,grid3,Egan (Ojo),Ojo,Lagos,0,0,3.126263,6.44029
+Lagos,lagos,Ishefun,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.207053,6.570472
+Lagos,lagos,Isheri,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.264047,6.57707
+Lagos,lagos,Isheri,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.384612,6.63416
+Lagos,lagos,Isheri,,village,osm,Isheri–Olowora,Kosofe,Lagos,0,0,3.380206,6.638499
+Lagos,lagos,Isheri Olofin Town,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.2746,6.582197
+Lagos,lagos,Isheri Oshun,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.265946,6.52699
+Lagos,lagos,Ishope Village,,settlement,grid3,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.282137,6.424321
+Lagos,lagos,Isiba Oluwo,,settlement,grid3,Egbeda,Alimosho,Lagos,0,0,3.292377,6.588945
+Lagos,lagos,Isolo,,settlement,grid3,Akingbaye,Oshodi–Isolo,Lagos,0,0,3.321805,6.531217
+Lagos,lagos,Isolo,,settlement,grid3,Ilasamaja,Oshodi–Isolo,Lagos,0,0,3.322649,6.520146
+Lagos,lagos,Isolo,,town,osm,Ishaga–Ire-Akari,Oshodi–Isolo,Lagos,0,0,3.31878,6.528509
+Lagos,lagos,Isunba,,village,osm,Kirikiri and Environ,Amuwo Odofin,Lagos,0,0,3.284228,6.446998
+Lagos,lagos,Isuti,,settlement,grid3,Egan (Alimosho),Alimosho,Lagos,0,0,3.2072,6.552243
+Lagos,lagos,Itogbesa,,settlement,grid3,Irewe,Ojo,Lagos,0,0,3.144017,6.423081
+Lagos,lagos,Itowolo Community,,settlement,grid3,Ikosi Isheri,Kosofe,Lagos,0,0,3.440523,6.612176
+Lagos,lagos,Iwolowa Yusuf Ajao,,settlement,grid3,Unity Estate,Alimosho,Lagos,0,0,3.282007,6.57699
+Lagos,lagos,Iyagbe,,settlement,grid3,Ilado Tomaro,Amuwo Odofin,Lagos,0,0,3.330315,6.417862
+Lagos,lagos,Iyagbe,,settlement,grid3,I Irede,Amuwo Odofin,Lagos,0,0,3.201408,6.418399
+Lagos,lagos,Iyana Era,,settlement,grid3,Ijanikin,Ojo,Lagos,0,0,3.141294,6.496683
+Lagos,lagos,Iyana Iba,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.202327,6.47469
+Lagos,lagos,Iyana Iba,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.20652,6.46076
+Lagos,lagos,Iyana Ipaja,,settlement,grid3,Oki,Alimosho,Lagos,0,0,3.297837,6.617192
+Lagos,lagos,Iyana Ishashi,,settlement,grid3,Ajangbadi,Ojo,Lagos,0,0,3.17166,6.482998
+Lagos,lagos,Iyana Isolo,,settlement,grid3,Alagbeji,Oshodi–Isolo,Lagos,0,0,3.3343,6.531974
+Lagos,lagos,Iyana Odo,,settlement,grid3,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.266762,6.585078
+Lagos,lagos,Iyana School,,settlement,grid3,Erukan–Orishigun,Kosofe,Lagos,0,0,3.391205,6.604153
+Lagos,lagos,Jagundeyi,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.221658,6.580902
+Lagos,lagos,Jakande,,settlement,grid3,Oke-Afa,Oshodi–Isolo,Lagos,0,0,3.298009,6.513592
+Lagos,lagos,Jakande Ajangbadi,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.154748,6.474063
+Lagos,lagos,Jakande Estate,,settlement,grid3,Ailegun,Oshodi–Isolo,Lagos,0,0,3.303165,6.531558
+Lagos,lagos,Jakunde Estate,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.269908,6.613173
+Lagos,lagos,Julie Estate,,settlement,grid3,Alausa,Ikeja,Lagos,0,0,3.359652,6.601055
+Lagos,lagos,Kaka,,settlement,grid3,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.249513,6.582128
+Lagos,lagos,Kemberi,,settlement,grid3,Kemberi,Ojo,Lagos,0,0,3.187127,6.46726
+Lagos,lagos,Ketu,,settlement,grid3,Bamgbe–Elebiju,Kosofe,Lagos,0,0,3.385122,6.591423
+Lagos,lagos,Ketu,,settlement,grid3,Ijanikin,Ojo,Lagos,0,0,3.150203,6.493978
+Lagos,lagos,Ketu,,town,osm,Bamgbe–Elebiju,Kosofe,Lagos,0,0,3.391748,6.5928
+Lagos,lagos,Ketu Aiyetoro,,settlement,grid3,Oto-Awori,Ojo,Lagos,0,0,3.151725,6.491063
+Lagos,lagos,Ketu Alakpere,,settlement,grid3,Ogudu,Kosofe,Lagos,0,0,3.388349,6.585557
+Lagos,lagos,Kirikiri,,settlement,grid3,Kirikiri and Environ,Amuwo Odofin,Lagos,0,0,3.301367,6.442162
+Lagos,lagos,Kirikiri Waterside,,settlement,grid3,Kirikiri and Environ,Amuwo Odofin,Lagos,0,0,3.321637,6.435003
+Lagos,lagos,Kola,,settlement,grid3,Ijaiye Ojokoro,Ifako–Ijaye,Lagos,0,0,3.276585,6.677293
+Lagos,lagos,Kopiame,Idimagoro,settlement,grid3,Ilado Tomaro,Amuwo Odofin,Lagos,0,0,3.322569,6.409027
+Lagos,lagos,Kuderbu,,settlement,grid3,Isheri Oshun,Alimosho,Lagos,0,0,3.26432,6.514513
+Lagos,lagos,Lagos Badagary Ijanikin,,settlement,grid3,Ijanikin,Ojo,Lagos,0,0,3.132333,6.49455
+Lagos,lagos,Lagos Badagry,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.215232,6.459313
+Lagos,lagos,Lagos International Trade Fair,,settlement,grid3,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.245838,6.469238
+Lagos,lagos,Lagos State University,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.198852,6.47785
+Lagos,lagos,Lagos Toll Gate,,settlement,grid3,Ikosi-Oke,Kosofe,Lagos,0,0,3.372629,6.608714
+Lagos,lagos,Layeni Okoya,,settlement,grid3,Layeni-Okoya,Ajeromi–Ifelodun,Lagos,0,0,3.340727,6.460063
+Lagos,lagos,Mafoluku,,settlement,grid3,Mafoluku,Oshodi–Isolo,Lagos,0,0,3.331127,6.555128
+Lagos,lagos,Magodo,,settlement,grid3,Shangisha–Magodo,Kosofe,Lagos,0,0,3.3688,6.623445
+Lagos,lagos,Magodo GRA,,settlement,grid3,Shangisha–Magodo,Kosofe,Lagos,0,0,3.380355,6.619463
+Lagos,lagos,Magodo Gate House,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.382465,6.630117
+Lagos,lagos,Magodo Gatehouse Zone Isheri GRA,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.384672,6.629032
+Lagos,lagos,Magodo Phase 2,,settlement,grid3,Shangisha–Magodo,Kosofe,Lagos,0,0,3.365235,6.612979
+Lagos,lagos,Maidan Orile,,settlement,grid3,Idera,Kosofe,Lagos,0,0,3.400413,6.612757
+Lagos,lagos,Majekodunmi,,settlement,grid3,Abesan 1,Alimosho,Lagos,0,0,3.26211,6.607913
+Lagos,lagos,Majiyagbe,,settlement,grid3,Ipaja,Alimosho,Lagos,0,0,3.24882,6.61289
+Lagos,lagos,Mangoro,,settlement,grid3,Isale Oja,Agege,Lagos,0,0,3.329498,6.610293
+Lagos,lagos,Maroko,,settlement,grid3,Taffi,Ojo,Lagos,0,0,3.09416,6.40358
+Lagos,lagos,Maryland,,settlement,grid3,Wasimi,Ikeja,Lagos,0,0,3.361487,6.576991
+Lagos,lagos,Maza Maza,,settlement,grid3,Kuje,Amuwo Odofin,Lagos,0,0,3.301218,6.458867
+Lagos,lagos,Mebamu Town,,settlement,grid3,Ajangbadi,Ojo,Lagos,0,0,3.175432,6.480925
+Lagos,lagos,Medina,,settlement,grid3,Araromi–Ifako,Kosofe,Lagos,0,0,3.383952,6.553158
+Lagos,lagos,Megida,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.242081,6.600203
+Lagos,lagos,Mende,,settlement,grid3,Mende,Kosofe,Lagos,0,0,3.368765,6.572757
+Lagos,lagos,Meran,Meiran,settlement,grid3,Agbelekale,Alimosho,Lagos,0,0,3.268103,6.654143
+Lagos,lagos,Mile 12,,settlement,grid3,Orile-Ketu,Kosofe,Lagos,0,0,3.397878,6.61075
+Lagos,lagos,Mile 12,,town,osm,Erukan–Orishigun,Kosofe,Lagos,0,0,3.395264,6.605885
+Lagos,lagos,Mile 2,,town,osm,Kirikiri and Environ,Amuwo Odofin,Lagos,0,0,3.313405,6.458794
+Lagos,lagos,Mile 2 Festac Side,,settlement,grid3,Eko Akete,Amuwo Odofin,Lagos,0,0,3.321287,6.47031
+Lagos,lagos,Mile2,,settlement,grid3,Odofin,Amuwo Odofin,Lagos,0,0,3.313716,6.461755
+Lagos,lagos,Millennium Estate,,settlement,grid3,Anthony,Kosofe,Lagos,0,0,3.377263,6.55403
+Lagos,lagos,Miyaki Oworonshoki,,settlement,grid3,Orile Oworo,Kosofe,Lagos,0,0,3.40512,6.543114
+Lagos,lagos,Mko Abiola Gardens,,settlement,grid3,Alausa,Ikeja,Lagos,0,0,3.360817,6.621127
+Lagos,lagos,Mobolaji Bank Anthony Way,,settlement,grid3,GRA,Ikeja,Lagos,0,0,3.339768,6.590962
+Lagos,lagos,Mologede Town,,settlement,grid3,Agbelekale,Alimosho,Lagos,0,0,3.274332,6.655618
+Lagos,lagos,Morgan Estate,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.356223,6.644678
+Lagos,lagos,Morikaz,,settlement,grid3,Awori Oniwaya,Agege,Lagos,0,0,3.319236,6.623028
+Lagos,lagos,Mosafejo,,settlement,grid3,Alaba,Ajeromi–Ifelodun,Lagos,0,0,3.33807,6.465188
+Lagos,lagos,Mosan,,settlement,grid3,Mosan–Akinoggun,Alimosho,Lagos,0,0,3.274216,6.613554
+Lagos,lagos,Mosan Okunola,,settlement,grid3,Atan Lagos,Alimosho,Lagos,0,0,3.261173,6.607407
+Lagos,lagos,Moshalashi,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.26999,6.675212
+Lagos,lagos,Moshalashi,,settlement,grid3,Sango,Agege,Lagos,0,0,3.328839,6.621241
+Lagos,lagos,Mulero,,settlement,grid3,Oyewole–Alaagba,Agege,Lagos,0,0,3.307328,6.625043
+Lagos,lagos,Murtala Muhammed Domestic Airport,,settlement,grid3,Onilekere,Ikeja,Lagos,0,0,3.333608,6.591877
+Lagos,lagos,Muwo,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.222068,6.44583
+Lagos,lagos,Naowa,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.200301,6.485457
+Lagos,lagos,Navy Town,,settlement,grid3,Agboju and Environ,Amuwo Odofin,Lagos,0,0,3.282448,6.451977
+Lagos,lagos,Near Seleto Rentals,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.265587,6.613198
+Lagos,lagos,Nepa,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.124172,6.467057
+Lagos,lagos,New Haven Estate,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.220198,6.491937
+Lagos,lagos,New Mam,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.264817,6.611718
+Lagos,lagos,New Mebamu,,settlement,grid3,Ajangbadi,Ojo,Lagos,0,0,3.157963,6.486753
+Lagos,lagos,Nigeria Army Cantonment Ojo,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.21774,6.484293
+Lagos,lagos,Nigeria Army Cantonment Settlement Ojo,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.205409,6.48599
+Lagos,lagos,Nigerian Army Cantonment Ikeja,,settlement,grid3,Onigbongbo,Ikeja,Lagos,0,0,3.349692,6.562646
+Lagos,lagos,Nigerian Army Service Estate Ojo,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.203617,6.474937
+Lagos,lagos,Niniola Street,,settlement,grid3,Abesan 1,Alimosho,Lagos,0,0,3.265722,6.607624
+Lagos,lagos,Nureni Yusuf Avenue,,settlement,grid3,Alakuko Ajegunle,Ifako–Ijaye,Lagos,0,0,3.278597,6.689742
+Lagos,lagos,Oba Akran,,settlement,grid3,Seriki-Aro,Ikeja,Lagos,0,0,3.336225,6.608778
+Lagos,lagos,Oba Akran,,settlement,grid3,Orile Ikeja,Ikeja,Lagos,0,0,3.341638,6.595927
+Lagos,lagos,Oba Goriola,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.193698,6.507202
+Lagos,lagos,Obadore,,settlement,grid3,Akesan-Obadore,Alimosho,Lagos,0,0,3.214132,6.527747
+Lagos,lagos,Obanta Avenue,,settlement,grid3,Seriki-Aro,Ikeja,Lagos,0,0,3.340748,6.603493
+Lagos,lagos,Obasa,,settlement,grid3,Anifowoshe,Ikeja,Lagos,0,0,3.335562,6.601058
+Lagos,lagos,Obawole,,settlement,grid3,Iju Ogundimu,Ifako–Ijaye,Lagos,0,0,3.339577,6.662552
+Lagos,lagos,Odo Eran,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.257716,6.574672
+Lagos,lagos,Odo Ogun,,settlement,grid3,Ikosi Isheri,Kosofe,Lagos,0,0,3.451052,6.622129
+Lagos,lagos,Odosi,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.358443,6.649278
+Lagos,lagos,Odukoya Estate,,settlement,grid3,Alabata,Alimosho,Lagos,0,0,3.297963,6.602072
+Lagos,lagos,Ogba,,settlement,grid3,Ogba–Oluwole,Ikeja,Lagos,0,0,3.342742,6.630837
+Lagos,lagos,Ogba Oluwole,,settlement,grid3,Ijaiye Oke-Ira,Ifako–Ijaye,Lagos,0,0,3.341707,6.640301
+Lagos,lagos,Ogba Oluwole,,settlement,grid3,Ijaiye–Ifako,Ifako–Ijaye,Lagos,0,0,3.339372,6.631347
+Lagos,lagos,Ogba Oluwole,,settlement,grid3,Aguda,Ikeja,Lagos,0,0,3.347533,6.643059
+Lagos,lagos,Ogudu,,settlement,grid3,Arowosegbe–Alapere,Kosofe,Lagos,0,0,3.392336,6.583304
+Lagos,lagos,Ogudu,,settlement,grid3,Araromi–Ifako,Kosofe,Lagos,0,0,3.386708,6.570128
+Lagos,lagos,Ogudu,,settlement,grid3,Agboyi 2,Kosofe,Lagos,0,0,3.410253,6.579439
+Lagos,lagos,Ogudu GRA,,settlement,grid3,Ogudu,Kosofe,Lagos,0,0,3.39215,6.57507
+Lagos,lagos,Ogudu Ori Oke,,settlement,grid3,Ogudu,Kosofe,Lagos,0,0,3.39831,6.572057
+Lagos,lagos,Ogunbiyi,,settlement,grid3,Anifowoshe,Ikeja,Lagos,0,0,3.339367,6.594945
+Lagos,lagos,Ogundare,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.272593,6.61389
+Lagos,lagos,Ogundere Street,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.272532,6.615041
+Lagos,lagos,Ogunnoloko,,settlement,grid3,Ogunnoloko,Oshodi–Isolo,Lagos,0,0,3.340759,6.563965
+Lagos,lagos,Oja Oba,,settlement,grid3,Orile,Agege,Lagos,0,0,3.306463,6.645897
+Lagos,lagos,Ojo,,settlement,grid3,Kirikiri and Environ,Amuwo Odofin,Lagos,0,0,3.284865,6.447555
+Lagos,lagos,Ojo,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.199937,6.507363
+Lagos,lagos,Ojo,,town,osm,Kemberi,Ojo,Lagos,0,0,3.190242,6.464334
+Lagos,lagos,Ojodu,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.362093,6.64671
+Lagos,lagos,Ojokoro,,settlement,grid3,Abule Egba,Alimosho,Lagos,0,0,3.293012,6.655874
+Lagos,lagos,Ojota,,settlement,grid3,Ojota,Kosofe,Lagos,0,0,3.38268,6.58631
+Lagos,lagos,Oju Odo,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.230809,6.515811
+Lagos,lagos,Oke Afa,,settlement,grid3,Ilamoshe,Oshodi–Isolo,Lagos,0,0,3.317847,6.53925
+Lagos,lagos,Oke Ira Powerline,,settlement,grid3,Ijaiye Oke-Ira,Ifako–Ijaye,Lagos,0,0,3.341713,6.647635
+Lagos,lagos,Oke Ira Powerline,,settlement,grid3,Oke-Ira Powerline,Ikeja,Lagos,0,0,3.350192,6.653428
+Lagos,lagos,Oke Ira Powerline,,settlement,grid3,Oke-Ira Central,Ikeja,Lagos,0,0,3.346832,6.647083
+Lagos,lagos,Oke Isagun Land,,settlement,grid3,Agbelekale,Alimosho,Lagos,0,0,3.257639,6.622871
+Lagos,lagos,Oke Odo,,settlement,grid3,Oke-Odo,Alimosho,Lagos,0,0,3.294253,6.631872
+Lagos,lagos,Okedara Street 5th Avenue,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.271746,6.611989
+Lagos,lagos,Okekoto,,settlement,grid3,Atobaje,Agege,Lagos,0,0,3.321757,6.625106
+Lagos,lagos,Okekoto,,settlement,grid3,Okekoto,Agege,Lagos,0,0,3.317519,6.62621
+Lagos,lagos,Okekoto,,settlement,grid3,Keke,Agege,Lagos,0,0,3.327541,6.625808
+Lagos,lagos,Okekoto,,settlement,grid3,Agbado Dalemo,Ifako–Ijaye,Lagos,0,0,3.323436,6.628111
+Lagos,lagos,Okekoto,,settlement,grid3,Papa Uku–Olusanya,Agege,Lagos,0,0,3.322397,6.620785
+Lagos,lagos,Okerube,,settlement,grid3,Abaranje–Okerube,Alimosho,Lagos,0,0,3.238198,6.525692
+Lagos,lagos,Oki,,settlement,grid3,Oki,Alimosho,Lagos,0,0,3.294173,6.6185
+Lagos,lagos,Okin,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.26868,6.612211
+Lagos,lagos,Oko Oba,,settlement,grid3,Orile,Agege,Lagos,0,0,3.31259,6.638188
+Lagos,lagos,Okodua Kirikiri,,settlement,grid3,Kirikiri and Environ,Amuwo Odofin,Lagos,0,0,3.31035,6.451383
+Lagos,lagos,Okokomaiko,,settlement,grid3,Kemberi,Ojo,Lagos,0,0,3.185287,6.468537
+Lagos,lagos,Okota,,settlement,grid3,Apena,Oshodi–Isolo,Lagos,0,0,3.312248,6.51593
+Lagos,lagos,Okunola,,settlement,grid3,Okunola,Alimosho,Lagos,0,0,3.284268,6.594815
+Lagos,lagos,Olajide Daramola Avenue,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.260882,6.516437
+Lagos,lagos,Olakitan Ipaja,,settlement,grid3,Agbelekale,Alimosho,Lagos,0,0,3.26239,6.633217
+Lagos,lagos,Olanrewaju Ariyibi Close,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.256574,6.574386
+Lagos,lagos,Olasinde,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.271472,6.614129
+Lagos,lagos,Olayemi,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.240215,6.579047
+Lagos,lagos,Old Ipaja,,settlement,grid3,Isale Odo–Ayige,Agege,Lagos,0,0,3.305872,6.625247
+Lagos,lagos,Old Secretariat,,settlement,grid3,GRA,Ikeja,Lagos,0,0,3.34349,6.586329
+Lagos,lagos,Olodi Apapa,,settlement,grid3,Oluwa–Akere,Ajeromi–Ifelodun,Lagos,0,0,3.339978,6.449668
+Lagos,lagos,Olorunfeme,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.272511,6.617058
+Lagos,lagos,Olorunsogo,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.161552,6.489348
+Lagos,lagos,Olorunsola Ayobo,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.21794,6.57659
+Lagos,lagos,Olowora,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.377613,6.632648
+Lagos,lagos,Olu Akerele,,settlement,grid3,Seriki-Aro,Ikeja,Lagos,0,0,3.345378,6.605118
+Lagos,lagos,Olusegun Oladapo Avenue,,settlement,grid3,Alakuko Ajegunle,Ifako–Ijaye,Lagos,0,0,3.271117,6.696463
+Lagos,lagos,Olusegun Otitoola Street,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.267999,6.61688
+Lagos,lagos,Oluti,,settlement,grid3,Agboju and Environ,Amuwo Odofin,Lagos,0,0,3.276503,6.457062
+Lagos,lagos,Oluyeye,,settlement,grid3,Oluyeye,Oshodi–Isolo,Lagos,0,0,3.329821,6.562666
+Lagos,lagos,Omolaja Bello CL,,settlement,grid3,Ikotun,Alimosho,Lagos,0,0,3.26748,6.554723
+Lagos,lagos,Omole,,settlement,grid3,Ogba–Oluwole,Ikeja,Lagos,0,0,3.353164,6.632213
+Lagos,lagos,Omole,,settlement,grid3,Akiode,Ikeja,Lagos,0,0,3.360155,6.638803
+Lagos,lagos,Omole Phases II,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.374228,6.637625
+Lagos,lagos,Omoniyi Lawal,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.254585,6.665212
+Lagos,lagos,Oni,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.261508,6.67389
+Lagos,lagos,Onigbokun,,settlement,grid3,Ilado Tomaro,Amuwo Odofin,Lagos,0,0,3.343611,6.414167
+Lagos,lagos,Onigbongbo,,village,osm,Onigbongbo,Ikeja,Lagos,0,0,3.364143,6.570439
+Lagos,lagos,Onireke,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.229361,6.451684
+Lagos,lagos,Oniwaya,,settlement,grid3,Awori Oniwaya,Agege,Lagos,0,0,3.320284,6.618004
+Lagos,lagos,Opeki Road,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.264967,6.615048
+Lagos,lagos,Oregun Industrial Estate,,settlement,grid3,Oregun,Ikeja,Lagos,0,0,3.369135,6.603303
+Lagos,lagos,Orelope,,settlement,grid3,Egbeda,Alimosho,Lagos,0,0,3.29364,6.591092
+Lagos,lagos,Orile Ikosi,,settlement,grid3,Ikosi-Oke,Kosofe,Lagos,0,0,3.377624,6.600352
+Lagos,lagos,Orile Ikosi,,settlement,grid3,Erukan–Orishigun,Kosofe,Lagos,0,0,3.38986,6.59932
+Lagos,lagos,Orile Ketu,,settlement,grid3,Ikosi Isheri,Kosofe,Lagos,0,0,3.418556,6.612021
+Lagos,lagos,Orise Imude,,settlement,grid3,Etegbin,Ojo,Lagos,0,0,3.103636,6.452236
+Lagos,lagos,Orisunmbare Ayobo Lagos,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.222552,6.593419
+Lagos,lagos,Oshodi,,settlement,grid3,Igbehinadun,Oshodi–Isolo,Lagos,0,0,3.339219,6.561062
+Lagos,lagos,Oshodi,,town,osm,Igbehinadun,Oshodi–Isolo,Lagos,0,0,3.349442,6.557025
+Lagos,lagos,Osolo,,settlement,grid3,Irewe,Ojo,Lagos,0,0,3.144137,6.417129
+Lagos,lagos,Ota,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.262555,6.667457
+Lagos,lagos,Otedola Jubilee Estate,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.366154,6.630396
+Lagos,lagos,Oto Awori,,settlement,grid3,Oto-Awori,Ojo,Lagos,0,0,3.113793,6.496148
+Lagos,lagos,Otunba,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.359208,6.649576
+Lagos,lagos,Owode Elede,,settlement,grid3,Idera,Kosofe,Lagos,0,0,3.403403,6.604233
+Lagos,lagos,Owode Onirin,,settlement,grid3,Idera,Kosofe,Lagos,0,0,3.408753,6.610432
+Lagos,lagos,Oworonshoki,,settlement,grid3,Olubori–Mosafejo,Kosofe,Lagos,0,0,3.39681,6.555877
+Lagos,lagos,Owutedo,,settlement,grid3,Egbeda,Alimosho,Lagos,0,0,3.288938,6.590647
+Lagos,lagos,Oya Jimoh,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.126133,6.460772
+Lagos,lagos,Pa Cletment Ogunsus,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.200162,6.489598
+Lagos,lagos,Pako Ketu,,settlement,grid3,Ajangbadi,Ojo,Lagos,0,0,3.160328,6.489093
+Lagos,lagos,Pako Oko Oloyun,,settlement,grid3,Ikotun,Alimosho,Lagos,0,0,3.250572,6.576817
+Lagos,lagos,Papa,,settlement,grid3,Papa Ashafa,Agege,Lagos,0,0,3.308432,6.622153
+Lagos,lagos,Papa Oworo,,settlement,grid3,Orile Oworo,Kosofe,Lagos,0,0,3.40472,6.5416
+Lagos,lagos,Peace Estate,,settlement,grid3,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.264855,6.586033
+Lagos,lagos,Peace Estate,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.230237,6.582855
+Lagos,lagos,Pencinema,,settlement,grid3,Ijaiye–Ifako,Ifako–Ijaye,Lagos,0,0,3.324417,6.631292
+Lagos,lagos,Post Service Housing Scheme,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.203184,6.473146
+Lagos,lagos,Power Line,,settlement,grid3,Ifoshin,Oshodi–Isolo,Lagos,0,0,3.297397,6.541166
+Lagos,lagos,Power Line,,settlement,grid3,Okunola,Alimosho,Lagos,0,0,3.282278,6.592783
+Lagos,lagos,Power Line Estate,,settlement,grid3,Shangisha–Magodo,Kosofe,Lagos,0,0,3.391477,6.625062
+Lagos,lagos,Powerline,,settlement,grid3,Powerline–Oko-Oba,Agege,Lagos,0,0,3.317397,6.63465
+Lagos,lagos,Ppl,,settlement,grid3,Igbo-Elerin,Ojo,Lagos,0,0,3.195015,6.469788
+Lagos,lagos,Progressive Estate,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.268613,6.55453
+Lagos,lagos,Promise Land,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.213342,6.57278
+Lagos,lagos,Red Cross,,settlement,grid3,Ojo Town,Ojo,Lagos,0,0,3.191987,6.455698
+Lagos,lagos,Redemption Cresent,,settlement,grid3,Anthony,Kosofe,Lagos,0,0,3.377678,6.550172
+Lagos,lagos,Registration Close,,settlement,grid3,Alausa,Ikeja,Lagos,0,0,3.354613,6.61843
+Lagos,lagos,Rsm Cantonment Ojo,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.229048,6.478388
+Lagos,lagos,Satellite Town,,settlement,grid3,Ijegun (Amuwo),Amuwo Odofin,Lagos,0,0,3.266942,6.449973
+Lagos,lagos,Saw MILL,,settlement,grid3,Araromi–Ifako,Kosofe,Lagos,0,0,3.39634,6.55538
+Lagos,lagos,Sawiyet,,settlement,grid3,Alakuko Ajegunle,Ifako–Ijaye,Lagos,0,0,3.26715,6.698458
+Lagos,lagos,Sawmail Ifako,,settlement,grid3,Araromi–Ifako,Kosofe,Lagos,0,0,3.392752,6.553408
+Lagos,lagos,Sector 16 Abesan 2,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.264758,6.613123
+Lagos,lagos,Sector 7,,settlement,grid3,Abesan 1,Alimosho,Lagos,0,0,3.266999,6.605644
+Lagos,lagos,Seriki Aro,,settlement,grid3,Alade,Ikeja,Lagos,0,0,3.346089,6.603948
+Lagos,lagos,Sewage Avenue,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.26311,6.615691
+Lagos,lagos,Sewage Close,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.263008,6.616817
+Lagos,lagos,Shagari,,settlement,grid3,Mosan–Akinoggun,Alimosho,Lagos,0,0,3.282473,6.609157
+Lagos,lagos,Shagari Estate,,settlement,grid3,Mosan–Akinoggun,Alimosho,Lagos,0,0,3.287358,6.61091
+Lagos,lagos,Shangisha,,village,osm,Agiliti–Maidan,Kosofe,Lagos,0,0,3.382136,6.608423
+Lagos,lagos,Shasha,,settlement,grid3,Oguntade–Bameke,Alimosho,Lagos,0,0,3.302887,6.589557
+Lagos,lagos,Shibiri,,settlement,grid3,Etegbin,Ojo,Lagos,0,0,3.141058,6.460263
+Lagos,lagos,Shitta Aby,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.271952,6.615623
+Lagos,lagos,Silver Estate,,settlement,grid3,Aigbaka,Oshodi–Isolo,Lagos,0,0,3.29256,6.562691
+Lagos,lagos,Snake Island,,settlement,grid3,Ilado Tomaro,Amuwo Odofin,Lagos,0,0,3.332348,6.423657
+Lagos,lagos,Soba Abule Ado,,settlement,grid3,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.253724,6.458536
+Lagos,lagos,Soesy,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.21126,6.5741
+Lagos,lagos,Solomon Okonkwo,,settlement,grid3,Egbeda,Alimosho,Lagos,0,0,3.287543,6.586177
+Lagos,lagos,Sss Gate,,settlement,grid3,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.236044,6.457831
+Lagos,lagos,Sss Quarters Ayetoro,,settlement,grid3,Ijanikin,Ojo,Lagos,0,0,3.153099,6.499459
+Lagos,lagos,Suberu Oje,,settlement,grid3,Agbelekale,Alimosho,Lagos,0,0,3.262987,6.6575
+Lagos,lagos,Summit Light Estate Iba,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.206013,6.500002
+Lagos,lagos,Surulere,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.263237,6.653475
+Lagos,lagos,Tabon Tabon,,settlement,grid3,Okekoto,Agege,Lagos,0,0,3.319012,6.631153
+Lagos,lagos,Taffi,,settlement,grid3,Taffi,Ojo,Lagos,0,0,3.07345,6.408147
+Lagos,lagos,Tafi,,village,osm,Taffi,Ojo,Lagos,0,0,3.07319,6.40766
+Lagos,lagos,Talabi Close,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.265859,6.66318
+Lagos,lagos,Tedi,,settlement,grid3,I Irede,Amuwo Odofin,Lagos,0,0,3.233007,6.446608
+Lagos,lagos,Tedi Imuwo,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.226407,6.446418
+Lagos,lagos,Tedi Ojo,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.229067,6.448267
+Lagos,lagos,Temidire,,settlement,grid3,Temidire,Ajeromi–Ifelodun,Lagos,0,0,3.343877,6.442316
+Lagos,lagos,Third Avenue,,settlement,grid3,Abesan 1,Alimosho,Lagos,0,0,3.272474,6.609897
+Lagos,lagos,Tigo Area,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.240327,6.510371
+Lagos,lagos,Tolu,,settlement,grid3,Tolu,Ajeromi–Ifelodun,Lagos,0,0,3.348068,6.444785
+Lagos,lagos,Tomaro,,settlement,grid3,Ilado Tomaro,Amuwo Odofin,Lagos,0,0,3.349961,6.421995
+Lagos,lagos,Tunde Osilaja,,settlement,grid3,Opebi,Ikeja,Lagos,0,0,3.364275,6.593645
+Lagos,lagos,Unilag Estate Magodo,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.394238,6.63128
+Lagos,lagos,Unique,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.27063,6.613385
+Lagos,lagos,Unity Estate Ojodu,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.355723,6.647193
+Lagos,lagos,Victory Estate,,settlement,grid3,Ifoshin,Oshodi–Isolo,Lagos,0,0,3.292503,6.559772
+Lagos,lagos,Victory Estate,,settlement,grid3,Okota,Oshodi–Isolo,Lagos,0,0,3.303427,6.487817
+Lagos,lagos,Victory Estate Zone 4 Ojo,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.212452,6.499938
+Lagos,lagos,Volks,,settlement,grid3,Ira,Ojo,Lagos,0,0,3.211517,6.457367
+Lagos,lagos,Wasimi,,settlement,grid3,Wasimi,Ikeja,Lagos,0,0,3.370897,6.577622
+Lagos,lagos,Weighbridge,,settlement,grid3,Odo-Ogun–Ajegunle,Kosofe,Lagos,0,0,3.414105,6.6105
+Lagos,lagos,Wemabod Estate,,settlement,grid3,Seriki-Aro,Ikeja,Lagos,0,0,3.339375,6.605298
+Lagos,lagos,Wesley Street,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.264913,6.611494
+Lagos,lagos,Wesley Street Divine Start,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.270292,6.614987
+Lagos,lagos,Westly,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.270089,6.614745
+Lagos,lagos,White Sand,,settlement,grid3,Isheri Oshun,Alimosho,Lagos,0,0,3.27678,6.501522
+Lagos,lagos,Zone 5 Imude,,settlement,grid3,Etegbin,Ojo,Lagos,0,0,3.113124,6.463859

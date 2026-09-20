@@ -191,11 +191,19 @@ def link_settlement_source() -> Path:
     return _link(SETTLEMENT_SOURCES, "GRID3 settlement points")
 
 
+def settlement_gpkg() -> Path:
+    """Indexed GeoPackage cache of the national GRID3 settlement points."""
+    gpkg = DATA_RAW / "grid3_nga_settlementpt.gpkg"
+    if gpkg.exists():
+        return gpkg
+    return link_settlement_source()
+
+
 def settlement_points(city: City) -> gpd.GeoDataFrame:
     west, south, east, north = city.bbox
     pad = 0.05
     pts = gpd.read_file(
-        link_settlement_source(), bbox=(west - pad, south - pad, east + pad, north + pad)
+        settlement_gpkg(), bbox=(west - pad, south - pad, east + pad, north + pad)
     )
     if pts.crs is None:
         pts = pts.set_crs(4326)

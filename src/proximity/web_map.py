@@ -13,6 +13,7 @@ from mapclassify import FisherJenks
 from .cities import ABUJA_PLATE_WARDS, CITIES, LAGOS_PLATE_LGAS
 from .metrics import gini
 from .paths import DATA_PROCESSED, WEB_DATA
+from .settlements import attach_to_hexes, attach_to_wards, load_city as load_settlements
 
 CITIES_DIR = WEB_DATA / "cities"
 POP_MIN = 5.0
@@ -423,7 +424,7 @@ def _hexes(slug: str, wards: gpd.GeoDataFrame | None) -> gpd.GeoDataFrame | None
         gdf["ward"] = joined.reindex(gdf.index)["locator"].fillna("").astype(str).values
         if "lganame" in joined.columns:
             gdf["lga"] = joined.reindex(gdf.index)["lganame"].fillna("").astype(str).values
-    return gdf
+    return attach_to_hexes(gdf, load_settlements(slug))
 
 
 def _points(slug: str, kind: str) -> gpd.GeoDataFrame | None:
@@ -555,6 +556,7 @@ def _wards(slug: str, hexes_all: gpd.GeoDataFrame | None, clinics, schools) -> g
     for _, row in gdf.iterrows():
         readings.append(_ward_reading(row, city_f15))
     gdf["reading"] = readings
+    gdf = attach_to_wards(gdf, load_settlements(slug))
     return gdf
 
 
@@ -734,6 +736,8 @@ def export_city(slug: str) -> dict:
                 "off_street",
                 "ward",
                 "lga",
+                "place",
+                "place_m",
             ],
         )
         written["hexes"] = len(hexes)
@@ -771,6 +775,8 @@ def export_city(slug: str) -> dict:
                 "rank",
                 "of",
                 "reading",
+                "places",
+                "place_n",
             ],
             round_geom=False,
         )
@@ -792,6 +798,14 @@ def export_city(slug: str) -> dict:
     if places is not None and not places.empty:
         _write_fc(places, out / "places.geojson", ["name", "label", "place", "rank", "pinned", "priority", "always"])
         written["places"] = len(places)
+    settlements = _points_in_mask(load_settlements(slug), mask)
+    if settlements is not None and not settlements.empty:
+        _write_fc(
+            settlements,
+            out / "settlements.geojson",
+            ["name", "alt_name", "kind", "source", "ward", "lga", "is_primary", "in_plate"],
+        )
+        written["settlements"] = len(settlements)
     roads = _roads(slug, mask)
     if roads is not None and not roads.empty:
         _write_fc(roads, out / "roads.geojson", ["kind"])

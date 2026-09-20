@@ -18,6 +18,6 @@ Lagos shows seven inner local government areas. Abuja shows seven AMAC wards plu
 
 Ward outlines keep the original shared edges. Independently simplifying each ward opens gap slivers along the boundaries, so that step is skipped.
 
-Click a neighbourhood tile for the walk from that cell and the ward it sits in. Every ward popup carries people, F15, clinic/school split, people still beyond 15 minutes, GRID3 counts, and a short reading against the city score. The glossary and a PDF download live in the documentation accordion.
+Click a neighbourhood tile for the walk from that cell, the named settlement it sits in, and the ward around it. Every ward popup carries people, F15, clinic/school split, people still beyond 15 minutes, GRID3 counts, named settlements in that ward, and a short reading against the city score. The glossary and a PDF download live in the documentation accordion.
 
 Optional: `npm install && npm run dev`.
