@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import shutil
 import sys
 from pathlib import Path
 
@@ -35,20 +36,26 @@ from qgis.core import (  # noqa: E402
     QgsLayoutItemScaleBar,
     QgsLayoutItemShape,
     QgsLayoutMeasurement,
+    QgsLineSymbol,
     QgsLayoutPoint,
     QgsLayoutSize,
     QgsLegendRenderer,
     QgsLegendStyle,
     QgsMarkerSymbol,
     QgsPalLayerSettings,
+    QgsPointDisplacementRenderer,
     QgsPointXY,
+    QgsCategorizedSymbolRenderer,
+    QgsField,
     QgsPrintLayout,
+    QgsRendererCategory,
     QgsProject,
     QgsProperty,
     QgsRasterLayer,
     QgsRectangle,
     QgsReferencedRectangle,
     QgsRendererRange,
+    QgsRuleBasedRenderer,
     QgsScaleBarSettings,
     QgsTextBufferSettings,
     QgsTextFormat,
@@ -57,7 +64,7 @@ from qgis.core import (  # noqa: E402
     QgsVectorLayerSimpleLabeling,
     QgsWkbTypes,
 )
-from qgis.PyQt.QtCore import Qt  # noqa: E402
+from qgis.PyQt.QtCore import QVariant, Qt  # noqa: E402
 from qgis.PyQt.QtGui import QColor, QFont  # noqa: E402
 
 from proximity.cities import ABUJA_PLATE_WARDS, LAGOS_PLATE_LGAS  # noqa: E402
@@ -71,6 +78,7 @@ from proximity.classes import (  # noqa: E402
 LGA_QML = ROOT / "qgis" / "styles" / "metro_lgas.qml"
 WARD_QML = ROOT / "qgis" / "styles" / "wards.qml"
 NORTH_SVG = ROOT / "qgis" / "styles" / "north_arrow_white.svg"
+ADM2_PATH = ROOT / "data" / "raw" / "geoBoundaries-NGA-ADM2.geojson"
 MAPS = ROOT / "maps"
 
 CITY_DISPLAY = {
@@ -613,6 +621,283 @@ def _marker(name: str, color: str, size: str, outline: str = "255,255,255,230") 
             "size_unit": "MM",
         }
     )
+
+
+def _line(color: str, width: str) -> QgsLineSymbol:
+    return QgsLineSymbol.createSimple(
+        {
+            "line_color": color,
+            "line_width": width,
+            "line_width_unit": "MM",
+            "capstyle": "round",
+            "joinstyle": "round",
+        }
+    )
+
+
+def _grey_basemap() -> QgsRasterLayer:
+    """Esri light grey. Carto's free tiles watermark the plate."""
+    url = (
+        "type=xyz&url=https://services.arcgisonline.com/ArcGIS/rest/services/"
+        "Canvas/World_Light_Gray_Base/MapServer/tile/%7Bz%7D/%7By%7D/%7Bx%7D"
+        "&zmax=16&zmin=0&crs=EPSG3857"
+    )
+    return QgsRasterLayer(url, "Grey base", "wms")
+
+
+def _faint_roads(layer: QgsVectorLayer) -> None:
+    """Street fabric in dusty khaki so it reads on the grey base without shouting."""
+    if "highway" not in layer.fields().names():
+        layer.renderer().setSymbol(_line("148,122,76,165", "0.14"))
+        return
+
+    def child(symbol, expr=None, *, else_rule=False, label=""):
+        rule = QgsRuleBasedRenderer.Rule(symbol)
+        rule.setLabel(label)
+        if else_rule:
+            rule.setIsElse(True)
+        elif expr:
+            rule.setFilterExpression(expr)
+        return rule
+
+    renderer = QgsRuleBasedRenderer(_line("156,132,86,140", "0.10"))
+    root = renderer.rootRule()
+    for old in list(root.children()):
+        root.removeChild(old)
+    root.appendChild(
+        child(
+            _line("138,116,70,200", "0.24"),
+            "\"highway\" ILIKE '%motorway%' OR \"highway\" ILIKE '%trunk%' "
+            "OR \"highway\" ILIKE '%primary%'",
+            label="Main roads",
+        )
+    )
+    root.appendChild(
+        child(
+            _line("150,128,82,170", "0.16"),
+            "\"highway\" ILIKE '%secondary%' OR \"highway\" ILIKE '%tertiary%'",
+            label="Other streets",
+        )
+    )
+    root.appendChild(child(_line("162,142,96,140", "0.10"), else_rule=True, label="Walking streets"))
+    layer.setRenderer(renderer)
+
+
+def _veil_layer(city_utm: QgsGeometry, crs: str) -> QgsVectorLayer:
+    bb = city_utm.boundingBox()
+    pad = max(bb.width(), bb.height()) * 12.0
+    world = QgsRectangle(
+        bb.xMinimum() - pad,
+        bb.yMinimum() - pad,
+        bb.xMaximum() + pad,
+        bb.yMaximum() + pad,
+    )
+    geom = QgsGeometry.fromRect(world).difference(city_utm)
+    layer = _memory_polygon(geom, crs, "Outside study area")
+    layer.renderer().setSymbol(
+        QgsFillSymbol.createSimple(
+            {
+                "color": "250,248,244,220",
+                "outline_color": "0,0,0,0",
+                "outline_width": "0",
+                "outline_style": "no",
+            }
+        )
+    )
+    return layer
+
+
+def _nigeria_country() -> QgsGeometry:
+    cache = PROCESSED / "nigeria_outline.gpkg"
+    if cache.exists():
+        lyr = QgsVectorLayer(f"{cache.as_posix()}|layername=nigeria_outline", "_nga_cache", "ogr")
+        if lyr.isValid():
+            for feat in lyr.getFeatures():
+                g = feat.geometry()
+                if g is not None and not g.isEmpty():
+                    return QgsGeometry(g)
+    src = QgsVectorLayer(str(ADM2_PATH), "_adm2", "ogr")
+    if not src.isValid():
+        raise RuntimeError(f"Could not load {ADM2_PATH.name}")
+    bits = []
+    for feat in src.getFeatures():
+        g = feat.geometry()
+        if g is None or g.isEmpty():
+            continue
+        bits.append(QgsGeometry(g))
+    country = None
+    if bits:
+        try:
+            country = QgsGeometry.unaryUnion(bits)
+        except Exception:
+            country = None
+        if country is None or country.isEmpty():
+            country = bits[0]
+            for g in bits[1:]:
+                country = country.combine(g)
+    if country is None or country.isEmpty():
+        raise RuntimeError("Nigeria dissolve failed")
+    country = country.simplify(0.02)
+    scratch = _memory_polygon(country, "EPSG:4326", "nigeria_outline")
+    from qgis.core import QgsVectorFileWriter
+
+    opts = QgsVectorFileWriter.SaveVectorOptions()
+    opts.driverName = "GPKG"
+    opts.layerName = "nigeria_outline"
+    try:
+        QgsVectorFileWriter.writeAsVectorFormatV2(
+            scratch, str(cache), QgsProject.instance().transformContext(), opts
+        )
+    except Exception:
+        pass
+    return country
+
+
+def _locator_point(aoi: QgsGeometry, name: str) -> QgsVectorLayer:
+    layer = QgsVectorLayer("Point?crs=EPSG:4326", "City", "memory")
+    prov = layer.dataProvider()
+    prov.addAttributes([QgsField("name", QVariant.String)])
+    layer.updateFields()
+    feat = QgsFeature(layer.fields())
+    feat.setGeometry(aoi.centroid())
+    feat.setAttribute("name", name)
+    prov.addFeature(feat)
+    layer.updateExtents()
+    layer.renderer().setSymbol(_marker("circle", "168,68,42,255", "2.8", outline="255,255,255,255"))
+
+    settings = QgsPalLayerSettings()
+    settings.fieldName = "name"
+    settings.isExpression = False
+    settings.placement = Qgis.LabelPlacement.AroundPoint
+    settings.centroidInside = False
+    settings.displayAll = True
+    settings.obstacle = False
+    settings.dist = 1.2
+    settings.distUnits = QgsUnitTypes.RenderMillimeters
+    settings.limitNumLabels = True
+    settings.maxNumLabels = 1
+    quad = getattr(Qgis, "LabelQuadrantPosition", None)
+    if quad is not None:
+        order = []
+        for qname in ("Right", "AboveRight", "BelowRight", "Above", "Left"):
+            val = getattr(quad, qname, None)
+            if val is not None:
+                order.append(val)
+        if order:
+            settings.predefinedPositionOrder = order
+
+    fmt = QgsTextFormat()
+    font = QFont("Arial", 8, QFont.Bold)
+    fmt.setFont(font)
+    fmt.setSize(8)
+    fmt.setSizeUnit(QgsUnitTypes.RenderPoints)
+    fmt.setColor(QColor(168, 68, 42))
+    buf = QgsTextBufferSettings()
+    buf.setEnabled(True)
+    buf.setSize(0.9)
+    buf.setSizeUnit(QgsUnitTypes.RenderMillimeters)
+    buf.setColor(QColor(255, 255, 255))
+    fmt.setBuffer(buf)
+    settings.setFormat(fmt)
+    layer.setLabeling(QgsVectorLayerSimpleLabeling(settings))
+    layer.setLabelsEnabled(True)
+    return layer
+
+
+def _nigeria_locator_layers(aoi: QgsGeometry, city_name: str):
+    """Nigeria outline on a grey base, with a labelled city point."""
+    country = _nigeria_country()
+    nga = _memory_polygon(country, "EPSG:4326", "Nigeria")
+    nga.renderer().setSymbol(
+        QgsFillSymbol.createSimple(
+            {
+                "color": "0,0,0,0",
+                "outline_color": "55,52,46,255",
+                "outline_width": "0.45",
+                "outline_width_unit": "MM",
+            }
+        )
+    )
+    study = _memory_polygon(QgsGeometry(aoi), "EPSG:4326", "Study city")
+    study.renderer().setSymbol(
+        QgsFillSymbol.createSimple(
+            {
+                "color": "61,122,116,230",
+                "outline_color": "28,60,58,255",
+                "outline_width": "0.45",
+                "outline_width_unit": "MM",
+            }
+        )
+    )
+    pin = _locator_point(aoi, city_name)
+    bb = country.boundingBox()
+    pad_x = bb.width() * 0.006
+    pad_y = bb.height() * 0.006
+    extent_wgs = QgsRectangle(
+        bb.xMinimum() - pad_x,
+        bb.yMinimum() - pad_y,
+        bb.xMaximum() + pad_x,
+        bb.yMaximum() + pad_y,
+    )
+    return nga, study, pin, extent_wgs
+
+
+def _inventory_facilities(
+    health: QgsVectorLayer,
+    schools: QgsVectorLayer,
+    mask: QgsGeometry | None,
+    *,
+    clinic_mm: str,
+    school_mm: str,
+) -> QgsVectorLayer:
+    """One point layer: GRID3 clinics (squares) and schools (circles).
+
+    Point displacement spreads marks that would otherwise sit on top of each
+    other. Place names stay off this plate so labels do not cover the stock.
+    """
+    layer = QgsVectorLayer("Point?crs=EPSG:4326", "Clinics and schools", "memory")
+    prov = layer.dataProvider()
+    prov.addAttributes([QgsField("kind", QVariant.String)])
+    layer.updateFields()
+    copied = []
+    for src, kind in ((health, "Clinic"), (schools, "School")):
+        for feat in src.getFeatures():
+            g = feat.geometry()
+            if g is None or g.isEmpty():
+                continue
+            if mask is not None and not g.intersects(mask):
+                continue
+            row = QgsFeature(layer.fields())
+            row.setGeometry(g)
+            row.setAttribute("kind", kind)
+            copied.append(row)
+    if copied:
+        prov.addFeatures(copied)
+    layer.updateExtents()
+    categories = [
+        QgsRendererCategory(
+            "Clinic",
+            _marker("square", "178,34,34,240", clinic_mm),
+            "Clinics",
+        ),
+        QgsRendererCategory(
+            "School",
+            _marker("circle", "25,80,120,230", school_mm),
+            "Schools",
+        ),
+    ]
+    categorized = QgsCategorizedSymbolRenderer("kind", categories)
+    displaced = QgsPointDisplacementRenderer()
+    displaced.setEmbeddedRenderer(categorized)
+    displaced.setPlacement(QgsPointDisplacementRenderer.Ring)
+    displaced.setTolerance(1.6)
+    displaced.setToleranceUnit(QgsUnitTypes.RenderMillimeters)
+    displaced.setCircleRadiusAddition(0.55)
+    displaced.setLabelAttributeName("")
+    displaced.setCenterSymbol(_marker("circle", "0,0,0,0", "0.15", outline="0,0,0,0"))
+    layer.setRenderer(displaced)
+    print(f"  inventory points {layer.featureCount():,} (clinics + schools)", flush=True)
+    return layer
 
 
 def _pt_breaks(alpha: int = PT_FILL_ALPHA) -> list:
@@ -1190,6 +1475,493 @@ def _kigali_layout(
     return png
 
 
+def _inventory_layout(
+    project: QgsProject,
+    slug: str,
+    *,
+    roads: QgsVectorLayer,
+    facilities: QgsVectorLayer,
+    overlays: list,
+    osm: QgsRasterLayer,
+    extent_wgs: QgsRectangle,
+    title: str,
+    subtitle: str,
+    caption: str,
+) -> Path:
+    """Clinics, schools and walking streets. Same A3 furniture as the score plates."""
+    layout = QgsPrintLayout(project)
+    layout.initializeDefaults()
+    layout.setName("Clinics, schools and streets")
+    for item in list(layout.items()):
+        if isinstance(item, QgsLayoutItemMap):
+            layout.removeLayoutItem(item)
+    page = layout.pageCollection().page(0)
+    page.setPageSize(QgsLayoutSize(420, 297, MM))
+
+    utm = QgsCoordinateReferenceSystem(CITY_UTM[slug])
+    xform = QgsCoordinateTransform(
+        QgsCoordinateReferenceSystem("EPSG:4326"),
+        utm,
+        project.transformContext(),
+    )
+    ext = xform.transformBoundingBox(extent_wgs)
+    bound_poly = _utm_union(overlays, xform)
+    city_poly = bound_poly
+    if city_poly is not None and not city_poly.isEmpty():
+        ext = city_poly.boundingBox()
+    title_w = {"lagos": 148.0, "abuja": 148.0}.get(slug, 172.0)
+
+    map_item = QgsLayoutItemMap(layout)
+    map_item.setFrameEnabled(True)
+    map_item.setFrameStrokeColor(QColor(0, 0, 0))
+    map_item.setFrameStrokeWidth(QgsLayoutMeasurement(0.55, MM))
+    map_item.setBackgroundColor(QColor("#f3efe6"))
+    map_item.setCrs(utm)
+    map_item.setKeepLayerSet(True)
+    map_item.setKeepLayerStyles(True)
+    map_item.setLayers(list(overlays) + [facilities, roads, osm])
+    map_item.setZValue(0)
+    _place(layout, map_item, 8, 8, FRAME_W, FRAME_H)
+    map_item.setCrs(utm)
+    map_item.attemptMove(QgsLayoutPoint(8, 8, MM))
+    map_item.attemptResize(QgsLayoutSize(FRAME_W, FRAME_H, MM))
+    map_item.setFixedSize(QgsLayoutSize(FRAME_W, FRAME_H, MM))
+    map_item.setExtent(ext)
+    map_item.refresh()
+
+    title_panel = _white_box(layout, 8, 8, title_w, TITLE_H)
+    label = QgsLayoutItemLabel(layout)
+    label.setText(f"{title}\n{subtitle}")
+    label.setFont(QFont("Arial", 15, QFont.Bold))
+    label.setFontColor(QColor(0, 0, 0))
+    label.setHAlign(Qt.AlignHCenter)
+    label.setVAlign(Qt.AlignVCenter)
+    label.setMargin(2.0)
+    label.setZValue(21)
+    _place(layout, label, 8, 8, title_w, TITLE_H)
+
+    north = QgsLayoutItemPicture(layout)
+    north.setMode(QgsLayoutItemPicture.FormatSVG)
+    north.setPicturePath(str(NORTH_SVG))
+    north.setLinkedMap(map_item)
+    north.setNorthMode(QgsLayoutItemPicture.GridNorth)
+    north.setFrameEnabled(False)
+    north.setBackgroundEnabled(False)
+    north.setZValue(20)
+    _place(layout, north, 372, 10, 34, 42)
+
+    legend = QgsLayoutItemLegend(layout)
+    legend.setLinkedMap(map_item)
+    legend.setTitle("Clinics and schools")
+    legend.setTitleAlignment(Qt.AlignLeft)
+    legend.setStyleFont(QgsLegendStyle.Title, QFont("Arial", 13, QFont.Bold))
+    legend.setStyleFont(QgsLegendStyle.Subgroup, QFont("Arial", 12))
+    legend.setStyleFont(QgsLegendStyle.SymbolLabel, QFont("Arial", 12))
+    legend.setFontColor(QColor(0, 0, 0))
+    legend.setSymbolWidth(5.2)
+    legend.setSymbolHeight(4.2)
+    legend.setBoxSpace(2.2)
+    legend.setLineSpacing(0.2)
+    legend.setStyleMargin(QgsLegendStyle.Title, 0.2)
+    legend.setStyleMargin(QgsLegendStyle.Title, QgsLegendStyle.Bottom, 1.1)
+    legend.setStyleMargin(QgsLegendStyle.Symbol, 0.3)
+    legend.setStyleMargin(QgsLegendStyle.SymbolLabel, 0.25)
+    legend.setStyleMargin(QgsLegendStyle.SymbolLabel, QgsLegendStyle.Left, 1.2)
+    legend.setFrameEnabled(True)
+    legend.setFrameStrokeColor(QColor(0, 0, 0))
+    legend.setFrameStrokeWidth(QgsLayoutMeasurement(0.45, MM))
+    legend.setBackgroundColor(QColor(255, 255, 255))
+    legend.setBackgroundEnabled(True)
+    legend.setAutoUpdateModel(False)
+    root = legend.model().rootGroup()
+    for child in list(root.children()):
+        root.removeChildNode(child)
+    # Displacement renderer flattens the legend to dots. Proxy layers keep
+    # the square (clinic) and circle (school) that the map actually uses.
+    legend_clinic = QgsVectorLayer("Point?crs=EPSG:4326", "Clinics", "memory")
+    legend_clinic.renderer().setSymbol(_marker("square", "178,34,34,240", "2.4"))
+    legend_school = QgsVectorLayer("Point?crs=EPSG:4326", "Schools", "memory")
+    legend_school.renderer().setSymbol(_marker("circle", "25,80,120,230", "2.2"))
+    project.addMapLayer(legend_clinic, False)
+    project.addMapLayer(legend_school, False)
+    for layer in (legend_clinic, legend_school, roads):
+        node = root.addLayer(layer)
+        QgsLegendRenderer.setNodeLegendStyle(node, QgsLegendStyle.Hidden)
+        node.setExpanded(True)
+    legend.setZValue(20)
+    layout.addLayoutItem(legend)
+    legend.refresh()
+    pad = float(legend.boxSpace())
+    w = 58.0
+    h = pad * 2 + 15.0 + 3 * (float(legend.symbolHeight()) + 0.9)
+    h = min(max(h, 32.0), 40.0)
+    legend.setResizeToContents(False)
+    legend.setReferencePoint(QgsLayoutItem.LowerLeft)
+    legend.attemptResize(QgsLayoutSize(w, h, MM))
+    legend.attemptMove(QgsLayoutPoint(14.0, 283.0, MM))
+    leg_w = w
+
+    scale = QgsLayoutItemScaleBar(layout)
+    scale.setLinkedMap(map_item)
+    scale.setStyle("Line Ticks Up")
+    scale.setUnits(QgsUnitTypes.DistanceKilometers)
+    scale.setSegmentSizeMode(QgsScaleBarSettings.SegmentSizeFitWidth)
+    scale.setMinimumBarWidth(62)
+    scale.setMaximumBarWidth(82)
+    scale.setNumberOfSegments(2)
+    scale.setNumberOfSegmentsLeft(0)
+    scale.setUnitLabel("km")
+    scale.setFont(QFont("Arial", 11))
+    scale.setFontColor(QColor(0, 0, 0))
+    scale.setHeight(2.4)
+    scale.setLineWidth(0.5)
+    scale.setLineColor(QColor(0, 0, 0))
+    scale.setBoxContentSpace(1.4)
+    scale.setFrameEnabled(False)
+    scale.setBackgroundEnabled(False)
+    scale.setZValue(20)
+    layout.addLayoutItem(scale)
+    scale.refresh()
+    scale.setReferencePoint(QgsLayoutItem.LowerRight)
+    scale.attemptMove(QgsLayoutPoint(400, 283, MM))
+    scale.refresh()
+
+    scale_w = scale.sizeWithUnits().width()
+    gap_left = 14.0 + leg_w + FURNITURE_GAP
+    gap_right = 400.0 - scale_w - FURNITURE_GAP
+    avail = max(gap_right - gap_left, 80.0)
+    note_w = min(NOTE_W, avail)
+    note_x = gap_left + 0.5 * (avail - note_w)
+    note_y = 8 + FRAME_H - NOTE_BOTTOM - NOTE_H
+    note_panel = _white_box(layout, note_x, note_y, note_w, NOTE_H)
+    note = QgsLayoutItemLabel(layout)
+    note.setMode(QgsLayoutItemLabel.ModeFont)
+    note.setText(caption)
+    note.setFont(QFont("Arial", NOTE_FONT_PT, QFont.Bold))
+    note.setFontColor(QColor(0, 0, 0))
+    note.setHAlign(Qt.AlignHCenter)
+    note.setVAlign(Qt.AlignVCenter)
+    note.setMargin(3.0)
+    note.setZValue(21)
+    _place(layout, note, note_x, note_y, note_w, NOTE_H)
+
+    credit = _halo_label(
+        layout,
+        CREDIT,
+        400.0 - scale_w,
+        283.0 - scale.sizeWithUnits().height() - 9.0,
+        scale_w,
+        8.0,
+        pt=8,
+    )
+
+    def _grow(box, pad_mm):
+        x, y, bw, bh = box
+        return (x - pad_mm, y - pad_mm, bw + 2 * pad_mm, bh + 2 * pad_mm)
+
+    title_box = _item_map_box(title_panel)
+    tx, ty, tw, th = title_box
+    title_pad = 4.0 if slug in {"abuja", "port_harcourt"} else 8.0
+    title_box = (tx, ty, tw, th + title_pad)
+    boxes = [
+        title_box,
+        _item_map_box(north),
+        _grow(_item_map_box(legend), BOTTOM_CLEAR),
+        _grow(_item_map_box(note_panel), BOTTOM_CLEAR),
+        _grow(_item_map_box(scale), BOTTOM_CLEAR),
+        _grow(_item_map_box(credit), BOTTOM_CLEAR),
+    ]
+    extent = _framed_extent(
+        ext, FRAME_W, FRAME_H, boxes=boxes, city_poly=city_poly, hex_xy=None, slug=slug
+    )
+    map_item.setExtent(extent)
+    map_item.refresh()
+    scale.refresh()
+
+    project.layoutManager().addLayout(layout)
+
+    MAPS.mkdir(parents=True, exist_ok=True)
+    png = MAPS / f"{slug}_inventory_plate.png"
+    for path in (png, png.with_suffix(".pdf")):
+        if path.exists():
+            path.unlink()
+    exporter = QgsLayoutExporter(layout)
+    img = QgsLayoutExporter.ImageExportSettings()
+    img.dpi = 200
+    img.generateWorldFile = False
+    img.exportMetadata = False
+    img.cropToContents = False
+    status = exporter.exportToImage(str(png), img)
+    if status != QgsLayoutExporter.Success:
+        raise RuntimeError(f"layout export failed for {png.name}: {status}")
+    exporter.exportToPdf(str(png.with_suffix(".pdf")), QgsLayoutExporter.PdfExportSettings())
+    return png
+
+
+def _study_area_layout(
+    project: QgsProject,
+    slug: str,
+    *,
+    roads: QgsVectorLayer,
+    facilities: QgsVectorLayer,
+    overlays: list,
+    grey: QgsRasterLayer | None,
+    veil: QgsVectorLayer | None,
+    nga: QgsVectorLayer,
+    aoi_layer: QgsVectorLayer,
+    locator_pin: QgsVectorLayer,
+    locator_extent_wgs: QgsRectangle,
+    extent_wgs: QgsRectangle,
+    title: str,
+    subtitle: str,
+    caption: str,
+) -> Path:
+    """Study-area plate: grey base, faint streets, ward names, Nigeria inset."""
+    layout = QgsPrintLayout(project)
+    layout.initializeDefaults()
+    layout.setName("Study area")
+    for item in list(layout.items()):
+        if isinstance(item, QgsLayoutItemMap):
+            layout.removeLayoutItem(item)
+    page = layout.pageCollection().page(0)
+    page.setPageSize(QgsLayoutSize(420, 297, MM))
+
+    utm = QgsCoordinateReferenceSystem(CITY_UTM[slug])
+    xform = QgsCoordinateTransform(
+        QgsCoordinateReferenceSystem("EPSG:4326"),
+        utm,
+        project.transformContext(),
+    )
+    ext = xform.transformBoundingBox(extent_wgs)
+    bound_poly = _utm_union(overlays, xform)
+    city_poly = bound_poly
+    if city_poly is not None and not city_poly.isEmpty():
+        ext = city_poly.boundingBox()
+    title_w = 128.0
+
+    layers = [facilities] + list(overlays)
+    if roads is not None:
+        layers.append(roads)
+    if veil is not None:
+        layers.append(veil)
+    if grey is not None:
+        layers.append(grey)
+
+    map_item = QgsLayoutItemMap(layout)
+    map_item.setFrameEnabled(True)
+    map_item.setFrameStrokeColor(QColor(0, 0, 0))
+    map_item.setFrameStrokeWidth(QgsLayoutMeasurement(0.55, MM))
+    map_item.setBackgroundColor(QColor("#eceae4"))
+    map_item.setCrs(utm)
+    map_item.setKeepLayerSet(True)
+    map_item.setKeepLayerStyles(True)
+    map_item.setLayers(layers)
+    map_item.setZValue(0)
+    _place(layout, map_item, 8, 8, FRAME_W, FRAME_H)
+    map_item.setCrs(utm)
+    map_item.attemptMove(QgsLayoutPoint(8, 8, MM))
+    map_item.attemptResize(QgsLayoutSize(FRAME_W, FRAME_H, MM))
+    map_item.setFixedSize(QgsLayoutSize(FRAME_W, FRAME_H, MM))
+    map_item.setExtent(ext)
+    map_item.refresh()
+
+    title_panel = _white_box(layout, 8, 8, title_w, TITLE_H)
+    label = QgsLayoutItemLabel(layout)
+    label.setText(f"{title}\n{subtitle}")
+    label.setFont(QFont("Arial", 15, QFont.Bold))
+    label.setFontColor(QColor(0, 0, 0))
+    label.setHAlign(Qt.AlignHCenter)
+    label.setVAlign(Qt.AlignVCenter)
+    label.setMargin(2.0)
+    label.setZValue(21)
+    _place(layout, label, 8, 8, title_w, TITLE_H)
+
+    north = QgsLayoutItemPicture(layout)
+    north.setMode(QgsLayoutItemPicture.FormatSVG)
+    north.setPicturePath(str(NORTH_SVG))
+    north.setLinkedMap(map_item)
+    north.setNorthMode(QgsLayoutItemPicture.GridNorth)
+    north.setFrameEnabled(False)
+    north.setBackgroundEnabled(False)
+    north.setZValue(24)
+    _place(layout, north, 380, 10, 26, 32)
+
+    to_web = QgsCoordinateTransform(
+        QgsCoordinateReferenceSystem("EPSG:4326"),
+        QgsCoordinateReferenceSystem("EPSG:3857"),
+        project.transformContext(),
+    )
+    loc_ext = to_web.transformBoundingBox(locator_extent_wgs)
+    loc_h = 28.0
+    loc_w = loc_h * (loc_ext.width() / loc_ext.height())
+    loc_x = 380.0 + 26.0 - loc_w
+    loc_y = 44.0
+    loc_map = QgsLayoutItemMap(layout)
+    loc_map.setFrameEnabled(True)
+    loc_map.setFrameStrokeColor(QColor(0, 0, 0))
+    loc_map.setFrameStrokeWidth(QgsLayoutMeasurement(0.35, MM))
+    loc_map.setBackgroundColor(QColor("#eceae4"))
+    loc_map.setCrs(QgsCoordinateReferenceSystem("EPSG:3857"))
+    loc_map.setKeepLayerSet(True)
+    loc_map.setKeepLayerStyles(True)
+    loc_map.setLayers([locator_pin, aoi_layer, nga, grey] if grey is not None else [locator_pin, aoi_layer, nga])
+    loc_map.setZValue(22)
+    _place(layout, loc_map, loc_x, loc_y, loc_w, loc_h)
+    loc_map.setExtent(loc_ext)
+    loc_map.refresh()
+
+    legend = QgsLayoutItemLegend(layout)
+    legend.setLinkedMap(map_item)
+    legend.setTitle("On this map")
+    legend.setTitleAlignment(Qt.AlignLeft)
+    legend.setStyleFont(QgsLegendStyle.Title, QFont("Arial", 13, QFont.Bold))
+    legend.setStyleFont(QgsLegendStyle.Subgroup, QFont("Arial", 12))
+    legend.setStyleFont(QgsLegendStyle.SymbolLabel, QFont("Arial", 12))
+    legend.setFontColor(QColor(0, 0, 0))
+    legend.setSymbolWidth(5.2)
+    legend.setSymbolHeight(4.2)
+    legend.setBoxSpace(2.2)
+    legend.setLineSpacing(0.2)
+    legend.setStyleMargin(QgsLegendStyle.Title, 0.2)
+    legend.setStyleMargin(QgsLegendStyle.Title, QgsLegendStyle.Bottom, 1.1)
+    legend.setStyleMargin(QgsLegendStyle.Symbol, 0.3)
+    legend.setStyleMargin(QgsLegendStyle.SymbolLabel, 0.25)
+    legend.setStyleMargin(QgsLegendStyle.SymbolLabel, QgsLegendStyle.Left, 1.2)
+    legend.setFrameEnabled(True)
+    legend.setFrameStrokeColor(QColor(0, 0, 0))
+    legend.setFrameStrokeWidth(QgsLayoutMeasurement(0.45, MM))
+    legend.setBackgroundColor(QColor(255, 255, 255))
+    legend.setBackgroundEnabled(True)
+    legend.setAutoUpdateModel(False)
+    root = legend.model().rootGroup()
+    for child in list(root.children()):
+        root.removeChildNode(child)
+    legend_clinic = QgsVectorLayer("Point?crs=EPSG:4326", "Clinics", "memory")
+    legend_clinic.renderer().setSymbol(_marker("square", "178,34,34,240", "2.4"))
+    legend_school = QgsVectorLayer("Point?crs=EPSG:4326", "Schools", "memory")
+    legend_school.renderer().setSymbol(_marker("circle", "25,80,120,230", "2.2"))
+    legend_road = QgsVectorLayer("LineString?crs=EPSG:4326", "Walking streets", "memory")
+    legend_road.renderer().setSymbol(_line("148,122,76,230", "0.55"))
+    project.addMapLayer(legend_clinic, False)
+    project.addMapLayer(legend_school, False)
+    project.addMapLayer(legend_road, False)
+    for layer in (legend_clinic, legend_school, legend_road):
+        node = root.addLayer(layer)
+        QgsLegendRenderer.setNodeLegendStyle(node, QgsLegendStyle.Hidden)
+        node.setExpanded(True)
+    legend.setZValue(20)
+    layout.addLayoutItem(legend)
+    legend.refresh()
+    pad = float(legend.boxSpace())
+    w = 58.0
+    h = pad * 2 + 15.0 + 3 * (float(legend.symbolHeight()) + 0.9)
+    h = min(max(h, 32.0), 42.0)
+    legend.setResizeToContents(False)
+    legend.setReferencePoint(QgsLayoutItem.LowerLeft)
+    legend.attemptResize(QgsLayoutSize(w, h, MM))
+    legend.attemptMove(QgsLayoutPoint(14.0, 283.0, MM))
+    leg_w = w
+
+    scale = QgsLayoutItemScaleBar(layout)
+    scale.setLinkedMap(map_item)
+    scale.setStyle("Line Ticks Up")
+    scale.setUnits(QgsUnitTypes.DistanceKilometers)
+    scale.setSegmentSizeMode(QgsScaleBarSettings.SegmentSizeFitWidth)
+    scale.setMinimumBarWidth(62)
+    scale.setMaximumBarWidth(82)
+    scale.setNumberOfSegments(2)
+    scale.setNumberOfSegmentsLeft(0)
+    scale.setUnitLabel("km")
+    scale.setFont(QFont("Arial", 11))
+    scale.setFontColor(QColor(0, 0, 0))
+    scale.setHeight(2.4)
+    scale.setLineWidth(0.5)
+    scale.setLineColor(QColor(0, 0, 0))
+    scale.setBoxContentSpace(1.4)
+    scale.setFrameEnabled(False)
+    scale.setBackgroundEnabled(False)
+    scale.setZValue(20)
+    layout.addLayoutItem(scale)
+    scale.refresh()
+    scale.setReferencePoint(QgsLayoutItem.LowerRight)
+    scale.attemptMove(QgsLayoutPoint(400, 283, MM))
+    scale.refresh()
+
+    scale_w = scale.sizeWithUnits().width()
+    gap_left = 14.0 + leg_w + FURNITURE_GAP
+    gap_right = 400.0 - scale_w - FURNITURE_GAP
+    avail = max(gap_right - gap_left, 80.0)
+    note_w = min(NOTE_W, avail)
+    note_x = gap_left + 0.5 * (avail - note_w)
+    note_y = 8 + FRAME_H - NOTE_BOTTOM - NOTE_H
+    note_panel = _white_box(layout, note_x, note_y, note_w, NOTE_H)
+    note = QgsLayoutItemLabel(layout)
+    note.setMode(QgsLayoutItemLabel.ModeFont)
+    note.setText(caption)
+    note.setFont(QFont("Arial", NOTE_FONT_PT, QFont.Bold))
+    note.setFontColor(QColor(0, 0, 0))
+    note.setHAlign(Qt.AlignHCenter)
+    note.setVAlign(Qt.AlignVCenter)
+    note.setMargin(3.0)
+    note.setZValue(21)
+    _place(layout, note, note_x, note_y, note_w, NOTE_H)
+
+    credit = _halo_label(
+        layout,
+        CREDIT,
+        400.0 - scale_w,
+        283.0 - scale.sizeWithUnits().height() - 9.0,
+        scale_w,
+        8.0,
+        pt=8,
+    )
+
+    def _grow(box, pad_mm):
+        x, y, bw, bh = box
+        return (x - pad_mm, y - pad_mm, bw + 2 * pad_mm, bh + 2 * pad_mm)
+
+    title_box = _item_map_box(title_panel)
+    tx, ty, tw, th = title_box
+    title_box = (tx, ty, tw, th + 4.0)
+    boxes = [
+        title_box,
+        _item_map_box(north),
+        _item_map_box(loc_map),
+        _grow(_item_map_box(legend), BOTTOM_CLEAR),
+        _grow(_item_map_box(note_panel), BOTTOM_CLEAR),
+        _grow(_item_map_box(scale), BOTTOM_CLEAR),
+        _grow(_item_map_box(credit), BOTTOM_CLEAR),
+    ]
+    extent = _framed_extent(
+        ext, FRAME_W, FRAME_H, boxes=boxes, city_poly=city_poly, hex_xy=None, slug=slug
+    )
+    map_item.setExtent(extent)
+    map_item.refresh()
+    scale.refresh()
+
+    project.layoutManager().addLayout(layout)
+
+    MAPS.mkdir(parents=True, exist_ok=True)
+    png = MAPS / f"{slug}_study_area.png"
+    review = MAPS / f"{slug}_study_area_review.png"
+    tmp = png.with_name(f"{png.stem}_{os.getpid()}_tmp.png")
+    for path in (png, png.with_suffix(".pdf"), tmp, review):
+        if path.exists():
+            path.unlink()
+    exporter = QgsLayoutExporter(layout)
+    img = QgsLayoutExporter.ImageExportSettings()
+    img.dpi = 200
+    img.generateWorldFile = False
+    img.exportMetadata = False
+    img.cropToContents = False
+    status = exporter.exportToImage(str(tmp), img)
+    if status != QgsLayoutExporter.Success:
+        raise RuntimeError(f"layout export failed for {png.name}: {status}")
+    tmp.replace(png)
+    shutil.copy2(png, review)
+    return png
+
+
 def main(slug: str = "lagos") -> Path:
     out = ROOT / "qgis" / f"{slug}_so_far.qgz"
     health_title = HEALTH_TITLE.get(slug, "6 GRID3 health v3")
@@ -1341,6 +2113,25 @@ def main(slug: str = "lagos") -> Path:
     )
     health.renderer().setSymbol(_marker("square", "178,34,34,240", health_size))
 
+    walk = None
+    walk_gpkg = PROCESSED / f"{slug}_walk_edges.gpkg"
+    if walk_gpkg.exists():
+        walk = _vector(walk_gpkg, f"{slug}_walk_edges", "Walking streets")
+        walk.renderer().setSymbol(_line("45,70,92,220", "0.26"))
+        if plate_mask is not None:
+            walk = _copy_intersecting(walk, plate_mask, "Walking streets")
+            walk.renderer().setSymbol(_line("45,70,92,220", "0.26"))
+
+    inv_clinic_mm = "2.2" if sparse else "1.6"
+    inv_school_mm = "1.8" if sparse else "1.35"
+    facilities = _inventory_facilities(
+        health,
+        schools,
+        plate_mask,
+        clinic_mm=inv_clinic_mm,
+        school_mm=inv_school_mm,
+    )
+
     layers = [osm]
     if state_lgas is not None:
         layers.append(state_lgas)
@@ -1350,6 +2141,9 @@ def main(slug: str = "lagos") -> Path:
     if places is not None:
         layers.append(places)
     layers += [boundary, schools, health]
+    if walk is not None:
+        layers.append(walk)
+    layers.append(facilities)
     for layer in layers:
         if layer.isValid():
             project.addMapLayer(layer, True)
@@ -1372,6 +2166,12 @@ def main(slug: str = "lagos") -> Path:
         pt_node.setItemVisibilityChecked(True)
     for i, layer in enumerate(car_layers):
         node = root.findLayer(layer.id())
+        if node:
+            node.setItemVisibilityChecked(False)
+    for extra in (walk, facilities):
+        if extra is None:
+            continue
+        node = root.findLayer(extra.id())
         if node:
             node.setItemVisibilityChecked(False)
 
@@ -1431,6 +2231,28 @@ def main(slug: str = "lagos") -> Path:
         legend_title="People per hexagon",
         export_stem="pop_plate",
     )
+    if walk is not None:
+        stock_overlays = [boundary]
+        if wards is not None:
+            stock_overlays.append(wards)
+        _inventory_layout(
+            project,
+            slug,
+            roads=walk,
+            facilities=facilities,
+            overlays=stock_overlays,
+            osm=osm,
+            extent_wgs=hex_pop.extent(),
+            title=f"CLINICS AND SCHOOLS IN {city}",
+            subtitle="On the walking streets",
+            caption=(
+                "Red squares are clinics, blue circles schools. "
+                "The lines are the streets the walk is timed on. "
+                "Where two buildings share a corner, the marks are nudged apart."
+            ),
+        )
+    else:
+        print(f"  skip inventory plate: {slug}_walk_edges.gpkg missing", flush=True)
 
     ok = project.write(str(out))
     app.exitQgis()
@@ -1439,6 +2261,174 @@ def main(slug: str = "lagos") -> Path:
     return out
 
 
+STUDY_CAPTIONS = {
+    "ibadan": (
+        "Ibadan here is the five core local government areas. "
+        "Red squares are GRID3 clinics and blue circles schools. "
+        "Brown lines are the streets the walk is timed on."
+    ),
+    "lagos": (
+        "Lagos here is seven local government areas, the inner mainland and the islands. "
+        "Red squares are GRID3 clinics and blue circles schools. "
+        "Brown lines are the streets the walk is timed on."
+    ),
+    "kano": (
+        "Kano here is eight metro local government areas, including Ungogo and Kumbotso. "
+        "Red squares are GRID3 clinics and blue circles schools. "
+        "Brown lines are the streets the walk is timed on."
+    ),
+    "abuja": (
+        "Abuja here is seven lived-in wards, not the whole Municipal Area Council. "
+        "Red squares are GRID3 clinics and blue circles schools. "
+        "Brown lines are the streets the walk is timed on."
+    ),
+    "port_harcourt": (
+        "Port Harcourt here is the township and Obio/Akpor together. "
+        "Red squares are GRID3 clinics and blue circles schools. "
+        "Brown lines are the streets the walk is timed on."
+    ),
+}
+
+
+def build_study_area(slug: str = "ibadan") -> Path:
+    """One study-area plate. Does not rebuild the walking or population plates."""
+    QgsApplication.setPrefixPath(os.environ["QGIS_PREFIX_PATH"], True)
+    app = QgsApplication([], False)
+    app.initQgis()
+
+    out = ROOT / "qgis" / f"{slug}_so_far.qgz"
+    project = QgsProject.instance()
+    project.clear()
+    project.setCrs(QgsCoordinateReferenceSystem("EPSG:4326"))
+    project.setPresetHomePath(str(ROOT))
+    project.setFileName(str(out))
+
+    outline = QgsFillSymbol.createSimple(
+        {
+            "color": "0,0,0,0",
+            "outline_color": "28,25,22,255",
+            "outline_width": "0.9",
+            "outline_width_unit": "MM",
+        }
+    )
+
+    plate_mask = None
+    wards = None
+    ward_gpkg = PROCESSED / f"{slug}_wards.gpkg"
+    metro_gpkg = PROCESSED / f"{slug}_metro_lgas.gpkg"
+    if ward_gpkg.exists():
+        wards = _vector(ward_gpkg, f"{slug}_wards", "2 Wards (GRID3 operational)")
+        if slug == "abuja":
+            wards.setSubsetString(f'"locator" IN ({_quoted_in(ABUJA_PLATE_WARDS)})')
+            plate_mask = _union_geoms(wards)
+            wards = _copy_intersecting(wards, plate_mask, "2 Wards (GRID3 operational)")
+        elif slug == "lagos" and metro_gpkg.exists():
+            plate_lgas = _vector(metro_gpkg, f"{slug}_metro_lgas", "_plate_lgas")
+            plate_lgas.setSubsetString(f'"shapeName" IN ({_quoted_in(LAGOS_PLATE_LGAS)})')
+            plate_mask = _union_geoms(plate_lgas)
+            wards = _copy_intersecting(wards, plate_mask, "2 Wards (GRID3 operational)")
+        wards.renderer().setSymbol(
+            QgsFillSymbol.createSimple(
+                {
+                    "color": "0,0,0,0",
+                    "outline_color": "90,84,78,175",
+                    "outline_width": "0.22",
+                    "outline_width_unit": "MM",
+                    "outline_style": "solid",
+                }
+            )
+        )
+        _apply_pal_labels(
+            wards,
+            "locator",
+            size=10,
+            pinned=PINNED_LABELS.get(slug, ()),
+            max_labels=32,
+            min_mm=2.2,
+        )
+
+    if plate_mask is not None:
+        boundary = _memory_polygon(
+            plate_mask,
+            wards.crs().authid() if wards is not None else "EPSG:4326",
+            "1 Study boundary",
+        )
+        aoi_wgs = QgsGeometry(plate_mask)
+    else:
+        boundary = _vector(
+            PROCESSED / f"{slug}_study_boundary.gpkg",
+            f"{slug}_study_boundary",
+            "1 Study boundary",
+        )
+        aoi_wgs = _union_geoms(boundary)
+        if aoi_wgs is None or aoi_wgs.isEmpty():
+            raise RuntimeError(f"{slug} study boundary did not dissolve")
+    boundary.renderer().setSymbol(outline)
+
+    walk = _vector(PROCESSED / f"{slug}_walk_edges.gpkg", f"{slug}_walk_edges", "Walking streets")
+    if plate_mask is not None:
+        walk = _copy_intersecting(walk, plate_mask, "Walking streets")
+    _faint_roads(walk)
+
+    sparse = slug in {"abuja"}
+    health = _vector(
+        PROCESSED / f"{slug}_health_points.gpkg",
+        f"{slug}_health_points",
+        HEALTH_TITLE.get(slug, "6 GRID3 health v3"),
+    )
+    schools = _vector(
+        PROCESSED / f"{slug}_school_points.gpkg",
+        f"{slug}_school_points",
+        "5 GRID3 schools",
+    )
+    facilities = _inventory_facilities(
+        health,
+        schools,
+        plate_mask,
+        clinic_mm="2.0" if sparse else "1.75",
+        school_mm="1.7" if sparse else "1.45",
+    )
+
+    grey = _grey_basemap()
+    project.addMapLayer(grey, False)
+
+    nga, aoi_layer, locator_pin, loc_extent = _nigeria_locator_layers(
+        aoi_wgs, CITY_DISPLAY[slug].title()
+    )
+
+    for layer in (wards, boundary, walk, facilities, nga, aoi_layer, locator_pin, grey):
+        if layer is not None and layer.isValid():
+            project.addMapLayer(layer, True)
+
+    overlays = [boundary]
+    if wards is not None:
+        overlays.append(wards)
+
+    png = _study_area_layout(
+        project,
+        slug,
+        roads=walk,
+        facilities=facilities,
+        overlays=overlays,
+        grey=grey,
+        veil=None,
+        nga=nga,
+        aoi_layer=aoi_layer,
+        locator_pin=locator_pin,
+        locator_extent_wgs=loc_extent,
+        extent_wgs=boundary.extent(),
+        title="STUDY AREA",
+        subtitle=CITY_DISPLAY[slug],
+        caption=STUDY_CAPTIONS[slug],
+    )
+    print(f"  study area plate → {png.name}", flush=True)
+    os._exit(0)
+
+
 if __name__ == "__main__":
     slug = sys.argv[1] if len(sys.argv) > 1 else "lagos"
-    print(main(slug))
+    mode = sys.argv[2] if len(sys.argv) > 2 else "all"
+    if mode == "study_area":
+        print(build_study_area(slug))
+    else:
+        print(main(slug))

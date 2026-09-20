@@ -116,6 +116,14 @@ body {
   color: #d5e4de;
 }
 
+.map-link {
+  margin: 6px 0 0;
+  font-family: var(--sans);
+  font-size: 10pt;
+  font-weight: 700;
+  color: #d7ebe4;
+}
+
 .mast a {
   color: #d7ebe4;
   text-decoration: underline;
@@ -340,6 +348,16 @@ figcaption {
   background: #fff;
 }
 
+figure.study-map {
+  margin: 8px 0 16px;
+}
+
+figure.study-map img {
+  max-height: 148mm;
+  object-fit: contain;
+  border: 0.6pt solid var(--teal);
+}
+
 .callout {
   background: #fff;
   border: 0.6pt solid var(--teal);
@@ -429,49 +447,107 @@ code {
   text-align: left;
 }
 
-main {
-  counter-reset: eq;
-}
-
 .eq-block {
   margin: 8px 0 12px;
-  padding: 8px 36px 8px 12px;
+  padding: 8px 12px 8px 14px;
   background: #f7f3ea;
   border-left: 4px solid var(--mid);
-  text-align: center;
-  break-inside: auto;
-  page-break-inside: auto;
-  break-before: avoid;
-  page-break-before: avoid;
-  position: relative;
-}
-
-.eq-block.numbered {
-  counter-increment: eq;
-}
-
-.eq-block.numbered::after {
-  content: "(" counter(eq) ")";
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: var(--sans);
-  font-size: 10pt;
-  font-weight: 600;
-  color: var(--teal);
+  width: 100%;
+  box-sizing: border-box;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
 .eq-block p {
   text-align: center;
+  margin: 6px 0 0;
+  font-size: 9.2pt;
+  color: var(--muted);
+  font-style: italic;
+}
+
+table.eq {
+  width: 100%;
   margin: 0;
+  border-collapse: collapse;
+  font-family: var(--sans);
+  font-size: 10.3pt;
+  page-break-inside: avoid;
+  break-inside: avoid;
 }
 
-math {
-  font-family: "STIX Two Math", "Cambria Math", "Latin Modern Math", Charter, serif;
-  font-size: 1.05em;
+table.eq td,
+table.eq tbody td {
+  border: 0;
+  background: transparent;
+  vertical-align: middle;
+  padding: 4px 8px;
+  color: var(--ink);
 }
 
-math[display="block"] {
-  margin: 0.2em auto;
+table.eq tbody tr:nth-child(even) td {
+  background: transparent;
+}
+
+table.eq td.eq-lhs {
+  width: 26%;
+  text-align: right;
+  font-weight: 650;
+  color: var(--teal);
+}
+
+table.eq td.eq-eq {
+  width: 1.6em;
+  text-align: center;
+  font-weight: 700;
+  color: var(--gold);
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+table.eq td.frac {
+  text-align: center;
+}
+
+table.eq td.frac .num,
+table.eq td.frac .den {
+  display: block;
+  padding: 0.12em 0.4em;
+}
+
+table.eq td.frac .num {
+  border-bottom: 1.6px solid var(--ink);
+}
+
+table.eq td.eq-rhs {
+  text-align: left;
+  font-weight: 650;
+}
+
+table.eq td.eq-no {
+  width: 2.2em;
+  text-align: right;
+  font-weight: 600;
+  color: var(--teal);
+  font-size: 10pt;
+  padding-right: 2px;
+}
+
+.worked {
+  margin: 8px 0 14px;
+  padding: 10px 14px;
+  background: #eef4f2;
+  border-left: 4px solid var(--mid);
+  font-size: 10.2pt;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.worked p {
+  margin: 0;
+  text-align: left;
+}
+
+.worked p + p {
+  margin-top: 0.45em;
 }

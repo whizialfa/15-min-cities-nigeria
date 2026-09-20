@@ -1,0 +1,5 @@
+city,slug,walk_km,walk_edges,nodes,deadend_share,sidewalk_named_share,sidewalk_none_share
+Kano,kano,15693.8,234386,96960,0.0839,0.0,1.0
+Port Harcourt,port_harcourt,7810.7,86340,55438,0.3153,0.0,1.0
+Abuja,abuja,15923.6,155892,83267,0.2729,0.0,1.0
+Lagos,lagos,20058.9,214476,177014,0.259,0.0,1.0
