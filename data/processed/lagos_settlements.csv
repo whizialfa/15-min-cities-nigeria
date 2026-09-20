@@ -27,6 +27,7 @@ Lagos,lagos,Adebeshi Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.3584
 Lagos,lagos,Adedoja,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.358945,6.528507
 Lagos,lagos,Adekunle,,settlement,grid3,Adekunle–Aiyetoro,Lagos Mainland,Lagos,0,1,3.383059,6.493331
 Lagos,lagos,Adekunle,,settlement,grid3,Alagomeji,Lagos Mainland,Lagos,0,1,3.38106,6.495002
+Lagos,lagos,Adelabu- Babs Juncton,,roundabout,osm,Adeniran Ogunsanya,Surulere,Lagos,0,1,3.348565,6.493343
 Lagos,lagos,Adeniran Ogunsanya,,settlement,grid3,Adeniran Ogunsanya,Surulere,Lagos,0,1,3.360365,6.496263
 Lagos,lagos,Adeogun,,settlement,grid3,Ojo-Oniyun,Lagos Mainland,Lagos,0,1,3.375703,6.482192
 Lagos,lagos,Aderupoko,,settlement,grid3,Salami–Baiyewunmi,Lagos Mainland,Lagos,0,1,3.393127,6.50689
@@ -62,6 +63,7 @@ Lagos,lagos,Ajele,,settlement,grid3,Ajele,Lagos Island,Lagos,0,1,3.396738,6.4512
 Lagos,lagos,Ajibade Close,,settlement,grid3,Onike–Oyadiran,Lagos Mainland,Lagos,0,1,3.383143,6.506372
 Lagos,lagos,Ajibore,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.35422,6.529698
 Lagos,lagos,Ajiran Agugin,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.514175,6.453376
+Lagos,lagos,Ajose Adeogun Roundabout,,roundabout,osm,Kuramo School–Lekki,Eti Osa,Lagos,0,1,3.430516,6.430964
 Lagos,lagos,Ajose Street,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.344124,6.521018
 Lagos,lagos,Akala,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.361075,6.52708
 Lagos,lagos,Akamo,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.36247,6.528833
@@ -82,6 +84,7 @@ Lagos,lagos,Alaka,,settlement,grid3,Iponri–Eric Moore,Surulere,Lagos,0,1,3.353
 Lagos,lagos,Alaka Community,,settlement,grid3,Aralile,Surulere,Lagos,0,1,3.361932,6.49504
 Lagos,lagos,Alakija Street,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.372033,6.519766
 Lagos,lagos,Alasia,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.598269,6.470187
+Lagos,lagos,Alexander Roundabout,,roundabout,osm,Ikoyi 1,Eti Osa,Lagos,0,1,3.449166,6.449637
 Lagos,lagos,Alfred Way,,settlement,grid3,Ikoyi 1,Eti Osa,Lagos,0,1,3.432817,6.460065
 Lagos,lagos,Alhaji Street,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.360063,6.526762
 Lagos,lagos,Alli,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.358927,6.527185
@@ -97,6 +100,7 @@ Lagos,lagos,Anifowoshe,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.339992,6.520
 Lagos,lagos,Animshaun,,village,osm,Iponri–Eric Moore,Surulere,Lagos,0,1,3.350065,6.483343
 Lagos,lagos,Anjorin,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.369555,6.444877
 Lagos,lagos,Anuoluwapo,,settlement,grid3,Idi-Oro–Odi Olowo,Mushin,Lagos,0,1,3.362012,6.528242
+Lagos,lagos,Aorta Interchange,,junction,osm,Iponri–Eric Moore,Surulere,Lagos,0,1,3.364629,6.486223
 Lagos,lagos,Apapa,,settlement,grid3,Apapa,Apapa,Lagos,0,1,3.362262,6.448913
 Lagos,lagos,Apapa,,settlement,grid3,Oduduwa,Apapa,Lagos,0,1,3.356492,6.448088
 Lagos,lagos,Apapa Wharf,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.37237,6.441902
@@ -137,6 +141,8 @@ Lagos,lagos,Bashua,,settlement,grid3,Bashua East and West,Shomolu,Lagos,0,1,3.37
 Lagos,lagos,Birrel Avenue,,settlement,grid3,Onike–Oyadiran,Lagos Mainland,Lagos,0,1,3.378725,6.508763
 Lagos,lagos,Buraimon,,settlement,grid3,Apelehin,Shomolu,Lagos,0,1,3.39179,6.540648
 Lagos,lagos,Car Wash,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.481628,6.442522
+Lagos,lagos,Cardinal Anthony Olubunmi Okogie Road,,roundabout,osm,Sangotedo,Eti Osa,Lagos,0,1,3.64006,6.468675
+Lagos,lagos,Cardinal Anthony Olubunmi Okogie Road,,roundabout,osm,Sangotedo,Eti Osa,Lagos,0,1,3.639978,6.466398
 Lagos,lagos,Cardoso Street,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354114,6.522954
 Lagos,lagos,Cardoso Street Luth Road,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354234,6.523268
 Lagos,lagos,Chevron,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.536418,6.464041
@@ -166,6 +172,7 @@ Lagos,lagos,Esugbayi,,settlement,grid3,Otto,Lagos Mainland,Lagos,0,1,3.38039,6.4
 Lagos,lagos,Eti Osa Indigenous Town,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.561296,6.466378
 Lagos,lagos,Falomo,,settlement,grid3,Falomo–Oyinkan Abayomi,Eti Osa,Lagos,0,1,3.430185,6.443708
 Lagos,lagos,Falomo,,village,osm,Falomo–Oyinkan Abayomi,Eti Osa,Lagos,0,1,3.433333,6.45
+Lagos,lagos,Falomo Roundabout,,roundabout,osm,Ikoyi 2,Eti Osa,Lagos,0,1,3.42732,6.444502
 Lagos,lagos,Fatai Arobieke Crescent,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.479772,6.454855
 Lagos,lagos,Folami Street,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.360015,6.522644
 Lagos,lagos,Freeman Glover,,settlement,grid3,Freeman–Glover,Lagos Mainland,Lagos,0,1,3.383559,6.486838
@@ -175,12 +182,14 @@ Lagos,lagos,Gbelejo,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.363128,
 Lagos,lagos,Gbetho Street,,settlement,grid3,Aderupoko–Ijebu Qters,Lagos Mainland,Lagos,0,1,3.387089,6.50465
 Lagos,lagos,Gbolagas,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.5568,6.451665
 Lagos,lagos,Gegede,,settlement,grid3,Apese–6 Extension,Eti Osa,Lagos,0,1,3.449773,6.43707
+Lagos,lagos,Gerrard Road,,roundabout,osm,Ikoyi 1,Eti Osa,Lagos,0,1,3.43552,6.459376
 Lagos,lagos,Goblin Sabe Rd,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.370402,6.520735
 Lagos,lagos,Greenville Estate,,settlement,grid3,Badore–Langbasa,Eti Osa,Lagos,0,1,3.5936,6.50993
 Lagos,lagos,Herbert Macaulay Way,,settlement,grid3,Oyingbo,Lagos Mainland,Lagos,0,1,3.387454,6.479405
 Lagos,lagos,Herbert Macaulay Way,,settlement,grid3,Iponri–Olaleye,Lagos Mainland,Lagos,0,1,3.38034,6.488272
 Lagos,lagos,Herbert Macaulay Way,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.377558,6.511225
 Lagos,lagos,Hi Tech,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.603627,6.467302
+Lagos,lagos,Hon. Yaya Dosunmu Way Roundabout,,roundabout,osm,Ikate–Lekki,Eti Osa,Lagos,0,1,3.50838,6.45253
 Lagos,lagos,Humuani,,settlement,grid3,Okesuna–Alase,Shomolu,Lagos,0,1,3.380613,6.533039
 Lagos,lagos,IDI Iroko Resettlement Scheme,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.566552,6.451827
 Lagos,lagos,Ibikunle,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.376627,6.513492
@@ -218,6 +227,7 @@ Lagos,lagos,Ikota First Gate,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lago
 Lagos,lagos,Ikota Village Ajah,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.565977,6.448243
 Lagos,lagos,Ikoyi,,settlement,grid3,Ijeh–Dolphin Estate,Eti Osa,Lagos,0,1,3.419515,6.4588
 Lagos,lagos,Ikoyi,,settlement,grid3,Ikoyi 2,Eti Osa,Lagos,0,1,3.42851,6.451784
+Lagos,lagos,Ikoyi Bridge Roundabout,,roundabout,osm,Ikate–Lekki,Eti Osa,Lagos,0,1,3.461184,6.446807
 Lagos,lagos,Ila,,settlement,grid3,Alafia–Adeoyo,Mushin,Lagos,0,1,3.345502,6.522842
 Lagos,lagos,Ilado,,village,osm,Ilasan–Orile,Eti Osa,Lagos,0,1,3.466744,6.428495
 Lagos,lagos,Ilado,,village,osm,Abraham Adesanya,Apapa,Lagos,0,1,3.379583,6.432329
@@ -277,12 +287,14 @@ Lagos,lagos,Lekki Phase One,,settlement,grid3,Ikate–Lekki,Eti Osa,Lagos,0,1,3.
 Lagos,lagos,Liasu,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.337865,6.520877
 Lagos,lagos,Light House Abagbo 2,,settlement,grid3,Tarkwa Bay,Eti Osa,Lagos,0,1,3.384175,6.404345
 Lagos,lagos,Light House Estate,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.549558,6.429738
+Lagos,lagos,Liverpool Roundabout,,roundabout,osm,Apapa,Apapa,Lagos,0,1,3.359535,6.440296
 Lagos,lagos,Lsdpc Estate,,settlement,grid3,Okobaba,Lagos Mainland,Lagos,0,1,3.387567,6.490887
 Lagos,lagos,Luth Junction,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.355267,6.526649
 Lagos,lagos,Luth Junction Off Agege Motor Road,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.35487,6.526367
 Lagos,lagos,Luth Road,,settlement,grid3,Babalosa 2,Mushin,Lagos,0,1,3.354929,6.52514
 Lagos,lagos,Mafowoku,,settlement,grid3,Apelehin,Shomolu,Lagos,0,1,3.384678,6.547345
 Lagos,lagos,Majek Firstgate Abijo,,settlement,grid3,Sangotedo,Eti Osa,Lagos,0,1,3.655811,6.46944
+Lagos,lagos,Marina Roundabout,,roundabout,osm,Oke-Olowogbowo,Lagos Island,Lagos,0,1,3.382093,6.454975
 Lagos,lagos,Marine,,settlement,grid3,Oduduwa,Apapa,Lagos,0,1,3.355778,6.441112
 Lagos,lagos,Marine Beach,,settlement,grid3,Marine Beach,Apapa,Lagos,0,1,3.360776,6.45731
 Lagos,lagos,Marker,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.356298,6.53205
@@ -303,10 +315,12 @@ Lagos,lagos,Muda Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.357722,6
 Lagos,lagos,Mumuni Street,,settlement,grid3,Babalosa 1,Mushin,Lagos,0,1,3.355957,6.529985
 Lagos,lagos,Muritala Mohammed Way,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.370757,6.511268
 Lagos,lagos,Mushin Ajina,,settlement,grid3,Ogunsami–Karounwi,Surulere,Lagos,0,1,3.333986,6.503232
+Lagos,lagos,Neck Interchange,,junction,osm,Ijora,Apapa,Lagos,0,1,3.364016,6.466015
 Lagos,lagos,New Garage,,settlement,grid3,Apelehin,Shomolu,Lagos,0,1,3.393153,6.54804
 Lagos,lagos,Nil,,settlement,grid3,Igbo-Efon–Maiyegun,Eti Osa,Lagos,0,1,3.546887,6.431157
 Lagos,lagos,Oba,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.342084,6.52103
 Lagos,lagos,Oba Lane,,settlement,grid3,Igbehin,Mushin,Lagos,0,1,3.342174,6.521442
+Lagos,lagos,Oba Road,,roundabout,osm,Ajah,Eti Osa,Lagos,0,1,3.572154,6.467691
 Lagos,lagos,Obale,,settlement,grid3,Badia,Apapa,Lagos,0,1,3.362982,6.468922
 Lagos,lagos,Obalemisoro,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.564267,6.446481
 Lagos,lagos,Obalola Lane,,settlement,grid3,Oyingbo,Lagos Mainland,Lagos,0,1,3.387696,6.479266
@@ -396,6 +410,7 @@ Lagos,lagos,Orile Ilasan,,settlement,grid3,Ilasan–Orile,Eti Osa,Lagos,0,1,3.49
 Lagos,lagos,Osapa London,,settlement,grid3,Ajiran–Osapa,Eti Osa,Lagos,0,1,3.511985,6.44052
 Lagos,lagos,Osborne Ikoyi,,settlement,grid3,Ikoyi 1,Eti Osa,Lagos,0,1,3.427508,6.460522
 Lagos,lagos,Otumara,,settlement,grid3,Botanical Garden,Lagos Mainland,Lagos,0,1,3.374658,6.47959
+Lagos,lagos,Oval Interchange,,junction,osm,Marine Beach,Apapa,Lagos,0,1,3.364349,6.458451
 Lagos,lagos,Oweh,,settlement,grid3,Harvey,Lagos Mainland,Lagos,0,1,3.369767,6.523502
 Lagos,lagos,Owode Orile Bariga,,settlement,grid3,Owode–Orile Bariga,Shomolu,Lagos,0,1,3.38517,6.534554
 Lagos,lagos,Owodunni,,settlement,grid3,Owodunni,Mushin,Lagos,0,1,3.36358,6.536822
@@ -445,8 +460,11 @@ Lagos,lagos,Stadium,,settlement,grid3,Aralile,Surulere,Lagos,0,1,3.365133,6.5023
 Lagos,lagos,Surulere,,settlement,grid3,Shitta Bank Olemoh,Surulere,Lagos,0,1,3.353535,6.505175
 Lagos,lagos,Surulere,,town,osm,Shitta Bank Olemoh,Surulere,Lagos,0,1,3.357116,6.500803
 Lagos,lagos,Takway Bay,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.39331,6.412535
+Lagos,lagos,Tbs Roundabout,,roundabout,osm,Araromi Odo,Lagos Island,Lagos,0,1,3.403598,6.447458
 Lagos,lagos,Thomas,,settlement,grid3,Ojo-Oniyun,Lagos Mainland,Lagos,0,1,3.377475,6.483102
 Lagos,lagos,Thomas,,settlement,grid3,Ajah,Eti Osa,Lagos,0,1,3.574547,6.469927
+Lagos,lagos,Thompson Roundabout,,roundabout,osm,Falomo–Oyinkan Abayomi,Eti Osa,Lagos,0,1,3.432395,6.448041
+Lagos,lagos,Tincan Island Interchange,,junction,osm,Abraham Adesanya,Apapa,Lagos,0,1,3.342122,6.434405
 Lagos,lagos,Tom Jones,,settlement,grid3,Oke-Arin–Idumota,Lagos Island,Lagos,0,1,3.387683,6.45815
 Lagos,lagos,Tomaro,,settlement,grid3,Abraham Adesanya,Apapa,Lagos,0,1,3.36235,6.418023
 Lagos,lagos,Town Planning Way,,settlement,grid3,Ilupeju Industrial,Mushin,Lagos,0,1,3.357382,6.556665
@@ -539,6 +557,7 @@ Lagos,lagos,Agodo,,settlement,grid3,Egbe-Agodo,Alimosho,Lagos,0,0,3.279372,6.532
 Lagos,lagos,Agor,,settlement,grid3,Apena,Oshodi–Isolo,Lagos,0,0,3.297721,6.504968
 Lagos,lagos,Aguda,,settlement,grid3,Aguda,Ikeja,Lagos,0,0,3.351496,6.639176
 Lagos,lagos,Ailegun,,settlement,grid3,Ailegun,Oshodi–Isolo,Lagos,0,0,3.293688,6.529908
+Lagos,lagos,Airport Interchange,,junction,osm,Ajao Estate,Oshodi–Isolo,Lagos,0,0,3.335531,6.549129
 Lagos,lagos,Aiyetoro,,settlement,grid3,Aiyetoro,Ajeromi–Ifelodun,Lagos,0,0,3.347059,6.458702
 Lagos,lagos,Aiyetoto-Asogun,,village,osm,Abule Osun Onireke,Amuwo Odofin,Lagos,0,0,3.24476,6.450892
 Lagos,lagos,Ajabandi Last Bustop,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.167194,6.462408
@@ -698,6 +717,7 @@ Lagos,lagos,Gbadamosi,,settlement,grid3,Ipaja,Alimosho,Lagos,0,0,3.261418,6.6140
 Lagos,lagos,Gbadamosi,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.358951,6.649951
 Lagos,lagos,Gbagada,,settlement,grid3,Olubori–Mosafejo,Kosofe,Lagos,0,0,3.399496,6.556381
 Lagos,lagos,Gbagada,,town,osm,Araromi–Ifako,Kosofe,Lagos,0,0,3.383621,6.558073
+Lagos,lagos,Gbagada Interchange,,junction,osm,Araromi–Ifako,Kosofe,Lagos,0,0,3.39221,6.55023
 Lagos,lagos,Gloryland Estate,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.27517,6.57713
 Lagos,lagos,Gowan Estate,,settlement,grid3,Gowon Estate,Alimosho,Lagos,0,0,3.290248,6.601962
 Lagos,lagos,Gowon Estate,,settlement,grid3,Gowon Estate,Alimosho,Lagos,0,0,3.285415,6.606366
@@ -766,6 +786,7 @@ Lagos,lagos,Iju Community,,settlement,grid3,Iju Ishaga,Ifako–Ijaye,Lagos,0,0,3
 Lagos,lagos,Iju Ishaga,,settlement,grid3,Ifako Pele,Ifako–Ijaye,Lagos,0,0,3.326532,6.652004
 Lagos,lagos,Iju Ishaga,,settlement,grid3,Iju Obawole,Ifako–Ijaye,Lagos,0,0,3.325455,6.668373
 Lagos,lagos,Iju Ishaga,,settlement,grid3,Ijaiye Ojokoro,Ifako–Ijaye,Lagos,0,0,3.288231,6.67192
+Lagos,lagos,Iju Junction–Jonathan Coker Road,,junction,osm,Iju Ishaga,Ifako–Ijaye,Lagos,0,0,3.323309,6.6575
 Lagos,lagos,Ikaare,Ikaare Village,settlement,grid3,I Irede,Amuwo Odofin,Lagos,0,0,3.235249,6.418599
 Lagos,lagos,Ikeja Cantonement,,settlement,grid3,Onigbongbo,Ikeja,Lagos,0,0,3.360847,6.567417
 Lagos,lagos,Ikeja GRA,,settlement,grid3,Opebi,Ikeja,Lagos,0,0,3.358016,6.587979
@@ -826,6 +847,7 @@ Lagos,lagos,Isheri,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.384612,
 Lagos,lagos,Isheri,,village,osm,Isheri–Olowora,Kosofe,Lagos,0,0,3.380206,6.638499
 Lagos,lagos,Isheri Olofin Town,,settlement,grid3,Isheri-Olofin,Alimosho,Lagos,0,0,3.2746,6.582197
 Lagos,lagos,Isheri Oshun,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.265946,6.52699
+Lagos,lagos,Isheri Road,,roundabout,osm,Ojodu,Ikeja,Lagos,0,0,3.371887,6.641131
 Lagos,lagos,Ishope Village,,settlement,grid3,Ibeshe and Environ,Amuwo Odofin,Lagos,0,0,3.282137,6.424321
 Lagos,lagos,Isiba Oluwo,,settlement,grid3,Egbeda,Alimosho,Lagos,0,0,3.292377,6.588945
 Lagos,lagos,Isolo,,settlement,grid3,Akingbaye,Oshodi–Isolo,Lagos,0,0,3.321805,6.531217
@@ -852,6 +874,7 @@ Lagos,lagos,Jakande Ajangbadi,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.1
 Lagos,lagos,Jakande Estate,,settlement,grid3,Ailegun,Oshodi–Isolo,Lagos,0,0,3.303165,6.531558
 Lagos,lagos,Jakunde Estate,,settlement,grid3,Abesan 2,Alimosho,Lagos,0,0,3.269908,6.613173
 Lagos,lagos,Julie Estate,,settlement,grid3,Alausa,Ikeja,Lagos,0,0,3.359652,6.601055
+Lagos,lagos,Junction Bus Stop,,junction,osm,Ajao Estate,Oshodi–Isolo,Lagos,0,0,3.329161,6.552056
 Lagos,lagos,Kaka,,settlement,grid3,Baruwa (Alimosho),Alimosho,Lagos,0,0,3.249513,6.582128
 Lagos,lagos,Kemberi,,settlement,grid3,Kemberi,Ojo,Lagos,0,0,3.187127,6.46726
 Lagos,lagos,Ketu,,settlement,grid3,Bamgbe–Elebiju,Kosofe,Lagos,0,0,3.385122,6.591423
@@ -950,8 +973,11 @@ Lagos,lagos,Ojo,,settlement,grid3,Kirikiri and Environ,Amuwo Odofin,Lagos,0,0,3.
 Lagos,lagos,Ojo,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.199937,6.507363
 Lagos,lagos,Ojo,,town,osm,Kemberi,Ojo,Lagos,0,0,3.190242,6.464334
 Lagos,lagos,Ojodu,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.362093,6.64671
+Lagos,lagos,Ojodu Berger Interchange,,junction,osm,Isheri–Olowora,Kosofe,Lagos,0,0,3.36989,6.638616
 Lagos,lagos,Ojokoro,,settlement,grid3,Abule Egba,Alimosho,Lagos,0,0,3.293012,6.655874
 Lagos,lagos,Ojota,,settlement,grid3,Ojota,Kosofe,Lagos,0,0,3.38268,6.58631
+Lagos,lagos,Ojota Interchange,,junction,osm,Olusosun,Ikeja,Lagos,0,0,3.3803,6.596707
+Lagos,lagos,Ojota Interchange,,junction,osm,Bamgbe–Elebiju,Kosofe,Lagos,0,0,3.385399,6.590608
 Lagos,lagos,Oju Odo,,settlement,grid3,Ijegun (Alimosho),Alimosho,Lagos,0,0,3.230809,6.515811
 Lagos,lagos,Oke Afa,,settlement,grid3,Ilamoshe,Oshodi–Isolo,Lagos,0,0,3.317847,6.53925
 Lagos,lagos,Oke Ira Powerline,,settlement,grid3,Ijaiye Oke-Ira,Ifako–Ijaye,Lagos,0,0,3.341713,6.647635
@@ -1010,6 +1036,7 @@ Lagos,lagos,Orise Imude,,settlement,grid3,Etegbin,Ojo,Lagos,0,0,3.103636,6.45223
 Lagos,lagos,Orisunmbare Ayobo Lagos,,settlement,grid3,Bada-Megida,Alimosho,Lagos,0,0,3.222552,6.593419
 Lagos,lagos,Oshodi,,settlement,grid3,Igbehinadun,Oshodi–Isolo,Lagos,0,0,3.339219,6.561062
 Lagos,lagos,Oshodi,,town,osm,Igbehinadun,Oshodi–Isolo,Lagos,0,0,3.349442,6.557025
+Lagos,lagos,Oshodi Interchange,,junction,osm,Afariogun,Oshodi–Isolo,Lagos,0,0,3.351115,6.555544
 Lagos,lagos,Osolo,,settlement,grid3,Irewe,Ojo,Lagos,0,0,3.144137,6.417129
 Lagos,lagos,Ota,,settlement,grid3,Alagbado–Alakuko,Alimosho,Lagos,0,0,3.262555,6.667457
 Lagos,lagos,Otedola Jubilee Estate,,settlement,grid3,Isheri–Olowora,Kosofe,Lagos,0,0,3.366154,6.630396
@@ -1018,6 +1045,7 @@ Lagos,lagos,Otunba,,settlement,grid3,Ojodu,Ikeja,Lagos,0,0,3.359208,6.649576
 Lagos,lagos,Owode Elede,,settlement,grid3,Idera,Kosofe,Lagos,0,0,3.403403,6.604233
 Lagos,lagos,Owode Onirin,,settlement,grid3,Idera,Kosofe,Lagos,0,0,3.408753,6.610432
 Lagos,lagos,Oworonshoki,,settlement,grid3,Olubori–Mosafejo,Kosofe,Lagos,0,0,3.39681,6.555877
+Lagos,lagos,Oworonṣoki Interchange,,junction,osm,Olubori–Mosafejo,Kosofe,Lagos,0,0,3.397961,6.546261
 Lagos,lagos,Owutedo,,settlement,grid3,Egbeda,Alimosho,Lagos,0,0,3.288938,6.590647
 Lagos,lagos,Oya Jimoh,,settlement,grid3,Ilogbo- Elegba,Ojo,Lagos,0,0,3.126133,6.460772
 Lagos,lagos,Pa Cletment Ogunsus,,settlement,grid3,Iba,Ojo,Lagos,0,0,3.200162,6.489598

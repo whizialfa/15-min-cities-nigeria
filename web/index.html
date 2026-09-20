@@ -33,7 +33,7 @@
     <title>Fifteen minutes on foot</title>
     <link rel="stylesheet" href="https://js.arcgis.com/calcite-components/2.13.2/calcite.css" />
     <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@5.6.1/dist/maplibre-gl.css" />
-    <link rel="stylesheet" href="./src/style.css?v=42" />
+    <link rel="stylesheet" href="./src/style.css?v=44" />
     <script type="module" src="https://js.arcgis.com/calcite-components/2.13.2/calcite.esm.js"></script>
   </head>
   <body>
@@ -106,7 +106,7 @@
             <div id="tour-search">
             <calcite-label>
               Find a ward, village or place
-              <calcite-input id="place-search" scale="s" placeholder="Dakwa, Eneka, Ikoyi…" clearable>
+              <calcite-input id="place-search" scale="s" placeholder="Dakwa, Berger, Eneka…" clearable>
                 <calcite-action id="search-go" slot="action" icon="search" text="Search"></calcite-action>
               </calcite-input>
             </calcite-label>
@@ -228,7 +228,7 @@
                     <calcite-button id="tour-replay" appearance="outline" width="full" icon-start="question">Take the map tour</calcite-button>
                   </p>
                   <p>
-                    Search a ward, village or settlement. The box indexes every named GRID3 and OSM point stored for these five cities. Drag the minutes bar to see how many people sit under that walk; the F15 score stays the 15-minute headline. Use your location to open the nearest neighbourhood. Off mapped streets is a diagnostic overlay.
+                    Search a ward, village, settlement or junction. The box indexes every named GRID3 and OSM point stored for these five cities. Drag the minutes bar to see how many people sit under that walk; the F15 score stays the 15-minute headline. Use your location to open the nearest neighbourhood. Off mapped streets is a diagnostic overlay.
                   </p>
                   <p>
                     Tap a neighbourhood for the walk from that tile, and the ward it sits in. Tap a ward fill or a ward name for the ward’s scores. F15 is the share of people, not the share of tiles.
@@ -296,6 +296,6 @@
       <div slot="title" id="map-alert-title"></div>
       <div slot="message" id="map-alert-msg"></div>
     </calcite-alert>
-    <script type="module" src="./src/main.js?v=42"></script>
+    <script type="module" src="./src/main.js?v=44"></script>
   </body>
 </html>

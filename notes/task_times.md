@@ -80,3 +80,13 @@ Cut is AMAC plus Kubwa, Dutse and Usuma only. Not the rest of Bwari (Kawu, Igu, 
 - `2026-09-20 23:27:00 WAT` start **search settlements** — Find a place indexes every stored village
 - `2026-09-20 23:32:24 WAT` done **settlements_search.json** — 7,079 points
 - `2026-09-20 23:42:22 WAT` done **search settlements** — Dakwa, Dei-Dei, Eneka fly the map
+- `2026-09-21 00:24:16 WAT` start **settlement inventory** — GRID3 points plus OSM villages, clipped to study outlines
+- `2026-09-21 00:25:05 WAT` done **settlement inventory** in **0.8 min** (50 s) — slug; abuja             431; ibadan            332; kano             5089; lagos            1125; port_harcourt     203
+- `2026-09-21 00:25:30 WAT` start **settlement inventory** — GRID3 points plus OSM villages, clipped to study outlines
+- `2026-09-21 00:25:38 WAT` done **settlement inventory** in **0.1 min** (7 s) — slug; abuja             431; ibadan            332; kano             5089; lagos            1125; port_harcourt     203
+- `2026-09-21 00:24:16 WAT` start **OSM junctions** — named junctions and roundabouts into the search inventory
+- `2026-09-21 00:25:38 WAT` done **OSM junctions fetch** — Lagos 31, Abuja 52, Ibadan 5, Port Harcourt 6, Kano 4
+- `2026-09-21 00:27:17 WAT` start **settlement inventory** — drop plus-code and close/lane names
+- `2026-09-21 00:27:23 WAT` done **settlement inventory** in **0.1 min** (6 s) — 7,174 points; junctions Lagos 28, Abuja 50, Ibadan 5, Port Harcourt 5, Kano 4
+- `2026-09-21 00:27:17 WAT` start **settlement inventory** — GRID3 points plus OSM villages, clipped to study outlines
+- `2026-09-21 00:27:23 WAT` done **settlement inventory** in **0.1 min** (6 s) — slug; abuja             429; ibadan            332; kano             5089; lagos            1122; port_harcourt     202

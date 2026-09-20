@@ -633,6 +633,7 @@ Kano,kano,Danfulani Nasiriyya,,settlement,grid3,Babban Giji,Tarauni,Kano,0,1,8.5
 Kano,kano,Danfulani Yamma,,settlement,grid3,Babban Giji,Tarauni,Kano,0,1,8.534698,11.964614
 Kano,kano,Dangara,,settlement,grid3,Gayawa,Ungogo,Kano,0,1,8.551559,12.083362
 Kano,kano,Dangi,,settlement,grid3,Gyadi Gyadi Arewa,Tarauni,Kano,0,1,8.538937,11.977294
+Kano,kano,Dangi Roundabout,,roundabout,osm,Tarauni,Tarauni,Kano,0,1,8.540326,11.97929
 Kano,kano,Dango,,settlement,grid3,Bachirawa,Ungogo,Kano,0,1,8.443298,12.03772
 Kano,kano,Dangora Avenue,,settlement,grid3,Sani Mai Nagge,Gwale,Kano,0,1,8.492383,11.982577
 Kano,kano,Danja,,settlement,grid3,Chalawa,Kumbotso,Kano,0,1,8.422729,11.90448
@@ -1761,6 +1762,7 @@ Kano,kano,Kwana Hudu Opposit Dogon Gida,,settlement,grid3,Kaura Goje,Nassarawa,K
 Kano,kano,Kwana Hudu Police Station Layin Mai Unguwa,,settlement,grid3,Kaura Goje,Nassarawa,Kano,0,1,8.551835,12.038562
 Kano,kano,Kwana Hudu Road,,settlement,grid3,Kaura Goje,Nassarawa,Kano,0,1,8.547,12.035962
 Kano,kano,Kwana Shida Dan Sokoto,,settlement,grid3,Unguwa Uku Kauyen Alu,Tarauni,Kano,0,1,8.569726,11.959861
+Kano,kano,Kwanar Diso,,junction,osm,Diso,Gwale,Kano,0,1,8.512802,11.987129
 Kano,kano,Kwanar Hausawa,,settlement,grid3,Galadanchi,Gwale,Kano,0,1,8.512833,11.991192
 Kano,kano,Kwanar Jaba Ahmadiyya,,settlement,grid3,Kaura Goje,Nassarawa,Kano,0,1,8.543933,12.03699
 Kano,kano,Kwanar Jaba Bus Stop,,settlement,grid3,Kaura Goje,Nassarawa,Kano,0,1,8.54655,12.035303
@@ -3800,6 +3802,7 @@ Kano,kano,Link Road,,settlement,grid3,Fagge A,Fagge,Kano,0,1,8.532749,11.998596
 Kano,kano,Link Usman,,settlement,grid3,Dorayi,Gwale,Kano,0,1,8.469435,11.972084
 Kano,kano,Littafawa,,settlement,grid3,Yada Kunya,Ungogo,Kano,0,1,8.585028,12.072295
 Kano,kano,Llayin Alhaji Yau Mai Babban Allo,,settlement,grid3,Kofar Ruwa,Dala,Kano,0,1,8.487583,12.024233
+Kano,kano,Lodge Road Roundabout,,roundabout,osm,Giginyu,Nassarawa,Kano,0,1,8.549714,11.994047
 Kano,kano,Lokon Abdu Kura,,settlement,grid3,Dandago,Gwale,Kano,0,1,8.510493,11.994449
 Kano,kano,Lokon Alhaji Sikaut,,settlement,grid3,Gyaranya,Gwale,Kano,0,1,8.50791,11.998289
 Kano,kano,Lokon Ali Kafinta,,settlement,grid3,Mandawari,Gwale,Kano,0,1,8.50917,11.997852
@@ -4151,6 +4154,7 @@ Kano,kano,Naibawa Gabas,,settlement,grid3,Naibawa,Kumbotso,Kano,0,1,8.57235,11.9
 Kano,kano,Naibawa Gidan Gaida,,settlement,grid3,Naibawa,Kumbotso,Kano,0,1,8.562411,11.93743
 Kano,kano,Naibawa Tsakiya,,settlement,grid3,Naibawa,Kumbotso,Kano,0,1,8.563236,11.933693
 Kano,kano,Naira da Kobo,,settlement,grid3,Gobirawa,Dala,Kano,0,1,8.487766,12.030562
+Kano,kano,Nasarawa Roundabout,,roundabout,osm,Giginyu,Nassarawa,Kano,0,1,8.550478,11.995774
 Kano,kano,Nasidi,,settlement,grid3,Gyadi Gyadi Arewa,Tarauni,Kano,0,1,8.54226,11.974731
 Kano,kano,Nepa,,settlement,grid3,Panshekara,Kumbotso,Kano,0,1,8.45683,11.887566
 Kano,kano,Nepa,,settlement,grid3,Dan Maliki,Kumbotso,Kano,0,1,8.510393,11.956315

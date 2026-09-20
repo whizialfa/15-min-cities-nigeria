@@ -10,7 +10,7 @@ const PLACE_INK = "#37322e";
 const HALO = "#fafafa";
 const GLYPHS = "https://tiles.openfreemap.org/fonts/{fontstack}/{range}.pbf";
 const LIBERTY = "https://tiles.openfreemap.org/styles/liberty";
-const ASSET = "42";
+const ASSET = "44";
 const ESRI_CREDIT = "Tiles © Esri · GRID3 clinics and schools · OSM streets";
 const ROAD = "#5c4524";
 const ROAD_DARK = "#edd9a4";
@@ -230,6 +230,8 @@ const PLACE_KIND = {
   hamlet: "Hamlet",
   town: "Town",
   locality: "Locality",
+  junction: "Junction",
+  roundabout: "Roundabout",
 };
 
 function readView() {
@@ -670,6 +672,7 @@ async function main() {
   let settlementItems = [];
   let searchAfter = null;
   let searchPin = null;
+  let keepSearchCamera = false;
   let holdCamera = false;
   let bootColor = false;
   let locateAfter = null;
@@ -1500,7 +1503,12 @@ async function main() {
     const lon = item.lon;
     const lat = item.lat;
     if (!Number.isFinite(lon) || !Number.isFinite(lat)) return;
+    keepSearchCamera = true;
     searchPin = item;
+    if (!map.getStyle() || !map.getSource("hexes")) {
+      searchAfter = item;
+      return;
+    }
     ensureSearchPin();
     if (map.getSource("search-pin")) {
       map.getSource("search-pin").setData({ type: "FeatureCollection", features: [item.feature] });
@@ -1511,7 +1519,12 @@ async function main() {
     } catch (err) {
       /* not moving */
     }
-    map.easeTo({ center: [lon, lat], zoom, duration: 520, pitch: map.getPitch() });
+    const camera = { center: [lon, lat], zoom, pitch: map.getPitch() };
+    if (!map.loaded() || map.isMoving()) {
+      map.jumpTo(camera);
+    } else {
+      map.easeTo({ ...camera, duration: 520 });
+    }
     afterMove(() => showPopup("search-pin", item.feature, [lon, lat]));
   };
 
@@ -1790,6 +1803,8 @@ async function main() {
         const item = searchAfter;
         searchAfter = null;
         goToSettlement(item);
+      } else if (keepSearchCamera && searchPin) {
+        /* pin already has the camera */
       } else if (holdCamera) {
         holdCamera = false;
         map.jumpTo({
@@ -1818,6 +1833,7 @@ async function main() {
 
   const loadCity = async (slug) => {
     const gen = ++loadGen;
+    if (!searchAfter) keepSearchCamera = false;
     current = slug;
     const citySelect = document.getElementById("city-select");
     if (citySelect && citySelect.value !== slug) citySelect.value = slug;
@@ -2189,7 +2205,7 @@ async function main() {
       panel: true,
       expandWards: true,
       title: "Find a place",
-      body: "Type a ward, village or settlement. Dakwa, Dei-Dei, Eneka and the rest of the stored names jump the map. The ranked ward list below still sorts by the longest wait first.",
+      body: "Type a ward, village, settlement or junction. Dakwa, Dei-Dei, Berger, Eneka and the rest of the stored names jump the map. The ranked ward list below still sorts by the longest wait first.",
     },
     {
       title: "Tap a neighbourhood",
