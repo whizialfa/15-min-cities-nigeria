@@ -1,10 +1,10 @@
 # Named settlements in the study outlines
 
-Coordinate list of populated places inside each city’s **study boundary**, not the print-plate clip. Points only. They are not drawn on the QGIS plates. Nearest name is attached to the web-map hex and ward popups.
+Coordinate list of populated places inside each city’s **study boundary**, not the print-plate clip. Points only. They are not drawn on the QGIS plates. Nearest name is attached to the web-map hex and ward popups. The live map **Find a ward, village or place** box indexes every stored point and flies to it.
 
 Source: GRID3 settlement points (eHealth Africa / GRID3, 2021; CC BY 4.0), clipped to `{slug}_study_boundary.gpkg`. OSM `place=town|village|hamlet|locality` is a fill where Overpass answered. Rebuild: `python -m proximity.settlements`.
 
-Tables: `data/processed/settlements.csv` (all five), `{slug}_settlements.csv`, `settlements_summary.csv`. Points: `{slug}_settlements.gpkg` (gitignored) and `web/data/cities/{slug}/settlements.geojson` (not a map layer).
+Tables: `data/processed/settlements.csv` (all five), `{slug}_settlements.csv`, `settlements_summary.csv`. Points: `{slug}_settlements.gpkg` (gitignored) and `web/data/cities/{slug}/settlements.geojson` (not a map layer). Search index: `web/data/settlements_search.json`.
 
 | City | Study points | GRID3 | OSM | On the printed plate |
 |---|---:|---:|---:|---:|
