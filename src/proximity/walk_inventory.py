@@ -82,14 +82,16 @@ def _network_stats(slug: str, edges: gpd.GeoDataFrame) -> dict:
 
 def rebuild(slugs: tuple[str, ...] | None = None) -> pd.DataFrame:
     slugs = slugs or tuple(CITIES)
-    rows = []
+    out = DATA_PROCESSED / "walk_network_stats.csv"
+    table = pd.read_csv(out) if out.exists() else pd.DataFrame()
     for slug in slugs:
         print(f"Walk inventory {slug} …", flush=True)
         edges = export_walk_edges(slug)
-        rows.append(_network_stats(slug, edges))
-    table = pd.DataFrame(rows)
-    out = DATA_PROCESSED / "walk_network_stats.csv"
-    table.to_csv(out, index=False)
+        row = pd.DataFrame([_network_stats(slug, edges)])
+        if len(table):
+            table = table[table["slug"] != slug]
+        table = pd.concat([table, row], ignore_index=True)
+        table.to_csv(out, index=False)
     print(table.to_string(index=False), flush=True)
     return table
 

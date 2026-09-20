@@ -107,6 +107,9 @@ PINNED = {
         "kabusa",
         "city centre",
         "central area",
+        "kubwa",
+        "dutse",
+        "usuma",
     ),
     "kano": ("ungogo", "fagge", "nassarawa", "sabon gari", "kumbotso", "tarauni", "gwale", "dala"),
     "ibadan": (
@@ -183,6 +186,9 @@ MUST_SHOW = {
         "maitama",
         "lugbe",
         "kabusa",
+        "kubwa",
+        "dutse",
+        "usuma",
     ),
     "kano": ("ungogo", "fagge", "nassarawa", "sabon gari", "kumbotso", "tarauni", "gwale", "dala"),
     "ibadan": (

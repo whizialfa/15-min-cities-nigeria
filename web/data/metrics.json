@@ -239,18 +239,18 @@
       "state": "Federal Capital Territory",
       "slug": "abuja",
       "bbox": [
-        7.3,
+        7.2,
         8.9,
-        7.58,
-        9.2
+        7.6,
+        9.22
       ],
-      "blurb": "This map is seven AMAC wards, not the whole municipal area. Some of the empty cells are missing streets.",
-      "pop": 1604537,
-      "pt": 28.4,
-      "f15": 18.8,
-      "gini": 0.275,
-      "clinics": 190,
-      "schools": 289,
+      "blurb": "This map is seven AMAC wards plus Kubwa, Dutse and Usuma in Bwari, not the whole municipal area. Some of the empty cells are missing streets.",
+      "pop": 2015528,
+      "pt": 26.3,
+      "f15": 24.7,
+      "gini": 0.294,
+      "clinics": 248,
+      "schools": 499,
       "n_dual": 5,
       "speed": "5 km/h",
       "people_breaks": [
@@ -274,58 +274,65 @@
         },
         {
           "lo": 700,
-          "hi": 1200,
+          "hi": 1100,
           "color": "#fd8d3c",
-          "label": "700\u20131,200"
+          "label": "700\u20131,100"
         },
         {
-          "lo": 1200,
-          "hi": 1800,
+          "lo": 1100,
+          "hi": 1700,
           "color": "#e31a1c",
-          "label": "1,200\u20131,800"
+          "label": "1,100\u20131,700"
         },
         {
-          "lo": 1800,
-          "hi": 3290,
+          "lo": 1700,
+          "hi": 3525,
           "color": "#800026",
-          "label": "1,800+"
+          "label": "1,700+"
         }
       ],
-      "nstar": 284,
-      "nstar_per_100k": 13.1,
-      "clinics_cover": 52.5,
-      "nstar_vs_stock": 1.19,
-      "median_snap_m": 263,
-      "people_off_street": 7.0,
+      "nstar": 345,
+      "nstar_per_100k": 13.4,
+      "clinics_cover": 55.0,
+      "nstar_vs_stock": 1.12,
+      "median_snap_m": 198,
+      "people_off_street": 3.1,
       "cuts": [
         {
           "cut": "plate",
-          "units": "7 wards",
-          "pop": 1604537,
-          "f15": 18.8,
-          "pt": 28.4
+          "units": "10 wards",
+          "pop": 2015528,
+          "f15": 24.7,
+          "pt": 26.3
         },
         {
           "cut": "omitted",
-          "units": "4 wards",
-          "pop": 487754,
-          "f15": 11.7,
-          "pt": 38.7
+          "units": "4 AMAC wards off the plate",
+          "pop": 492329,
+          "f15": 11.4,
+          "pt": 38.1
+        },
+        {
+          "cut": "amac",
+          "units": "AMAC",
+          "pop": 2095699,
+          "f15": 17.0,
+          "pt": 30.5
         },
         {
           "cut": "metro",
-          "units": "AMAC",
-          "pop": 2168831,
-          "f15": 16.5,
-          "pt": 32.2
+          "units": "AMAC plus Kubwa, Dutse and Usuma",
+          "pop": 2580679,
+          "f15": 21.5,
+          "pt": 29.8
         }
       ],
-      "metro_f15": 16.5,
-      "metro_pt": 32.2,
-      "metro_pop": 2168831,
-      "metro_gini": 0.312,
-      "frame": "7 wards",
-      "frame_note": "Scores on this map are the 7 wards. The paper headline is still the metro."
+      "metro_f15": 21.5,
+      "metro_pt": 29.8,
+      "metro_pop": 2580679,
+      "metro_gini": 0.325,
+      "frame": "10 wards",
+      "frame_note": "Scores on this map are the 10 wards. The paper headline is still the metro."
     },
     "port_harcourt": {
       "name": "Port Harcourt",

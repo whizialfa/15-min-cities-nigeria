@@ -109,16 +109,18 @@ def poi_completeness(slug: str) -> dict:
 
 
 def build(slugs: list[str] | None = None) -> pd.DataFrame:
-    rows = []
+    path = DATA_PROCESSED / "completeness.csv"
+    table = pd.read_csv(path) if path.exists() else pd.DataFrame()
     for slug in slugs or list(CITIES):
         if not (DATA_PROCESSED / f"{slug}_hexes.gpkg").exists():
             continue
         print(f"  {slug} …", flush=True)
         row = network_completeness(slug)
         row.update({k: v for k, v in poi_completeness(slug).items() if k not in row})
-        rows.append(row)
-    table = pd.DataFrame(rows)
-    table.to_csv(DATA_PROCESSED / "completeness.csv", index=False)
+        if len(table):
+            table = table[table["slug"] != slug]
+        table = pd.concat([table, pd.DataFrame([row])], ignore_index=True)
+        table.to_csv(path, index=False)
     return table
 
 

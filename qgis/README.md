@@ -4,9 +4,9 @@ Double-click `{city}_so_far.qgz` — all five cities are built: Lagos, Kano, Iba
 
 Layers (bottom to top): OSM, state LGAs, population hexes, walk `PT_k`, Euclidean `PT_k` (off), wards, study outline, GRID3 schools, GRID3 health. Metro LGA polygons and the off-network hatch are not built into the project.
 
-Health is labelled by its actual source, so the TOC title differs by city: GRID3 v2 for Lagos and Port Harcourt, v3 for Kano, Ibadan and Abuja. Abuja is built `sparse`: larger point markers, and population rather than `PT_k` visible on open, because its 1,476 km² of mostly-empty AMAC swamps the hex layer.
+Health is labelled by its actual source, so the TOC title differs by city: GRID3 v2 for Lagos and Port Harcourt, v3 for Kano, Ibadan and Abuja. Abuja is built `sparse`: larger point markers, and population rather than `PT_k` visible on open, because empty AMAC land still swamps the hex layer.
 
-Print plates label OSM named places (`{city}_places.gpkg`: suburb / quarter / neighbourhood, Helvetica 14 pt) rather than every ward name. Ward polygons stay as outlines. Abuja draws only seven wards (Gwarinpa, Wuse, Nyanya, Karu, City Centre, Garki, Kabusa) as the outline and hex clip — not the rest of AMAC. Lagos draws seven LGAs (Eti-Osa, Lagos Island, Apapa, Lagos Mainland, Surulere, Mushin, Shomolu) — not the 16-LGA metro.
+Print plates label OSM named places (`{city}_places.gpkg`: suburb / quarter / neighbourhood, Helvetica 14 pt) rather than every ward name. Ward polygons stay as outlines. Abuja draws seven AMAC wards (Gwarinpa, Wuse, Nyanya, Karu, City Centre, Garki, Kabusa) plus Kubwa, Dutse and Usuma in Bwari as the outline and hex clip — not the rest of AMAC, not the rest of Bwari. Lagos draws seven LGAs (Eti-Osa, Lagos Island, Apapa, Lagos Mainland, Surulere, Mushin, Shomolu) — not the 16-LGA metro.
 
 `{city}_state_lgas.gpkg` carries every LGA in the state as canvas context (Rivers 23, Lagos 20, Kano 44, Oyo 33, FCT 6); the metro LGA names are excluded by a subset string so they are not labelled on the leftover ring. Build with:
 

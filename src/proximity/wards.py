@@ -29,8 +29,9 @@ import unicodedata
 from pathlib import Path
 
 import geopandas as gpd
+import pandas as pd
 
-from .cities import CITIES, City
+from .cities import ABUJA_SATELLITE_WARDS, CITIES, City
 from .gpkg_styles import embed_metro_lga_style, embed_ward_style
 from .paths import DATA_PROCESSED, DATA_RAW
 from .pipeline import metro_lga_polygons
@@ -310,6 +311,12 @@ def ward_polygons(city: City) -> gpd.GeoDataFrame:
     metro = metro_lga_polygons(city).to_crs(4326)
     union = metro.union_all()
     inside = wards[wards.geometry.representative_point().within(union)].copy()
+    if city.slug == "abuja":
+        extra = wards[wards["wardname"].isin(ABUJA_SATELLITE_WARDS)]
+        if not extra.empty:
+            inside = pd.concat([inside, extra], ignore_index=True)
+            if "wardcode" in inside.columns:
+                inside = inside.drop_duplicates(subset=["wardcode"])
     if inside.empty:
         raise RuntimeError(f"No wards resolved inside {city.name} metro LGAs")
     cleaned = [clean_ward_name(w, l) for w, l in zip(inside["wardname"], inside["lganame"])]

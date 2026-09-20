@@ -112,7 +112,7 @@ PINNED_LABELS = {
 }
 LABEL_AREA_N = {"lagos": 5, "kano": 8, "ibadan": 7, "port_harcourt": 7, "abuja": 6}
 LABEL_POP_N = {"lagos": 3, "kano": 6, "ibadan": 4, "port_harcourt": 4, "abuja": 6}
-LABEL_CAP = {"lagos": 12, "kano": 14, "ibadan": 10, "port_harcourt": 10, "abuja": 7}
+LABEL_CAP = {"lagos": 12, "kano": 14, "ibadan": 10, "port_harcourt": 10, "abuja": 10}
 PLACE_LABEL_CAP = {"lagos": 28, "kano": 26, "ibadan": 28, "port_harcourt": 28, "abuja": 26}
 ALWAYS_SHOW_LABELS = {
     "abuja": (
@@ -123,6 +123,9 @@ ALWAYS_SHOW_LABELS = {
         "Karu",
         "Gwarinpa",
         "Kabusa",
+        "Kubwa",
+        "Dutse",
+        "Usuma",
     ),
     "lagos": (
         "Eko Atlantic",
@@ -2278,7 +2281,7 @@ STUDY_CAPTIONS = {
         "Brown lines are the streets the walk is timed on."
     ),
     "abuja": (
-        "Abuja here is seven lived-in wards, not the whole Municipal Area Council. "
+        "Abuja here is seven Municipal Area Council wards plus Kubwa, Dutse and Usuma in Bwari. "
         "Red squares are GRID3 clinics and blue circles schools. "
         "Brown lines are the streets the walk is timed on."
     ),

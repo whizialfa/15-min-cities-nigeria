@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+import time
 
 import geopandas as gpd
 import numpy as np
@@ -11,8 +12,7 @@ from shapely.ops import unary_union
 
 from .access import mean_time_to_n
 from .car_access import GRADE_LABELS, WALK_LABEL, car_dual_access, walk_dual_access
-from .cartography import framed_choropleth
-from .cities import CITIES, HEX_SIDE_M, N_DUAL_NONSUBSTITUTABLE, WALK_M_PER_MIN, City
+from .cities import CITIES, EXTRA_STUDY_WARDS, HEX_SIDE_M, N_DUAL_NONSUBSTITUTABLE, WALK_M_PER_MIN, City
 from .download import DATASETS, ensure_inputs, unzip_if_needed
 from .hexgrid import hex_grid
 from .metrics import city_metrics, metrics_table
@@ -66,9 +66,31 @@ def metro_lga_polygons(city: City) -> gpd.GeoDataFrame:
     return gdf.to_crs(4326)
 
 
+def extra_study_wards(city: City) -> gpd.GeoDataFrame | None:
+    """Named wards outside the metro LGA that still belong on the study outline."""
+    names = EXTRA_STUDY_WARDS.get(city.slug)
+    if not names:
+        return None
+    from .wards import link_ward_source
+
+    path = link_ward_source()
+    west, south, east, north = city.bbox
+    pad = 0.08
+    wards = gpd.read_file(path, bbox=(west - pad, south - pad, east + pad, north + pad))
+    if wards.crs is None:
+        wards = wards.set_crs(4326)
+    wards = wards.to_crs(4326)
+    extra = wards[wards["wardname"].isin(names)].copy()
+    return extra if not extra.empty else None
+
+
 def urban_boundary_lgas(city: City) -> gpd.GeoDataFrame:
     gdf = metro_lga_polygons(city)
-    return gpd.GeoDataFrame(geometry=[unary_union(gdf.geometry)], crs=gdf.crs)
+    geom = unary_union(gdf.geometry)
+    extra = extra_study_wards(city)
+    if extra is not None and not extra.empty:
+        geom = unary_union([geom, extra.union_all()])
+    return gpd.GeoDataFrame(geometry=[geom], crs=gdf.crs)
 
 
 def load_facility_layers() -> dict[str, gpd.GeoDataFrame]:
@@ -106,14 +128,19 @@ def analyse_city(
     reuse_hexes: bool = True,
     with_car: bool = False,
 ) -> dict:
+    t0 = time.perf_counter()
+    print(f"{city.name}: building boundary and hexes …", flush=True)
     boundary = urban_boundary_lgas(city)
     gpkg = DATA_PROCESSED / f"{city.slug}_hexes.gpkg"
     if reuse_hexes and gpkg.exists():
         hexes = gpd.read_file(gpkg)
         hexes = hexes[["geometry"]].copy()
         hexes["hex_id"] = range(len(hexes))
+        print(f"  reused {len(hexes):,} hexes in {time.perf_counter() - t0:.1f}s", flush=True)
     else:
         hexes = hex_grid(boundary, HEX_SIDE_M)
+        print(f"  {len(hexes):,} hexes in {time.perf_counter() - t0:.1f}s", flush=True)
+    t_pop = time.perf_counter()
     pop_source = population_label(pop_raster, pop_layer)
     if pop_raster and pop_raster.exists() and pop_raster.stat().st_size > 1000:
         hexes = populate_hexes(hexes, pop_raster)
@@ -121,6 +148,7 @@ def analyse_city(
         hexes = hexes.copy()
         hexes["pop"] = 1.0
         pop_source = population_label(None, pop_layer)
+    print(f"  population on hexes in {time.perf_counter() - t_pop:.1f}s", flush=True)
 
     hexes_wgs = hexes.to_crs(4326)
     frame = unary_union(boundary.to_crs(4326).geometry)
@@ -201,6 +229,7 @@ def analyse_city(
             prev_car = prev
 
     walk_ok = False
+    t_walk = time.perf_counter()
     try:
         walk = walk_dual_access(hexes_wgs, health, schools, city, n=N_DUAL_NONSUBSTITUTABLE)
         hexes["t_health"] = walk["t_health_walk"]
@@ -210,6 +239,7 @@ def analyse_city(
         hexes["PT_k"] = walk["PT_walk"]
         hexes["PT_walk"] = walk["PT_walk"]
         walk_ok = True
+        print(f"  walk dual access in {time.perf_counter() - t_walk:.1f}s", flush=True)
     except Exception as exc:
         print(f"OSM walk routing failed for {city.name}, Euclidean headline: {exc}", flush=True)
         hexes["t_health"] = t_health_eu
@@ -252,7 +282,11 @@ def analyse_city(
             "health_source": health_source,
             "school_source": school_source,
             "pop_source": pop_source,
-            "boundary": "geoBoundaries ADM2 metro LGAs (GHS UC stand-in)",
+            "boundary": (
+                "geoBoundaries ADM2 metro LGAs plus Kubwa, Dutse and Usuma in Bwari"
+                if city.slug == "abuja"
+                else "geoBoundaries ADM2 metro LGAs (GHS UC stand-in)"
+            ),
             "mode": WALK_LABEL if walk_ok else "foot Euclidean 5 km/h (OSM walk failed)",
             "mode_eucl": "foot Euclidean 5 km/h (sensitivity)",
             "hex_side_m": HEX_SIDE_M,
@@ -286,6 +320,7 @@ def analyse_city(
     )
     png = None
     if write_maps:
+        from .cartography import framed_choropleth
         png = framed_choropleth(
             hexes,
             "PT_k",
@@ -322,6 +357,7 @@ def analyse_city(
     m["map_pt"] = str(png) if png else ""
     # Written here, not batched in run(): a later city dying must not discard this one.
     metrics_table([m]).to_csv(DATA_PROCESSED / f"{city.slug}_metrics.csv", index=False)
+    print(f"{city.name}: analyse_city finished in {time.perf_counter() - t0:.1f}s", flush=True)
     return {"metrics": m, "hexes": hexes, "boundary": boundary, "health": health, "schools": schools}
 
 

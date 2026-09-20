@@ -14,7 +14,7 @@ cd web && python3 -m http.server 5173
 
 Open http://127.0.0.1:5173/
 
-Lagos shows seven inner local government areas and Abuja shows seven AMAC wards. Panel scores match that frame. The paper headline is still the metro.
+Lagos shows seven inner local government areas. Abuja shows seven AMAC wards plus Kubwa, Dutse and Usuma in Bwari, not the rest of Bwari. Panel scores match that frame. The paper headline is the study boundary.
 
 Ward outlines keep the original shared edges. Independently simplifying each ward opens gap slivers along the boundaries, so that step is skipped.
 

@@ -5,7 +5,7 @@ author: Wisdom Akpabio
 date: September 2026
 keywords: 15-minute city; walking; clinics; schools; Lagos; Kano; Ibadan; Abuja; Port Harcourt
 abstract: |
-  Walking times to clinics and schools are measured here for Lagos, Kano, Ibadan, Abuja and Port Harcourt. The scores follow [Bruno, Melo, Campanelli and Loreto (2024)](https://doi.org/10.1038/s44284-024-00119-4). The inventories are GRID3 rather than OpenStreetMap amenities, and the walk follows mapped streets at 5 km/h. From each neighbourhood the time is the average to the five nearest clinics and the five nearest schools. That average is 15 minutes or less for **85.4%** of people in Lagos, **82.1%** in Ibadan, **67.2%** in Kano, **30.7%** in Port Harcourt and **16.5%** in Abuja. Compact settlement still sorts most of that ranking. It does not sort Port Harcourt, which is crowded (6,946 people per km²) but holds only 75 clinics per million against 364 in Ibadan, most of them still in the old township while residents have moved into Obio/Akpor. Bruno et al. required twenty nearby places; under that rule Port Harcourt falls to 1.1% and Abuja to none. Lagos, Ibadan, Kano and Port Harcourt already hold more clinics than an optimal 15-minute layout would need. Abuja does not, and some of Abuja’s empty cells are missing streets rather than missing buildings. About **1.2 million** children under five live more than fifteen minutes from a clinic.
+  Walking times to clinics and schools are measured here for Lagos, Kano, Ibadan, Abuja and Port Harcourt. The scores follow [Bruno, Melo, Campanelli and Loreto (2024)](https://doi.org/10.1038/s44284-024-00119-4). The inventories are GRID3 rather than OpenStreetMap amenities, and the walk follows mapped streets at 5 km/h. From each neighbourhood the time is the average to the five nearest clinics and the five nearest schools. That average is 15 minutes or less for **85.4%** of people in Lagos, **82.1%** in Ibadan, **67.2%** in Kano, **30.7%** in Port Harcourt and **21.5%** in Abuja. Compact settlement still sorts most of that ranking. It does not sort Port Harcourt, which is crowded (6,946 people per km²) but holds only 75 clinics per million against 364 in Ibadan, most of them still in the old township while residents have moved into Obio/Akpor. Bruno et al. required twenty nearby places; under that rule Port Harcourt falls to 1.1% and Abuja to 0.1%. Lagos, Ibadan, Kano and Port Harcourt already hold more clinics than an optimal 15-minute layout would need. Abuja does not, and some of Abuja’s empty cells are missing streets rather than missing buildings. About **1.2 million** children under five live more than fifteen minutes from a clinic.
 ---
 
 <div class="glossary">
@@ -59,7 +59,7 @@ GRID3 is the inventory Nigerian health and education already keep. OSM amenity t
 
 # 2. Statement of the problem
 
-People here still walk to the clinic and to school when the fare is not there. A fifteen-minute score is supposed to say if that walk is short. The version published for cities worldwide takes amenities off OpenStreetMap and asks for twenty nearby places. Run that way, Port Harcourt is about one percent and Abuja is none. GRID3 already lists the clinics and schools Nigeria has mapped. OSM, in the same boxes, holds only a fraction of the schools.
+People here still walk to the clinic and to school when the fare is not there. A fifteen-minute score is supposed to say if that walk is short. The version published for cities worldwide takes amenities off OpenStreetMap and asks for twenty nearby places. Run that way, Port Harcourt is about one percent and Abuja is 0.1%. GRID3 already lists the clinics and schools Nigeria has mapped. OSM, in the same boxes, holds only a fraction of the schools.
 
 The question this paper can actually answer is narrower. From a neighbourhood in these five cities, how long is the walk on the drawn streets to five GRID3 clinics and five GRID3 schools? If that walk is long, the map has to say why, because the same low number can be a thin stock (Port Harcourt’s 75 clinics per million), stock that did not follow the people (Ungogo, Obio/Akpor, Eti-Osa), or streets that were never drawn (half of Abuja’s hexagons). The clock is still kind. It runs at 5 km/h on a carriageway. It does not know if there is a walkway, if the street goes through, or if anyone would choose that street in the afternoon heat.
 
@@ -96,11 +96,11 @@ Ungogo to the north and Kumbotso to the south now hold more people than the wall
 
 ### Abuja
 
-The Municipal Area Council is 1,476 km² at 1,470 people per km²: a capital territory rather than a compact city (Abubakar, 2014; Abubakar and Doan, 2017). The original districts (Garki, Wuse, Maitama, Asokoro) were drawn for a much smaller population. Gwarinpa and Kabusa, including Lokogoma, now hold most of the people. Gui, Orozo, Gwagwa and Jiwa sit on the same AMAC polygon and pull the choropleth toward empty land. Headline scores in Table 1 stay on all of AMAC. Figure 1d and the other plates draw seven wards only (Gwarinpa, Wuse, Nyanya, Karu, City Centre, Garki and Kabusa) so the city that is actually lived in can be seen. On that outline 1.60 million people sit at **18.8%** inside 15 minutes (Table 1b).
+The Municipal Area Council is 1,476 km² of capital territory rather than a compact city (Abubakar, 2014; Abubakar and Doan, 2017). This study adds the built-up Bwari satellite of Kubwa, Dutse and Usuma, not the rest of Bwari. The combined outline is 1,658 km² at 1,556 people per km², 2.58 million people. The original districts (Garki, Wuse, Maitama, Asokoro) were drawn for a much smaller population. Gwarinpa and Kabusa, including Lokogoma, still hold most of the AMAC residents. Gui, Orozo, Gwagwa and Jiwa sit on the same AMAC polygon and pull the choropleth toward empty land; they stay in Table 1 and stay off the plate. Figure 1d and the other plates draw ten wards: the seven lived-in AMAC wards plus Kubwa, Dutse and Usuma. On that outline 2.02 million people sit at **24.7%** inside 15 minutes (Table 1b). Headline scores in Table 1 are the combined outline.
 
 <figure class="study-map">
 <img src="../maps/abuja_study_area.png" alt="Study area of Abuja: clinics, schools and walking streets" />
-<figcaption>Figure 1d. Abuja as lived in: Gwarinpa, Wuse, Nyanya, Karu, City Centre, Garki and Kabusa. Karu has a cluster. Gwarinpa and Kabusa have people on a coarser grid. 1.60 million people, F15 18.8%. All of AMAC in Table 1 is 16.5%.</figcaption>
+<figcaption>Figure 1d. Abuja as lived in: seven AMAC wards plus Kubwa, Dutse and Usuma in Bwari. Kubwa and Usuma sit closer than Gwarinpa. 2.02 million people on the plate, F15 24.7%. Table 1 is 2.58 million at 21.5%.</figcaption>
 </figure>
 
 ### Port Harcourt
@@ -277,9 +277,9 @@ Bruno et al. move existing clinics; here the count starts from none. N* ignores 
 
 ## 4.5 Completeness of the street map, and the plates
 
-Median snap distance, the share of hexagons and of people off-network, and the OSM-to-GRID3 school ratio are reported with every F15 (Table 4). Abuja is the warning: the typical hexagon centre sits 263 m from a mapped walking street.
+Median snap distance, the share of hexagons and of people off-network, and the OSM-to-GRID3 school ratio are reported with every F15 (Table 4). Abuja is the warning: the typical hexagon centre sits 198 m from a mapped walking street.
 
-Ward outlines on the plates are GRID3 vaccination wards. Names printed on top of them are OpenStreetMap districts (`place=suburb`, `quarter` or `neighbourhood`), plus a few named residential areas OSM never promoted to a suburb (Lokogoma). GRID3 settlement points fill the rare pinned name that OSM lacks (Apo). Helvetica 14 pt, overlapping names omitted. Lagos labels are this class (Ikoyi, Victoria Island, Sangotedo). Lagos’s plate is seven local government areas (Eti-Osa, Lagos Island, Apapa, Lagos Mainland, Surulere, Mushin and Shomolu), not the 16-area metro. Abuja’s plate is seven wards only (Gwarinpa, Wuse, Nyanya, Karu, City Centre, Garki and Kabusa), not the rest of AMAC. Kabusa is what puts Lokogoma inside the drawn city.
+Ward outlines on the plates are GRID3 vaccination wards. Names printed on top of them are OpenStreetMap districts (`place=suburb`, `quarter` or `neighbourhood`), plus a few named residential areas OSM never promoted to a suburb (Lokogoma). GRID3 settlement points fill the rare pinned name that OSM lacks (Apo). Helvetica 14 pt, overlapping names omitted. Lagos labels are this class (Ikoyi, Victoria Island, Sangotedo). Lagos’s plate is seven local government areas (Eti-Osa, Lagos Island, Apapa, Lagos Mainland, Surulere, Mushin and Shomolu), not the 16-area metro. Abuja’s plate is ten wards: Gwarinpa, Wuse, Nyanya, Karu, City Centre, Garki and Kabusa, plus Kubwa, Dutse and Usuma in Bwari. Not the rest of AMAC, not the rest of Bwari. Kabusa is what puts Lokogoma inside the drawn city.
 
 ## 4.6 Streets people will not walk
 
@@ -299,12 +299,12 @@ Ibadan is compact and the street map is almost complete, so the remaining reason
 
 The buildings and the streets are in Figure 1. The scores that follow time those streets.
 
-Lagos and Ibadan, both above 8,900 people per km², put **85.4%** and **82.1%** of residents inside a 15-minute walk. Kano is denser still (10,092 per km²) and reaches only **67.2%**. Port Harcourt, at 6,946 per km², reaches **30.7%**. Abuja, at 1,470 per km², reaches **16.5%**. Average city walk time runs from **10.3 minutes** in Lagos to **32.2 minutes** in Abuja.
+Lagos and Ibadan, both above 8,900 people per km², put **85.4%** and **82.1%** of residents inside a 15-minute walk. Kano is denser still (10,092 per km²) and reaches only **67.2%**. Port Harcourt, at 6,946 per km², reaches **30.7%**. Abuja, at 1,556 per km², reaches **21.5%**. Average city walk time runs from **10.3 minutes** in Lagos to **29.8 minutes** in Abuja.
 
 The dashed line in Figure 3 is fitted to the four cities other than Port Harcourt. Compact settlement goes some way toward explaining who can walk 15 minutes. Ibadan holds 364 clinics per million people; Port Harcourt holds 75. Kano holds 80, thin enough, even in the densest of the five, to sit well below the line compactness would have predicted.
 
 ::: {.table-block}
-<div class="table-cap">Table 1. Walking access, five nearby places, 5 km/h. Area is the metro local-government outline.</div>
+<div class="table-cap">Table 1. Walking access, five nearby places, 5 km/h. Area is the study outline: metro local-government areas, and in Abuja those plus Kubwa, Dutse and Usuma.</div>
 
 | City | Area | Population | Density | Average walk | F15 | Gini | F15, health | F15, schools |
 |---|---|---|---|---|---|---|---|---|
@@ -312,7 +312,7 @@ The dashed line in Figure 3 is fitted to the four cities other than Port Harcour
 | Ibadan | 126 km² | 1.22M | 9,659 /km² | 10.9 min | 82.1% | 0.310 | 81.9% | 79.5% |
 | Kano | 573 km² | 5.78M | 10,092 /km² | 13.5 min | 67.2% | 0.291 | 55.9% | 74.4% |
 | Port Harcourt | 336 km² | 2.33M | 6,946 /km² | 21.2 min | 30.7% | 0.272 | 24.7% | 47.1% |
-| Abuja | 1,476 km² | 2.17M | 1,470 /km² | 32.2 min | 16.5% | 0.312 | 13.3% | 25.9% |
+| Abuja | 1,658 km² | 2.58M | 1,556 /km² | 29.8 min | 21.5% | 0.325 | 17.8% | 31.9% |
 
 :::
 
@@ -321,7 +321,7 @@ The dashed line in Figure 3 is fitted to the four cities other than Port Harcour
 <img src="../charts/f15_vs_density.png" alt="F15 against population density" />
 </figure>
 
-Health is the weaker of the two services in four cities. The gap is **22 points** in Port Harcourt (24.7% against 47.1%). Averaging clinics with schools into one walk time hides that. Ibadan is the only city where schools trail clinics, and the only one that holds roughly as many of each (445 clinics, 453 schools). Applying the city-wide health score to each city’s under-five population gives about **1.2 million** children under five more than 15 minutes from a clinic: 426,000 in Kano, 277,000 in Abuja, 233,000 in Lagos, 228,000 in Port Harcourt, 31,000 in Ibadan. Those headcounts are the city health score laid onto under-fives.
+Health is the weaker of the two services in four cities. The gap is **22 points** in Port Harcourt (24.7% against 47.1%). Averaging clinics with schools into one walk time hides that. Ibadan is the only city where schools trail clinics, and the only one that holds roughly as many of each (445 clinics, 453 schools). Applying the city-wide health score to each city’s under-five population gives about **1.2 million** children under five more than 15 minutes from a clinic: 426,000 in Kano, 313,000 in Abuja, 233,000 in Lagos, 228,000 in Port Harcourt, 31,000 in Ibadan. Those headcounts are the city health score laid onto under-fives.
 
 Gini is highest in Lagos (0.346) and lowest in Port Harcourt (0.272). Bruno et al. (2024) found that cities with worse average access were also more unequal. The pattern here runs the other way. Lagos is close for most people and very far for a few: the peninsula hanging off a working city. Port Harcourt is far for almost everyone, so the low Gini is shared distance rather than shared access.
 
@@ -334,8 +334,9 @@ Figures 4 and 5 put Table 1 on a map. Green on the walking plates is 15 minutes 
 |---|---|---|---|---|---|
 | Lagos | Seven local government areas | 2.33M | 12.6 min | 70.6% | 0.420 |
 | Lagos | Nine areas off the plate | 6.26M | 9.1 min | 91.3% | 0.280 |
-| Abuja | Seven wards | 1.60M | 28.4 min | 18.8% | 0.275 |
-| Abuja | Four AMAC wards off the plate | 490,000 | 38.7 min | 11.7% | 0.322 |
+| Abuja | Ten wards | 2.02M | 26.3 min | 24.7% | 0.294 |
+| Abuja | Four AMAC wards off the plate | 490,000 | 38.1 min | 11.4% | 0.314 |
+| Abuja | AMAC only | 2.10M | 30.5 min | 17.0% | 0.293 |
 
 :::
 
@@ -361,7 +362,7 @@ Figures 4 and 5 put Table 1 on a map. Green on the walking plates is 15 minutes 
 
 <figure class="plate-page">
 <img src="../maps/abuja_PT_k_plate.png" alt="Walking access in Abuja" />
-<figcaption>Figure 4e. Walking access to clinics and schools in Abuja. The outline is seven wards: Gwarinpa, Wuse, Nyanya, Karu, City Centre, Garki and Kabusa. Karu is the closest of those; Gwarinpa, Garki, Apo and Lokogoma sit well outside 15 minutes.</figcaption>
+<figcaption>Figure 4e. Walking access to clinics and schools in Abuja. The outline is ten wards: seven in AMAC plus Kubwa, Dutse and Usuma in Bwari. Usuma and Kubwa sit closer than Gwarinpa; Karu is still the closest AMAC ward. Gwarinpa, Garki, Apo and Lokogoma sit well outside 15 minutes.</figcaption>
 </figure>
 
 <figure class="plate-page">
@@ -386,7 +387,7 @@ Figures 4 and 5 put Table 1 on a map. Green on the walking plates is 15 minutes 
 
 <figure class="plate-page">
 <img src="../maps/abuja_pop_plate.png" alt="Population in Abuja" />
-<figcaption>Figure 5e. Population in Abuja. Gwarinpa and Kabusa (Lokogoma) hold most of the people in the seven wards and sit well outside 15 minutes.</figcaption>
+<figcaption>Figure 5e. Population in Abuja. Gwarinpa and Kabusa (Lokogoma) still hold most of the AMAC people and sit well outside 15 minutes. Kubwa, Dutse and Usuma add a dense satellite to the north-west.</figcaption>
 </figure>
 
 ### 5.1.1 Lagos
@@ -425,15 +426,15 @@ N* is 115 well-placed clinics for a 90% single-clinic walk. The city already hol
 
 ### 5.1.5 Abuja
 
-Median snap to a walking street is **263 m**, the only city that fails 250 m on the median. Half the hexes, holding 7.0% of people, sit off-network. F15 is **16.5%** and the average walk **32.2 minutes**, on 1,476 km² at 1,470 people per km², with 238 clinics (110 per million) and 362 schools. Health is 13.3%, schools 25.9%. About **277,000** children under five live more than 15 minutes from a clinic. The 16.5% mixes genuine distance with unmapped streets; Table 4 has to sit next to it.
+Median snap to a walking street is **198 m**, still the longest of the five, though it now sits under the 250 m warning. **45.2%** of hexes, holding **3.1%** of people, sit off-network: the empty AMAC land is still on the grid, but Kubwa’s streets pulled the typical neighbourhood closer to a mapped path. F15 is **21.5%** and the average walk **29.8 minutes**, on 1,658 km² at 1,556 people per km², with 307 clinics (119 per million) and 582 schools. Health is 17.8%, schools 31.9%. About **313,000** children under five live more than 15 minutes from a clinic. AMAC on its own is 17.0%. The 21.5% is the combined outline, and Table 4 still has to sit next to it.
 
-The plate is seven wards, 1.60 million people, F15 **18.8%** (Table 1b). The four omitted AMAC wards (Gui, Orozo, Gwagwa, Jiwa) hold 490,000 people at 11.7%; dropping them does not rescue the city. **Karu** is the only ward above 50% (F15 **59.8%**, mean walk 16 minutes), with **Nyanya** next at 34.4%. **Wuse** is 22.8%, **City Centre** 18.3%. The two wards that now hold the capital are not close: **Kabusa** (452,000, including **Lokogoma** and **Apo**) is 13.7%; **Gwarinpa** (432,000) is 11.5%. **Garki**, still read as the planned core, is 12.0% with a mean walk of 34 minutes. **Gui**, off the plate, is 132,000 people at 0% and 63 minutes.
+The plate is ten wards, 2.02 million people, F15 **24.7%** (Table 1b). The four omitted AMAC wards (Gui, Orozo, Gwagwa, Jiwa) hold 490,000 people at 11.4%; dropping them does not rescue the city. The satellite does more of the lifting than those four: **Usuma** is **79.6%** (53,000 people, mean walk 11 minutes), **Kubwa** **53.6%** (126,000, 17 minutes), **Dutse** **37.6%** (233,000, 22 minutes). Among the AMAC wards on the plate, **Karu** is still the closest (**59.9%**, 16 minutes), with **Nyanya** next at 34.9%. **Wuse** is 22.7%, **City Centre** 18.5%. The two wards that now hold most of the capital are not close: **Kabusa** (453,000, including **Lokogoma** and **Apo**) is 13.5%; **Gwarinpa** (430,000) is 11.5%. **Garki**, still read as the planned core, is 11.9% with a mean walk of 34 minutes. **Gui**, off the plate, is 132,000 people at 0% and 60 minutes.
 
-N* is **284** against 238 clinics held, the only city where the well-placed count exceeds the stock, at 13.1 clinics per 100,000 people, nearly three times Ibadan or Port Harcourt. Existing clinics cover 52.5% of people under a single-clinic 15-minute walk. Moving what sits in Karu will not serve Gwarinpa and Kabusa. New sites are required, and some of those missing sites in Gui are missing streets. Empty hexes do not pull F15 down, since F15 is weighted by people; Gwarinpa and Kabusa pull it down because people live there.
+N* is **345** against 307 clinics held, the only city where the well-placed count exceeds the stock, at 13.4 clinics per 100,000 people, nearly three times Ibadan or Port Harcourt. Existing clinics cover 55.0% of people under a single-clinic 15-minute walk. Moving what sits in Karu or Kubwa will not serve Gwarinpa and Kabusa. New sites are required, and some of those missing sites in Gui are missing streets. Empty hexes do not pull F15 down, since F15 is weighted by people; Gwarinpa and Kabusa pull it down because people live there.
 
 ## 5.2 How many nearby places, and how fast people walk
 
-Nearest clinic and school, on the walking network, is already 92–95% in Lagos, Ibadan and Kano, and **53.3%** in Abuja (Figure 6, Table 2). Five nearby places is the headline. Twenty, the original paper’s rule, leaves Port Harcourt at **1.1%** and Abuja at **none**. Requiring twenty substitutes was written for a dense, well-tagged list of amenities (Logan et al., 2022). Copied onto GRID3 clinics it would describe that rule, not a 15-minute walk to a nurse.
+Nearest clinic and school, on the walking network, is already 92–95% in Lagos, Ibadan and Kano, and **57.6%** in Abuja (Figure 6, Table 2). Five nearby places is the headline. Twenty, the original paper’s rule, leaves Port Harcourt at **1.1%** and Abuja at **0.1%**. Requiring twenty substitutes was written for a dense, well-tagged list of amenities (Logan et al., 2022). Copied onto GRID3 clinics it would describe that rule, not a 15-minute walk to a nurse.
 
 ::: {.table-block}
 <div class="table-cap">Table 2. F15 on the walking network at 5 km/h, three choices of how many nearby places count.</div>
@@ -444,7 +445,7 @@ Nearest clinic and school, on the walking network, is already 92–95% in Lagos,
 | Ibadan | 93.9% | 82.1% | 43.6% |
 | Kano | 92.0% | 67.2% | 20.7% |
 | Port Harcourt | 74.4% | 30.7% | 1.1% |
-| Abuja | 53.3% | 16.5% | 0.0% |
+| Abuja | 57.6% | 21.5% | 0.1% |
 
 :::
 
@@ -453,13 +454,13 @@ Nearest clinic and school, on the walking network, is already 92–95% in Lagos,
 <img src="../charts/f15_by_n.png" alt="F15 at n = 1, 5 and 20" />
 </figure>
 
-Five kilometres an hour is optimistic. At 3.5 km/h, with five nearby places, F15 falls to 68.7% in Lagos, 62.3% in Ibadan, 43.0% in Kano, 9.4% in Port Harcourt and 5.0% in Abuja. Treat 3.5–4.5 km/h as the lower band; quote the speed with F15.
+Five kilometres an hour is optimistic. At 3.5 km/h, with five nearby places, F15 falls to 68.7% in Lagos, 62.3% in Ibadan, 43.0% in Kano, 9.4% in Port Harcourt and 8.7% in Abuja. Treat 3.5–4.5 km/h as the lower band; quote the speed with F15.
 
-Straight-line walks overstate F15 everywhere, and most where the street map is most broken: Lagos 95.5% to 85.4%, Ibadan 92.8% to 82.1%, Kano 82.2% to 67.2%, Port Harcourt 68.5% to 30.7%, Abuja 40.6% to 16.5%.
+Straight-line walks overstate F15 everywhere, and most where the street map is most broken: Lagos 95.5% to 85.4%, Ibadan 92.8% to 82.1%, Kano 82.2% to 67.2%, Port Harcourt 68.5% to 30.7%, Abuja 47.1% to 21.5%.
 
 ## 5.3 Placement versus shortage
 
-Ibadan and Port Harcourt need almost the same number of well-placed clinics per 100,000 people (4.7 and 4.9; Figure 7, Table 3). The resemblance stops there. Port Harcourt already holds 175 and reaches 66.1% of residents with a 15-minute walk to one clinic; 115 well-placed clinics would reach 90%. That unused margin sits in Port Harcourt (**Orogbum**, **Etche Waterside**) while **Rumuoji Eneka** and **Egberuukwu Oyigbo** remain uncovered. Lagos uses 2,303 clinics to reach the 90% that 327 well-placed ones would deliver, and still leaves **Ikoyi 1** and **Sangotedo** outside a 15-minute set of five. Kano is already close (89.2% with 465), yet **Ungogo** and **Chalawa** are at zero because the stock sits in Fagge and the Municipal Area, not on the fringe. Abuja is the only city where N* is larger than the stock (284 against 238), at 13.1 clinics per 100,000 people, because population is spread over 1,476 km² and **Gui**, **Gwarinpa** and **Kabusa** are far from what exists.
+Ibadan and Port Harcourt need almost the same number of well-placed clinics per 100,000 people (4.7 and 4.9; Figure 7, Table 3). The resemblance stops there. Port Harcourt already holds 175 and reaches 66.1% of residents with a 15-minute walk to one clinic; 115 well-placed clinics would reach 90%. That unused margin sits in Port Harcourt (**Orogbum**, **Etche Waterside**) while **Rumuoji Eneka** and **Egberuukwu Oyigbo** remain uncovered. Lagos uses 2,303 clinics to reach the 90% that 327 well-placed ones would deliver, and still leaves **Ikoyi 1** and **Sangotedo** outside a 15-minute set of five. Kano is already close (89.2% with 465), yet **Ungogo** and **Chalawa** are at zero because the stock sits in Fagge and the Municipal Area, not on the fringe. Abuja is the only city where N* is larger than the stock (345 against 307), at 13.4 clinics per 100,000 people, because population is spread over 1,658 km² and **Gui**, **Gwarinpa** and **Kabusa** are far from what exists.
 
 ::: {.table-block}
 <div class="table-cap">Table 3. N* for clinics. How many well-placed clinics would put 90% of people within a 15-minute walk of one clinic. “They cover” applies the same rule to clinics already on the map.</div>
@@ -469,7 +470,7 @@ Ibadan and Port Harcourt need almost the same number of well-placed clinics per 
 | Ibadan | 58 | 4.7 | 445 | 92.4% | 0.13 |
 | Port Harcourt | 115 | 4.9 | 175 | 66.1% | 0.66 |
 | Kano | 119 | 2.1 | 465 | 89.2% | 0.26 |
-| Abuja | 284 | 13.1 | 238 | 52.5% | 1.19 |
+| Abuja | 345 | 13.4 | 307 | 55.0% | 1.12 |
 | Lagos | 327 | 3.8 | 2,303 | 90.0% | 0.14 |
 
 :::
@@ -485,7 +486,7 @@ Four cities already hold more clinics than the N* layout needs. The remaining lo
 
 ## 5.4 Completeness of the street map
 
-Table 4 belongs next to every F15. Median distance from a hexagon centre to a walking street is 47 m in Ibadan and 263 m in Abuja. Abuja is the only city that fails 250 m on the median: **50.9%** of its hexagons and **7.0%** of its people sit off the mapped network. The 16.5% F15 is therefore part sprawl and part missing streets, and that mix is visible in **Gui** and **Jiwa**. Lagos looks poorly mapped by hexagon share (24.8%), but those hexagons are lagoon and empty land and hold 2.8% of people, the same fringe that contains **Ikosi Isheri**. OSM school counts stay under a fifth of GRID3 in every city. The plates do not shade the off-network cells. That record sits in this table, not on the colour ramp.
+Table 4 belongs next to every F15. Median distance from a hexagon centre to a walking street is 47 m in Ibadan and 198 m in Abuja. Abuja is still the farthest typical neighbourhood, but it no longer fails 250 m on the median: **45.2%** of its hexagons and **3.1%** of its people sit off the mapped network. The 21.5% F15 is therefore still part sprawl and part missing streets, and that mix is visible in **Gui** and **Jiwa**. Adding Kubwa pulled the median down because those streets are mapped; the empty AMAC hexes are still on the grid. Lagos looks poorly mapped by hexagon share (24.8%), but those hexagons are lagoon and empty land and hold 2.8% of people, the same fringe that contains **Ikosi Isheri**. OSM school counts stay under a fifth of GRID3 in every city. The plates do not shade the off-network cells. That record sits in this table, not on the colour ramp.
 
 ::: {.table-block}
 <div class="table-cap">Table 4. Distance from each hexagon centre to the nearest walking street. Off-network is farther than 250 m. OSM / GRID3 is the school count in the same bounding box.</div>
@@ -496,7 +497,7 @@ Table 4 belongs next to every F15. Median distance from a hexagon centre to a wa
 | Port Harcourt | 56 m | 13.3% | 0.5% | 0.173 |
 | Lagos | 67 m | 24.8% | 2.8% | 0.079 |
 | Kano | 71 m | 18.6% | 0.9% | 0.193 |
-| Abuja | 263 m | 50.9% | 7.0% | 0.140 |
+| Abuja | 198 m | 45.2% | 3.1% | 0.119 |
 
 :::
 
@@ -510,11 +511,11 @@ Lagos city-wide F15 of 85.4% is the sixteen local government areas. Nine of them
 
 Ibadan is small enough that one ward can still move the city. 126 km², median snap 47 m, 445 clinics and 453 schools, F15 82.1%: this is closer to the compact, well-stocked place the fifteen-minute literature was written for. Olopomewa has 78,000 people at 12.4%. Eleyele, immediately west, is 91.8%. There is not much left to explain in the 18 points below 100%. The six outer local government areas are omitted because spreading the outline would hide that ward in thin settlement.
 
-N* turns those maps into a count. Lagos already holds 2,303 clinics and already covers 90% of people under a single-clinic 15-minute walk; 327 well-placed sites would have done the same job. The surplus is on the mainland, so another clinic in Alimosho does not shorten Ikoyi. Ibadan holds 445 against an N* of 58. Kano holds 465 against 119, with the unused stock in Fagge and Dala. Port Harcourt is tighter: 175 held, N* 115, existing coverage only 66.1%. Orogbum looks over-provided; Rumuoji Eneka does not. Abuja is the only city where N* exceeds the stock, 284 against 238, at 13.1 per 100,000 people. Gwarinpa and Kabusa hold 884,000 people between them at 11 to 14%. Karu is 59.8%. Garki, still spoken of as the planned core, is 12.0% with a 34-minute mean walk. Clinics that serve Karu do not serve Gwarinpa.
+N* turns those maps into a count. Lagos already holds 2,303 clinics and already covers 90% of people under a single-clinic 15-minute walk; 327 well-placed sites would have done the same job. The surplus is on the mainland, so another clinic in Alimosho does not shorten Ikoyi. Ibadan holds 445 against an N* of 58. Kano holds 465 against 119, with the unused stock in Fagge and Dala. Port Harcourt is tighter: 175 held, N* 115, existing coverage only 66.1%. Orogbum looks over-provided; Rumuoji Eneka does not. Abuja is the only city where N* exceeds the stock, 345 against 307, at 13.4 per 100,000 people. Gwarinpa and Kabusa hold 883,000 people between them at 11 to 14%. Karu is 59.9%. Kubwa is 53.6%. Garki, still spoken of as the planned core, is 11.9% with a 34-minute mean walk. Clinics that serve Karu or Kubwa do not serve Gwarinpa.
 
-Abuja’s 16.5% also has to be read against Table 4. Median snap is 263 m, the only city that fails 250 m on the median, and 50.9% of hexes (7.0% of people) sit more than 250 m from a mapped walking street. Gui is 132,000 people at 0% and 63 minutes. Distance and an unfinished map occupy the same cells. Drop Gui, Orozo, Gwagwa and Jiwa and the seven-ward plate only rises to 18.8%, so the lived-in capital is not being failed by Gui alone.
+Abuja’s 21.5% also has to be read against Table 4. Median snap is 198 m, still the longest of the five, and 45.2% of hexes (3.1% of people) sit more than 250 m from a mapped walking street. Gui is 132,000 people at 0% and 60 minutes. Distance and an unfinished map occupy the same cells. Drop Gui, Orozo, Gwagwa and Jiwa and the ten-ward plate only rises to 24.7%, so the lived-in capital is not being failed by Gui alone.
 
-[Bruno et al. (2024)](https://doi.org/10.1038/s44284-024-00119-4) required twenty nearby places. At that *n*, Port Harcourt is 1.1% and Abuja is none (Table 2). Logan et al. (2022) and Guzman, Oviedo and Cantillo-Garcia (2024) have already shown that minute-city rules written for dense, substitutable amenities copy badly. Five nearby GRID3 clinics and schools still separate Lagos (85.4%) from Port Harcourt (30.7%). At *n* = 20 both of the poorly stocked cities collapse to the floor of Table 2.
+[Bruno et al. (2024)](https://doi.org/10.1038/s44284-024-00119-4) required twenty nearby places. At that *n*, Port Harcourt is 1.1% and Abuja is 0.1% (Table 2). Logan et al. (2022) and Guzman, Oviedo and Cantillo-Garcia (2024) have already shown that minute-city rules written for dense, substitutable amenities copy badly. Five nearby GRID3 clinics and schools still separate Lagos (85.4%) from Port Harcourt (30.7%). At *n* = 20 both of the poorly stocked cities collapse to the floor of Table 2.
 
 The 1.2 million under-fives are the city-wide health F15 applied to each city’s under-five population. Without DHS clusters or a ward census there is no map of which streets hold more young children. What can be said without that map is which service is weak, and where: Kano, then Abuja, Lagos, Port Harcourt, then Ibadan a long way behind.
 
@@ -532,7 +533,7 @@ Kano’s older streets are through-connected (about 8% dead-ends) and already in
 
 Port Harcourt is crowded (6,946 people per km²) and still at 30.7%. Off-network hexagons are 13.3% of the grid but 0.5% of people, so the miss is not an empty extract. About 31% of walk-graph nodes are dead-ends, the highest of the five, which matches the estate and oil-camp layouts in Obio/Akpor. Rumuoji Eneka is 203,000 people at 0%. Old GRA, Orogbum and Township VI remain walkable and thinly occupied relative to where people now live. Shared taxis already do the trip the walk score calls far. Leaving them out makes Obio/Akpor look more cut off than a working day is, and makes the township look more like a finished walking city than it is.
 
-Abuja fails on both stock and streets. Median snap is 263 m, the only city over 250 m on the median. Half the hexagons and 7.0% of people sit off the mapped network. Gui is 132,000 people at 0% and 63 minutes, but dropping Gui, Orozo, Gwagwa and Jiwa only lifts the seven-ward cut to 18.8%. Gwarinpa and Kabusa, including Lokogoma, hold most of those 1.60 million people and sit at 11 to 14%. Karu is 59.8%. Garki, still named as the planned core, is 12.0% with a 34-minute mean walk. About 27% of nodes are dead-ends. Missing links between districts, an unfinished OSM graph, and 238 clinics where N* wants 284 sit in the same figure. The 16.5% AMAC headline is not sprawl by itself.
+Abuja fails on both stock and streets. Median snap is 198 m, still the longest of the five. 45.2% of hexagons and 3.1% of people sit off the mapped network. Gui is 132,000 people at 0% and 60 minutes, but dropping Gui, Orozo, Gwagwa and Jiwa only lifts the ten-ward cut to 24.7%. Gwarinpa and Kabusa, including Lokogoma, hold most of the AMAC people and sit at 11 to 14%. Karu is 59.9%. Kubwa is 53.6%. Garki, still named as the planned core, is 11.9% with a 34-minute mean walk. About 27% of nodes are dead-ends. Missing links between districts, an unfinished OSM graph, and 307 clinics where N* wants 345 sit in the same figure. The 21.5% headline is not sprawl by itself.
 
 Most unnamed Rivers wards keep an official number. Three in the Port Harcourt local government area are given their INEC names: Township VI, Rumuwoji II and Rumuwoji III.
 
@@ -548,13 +549,13 @@ Kano’s unused stock sits in Fagge and Dala. Ungogo and Kumbotso, 2.62 million 
 
 Port Harcourt’s township is already close. Obio/Akpor is not, and that is where most residents live. Rumuoji Eneka at 0% is the siting miss. Counting clinics in Orogbum will not turn cul-de-sac estates into 15-minute neighbourhoods. The next buildings belong in Obio/Akpor, and the through-streets and walkways there belong in the same plan. Shared taxis already cover some of the distance the walk score records. A walking programme that ignores them will pour concrete nobody uses and still leave the clinics on the wrong side of the city.
 
-Abuja is the exception on stock: N* is 284 against 238 held. Gwarinpa and Kabusa need the buildings. Karu is closer than either. Filling Gui will not fix Gwarinpa, and Garki’s 34-minute mean walk shows that the planned core is not the spare capacity it is assumed to be. Completing the street map, including the missing links between districts, is part of access here. The 16.5% figure in Table 1 should be read with Table 4.
+Abuja is the exception on stock: N* is 345 against 307 held. Gwarinpa and Kabusa need the buildings. Karu and Kubwa are closer than either. Filling Gui will not fix Gwarinpa, and Garki’s 34-minute mean walk shows that the planned core is not the spare capacity it is assumed to be. Completing the street map, including the missing links between districts, is part of access here. The 21.5% figure in Table 1 should be read with Table 4.
 
 None of these cities has a walkway inventory. Distance on a carriageway is not the same as a street people will walk in the heat. Sidewalks, shade and flooding are the next thing to measure.
 
 # 9. Conclusions
 
-Compact settlement still sorts most of Table 1. It does not sort Kano, which is dense and short of clinics on the fringe, and it does not sort Port Harcourt, which is crowded, short of clinics, and grown into Obio/Akpor. Lagos’s 85.4% is Alimosho and the inner mainland carrying Eti-Osa. Ibadan’s 82.1% is a compact stock with a hole in Olopomewa. Abuja’s 16.5% is sprawl, a short clinic list, and an unfinished street map in the same figure. N* says Lagos, Ibadan, Kano and Port Harcourt already hold more clinics than a well-placed 15-minute layout would need; Abuja holds fewer. The twenty-place rule belongs in Table 2. The headline is five nearby GRID3 clinics and schools, read with Table 4.
+Compact settlement still sorts most of Table 1. It does not sort Kano, which is dense and short of clinics on the fringe, and it does not sort Port Harcourt, which is crowded, short of clinics, and grown into Obio/Akpor. Lagos’s 85.4% is Alimosho and the inner mainland carrying Eti-Osa. Ibadan’s 82.1% is a compact stock with a hole in Olopomewa. Abuja’s 21.5% is sprawl, a short clinic list, and an unfinished street map in the same figure. N* says Lagos, Ibadan, Kano and Port Harcourt already hold more clinics than a well-placed 15-minute layout would need; Abuja holds fewer. The twenty-place rule belongs in Table 2. The headline is five nearby GRID3 clinics and schools, read with Table 4.
 
 # Data availability
 
