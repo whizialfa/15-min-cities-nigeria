@@ -31,7 +31,7 @@ A short walk needs people living near one another, and it needs the clinic or sc
 
 If crowding were enough, Kano would sit with Lagos and Ibadan, and Port Harcourt would sit nearer both of them than to Abuja. Kano is the densest of the five and still trails Lagos, with far fewer clinics per person. The walled city and Sabon Gari remain walkable. About 45% of the city now lives later, in Ungogo and Kumbotso. Port Harcourt is crowded too, yet it keeps only 75 clinics per million people against 364 in Ibadan, and those clinics still sit in the old township while most residents now live next door in Obio/Akpor. Abuja was drawn as a capital territory, so most people cannot walk fifteen minutes even before the unfinished street map is taken into account.
 
-Lagos, Ibadan, Kano and Port Harcourt already hold more clinics than they would need if the buildings stood in the right places. Another clinic on a well-served mainland will not shorten the walk in Ikoyi or Ungogo. Abuja holds fewer than that layout would need.
+Lagos, Ibadan, Kano and Port Harcourt already hold more clinics than they would need if the buildings stood in the right places. Another clinic on a well-served mainland will not shorten the walk in Banana Island or Ungogo. Abuja holds fewer than that layout would need; clinics that serve Dakwa do not serve Life Camp.
 :::
 
 ::: {.table-block}
@@ -68,15 +68,15 @@ Far on the map can mean a missing clinic or a street that has not been drawn. Th
 
 The same neighbourhoods can be panned at [https://whizialfa.github.io/15-min-cities-nigeria/](https://whizialfa.github.io/15-min-cities-nigeria/). Lagos and Abuja on that map are the tighter cuts in the table below, not the city-wide shares at the top.
 
-Nine of Lagos’s sixteen local government areas, about 6 million people, are left off the Lagos map below. They already live inside fifteen minutes. Alimosho alone holds 2.4 million of them. What the map actually shows is Eti-Osa: Ikoyi, Falomo, Lekki, Ajah, Sangotedo. Victoria Island sits in between. Mushin, Yaba, Surulere and Apapa are green. South of the docks, Ilado and Oko Agbo sit on creek islands that the street map treats as land. The trip is often a boat.
+Nine of Lagos’s sixteen local government areas, about 6 million people, are left off the Lagos map below. They already live inside fifteen minutes. Alimosho alone holds 2.4 million of them. What the map actually shows is Eti-Osa: Ikoyi (Banana Island, Onikoyi), Falomo, Lekki, Ajah (Ikota), Sangotedo (Olokonla). Victoria Island sits in between. Mushin, Yaba, Surulere and Apapa are green. South of the docks, Ilado and Oko Agbo sit on creek islands that the street map treats as land. The trip is often a boat.
 
 Ibadan’s core from Dugbe through Agodi, Agugu and Molete is close. Olopomewa, a large western ward of 78,000 people, averages twenty-two minutes. Eleyele, next door, is already inside fifteen minutes.
 
 Kano’s 67% is the fringe. Dala, the Municipal Area, Tarauni and Nassarawa still work. Ungogo and Kumbotso hold 2.6 million people between them. Some named wards there, Gayawa among them, have almost no one inside fifteen minutes. Schools do more of the work than clinics.
 
-The named city of Port Harcourt is the island and township around Old GRA, Orogbum, Township VI and Rumuwoji. Most of the people, and most of the long walks, sit in Obio/Akpor. Rumuoji Eneka, more than 200,000 people, is outside fifteen minutes.
+The named city of Port Harcourt is the island and township around Old GRA, Orogbum, Township VI and Rumuwoji. Most of the people, and most of the long walks, sit in Obio/Akpor. Rumuoji Eneka, more than 200,000 people, is outside fifteen minutes; Eneka and Elimgbu sit in that belt.
 
-Garki, Wuse, Maitama and Asokoro were drawn for a smaller Abuja. Gwarinpa and Kabusa, including Lokogoma and Apo, now hold most of the AMAC people and sit well outside fifteen minutes. Kubwa, Dutse and Usuma in Bwari sit on the plate and pull the city score up; Usuma is closer than Gwarinpa. Karu is the closest of the AMAC wards. Gui, off the tighter map, is 132,000 people at about an hour. The 21% figure mixes real distance with an unfinished street map.
+Garki, Wuse, Maitama and Asokoro were drawn for a smaller Abuja. Gwarinpa and Kabusa, including Lokogoma, Apo, Galadimawa and Life Camp, now hold most of the AMAC people and sit well outside fifteen minutes. Kubwa, Dutse and Usuma in Bwari sit on the plate and pull the city score up; Usuma is closer than Gwarinpa. The populated north-west of that plate is Dakwa and Dei-Dei, inside Kubwa, not extra Bwari. Karu is the closest of the AMAC wards. Gui, off the tighter map, is 132,000 people at about an hour. The 21% figure mixes real distance with an unfinished street map.
 
 ::: {.table-block}
 <div class="table-cap">The Lagos and Abuja maps are tighter cuts. City-wide scores stay in the first table. Walking on mapped streets, five nearby places, 5 km/h. Figures rounded.</div>
@@ -153,7 +153,7 @@ Methods and references are in the [full paper](fifteen_minute_access_nigeria.pdf
 © Wisdom Akpabio, 2026. Clinic, school and population data from GRID3 and WorldPop. Streets from OpenStreetMap.
 
 <figure class="plate-page">
-<figcaption>Lagos. Green is a 15-minute walk or less. The inner mainland is green; Eti-Osa is farther.</figcaption>
+<figcaption>Lagos. Green is a 15-minute walk or less. The inner mainland is green; Eti-Osa (Banana Island, Ikota, Olokonla) is farther.</figcaption>
 <img src="../maps/lagos_PT_k_plate.png" alt="Walking access in Lagos" />
 </figure>
 
@@ -168,11 +168,11 @@ Methods and references are in the [full paper](fifteen_minute_access_nigeria.pdf
 </figure>
 
 <figure class="plate-page">
-<figcaption>Port Harcourt. The old township is green. Obio/Akpor, where most people now live, is farther.</figcaption>
+<figcaption>Port Harcourt. The old township is green. Obio/Akpor (Eneka, Elimgbu, Ozuoba), where most people now live, is farther.</figcaption>
 <img src="../maps/port_harcourt_PT_k_plate.png" alt="Walking access in Port Harcourt" />
 </figure>
 
 <figure class="plate-page">
-<figcaption>Abuja. Karu is the closest of the lived-in wards. Gwarinpa, Kabusa, Apo and Lokogoma sit farther out.</figcaption>
+<figcaption>Abuja. Karu is the closest of the lived-in AMAC wards. Kubwa (Dakwa, Dei-Dei) sits closer than Gwarinpa. Life Camp, Galadimawa, Apo and Lokogoma sit farther out.</figcaption>
 <img src="../maps/abuja_PT_k_plate.png" alt="Walking access in Abuja" />
 </figure>

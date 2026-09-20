@@ -69,3 +69,10 @@ Cut is AMAC plus Kubwa, Dutse and Usuma only. Not the rest of Bwari (Kawu, Igu, 
 - `2026-09-20 22:54:14 WAT` done **settlement inventory** in **3.4 min** (207 s) — slug; abuja             379; ibadan            324; kano             5085; lagos            1094; port_harcourt     197
 - `2026-09-20 22:55:13 WAT` start **web map settlements** — attach nearest settlement names to hex/ward popups
 - `2026-09-20 22:58:50 WAT` done **web map settlements** in **3.6 min** (216 s) — /Users/atimakaduh/Documents/Portfolio/Paper replicas/15-min-cities-nigeria/web/data/metrics.json
+
+- `2026-09-20 23:14:31 WAT` start **reprint PDFs with villages** — Dakwa, Dei-Dei, Banana Island, Eneka in colour paper and brief
+- `2026-09-20 23:14:40 WAT` start **reprint colour paper PDF**
+- `2026-09-20 23:15:03 WAT` done **reprint colour paper PDF** in **0.4 min** (23 s) — copied to web/paper/
+- `2026-09-20 23:15:16 WAT` start **reprint brief PDF**
+- `2026-09-20 23:15:35 WAT` done **reprint brief PDF** in **0.3 min** (19 s)
+- `2026-09-20 23:15:35 WAT` done **reprint PDFs with villages** in **1.1 min** (64 s from pandoc)
