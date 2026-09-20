@@ -159,10 +159,16 @@ def build(slugs: list[str] | None = None) -> pd.DataFrame:
     path = DATA_PROCESSED / "nstar.csv"
     table = pd.read_csv(path) if path.exists() else pd.DataFrame()
     for slug in slugs or ["port_harcourt"]:
-        row = pd.DataFrame([nstar_city(slug)])
+        row = nstar_city(slug)
+        obs = observed_coverage(slug, "health")
+        row["n_facilities"] = obs["n_facilities"]
+        row["pop_covered"] = obs["pop_covered"]
+        have = obs["n_facilities"]
+        row["sites_vs_existing"] = (row["N_star"] / have) if have else float("nan")
+        frame = pd.DataFrame([row])
         if len(table):
             table = table[table["slug"] != slug]
-        table = pd.concat([table, row], ignore_index=True)
+        table = pd.concat([table, frame], ignore_index=True)
         # Per city, and merged rather than replaced: the coverage pass runs for hours and
         # a kill on city four must not take the first three with it.
         table.to_csv(path, index=False)

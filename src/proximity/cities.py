@@ -83,9 +83,9 @@ CITIES: dict[str, City] = {
         name="Abuja",
         state="Federal Capital Territory",
         utm_epsg=32632,
-        bbox=(7.30, 8.90, 7.58, 9.20),
+        bbox=(7.20, 8.90, 7.60, 9.22),
         metro_lgas=("Municipal Area Council",),
-        notes="FCT urban core (not the entire territory).",
+        notes="AMAC plus the built-up Bwari wards (Kubwa, Dutse, Usuma). Not the rest of Bwari.",
     ),
     "port_harcourt": City(
         slug="port_harcourt",
@@ -97,7 +97,8 @@ CITIES: dict[str, City] = {
     ),
 }
 
-# Plate clips (not the analysis boundary). Lagos keeps seven inner LGAs; Abuja keeps seven AMAC wards.
+# Plate clips (not the analysis boundary). Lagos keeps seven inner LGAs.
+# Abuja keeps seven AMAC wards plus the built-up Bwari satellite (Kubwa, Dutse, Usuma).
 LAGOS_PLATE_LGAS = (
     "Eti Osa",
     "Lagos Island",
@@ -107,6 +108,11 @@ LAGOS_PLATE_LGAS = (
     "Mushin",
     "Shomolu",
 )
+ABUJA_SATELLITE_WARDS = (
+    "Kubwa",
+    "Dutse",
+    "Usuma",
+)
 ABUJA_PLATE_WARDS = (
     "Gwarinpa",
     "Wuse",
@@ -115,7 +121,10 @@ ABUJA_PLATE_WARDS = (
     "City Centre",
     "Garki",
     "Kabusa",
-)
+) + ABUJA_SATELLITE_WARDS
+EXTRA_STUDY_WARDS = {
+    "abuja": ABUJA_SATELLITE_WARDS,
+}
 
 WALK_M_PER_MIN = 5000 / 60  # 5 km/h until OSRM
 N_DUAL_DEFAULT = 20

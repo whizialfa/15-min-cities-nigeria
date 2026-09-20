@@ -85,8 +85,10 @@ def _notable(g: gpd.GeoDataFrame, n: int = 4) -> pd.DataFrame:
 
 
 def build(slugs: list[str] | None = None) -> pd.DataFrame:
-    rows = []
-    notes = []
+    path = DATA_PROCESSED / "ward_f15_summary.csv"
+    notes_path = DATA_PROCESSED / "ward_f15_notable.csv"
+    table = pd.read_csv(path) if path.exists() else pd.DataFrame()
+    notes = pd.read_csv(notes_path) if notes_path.exists() else pd.DataFrame()
     for slug in slugs or list(CITIES):
         if not (DATA_PROCESSED / f"{slug}_wards.gpkg").exists():
             continue
@@ -97,22 +99,24 @@ def build(slugs: list[str] | None = None) -> pd.DataFrame:
         ok = g["F15"].notna()
         populated = ok & (g["pop"].fillna(0) >= MIN_WARD_POP)
         use = g.loc[populated] if populated.any() else g.loc[ok]
-        rows.append(
-            {
-                "city": CITIES[slug].name,
-                "wards": int(ok.sum()),
-                "worst_ward": None if use.empty else use.loc[use["F15"].idxmin(), "locator"],
-                "worst_F15": float(use["F15"].min()) if not use.empty else np.nan,
-                "best_ward": None if use.empty else use.loc[use["F15"].idxmax(), "locator"],
-                "best_F15": float(use["F15"].max()) if not use.empty else np.nan,
-                "wards_under_50pct": int((g.loc[ok, "F15"] < 0.5).sum()),
-            }
-        )
-        notes.append(_notable(g))
-    table = pd.DataFrame(rows)
-    table.to_csv(DATA_PROCESSED / "ward_f15_summary.csv", index=False)
-    if notes:
-        pd.concat(notes, ignore_index=True).to_csv(DATA_PROCESSED / "ward_f15_notable.csv", index=False)
+        row = {
+            "city": CITIES[slug].name,
+            "wards": int(ok.sum()),
+            "worst_ward": None if use.empty else use.loc[use["F15"].idxmin(), "locator"],
+            "worst_F15": float(use["F15"].min()) if not use.empty else np.nan,
+            "best_ward": None if use.empty else use.loc[use["F15"].idxmax(), "locator"],
+            "best_F15": float(use["F15"].max()) if not use.empty else np.nan,
+            "wards_under_50pct": int((g.loc[ok, "F15"] < 0.5).sum()),
+        }
+        if len(table):
+            table = table[table["city"] != CITIES[slug].name]
+        table = pd.concat([table, pd.DataFrame([row])], ignore_index=True)
+        notable = _notable(g)
+        if len(notes):
+            notes = notes[notes["city"] != CITIES[slug].name]
+        notes = pd.concat([notes, notable], ignore_index=True)
+        table.to_csv(path, index=False)
+        notes.to_csv(notes_path, index=False)
     return table
 
 

@@ -37,7 +37,7 @@ SHORT_LABELS = {
     "Abraham Adesanya": "Adesanya",
 }
 ALWAYS_SHOW_LABELS = {
-    "abuja": ("Lugbe", "Apo", "Lokogoma", "Nyanya", "Karu", "Gwarinpa", "Kabusa"),
+    "abuja": ("Lugbe", "Apo", "Lokogoma", "Nyanya", "Karu", "Gwarinpa", "Kabusa", "Kubwa", "Dutse"),
     "lagos": (
         "Eko Atlantic",
         "Tarkwa Bay",
@@ -584,7 +584,7 @@ def _city_blurb(slug: str) -> str:
         "ibadan": "The most compact city in the set, and the closest street map. Olopomewa is the hole that still moves the city score.",
         "kano": "Denser than Lagos, but the later population lives in Ungogo and Kumbotso while the clinics stayed in the old city.",
         "port_harcourt": "Crowded, and still far. The old township is walkable. Most people now live in Obio/Akpor, and the clinics did not move with them.",
-        "abuja": "This map is seven AMAC wards, not the whole municipal area. Some of the empty cells are missing streets.",
+        "abuja": "This map is seven AMAC wards plus Kubwa, Dutse and Usuma in Bwari, not the whole municipal area. Some of the empty cells are missing streets.",
     }.get(slug, "")
 
 

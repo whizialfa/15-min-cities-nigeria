@@ -20,7 +20,7 @@ Never report F15 without quoting `completeness.csv`. Print plates do not hatch t
 
 ## Results
 
-The write-up is [`notes/results.md`](notes/results.md). Colour PDF with the plates and charts: [`web/paper/fifteen_minute_access_nigeria.pdf`](web/paper/fifteen_minute_access_nigeria.pdf). Summary: [`notes/brief.md`](notes/brief.md). Five cities, OSM walk graph at 5 km/h, dual access to **n = 5** health and education POIs, GRID3/WorldPop NGA v3.0 population on 200 m hexes. Metro LGAs are the study boundary (not GHS urban centres). Area and density are measured on `{slug}_study_boundary.gpkg`.
+The write-up is [`notes/results.md`](notes/results.md). Colour PDF with the plates and charts: [`web/paper/fifteen_minute_access_nigeria.pdf`](web/paper/fifteen_minute_access_nigeria.pdf). Summary: [`notes/brief.md`](notes/brief.md). Five cities, OSM walk graph at 5 km/h, dual access to **n = 5** health and education POIs, GRID3/WorldPop NGA v3.0 population on 200 m hexes. Metro LGAs are the study boundary (not GHS urban centres); Abuja also includes Kubwa, Dutse and Usuma in Bwari. Area and density are measured on `{slug}_study_boundary.gpkg`.
 
 | City | Area | Population | Density | PT_city | F15 | Gini | F15 health | F15 schools |
 |---|---|---|---|---|---|---|---|---|
@@ -28,9 +28,9 @@ The write-up is [`notes/results.md`](notes/results.md). Colour PDF with the plat
 | Ibadan | 126 km² | 1.22M | 9,659 /km² | 10.9 min | 82.1% | 0.310 | 81.9% | 79.5% |
 | Kano | 573 km² | 5.78M | 10,092 /km² | 13.5 min | 67.2% | 0.291 | 55.9% | 74.4% |
 | Port Harcourt | 336 km² | 2.33M | 6,946 /km² | 21.2 min | 30.7% | 0.272 | 24.7% | 47.1% |
-| Abuja | 1,476 km² | 2.17M | 1,470 /km² | 32.2 min | 16.5% | 0.312 | 13.3% | 25.9% |
+| Abuja | 1,658 km² | 2.58M | 1,556 /km² | 29.8 min | 21.5% | 0.325 | 17.8% | 31.9% |
 
-**F15 tracks density, and Port Harcourt is the exception that carries the argument.** The three cities above 8,900 people/km² all clear 67%. Abuja, at 1,470, comes last. Port Harcourt has respectable density at 6,946 and still reaches only 30.7%, because it holds 75 clinics per million people against Ibadan's 364.
+**F15 tracks density, and Port Harcourt is the exception that carries the argument.** The three cities above 8,900 people/km² all clear 67%. Abuja, at 1,556, comes last. Port Harcourt has respectable density at 6,946 and still reaches only 30.7%, because it holds 75 clinics per million people against Ibadan's 364.
 
 **Four of five cities already own more clinics than an optimal layout needs.** `N*` is the number of optimally sited facilities required for 90% coverage on a 15-minute single-destination walk.
 
@@ -39,14 +39,14 @@ The write-up is [`notes/results.md`](notes/results.md). Colour PDF with the plat
 | Ibadan | 58 | 4.7 | 445 | 92.4% |
 | Port Harcourt | 115 | 4.9 | 175 | 66.1% |
 | Kano | 119 | 2.1 | 465 | 89.2% |
-| Abuja | 284 | 13.1 | 238 | 52.5% |
+| Abuja | 345 | 13.4 | 307 | 55.0% |
 | Lagos | 327 | 3.8 | 2,303 | 90.0% |
 
 Lagos spends 2,303 clinics to reach the same 90% that 327 well-placed ones would deliver. Port Harcourt's 175 reach 66% where 115 sited well would reach 90%. Where coverage fails, the binding constraint is siting, not scarcity — Abuja excepted, the only city where `N*` exceeds the existing stock.
 
-**Health access is worse than school access in four of five cities**, so averaging the two into `PT_k` hides the weaker service. About **1.2 million under-5s across the five cities live beyond a 15-minute walk of a clinic** (Kano 426k, Abuja 277k, Lagos 233k, Port Harcourt 228k, Ibadan 31k).
+**Health access is worse than school access in four of five cities**, so averaging the two into `PT_k` hides the weaker service. About **1.2 million under-5s across the five cities live beyond a 15-minute walk of a clinic** (Kano 426k, Abuja 313k, Lagos 233k, Port Harcourt 228k, Ibadan 31k).
 
-**The choice-set size `n` dominates every other parameter.** At Bruno's n = 20, Abuja scores 0.0% and Port Harcourt 1.1%. That is a statement about the parameter, not the city, and the reason this repo is an adaptation rather than a replication. The manuscript is [`notes/results.md`](notes/results.md); the colour PDF with plates and charts is [`web/paper/fifteen_minute_access_nigeria.pdf`](web/paper/fifteen_minute_access_nigeria.pdf). Charts: `charts/f15_vs_density.png`, `charts/f15_by_n.png`, `charts/nstar_curves.png`.
+**The choice-set size `n` dominates every other parameter.** At Bruno's n = 20, Abuja scores 0.1% and Port Harcourt 1.1%. That is a statement about the parameter, not the city, and the reason this repo is an adaptation rather than a replication. The manuscript is [`notes/results.md`](notes/results.md); the colour PDF with plates and charts is [`web/paper/fifteen_minute_access_nigeria.pdf`](web/paper/fifteen_minute_access_nigeria.pdf). Charts: `charts/f15_vs_density.png`, `charts/f15_by_n.png`, `charts/nstar_curves.png`.
 
 | City | n=1 | n=5 | n=20 |
 |---|---|---|---|
@@ -54,7 +54,7 @@ Lagos spends 2,303 clinics to reach the same 90% that 327 well-placed ones would
 | Ibadan | 93.9% | 82.1% | 43.6% |
 | Kano | 92.0% | 67.2% | 20.7% |
 | Port Harcourt | 74.4% | 30.7% | 1.1% |
-| Abuja | 53.3% | 16.5% | 0.0% |
+| Abuja | 57.6% | 21.5% | 0.1% |
 
 Walking speed matters nearly as much: at 3.5 km/h instead of 5, Kano falls from 67.2% to 43.0%. Quote `n` and the speed with any F15.
 
@@ -68,9 +68,9 @@ Walking speed matters nearly as much: at 3.5 km/h instead of 5, Kano falls from 
 | Port Harcourt | 56 m | 13.3% | 0.5% |
 | Lagos | 67 m | 24.8% | 2.8% |
 | Kano | 71 m | 18.6% | 0.9% |
-| Abuja | 263 m | 50.9% | 7.0% |
+| Abuja | 198 m | 45.2% | 3.1% |
 
-**Abuja is the only city that breaches the 250 m threshold, and it does so on the median**, with half its hexagons off the mapped network. Its 16.5% is part genuine sprawl and part missing street data. Lagos looks bad on hex share, but those hexagons are lagoon and hold 2.8% of people. Separately, OSM records under a fifth of GRID3's schools in every city, which is why GRID3 is primary and OSM a last-resort overlay.
+**Abuja still has the farthest typical neighbourhood (198 m),** with 45.2% of hexagons off the mapped network holding 3.1% of people. Its 21.5% is part genuine sprawl and part missing street data. Lagos looks bad on hex share, but those hexagons are lagoon and hold 2.8% of people. Separately, OSM records under a fifth of GRID3's schools in every city, which is why GRID3 is primary and OSM a last-resort overlay.
 
 ## Reproducing
 

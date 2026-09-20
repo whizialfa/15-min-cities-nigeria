@@ -1,4 +1,4 @@
-"""F15 on the Lagos-7 and Abuja-7 print clips. Headline scores stay the metro."""
+"""F15 on the Lagos-7 and Abuja plate clips. Headline scores stay the study boundary."""
 
 from __future__ import annotations
 
@@ -70,18 +70,21 @@ def abuja_cuts(hexes: gpd.GeoDataFrame | None = None) -> list[dict]:
     wards = gpd.read_file(DATA_PROCESSED / "abuja_wards.gpkg", layer="abuja_wards").to_crs(4326)
     joined = gpd.sjoin(
         _points(hexes)[["geometry"]],
-        wards[["locator", "geometry"]],
+        wards[["locator", "lganame", "geometry"]],
         predicate="within",
         how="inner",
     )
     plate_ix = joined.index[joined["locator"].isin(ABUJA_PLATE_WARDS)].unique()
-    rest_ix = joined.index[~joined["locator"].isin(ABUJA_PLATE_WARDS)].unique()
+    amac = joined["lganame"].astype(str).str.contains("Municipal", case=False, na=False)
+    amac_ix = joined.index[amac].unique()
+    rest_ix = joined.index[amac & ~joined["locator"].isin(ABUJA_PLATE_WARDS)].unique()
     n_plate = len(ABUJA_PLATE_WARDS)
     n_rest = len(set(joined.loc[rest_ix, "locator"])) if len(rest_ix) else 0
     return [
         _row(city.name, "plate", f"{n_plate} wards", hexes.loc[plate_ix]),
-        _row(city.name, "omitted", f"{n_rest} wards", hexes.loc[rest_ix]),
-        _row(city.name, "metro", "AMAC", hexes),
+        _row(city.name, "omitted", f"{n_rest} AMAC wards off the plate", hexes.loc[rest_ix]),
+        _row(city.name, "amac", "AMAC", hexes.loc[amac_ix]),
+        _row(city.name, "metro", "AMAC plus Kubwa, Dutse and Usuma", hexes),
     ]
 
 
