@@ -10,11 +10,13 @@ description: >-
 
 ## Default stance
 
+This repo stays the five Nigerian cities. A city outside Nigeria is a new repo under the global series in `paper-replica-factory`. Do not extend this one.
+
 This is **not** a Nature Cities clone. GRID3 health/education on metro LGAs, dual access **n = 5**, OSM walk at 5 km/h. Quote F15 from `city_metrics.csv` walk rows (`network=walk`, `n_required=5`). Plate cuts (Lagos seven LGAs; Abuja seven AMAC wards plus Kubwa, Dutse and Usuma) live in `plate_metrics.csv` and are never the metro headline. Never quote Euclidean F15 as a result. Never drop no-POI hexes silently. Do not add the rest of Bwari (Kawu, Igu, Shere).
 
 The Sony CSL atlas is a **baseline**, not the finding. Observed F15 is **mapped** 15-minuteness. Lead with density / N\* when POI data are thin.
 
-Write-up: `notes/results.md`. Summary: `notes/brief.md` (PDF: `notes/fifteen_minutes_on_foot.pdf`). Colour PDF: `notes/fifteen_minute_access_nigeria.pdf`. All five cities on the walk graph (`data/processed/city_metrics.csv`): Lagos F15 85.4% (PT 10.25), Ibadan 82.1% (10.91), Kano 67.2% (13.45), Port Harcourt 30.7% (21.22), Abuja 21.5% (29.77). F15 tracks population density almost everywhere — the three cities above 8,900 people/km² all clear 67%, Abuja at 1,556/km² sits last. **Port Harcourt is the one city that breaks the pattern** and is therefore the interesting case: 6,946 people/km² but only 30.7%, because it carries 75 health facilities per million against Ibadan's 364. That is inventory and siting, not density. Area and density are measured on `{slug}_study_boundary.gpkg` (Lagos 969 km², Ibadan 126 km², Kano 573 km², Port Harcourt 336 km², Abuja 1,658 km²).
+Write-up: `notes/results.md` (this is the house academic form: statement of the problem, study-area maps for every city, place-specific limits, named policy). Summary: `notes/brief.md` (PDF: `notes/fifteen_minutes_on_foot.pdf`). Colour PDF: `notes/fifteen_minute_access_nigeria.pdf`. Professor comments of 20 Sep 2026 are standing rules in `paper-replica-factory`. All five cities on the walk graph (`data/processed/city_metrics.csv`): Lagos F15 85.4% (PT 10.25), Ibadan 82.1% (10.91), Kano 67.2% (13.45), Port Harcourt 30.7% (21.22), Abuja 21.5% (29.77). F15 tracks population density almost everywhere — the three cities above 8,900 people/km² all clear 67%, Abuja at 1,556/km² sits last. **Port Harcourt is the one city that breaks the pattern** and is therefore the interesting case: 6,946 people/km² but only 30.7%, because it carries 75 health facilities per million against Ibadan's 364. That is inventory and siting, not density. Area and density are measured on `{slug}_study_boundary.gpkg` (Lagos 969 km², Ibadan 126 km², Kano 573 km², Port Harcourt 336 km², Abuja 1,658 km²).
 
 ## This is not a replication
 

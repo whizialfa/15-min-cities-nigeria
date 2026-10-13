@@ -21,7 +21,9 @@ LOCAL_FILES: dict[str, tuple[Path, ...]] = {
         / "Portfolio"
         / "Projects"
         / "Healthcare Demand Pressure"
-        / "GRID3_NGA_health_facilities_v2_0_-7782622226219335882"
+        / "data"
+        / "raw"
+        / "GRID3_NGA_health_facilities_v2_0"
         / "GRID3_NGA_health_facilities_v2_0.shp",
     ),
     "grid3_schools": (
